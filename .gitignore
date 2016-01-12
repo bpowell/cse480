@@ -1,0 +1,6 @@
+target/
+*.s[a-p,r-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~

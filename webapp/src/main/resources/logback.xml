@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="300 seconds">
+	<contextName>cse480</contextName>
+
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+	</contextListener>
+
+	<jmxConfigurator />
+
+	<property scope="local" name="LOG_DIR" value="${cse480.webapp.root}/../../logs/${CONTEXT_NAME}" />
+
+	<appender name="LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOG_DIR}/${CONTEXT_NAME}.log</File>
+
+		<encoder>
+			<pattern>%-5level [%thread] %d{ISO8601} - %msg%n</pattern>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_DIR}/${CONTEXT_NAME}.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+			<maxHistory>28</maxHistory>
+		</rollingPolicy>
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="LOG" />
+	</root>
+</configuration>

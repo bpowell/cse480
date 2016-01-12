@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+	<context:component-scan base-package="edu.oakland" />
+	<mvc:annotation-driven />
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/img/**" location="/img/" />
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- Sets location of datasource.properties -->
+	<!-- This file SHOULD NOT be part of the repository -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<set>
+				<value>file:${datasource.file}</value>
+			</set>
+		</property>
+	</bean>
+
+	<bean id="postgresDataSource" destroy-method="close" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" >
+			<value>${pgsql.driver.classname}</value>	
+		</property>
+		<property name="url" >
+			<value>${pgsql.driver.url}</value>
+		</property>
+		<property name="username" >
+			<value>${pgsql.driver.username}</value>
+		</property>
+		<property name="password" >
+			<value>${pgsql.driver.password}</value>
+		</property>
+		<property name="testOnBorrow" value="true" />
+		<property name="validationQuery" value="SELECT version()" />
+	</bean>
+</beans>
