@@ -1,7 +1,7 @@
 # CSE480 Project
 
 ## Code
-Webapp is located in the [webapp]() directory. You will need a ds.properties (or what ever you want to name it) for the application to connect to Postgresql. The format for the file is given by [sample.ds.properties]().
+Webapp is located in the [webapp](webapp/) directory. You will need a ds.properties (or what ever you want to name it) for the application to connect to Postgresql. The format for the file is given by [sample.ds.properties](sample.ds.properties).
 
 ## Requirements
 1. Tomcat 7+
