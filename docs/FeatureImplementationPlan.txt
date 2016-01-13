@@ -1,0 +1,86 @@
+﻿Iteration 1[a]:
+1. Generate list of drinks for each bar
+   1. name
+   2. cost
+   3. ingredients
+   4. description
+   5. average preparation time
+1. Create roles for users - including database
+   1. Super admin
+   2. bar admin (owner)
+   3. bar tender
+   4. display kiosk
+   5. customer
+1. Login / Create account (customer) / Create account (bartender)
+   1. Java/Spring
+
+
+Iteration 2:
+1. Create database layout for storing drinks
+2. Create stored procedures for retrieving drinks
+3. Determine overall theme for website
+   1. color scheme
+   2. responsive layout
+   3. etc
+
+
+Iteration 3:
+1. Apply theme to login and create account pages
+2. Write Java code to pull drinks from database
+3. Unit test the above code
+4. Create customer database to store customer’s orders
+
+
+Iteration 4:
+1. Allow customer to place an order for a drink
+2. Unit test the above code
+3. Start laying out the foundation for Android app
+
+
+Iteration 5:
+1. Apply theme to customer ordering page
+2. Go over database design 
+   1. performance check
+   2. make sure we are not missing anything
+1. Integration testing
+
+
+Iteration 6:
+1. Login code for Android app
+2. Bartender can view drinks customer has placed
+3. Unit test the above code
+
+
+Iteration 7:
+1. GPS for Android
+2. Apply theme to bartender view
+
+
+Iteration 8:
+1. GPS for Android - overflow
+2. Bar can add new drinks
+
+
+Iteration 9:
+1. Integration testing
+2. Use GPS to tell what bar the customer is located in
+3. Bar owner view to add/remove bartenders
+
+
+Iteration 10:
+1. Bartender can remove created drinks
+2. Unit test the above code
+3. Make sure views/experience between Android/web are consistent
+
+
+Iteration 11:
+1. Go over UI, check for bugs
+2.  Slaughter the bugs
+3. Unit testing/Integration testing
+
+
+Iteration 12:
+1. Clean up code
+2. Slaughter the bugs
+3. Super admin to add new bar owners
+[a]Functional requirements needs a "possible feature list" Everything else looks good.

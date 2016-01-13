@@ -1,0 +1,118 @@
+﻿Josh LeVoir
+Brandon Powell
+Don Freeman
+Paul Forgaciu
+CIT/CSE 480
+
+Functional Requirements
+Mobile / Kiosk Requirements
+Authentication/Account
+* System shall provide a way for user to authenticate with username & password
+* System shall provide a way for user to specify for the app to auto-login
+* System shall provide a way for user to change password
+* System shall provide a way for user to clear drink history
+* System shall provide a way for user to delete account
+
+
+Location
+* System shall provide a way for user to see list of nearby locations
+* System shall provide a way for user to see shortest queue length for each location
+* System shall provide a way to sort the list of displayed locations by location or shortest queue length (maybe by most frequently visited?)
+* System shall provide a way for user to choose their location
+* System shall provide a way for user to see queue length of each bar at location
+* System shall provide a way for user to choose the bar at location
+
+
+Drink
+* System shall display a list of the user’s recently order drinks, upon login
+* System shall allow user to create new drink from list of ingredients
+* System shall allow user to select generic drink from list
+* System shall allow user to see list of most commonly ordered drinks at a specific location or bar
+* System shall inherit rules set in client application:
+   * how many drinks they can order at a time
+   * how many drinks they can order in a 60 minute period, etc. 
+   * [This list needs to be grown, but they could also be added during an update.]
+* System shall provide a way for the user to see an estimated time left before their drink is ready
+
+
+        
+Monitor (Bar Display) Requirements
+* System shall display whichever screen is set in the Register Requirements.
+(drink queue, top drinks ordered, house drinks)
+* System shall allow user of type Manager or higher to change screen
+* System shall allow user of type Employee or higher to turn a location’s advertising display feature on or off
+
+
+Register Requirements
+Items and Ingredients
+   * System shall allow entry of additional ingredients
+   * System shall allow entry of additional item
+   * System shall provide a way to 86 an item or ingredient
+   * System shall provide a way to 86 all ingredients associated with an 86’d item
+   * System shall provide a way to un-86 an item or ingredient
+   * System shall provide a way to un-86 all ingredients associated with an un-86’d item
+   * System shall provide a way for user of type Employee or higher to clear a drink from queue
+   * System shall provide a way for user of type Manager or higher to ban users for specified amount of time or if reached a set amount of infractions (user may have ordered drinks but never picked them up, user may be a bad person and you no longer want their business, x-strikes and you’re out?) 
+
+
+Feature List
+   * System shall provide a way for Client to disable Mayor feature
+
+
+Display Screen
+   * System shall provide a way for Client to select what view they wanted if they had a Display
+   * System shall allow the Client to adjust the display screen of monitor application
+   * show next 3 drinks to be made, with the ‘on-deck’ drink more prominently displayed
+   * show next 10 drinks to be made, sorted by time left ascending
+   * show how many drinks are in the queue
+
+
+
+
+
+
+Administrative Requirements
+   * System shall allow the creation of new accounts
+   * System shall allow the creation of new locations for each account
+   * System shall allow the creation of new queues at each location
+   * System shall allow the Employee to turn a Client’s kiosk feature on
+   * System shall allow the creation of schedules (meaning a different menu for different day of the week, can even be extended to time of day [think happy hour special])
+
+
+
+
+________________
+
+
+
+Demonstrate setup of team collaboration and project management tool
+git clone git@github.com:bpowell/cse480.git
+
+
+
+
+
+
+
+
+
+
+________________
+Other Ideas:
+User Types: (Each user has their own set of rights.)
+   * Super User, Owner, Manager, Employee, Mayor, Family, Friend, Special, Power User, User
+   * Super User: Has full rights.
+   * Owner: One or more people who own the location (bar owner, co-owners,...)
+   * Manager: The person in charge of making the daily decisions. Has special privileges. (Can add/remove employees, add/remove drinks,...)
+   * Employee: Works at the establishment. Can add drinks for people without the app.
+   * Mayor: User is of type Mayor. usual gained this privilege by having the having ordered the highest number of drinks at a place in a span of time.
+   * Family: User is of type Family. Can be given privileges such as: drink priority or secret ingredients.
+   * Friend: User is of type Friend. Can be given privileges such as: drink priority or secret ingredients.
+   * Special: used to give a group special privileges (special event, party,...)
+
+
+Usable Business Statistics:
+This could provide really valuable statistics to businesses about their customer base and their orders.
+
+
+Android user notifications when drink is finished and waiting at the bar.
