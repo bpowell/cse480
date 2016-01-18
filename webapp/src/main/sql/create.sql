@@ -83,7 +83,6 @@ create table drink (
     id serial primary key,
     name varchar(100) NOT NULL,
     info text NOT NULL,
-    items text NOT NULL, -- This will be a concatenation of 1 or more item(id) 
     make_time smallint NOT NULL,
     icon_url text NOT NULL,	
     queue_id references queue(id)
@@ -97,5 +96,13 @@ create table item (
     info text NOT NULL,
     icon_url text NOT NULL,
     make_time smallint NOT NULL
+)
+;
+
+-- replaces the items column in table drink.
+create table drink_items (
+    id serial primary key,
+    drink_id references drink(id),
+    item_id references item(id)
 )
 ;
