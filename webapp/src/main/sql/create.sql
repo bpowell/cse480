@@ -48,7 +48,14 @@ create table bar (
     location varchar(100) NOT NULL,
     info text NOT NULL,
     icon_url text NOT NULL,
-    special_users text NOT NULL -- This field will be a concatenation of multiple 'users.id'.
+)
+;
+
+-- replaces the special_users column in table bar.
+create table special_bar_users (
+    id serial primary key,
+    bar_id references bar(id) NOT NULL,
+    users_id references users(id) NOT NULL
 )
 ;
 
