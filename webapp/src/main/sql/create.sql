@@ -6,13 +6,13 @@ create table roles (
 )
 ;
 
-insert into roles (name, info) values('ADMIN', 'Administrator');
-insert into roles (name, info) values('OWNER', 'Owner');
-insert into roles (name, info) values('MANAGER', 'Manager');
-insert into roles (name, info) values('EMPLOYEE', 'Employee');
-insert into roles (name, info) values('USER', 'Standard User');
-insert into roles (name, info) values('KIOSK', 'POS Kiosk');
-insert into roles (name, info) values('DISPLAY', 'Read-only User');
+insert into roles (name, info) values('ROLE_ADMIN', 'Administrator');
+insert into roles (name, info) values('ROLE_OWNER', 'Owner');
+insert into roles (name, info) values('ROLE_MANAGER', 'Manager');
+insert into roles (name, info) values('ROLE_EMPLOYEE', 'Employee');
+insert into roles (name, info) values('ROLE_USER', 'Standard User');
+insert into roles (name, info) values('ROLE_KIOSK', 'POS Kiosk');
+insert into roles (name, info) values('ROLE_DISPLAY', 'Read-only User');
 
 -- users of the system. each has account info and associated role_id
 create table users (
