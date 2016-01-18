@@ -23,8 +23,8 @@ create table users (
     info text NOT NULL,
     icon_url text NOT NULL,
     email text NOT NULL,
-    phone NOT NULL,
-    zip NOT NULL,
+    phone text NOT NULL,
+    zip text NOT NULL,
     role_id integer references roles(id)
 )
 ;
