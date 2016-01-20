@@ -12,9 +12,10 @@
 
 	<body>
 		<div class="container">
+		<h2 class="form-signin-heading">Please Sign In or Sign Up</h2>
 			<div class="col-sm-8">
+			<h3>Returning Users:</h3>
 				<form class="form-signin">
-					<h2 class="form-signin-heading">Please sign in</h2>
 					<label for="inputEmail" class="sr-only">Email address</label>
 					<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
 					<label for="inputPassword" class="sr-only">Password</label>
@@ -26,6 +27,16 @@
 					</div>
 					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 				</form>
+			</div>
+			<div class="col-sm-4">
+			<h3>New Users:</h3>
+				<form class="form-signin">
+          <label for="inputEmail" class="sr-only">Email address</label>
+          <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+          <label for="inputPassword" class="sr-only">Password</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+        </form>
 			</div>
 		</div>
 	</body>
