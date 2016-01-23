@@ -20,11 +20,7 @@ create table users (
     name varchar(100) NOT NULL,
     password_hash varchar(100) NOT NULL,
     password_salt varchar(100) NOT NULL,
-    info text NOT NULL,
-    icon_url text NOT NULL,
     email text NOT NULL,
-    phone text NOT NULL,
-    zip text NOT NULL,
     role_id integer references roles(id)
 )
 ;
@@ -45,37 +41,24 @@ create table bar (
     id serial primary key,
     name varchar(100) NOT NULL,
     business_id integer references business(id),
-    location varchar(100) NOT NULL,
-    info text NOT NULL,
-    icon_url text NOT NULL
 )
 ;
 
 -- replaces the special_users column in table bar.
 create table special_bar_users (
     id serial primary key,
-    bar_id integer references bar(id) NOT NULL,
-    users_id integer references users(id) NOT NULL
-)
-;
-
--- this is an individual pickup location at a bar.
-create table queue (
-    id serial primary key,
-    name varchar(100) NOT NULL,
-    bar_id integer references bar(id)
+    bar_id integer references bar(id),
+    users_id integer references users(id)
 )
 ;
 
 -- this is to be considered as the receipt. stores drink orders, order and pickup timestamps.
 create table drinkorder (
     id serial primary key,
-    info json NOT NULL, -- This field will contain the session information about drinks that were ordered. 
+    drink_count integer NOT NULL, -- This field contains the quantity of the ordered drink
     queue_id integer references queue(id),
     user_id integer references users(id),
     bar_id integer references bar(id),
-    order_time timestamp NOT NULL, -- This should be updated once the order is verified complete.
-    pickup_time timestamp NOT NULL  -- This to be updated once the pickup is verified
 )
 ;
 -- table of individual drinks tied to each queue. 10oz pour, 20oz pour, pint, martini, rum & coke, $4 shot, $5 shot, etc.
