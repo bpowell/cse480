@@ -30,12 +30,4 @@
 	</listener>
 	<!-- End Logging Configuration -->
 
-	<!-- Cookie Information -->
-	<!-- Sets the secure and http-only to true. Helps prevent XSS attacks. -->
-	<session-config>
-		<cookie-config>
-			<secure>true</secure>
-			<http-only>true</http-only>
-		</cookie-config>
-	</session-config>
 </web-app>
