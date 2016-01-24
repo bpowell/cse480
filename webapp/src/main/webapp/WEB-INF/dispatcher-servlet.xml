@@ -20,31 +20,4 @@
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
-
-    <!-- Sets location of datasource.properties -->
-    <!-- This file SHOULD NOT be part of the repository -->
-    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations">
-            <set>
-                <value>file:${datasource.file}</value>
-            </set>
-        </property>
-    </bean>
-
-    <bean id="postgresDataSource" destroy-method="close" class="org.apache.commons.dbcp2.BasicDataSource">
-        <property name="driverClassName" >
-            <value>${pgsql.driver.classname}</value>
-        </property>
-        <property name="url" >
-            <value>${pgsql.driver.url}</value>
-        </property>
-        <property name="username" >
-            <value>${pgsql.driver.username}</value>
-        </property>
-        <property name="password" >
-            <value>${pgsql.driver.password}</value>
-        </property>
-        <property name="testOnBorrow" value="true" />
-        <property name="validationQuery" value="SELECT version()" />
-    </bean>
 </beans>

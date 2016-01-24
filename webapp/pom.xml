@@ -184,7 +184,7 @@
                             <targetPath>WEB-INF</targetPath>
                             <filtering>true</filtering>
                             <includes>
-                                <include>dispatcher-servlet.xml</include>
+                                <include>spring-database.xml</include>
                             </includes>
                         </resource>
                         <resource>
@@ -192,7 +192,7 @@
                             <targetPath>WEB-INF</targetPath>
                             <filtering>false</filtering>
                             <excludes>
-                                <exclude>dispatcher-servlet.xml</exclude>
+                                <exclude>spring-database.xml</exclude>
                             </excludes>
                         </resource>
                     </webResources>
