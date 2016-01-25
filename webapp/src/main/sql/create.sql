@@ -40,7 +40,7 @@ create table business (
 create table bar (
     id serial primary key,
     name varchar(100) NOT NULL,
-    business_id integer references business(id),
+    business_id integer references business(id)
 )
 ;
 
@@ -56,9 +56,8 @@ create table special_bar_users (
 create table drinkorder (
     id serial primary key,
     drink_count integer NOT NULL, -- This field contains the quantity of the ordered drink
-    queue_id integer references queue(id),
     user_id integer references users(id),
-    bar_id integer references bar(id),
+    bar_id integer references bar(id)
 )
 ;
 -- table of individual drinks tied to each queue. 10oz pour, 20oz pour, pint, martini, rum & coke, $4 shot, $5 shot, etc.
@@ -67,8 +66,7 @@ create table drink (
     name varchar(100) NOT NULL,
     info text NOT NULL,
     make_time smallint NOT NULL,
-    icon_url text NOT NULL,	
-    queue_id integer references queue(id)
+    icon_url text NOT NULL
 )
 ;
 
