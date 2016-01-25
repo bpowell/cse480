@@ -33,8 +33,12 @@
 				<form class="form-signin">
           <label for="inputEmail" class="sr-only">Email address</label>
           <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+          <label for="inputPassword" class="sr-only">New Password</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="New Password" required>
+          <label for="reInputPassword" class="sr-only">Re-enter Password</label>
+          <input type="password" id="reInputPassword" class="form-control" placeholder="Re-enter Password" required>
+          <label for="newUsername" class="sr-only">Enter New Username</label>
+          <input type="text" id="enterNewUserName" class="form-control" placeholder="Enter new username" required>
           <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
         </form>
 			</div>
