@@ -14,7 +14,7 @@
                 <div class="container">
                         <h2 class="form-signin-heading">Sign Up</h2>
                         <div class="col-sm-4">
-                                <form method="POST" action="<c:url '/register' />" class="form-signin">
+                                <form method="POST" action="<c:url value='/register' />" class="form-signin">
                                         <label for="inputEmail" class="sr-only">Email address</label>
                                         <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                                         <label for="inputPassword" class="sr-only">New Password</label>
