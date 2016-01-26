@@ -1,5 +1,7 @@
 package edu.oakland.cse480.mvc.controller;
 
+import edu.oakland.cse480.mvc.models.RegisterNewUser;
+
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,4 +52,18 @@ public class MainController{
 
 		return model;
 	}
+
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String register() {
+            return "register";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String doRegister(@ModelAttribute("registerNewUser") @Valid RegisterNewUser registerNewUser, BindingResult result) {
+            if(result.hasErrors()){
+                    log.error("error!");
+            }
+
+            return "index";
+    }
 }
