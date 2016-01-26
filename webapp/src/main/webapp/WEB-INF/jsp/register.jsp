@@ -21,7 +21,7 @@
                                         <label for="inputPassword" class="sr-only">New Password</label>
                                         <input type="password" name="password" id="inputPassword" class="form-control" placeholder="New Password" required>
                                         <label for="reInputPassword" class="sr-only">Re-enter Password</label>
-                                        <input type="password" name="password-confirm" id="reInputPassword" class="form-control" placeholder="Re-enter Password" required>
+                                        <input type="password" name="passwordConfirm" id="reInputPassword" class="form-control" placeholder="Re-enter Password" required>
                                         <label for="newUsername" class="sr-only">Enter New Username</label>
                                         <input type="text" name="name" id="enterNewUserName" class="form-control" placeholder="Enter new username" required>
                                         <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
