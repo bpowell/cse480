@@ -11,11 +11,11 @@
         <security:intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
 
         <security:access-denied-handler error-page="/403" />
-        <security:form-login 
-            login-page="/login" 
-            default-target-url="/welcome" 
+        <security:form-login
+            login-page="/login"
+            default-target-url="/welcome"
             login-processing-url="/login"
-            authentication-failure-url="/login?error" 
+            authentication-failure-url="/login?error"
             username-parameter="username"
             password-parameter="password" />
         <security:logout logout-success-url="/login?logout"  />
