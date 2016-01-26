@@ -20,6 +20,10 @@
             password-parameter="password" />
         <security:logout logout-success-url="/login?logout"  />
         <security:csrf/>
+        <security:remember-me
+            remember-me-parameter="_spring_security_remember_me"
+            remember-me-cookie="SPRING_SECURITY_REMEMBER_ME_COOKIE"
+            />
     </security:http>
 
     <security:authentication-manager>
