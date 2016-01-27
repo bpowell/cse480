@@ -1,12 +1,12 @@
 package edu.oakland.cse480.mvc.models;
 
-public class User {
+public class Bar {
         public int id;
         public String name;
-        public String email;
+        public String business_id;
 
-        public User() {}
+        public Bar() {}
         public int getID() {return id;}
         public String getName() {return name;}
-        public String getEmail() {return email;}
+        public String getBusinessID() {return business_id;}
 }
