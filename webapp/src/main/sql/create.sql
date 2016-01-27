@@ -1,18 +1,18 @@
 -- groups such as: admin, owner, employee, user, mayor, etc.
 create table roles (
     id serial primary key,
-    name varchar(100) NOT NULL,
+    role varchar(100) NOT NULL,
     info text NOT NULL
 )
 ;
 
-insert into roles (name, info) values('ROLE_ADMIN', 'Administrator');
-insert into roles (name, info) values('ROLE_OWNER', 'Owner');
-insert into roles (name, info) values('ROLE_MANAGER', 'Manager');
-insert into roles (name, info) values('ROLE_EMPLOYEE', 'Employee');
-insert into roles (name, info) values('ROLE_USER', 'Standard User');
-insert into roles (name, info) values('ROLE_KIOSK', 'POS Kiosk');
-insert into roles (name, info) values('ROLE_DISPLAY', 'Read-only User');
+insert into roles (role, info) values('ROLE_ADMIN', 'Administrator');
+insert into roles (role, info) values('ROLE_OWNER', 'Owner');
+insert into roles (role, info) values('ROLE_MANAGER', 'Manager');
+insert into roles (role, info) values('ROLE_EMPLOYEE', 'Employee');
+insert into roles (role, info) values('ROLE_USER', 'Standard User');
+insert into roles (role, info) values('ROLE_KIOSK', 'POS Kiosk');
+insert into roles (role, info) values('ROLE_DISPLAY', 'Read-only User');
 
 -- users of the system. each has account info and associated role_id
 create table users (
