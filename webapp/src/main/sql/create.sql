@@ -19,7 +19,6 @@ create table users (
     id serial primary key,
     name varchar(100) NOT NULL,
     password_hash varchar(100) NOT NULL,
-    password_salt varchar(100) NOT NULL,
     email text NOT NULL,
     role_id integer references roles(id)
 )
