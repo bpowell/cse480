@@ -30,9 +30,9 @@
         <security:authentication-provider>
             <security:jdbc-user-service data-source-ref="postgresDataSource"
                 users-by-username-query=
-                "select username,password_hash, 'true' from users where username=?"
+                "select email, password_hash, 'true' from users where email=?"
                 authorities-by-username-query=
-                "select username, role from users, roles where username = ? and users.role_id = roles.id  " />
+                "select email, role from users, roles where email = ? and users.role_id = roles.id  " />
         </security:authentication-provider>
     </security:authentication-manager>
 
