@@ -30,9 +30,8 @@
         <dbcp.version>2.1.1</dbcp.version>
         <jstl.version>1.2</jstl.version>
         <junit.version>4.11</junit.version>
-        <oracle.driver.version>11.2.0.3</oracle.driver.version>
         <slf4j.version>1.7.5</slf4j.version>
-        <spring-framework.version>4.2.1.RELEASE</spring-framework.version>
+        <spring-framework.version>4.2.2.RELEASE</spring-framework.version>
         <spring-security.version>4.0.3.RELEASE</spring-security.version>
         <logbackVersion>1.0.12</logbackVersion>
         <servlet-api.version>2.5</servlet-api.version>
@@ -77,6 +76,21 @@
             <version>${spring-security.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring-framework.version}</version>
@@ -99,23 +113,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>${spring-framework.version}</version>
-        </dependency>
-
-        <!-- Needed to make Spring Security work with Spring 3.2.3.RELEASE -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${spring-framework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring-framework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
             <version>${spring-framework.version}</version>
         </dependency>
 
@@ -187,7 +184,7 @@
                             <targetPath>WEB-INF</targetPath>
                             <filtering>true</filtering>
                             <includes>
-                                <include>dispatcher-servlet.xml</include>
+                                <include>spring-database.xml</include>
                             </includes>
                         </resource>
                         <resource>
@@ -195,7 +192,7 @@
                             <targetPath>WEB-INF</targetPath>
                             <filtering>false</filtering>
                             <excludes>
-                                <exclude>dispatcher-servlet.xml</exclude>
+                                <exclude>spring-database.xml</exclude>
                             </excludes>
                         </resource>
                     </webResources>
