@@ -26,6 +26,8 @@
             />
     </security:http>
 
+    <bean class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" id="passwordEncoder"/>
+
     <security:authentication-manager>
         <security:authentication-provider>
             <security:jdbc-user-service data-source-ref="postgresDataSource"
@@ -33,6 +35,7 @@
                 "select email, password_hash, 'true' from users where email=?"
                 authorities-by-username-query=
                 "select email, role from users, roles where email = ? and users.role_id = roles.id  " />
+            <security:password-encoder ref="passwordEncoder"/>
         </security:authentication-provider>
     </security:authentication-manager>
 
