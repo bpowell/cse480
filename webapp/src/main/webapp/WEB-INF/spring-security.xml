@@ -8,27 +8,34 @@
     http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
     <security:http auto-config="true" use-expressions="true">
-        <security:intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+        <security:intercept-url pattern="/welcome" access="hasRole('ROLE_ADMIN')" />
 
         <security:access-denied-handler error-page="/403" />
-        <security:form-login 
-            login-page="/login" 
-            default-target-url="/welcome" 
+        <security:form-login
+            login-page="/login"
+            default-target-url="/welcome"
             login-processing-url="/login"
-            authentication-failure-url="/login?error" 
+            authentication-failure-url="/login?error"
             username-parameter="username"
             password-parameter="password" />
         <security:logout logout-success-url="/login?logout"  />
         <security:csrf/>
+        <security:remember-me
+            remember-me-parameter="_spring_security_remember_me"
+            remember-me-cookie="SPRING_SECURITY_REMEMBER_ME_COOKIE"
+            />
     </security:http>
+
+    <bean class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" id="passwordEncoder"/>
 
     <security:authentication-manager>
         <security:authentication-provider>
             <security:jdbc-user-service data-source-ref="postgresDataSource"
                 users-by-username-query=
-                "select username,password_hash, 'true' from users where username=?"
+                "select email, password_hash, 'true' from users where email=?"
                 authorities-by-username-query=
-                "select username, role from users, roles where username = ? and users.role_id = roles.id  " />
+                "select email, role from users, roles where email = ? and users.role_id = roles.id  " />
+            <security:password-encoder ref="passwordEncoder"/>
         </security:authentication-provider>
     </security:authentication-manager>
 

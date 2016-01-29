@@ -1,25 +1,24 @@
 -- groups such as: admin, owner, employee, user, mayor, etc.
 create table roles (
     id serial primary key,
-    name varchar(100) NOT NULL,
+    role varchar(100) NOT NULL,
     info text NOT NULL
 )
 ;
 
-insert into roles (name, info) values('ROLE_ADMIN', 'Administrator');
-insert into roles (name, info) values('ROLE_OWNER', 'Owner');
-insert into roles (name, info) values('ROLE_MANAGER', 'Manager');
-insert into roles (name, info) values('ROLE_EMPLOYEE', 'Employee');
-insert into roles (name, info) values('ROLE_USER', 'Standard User');
-insert into roles (name, info) values('ROLE_KIOSK', 'POS Kiosk');
-insert into roles (name, info) values('ROLE_DISPLAY', 'Read-only User');
+insert into roles (role, info) values('ROLE_ADMIN', 'Administrator');
+insert into roles (role, info) values('ROLE_OWNER', 'Owner');
+insert into roles (role, info) values('ROLE_MANAGER', 'Manager');
+insert into roles (role, info) values('ROLE_EMPLOYEE', 'Employee');
+insert into roles (role, info) values('ROLE_USER', 'Standard User');
+insert into roles (role, info) values('ROLE_KIOSK', 'POS Kiosk');
+insert into roles (role, info) values('ROLE_DISPLAY', 'Read-only User');
 
 -- users of the system. each has account info and associated role_id
 create table users (
     id serial primary key,
     name varchar(100) NOT NULL,
     password_hash varchar(100) NOT NULL,
-    password_salt varchar(100) NOT NULL,
     email text NOT NULL,
     role_id integer references roles(id)
 )
@@ -40,7 +39,7 @@ create table business (
 create table bar (
     id serial primary key,
     name varchar(100) NOT NULL,
-    business_id integer references business(id),
+    business_id integer references business(id)
 )
 ;
 
@@ -56,9 +55,8 @@ create table special_bar_users (
 create table drinkorder (
     id serial primary key,
     drink_count integer NOT NULL, -- This field contains the quantity of the ordered drink
-    queue_id integer references queue(id),
     user_id integer references users(id),
-    bar_id integer references bar(id),
+    bar_id integer references bar(id)
 )
 ;
 -- table of individual drinks tied to each queue. 10oz pour, 20oz pour, pint, martini, rum & coke, $4 shot, $5 shot, etc.
@@ -67,8 +65,7 @@ create table drink (
     name varchar(100) NOT NULL,
     info text NOT NULL,
     make_time smallint NOT NULL,
-    icon_url text NOT NULL,	
-    queue_id integer references queue(id)
+    icon_url text NOT NULL
 )
 ;
 
