@@ -69,20 +69,27 @@ create table drink (
 )
 ;
 
+create table categories (
+    id serial primary key,
+    name text NOT NULL,
+    description text NOT NULL
+)
+;
+
 -- contains each individual items. individual beers, liquors, fruits, garnishes, etc.
-create table item (
+create table ingredient (
     id serial primary key,
     name varchar(100) NOT NULL,
-    info text NOT NULL,
+    description text NOT NULL,
     icon_url text NOT NULL,
-    make_time smallint NOT NULL
+    category integer references categories(id)
 )
 ;
 
 -- replaces the items column in table drink.
-create table drink_items (
+create table drink_ingredients (
     id serial primary key,
     drink_id integer references drink(id),
-    item_id integer references item(id)
+    ingredient_id integer references ingredient(id)
 )
 ;
