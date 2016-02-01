@@ -1,11 +1,10 @@
 package edu.oakland.cse480.mvc.models;
 
-public class Business {
+public class Drink {
     public int id;
     public String name;
-    public int owner_id;
-    public String contact_info;
     public String info;
+    public int make_time;
     public String icon_url;
 
     public int getId() {
@@ -20,22 +19,6 @@ public class Business {
         this.name = name;
     }
 
-    public int getOwnerId() {
-        return this.owner_id;
-    }
-
-    public void setOwnerId(int owner_id) {
-        this.owner_id = owner_id;
-    }
-
-    public String getContactInfo() {
-        return this.contact_info;
-    }
-
-    public void setContactInfo(String contact_info) {
-        this.contact_info = contact_info;
-    }
-
     public String getInfo() {
         return this.info;
     }
@@ -44,11 +27,19 @@ public class Business {
         this.info = info;
     }
 
+    public int getMakeTime() {
+        return this.make_time;
+    }
+
+    public void setMakeTime(int make_time) {
+        this.make_time = make_time;
+    }
+
     public String getIconUrl() {
         return this.icon_url;
     }
 
-    public void setIconUrl(String icon_url) {
+    public void setIconUrl() {
         this.icon_url = icon_url;
     }
-}
+}   
