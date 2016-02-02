@@ -39,7 +39,7 @@ public class Ingredient {
         return this.category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(int category) {
         this.category = category;
     }
 }   
