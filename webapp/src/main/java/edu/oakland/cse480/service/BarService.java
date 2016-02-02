@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.ArrayList;
 
-import edu.oakland.cse345.mvc.models.Bar;
+import edu.oakland.cse480.mvc.models.Bar;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
