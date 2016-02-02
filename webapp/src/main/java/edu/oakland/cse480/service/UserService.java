@@ -30,9 +30,9 @@ public class UserService extends AbstractJdbcDriver {
     private class UserMapper implements RowMapper<User>{
             public User mapRow(ResultSet rs, int rowNum) throws SQLException {
                     User r = new User();
-                    r.name = rs.getString("name");
-                    r.id = rs.getInt("id");
-                    r.email = rs.getString("email");
+                    r.setName(rs.getString("name"));
+                    r.setId(rs.getInt("id"));
+                    r.setEmail(rs.getString("email"));
                     return r;
             }
     }

@@ -1,6 +1,6 @@
 package edu.oakland.cse480.mvc.controller;
 
-import edu.oakland.cse480.mvc.models.RegisterNewUser;
+import edu.oakland.cse480.mvc.models.User;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -63,7 +63,7 @@ public class MainController{
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String doRegister(@ModelAttribute("registerNewUser") @Valid RegisterNewUser registerNewUser, BindingResult result) {
+    public String doRegister(@ModelAttribute("registerNewUser") @Valid User registerNewUser, BindingResult result) {
             if(result.hasErrors()){
                     log.error("error!");
             }
