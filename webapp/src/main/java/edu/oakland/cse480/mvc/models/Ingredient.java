@@ -7,6 +7,10 @@ public class Ingredient {
     public String icon_url;
     public int category;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return this.id;
     }
