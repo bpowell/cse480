@@ -1,11 +1,11 @@
 package edu.oakland.cse480.mvc.models;
 
 public class Ingredient {
-    public int id;
-    public String name;
-    public String description;
-    public String icon_url;
-    public int category;
+    private int id;
+    private String name;
+    private String description;
+    private String icon_url;
+    private int category;
 
     public void setId(int id) {
         this.id = id;
