@@ -1,6 +1,7 @@
 package edu.oakland.cse480.mvc.controller;
 
 import edu.oakland.cse480.mvc.models.User;
+import edu.oakland.cse480.service.UserService;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
 import java.util.Objects;
@@ -30,6 +32,9 @@ import org.slf4j.LoggerFactory;
 @Controller
 public class MainController{
     protected final Logger log = LoggerFactory.getLogger(getClass());
+
+    @Autowired
+    UserService us;
 
     /**
      * Sends the user to the main page.
@@ -76,11 +81,16 @@ public class MainController{
             }
 
             //Check if user is already registered
+            if(us.userExists(registerNewUser.getName())) {
+                log.error("already in db");
+            }
 
 
             PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String hashedPassword = passwordEncoder.encode(registerNewUser.getPassword());
             log.error(hashedPassword);
+
+            us.insertUser(registerNewUser, hashedPassword, "ROLE_USER");
 
             return "index";
     }
