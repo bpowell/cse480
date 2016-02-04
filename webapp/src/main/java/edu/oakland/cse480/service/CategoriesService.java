@@ -11,12 +11,17 @@ import java.util.ArrayList;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.*;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import edu.oakland.cse480.mvc.models.Categories;
 
 @Service
 public class CategoriesService extends AbstractJdbcDriver {
     protected final Logger log = LoggerFactory.getLogger(getClass());
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcPostgres = jdbcTemplate;
+    }
 
     public List<Categories> getAllCategories() {
         List<Categories> c = new ArrayList<Categories>();
