@@ -275,7 +275,7 @@
                         <goals><goal>execute</goal></goals>
                         <configuration>
                             <srcFiles>
-                                <srcFile>src/main/sql/create.sql</srcFile>
+                                    <srcFile>src/main/resources/sql/create.sql</srcFile>
                             </srcFiles>
                             <skip>${skip-create.sql-plugin}</skip>
                         </configuration>
