@@ -77,6 +77,8 @@ create table categories (
 )
 ;
 
+insert into categories (name, description) values('Beer', 'Beer me');
+
 -- contains each individual items. individual beers, liquors, fruits, garnishes, etc.
 create table ingredient (
     id serial primary key,
