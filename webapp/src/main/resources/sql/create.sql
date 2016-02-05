@@ -28,8 +28,6 @@ create table users (
 create table business (
     id serial primary key,
     name varchar(100) NOT NULL,
-    owner_id integer references users(id),
-    contact_info varchar(100) NOT NULL,
     info text NOT NULL,
     icon_url text NOT NULL
 )
@@ -39,15 +37,10 @@ create table business (
 create table bar (
     id serial primary key,
     name varchar(100) NOT NULL,
-    business_id integer references business(id)
-)
-;
-
--- replaces the special_users column in table bar.
-create table special_bar_users (
-    id serial primary key,
-    bar_id integer references bar(id),
-    users_id integer references users(id)
+    business_id integer references business(id),
+    owner_id integer references users(id),
+    contact_info varchar(100) NOT NULL,
+    location text NOT NULL
 )
 ;
 
@@ -57,6 +50,8 @@ create table drinkorder (
     drink_id integer NOT NULL,
     drink_count integer NOT NULL, -- This field contains the quantity of the ordered drink
     user_id integer references users(id),
+    time_placed timestamp with time zone NOT NULL,
+    time_complete timestamp with time zone NOT NULL,
     bar_id integer references bar(id)
 )
 ;
@@ -66,7 +61,15 @@ create table drink (
     name varchar(100) NOT NULL,
     info text NOT NULL,
     make_time smallint NOT NULL,
-    icon_url text NOT NULL
+    icon_url text NOT NULL -- this is staying not null because every drink should have an icon for what glass it is served in..  Beer bottle for beers, wine glass for wine, cocktail glass for mixed drinks, shot glass for liquors, etc. It doesn't have to be a picture of the drink (i.e. marguerita), but a generic icon of the glass.
+)
+;
+
+-- gives ingredients a category
+create table categories (
+    id serial primary key,
+    name text NOT NULL,
+    description text NOT NULL
 )
 ;
 
