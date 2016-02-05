@@ -67,32 +67,32 @@ public class MainController{
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register() {
-            return "register";
+        return "register";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String doRegister(@ModelAttribute("registerNewUser") @Valid User registerNewUser, BindingResult result) {
-            if(result.hasErrors()){
-                    log.error("error!");
-            }
+        if(result.hasErrors()){
+            log.error("error!");
+        }
 
-            if(!Objects.equals(registerNewUser.getPassword(), registerNewUser.getPasswordConfirm())) {
-                    log.error("passwords no match");
-            }
+        if(!Objects.equals(registerNewUser.getPassword(), registerNewUser.getPasswordConfirm())) {
+            log.error("passwords no match");
+        }
 
-            //Check if user is already registered
-            if(us.userExists(registerNewUser.getName())) {
-                log.error("already in db");
-            }
+        //Check if user is already registered
+        if(us.userExists(registerNewUser.getName())) {
+            log.error("already in db");
+        }
 
 
-            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            String hashedPassword = passwordEncoder.encode(registerNewUser.getPassword());
-            log.error(hashedPassword);
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(registerNewUser.getPassword());
+        log.error(hashedPassword);
 
-            us.insertUser(registerNewUser, hashedPassword, "ROLE_USER");
+        us.insertUser(registerNewUser, hashedPassword, "ROLE_USER");
 
-            return "index";
+        return "index";
     }
 
 
