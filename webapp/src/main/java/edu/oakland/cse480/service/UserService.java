@@ -30,10 +30,25 @@ public class UserService extends AbstractJdbcDriver {
     private class UserMapper implements RowMapper<User>{
             public User mapRow(ResultSet rs, int rowNum) throws SQLException {
                     User r = new User();
-                    r.name = rs.getString("name");
-                    r.id = rs.getInt("id");
-                    r.email = rs.getString("email");
+                    r.setName(rs.getString("name"));
+                    r.setId(rs.getInt("id"));
+                    r.setEmail(rs.getString("email"));
                     return r;
             }
+    }
+
+    public boolean userExists(String name) {
+        try {
+            return this.jdbcPostgres.queryForObject("select exists(select 1 from users where name = ?)", new Object[] {name}, Boolean.class);
+        } catch(Exception e) {
+            return false;
+        }
+    }
+
+    public void insertUser(User u, String passwordHash, String role) {
+        try {
+            this.jdbcPostgres.update("insert into users (email, name, password_hash, role_id) values (?, ?, ?, (select id from roles where role = ?))", u.getEmail(), u.getName(), passwordHash, role);
+        } catch(Exception e) {
+        }
     }
 }

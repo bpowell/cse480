@@ -1,11 +1,14 @@
 package edu.oakland.cse480.mvc.controller;
 
-import edu.oakland.cse480.mvc.models.RegisterNewUser;
+import edu.oakland.cse480.mvc.models.User;
+import edu.oakland.cse480.service.UserService;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
+import java.util.Objects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +32,9 @@ import org.slf4j.LoggerFactory;
 @Controller
 public class MainController{
     protected final Logger log = LoggerFactory.getLogger(getClass());
+
+    @Autowired
+    UserService us;
 
     /**
      * Sends the user to the main page.
@@ -59,16 +67,42 @@ public class MainController{
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register() {
-            return "register";
+        return "register";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String doRegister(@ModelAttribute("registerNewUser") @Valid RegisterNewUser registerNewUser, BindingResult result) {
-            if(result.hasErrors()){
-                    log.error("error!");
-            }
+    public ModelAndView doRegister(@ModelAttribute("registerNewUser") @Valid User registerNewUser, BindingResult result) {
+        ModelAndView model = new ModelAndView();
 
-            return "index";
+        if(result.hasErrors()){
+            model.addObject("error", "Error on registering");
+            model.setViewName("register");
+            return model;
+        }
+
+        if(!Objects.equals(registerNewUser.getPassword(), registerNewUser.getPasswordConfirm())) {
+            model.addObject("error", "Passwords do not match");
+            model.setViewName("register");
+            return model;
+        }
+
+        //Check if user is already registered
+        if(us.userExists(registerNewUser.getName())) {
+            model.addObject("error", "Username already taken");
+            model.setViewName("register");
+            return model;
+        }
+
+
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(registerNewUser.getPassword());
+        log.error(hashedPassword);
+
+        us.insertUser(registerNewUser, hashedPassword, "ROLE_USER");
+
+        model.setViewName("index");
+
+        return model;
     }
 
 

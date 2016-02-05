@@ -16,6 +16,9 @@
                         <div class="col-sm-4">
                                 <c:url value="/register" var="post_url" />
                                 <form:form method="POST" action="${post_url}" class="form-signin" commandName="registerNewUser">
+                                        <c:if test="${not empty error}">
+                                        <div class="error">${error}</div>
+                                        </c:if>
                                         <label for="inputEmail" class="sr-only">Email address</label>
                                         <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                                         <label for="inputPassword" class="sr-only">New Password</label>
