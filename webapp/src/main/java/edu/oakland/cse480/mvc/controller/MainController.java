@@ -71,18 +71,26 @@ public class MainController{
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String doRegister(@ModelAttribute("registerNewUser") @Valid User registerNewUser, BindingResult result) {
+    public ModelAndView doRegister(@ModelAttribute("registerNewUser") @Valid User registerNewUser, BindingResult result) {
+        ModelAndView model = new ModelAndView();
+
         if(result.hasErrors()){
-            log.error("error!");
+            model.addObject("error", "Error on registering");
+            model.setViewName("register");
+            return model;
         }
 
         if(!Objects.equals(registerNewUser.getPassword(), registerNewUser.getPasswordConfirm())) {
-            log.error("passwords no match");
+            model.addObject("error", "Passwords do not match");
+            model.setViewName("register");
+            return model;
         }
 
         //Check if user is already registered
         if(us.userExists(registerNewUser.getName())) {
-            log.error("already in db");
+            model.addObject("error", "Username already taken");
+            model.setViewName("register");
+            return model;
         }
 
 
@@ -92,7 +100,9 @@ public class MainController{
 
         us.insertUser(registerNewUser, hashedPassword, "ROLE_USER");
 
-        return "index";
+        model.setViewName("index");
+
+        return model;
     }
 
 
