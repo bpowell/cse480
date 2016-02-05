@@ -71,6 +71,11 @@ public class MainController{
             return "index";
     }
 
+    @RequestMapping(value = "/barview", method = RequestMethod.GET)
+    public String barview() {
+            return "barview";
+    }
+
 
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public ModelAndView welcome() {
