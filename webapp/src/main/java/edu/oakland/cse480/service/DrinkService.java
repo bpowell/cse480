@@ -23,7 +23,7 @@ public class DrinkService extends AbstractJdbcDriver {
         this.jdbcPostgres = jdbcTemplate;
     }
 
-    public List<Drink> getAllDrink() {
+    public List<Drink> getAllDrinks() {
         List<Drink> d = new ArrayList<Drink>();
         try {
             d.addAll(this.jdbcPostgres.query("select * from drink", new DrinkMapper()));
