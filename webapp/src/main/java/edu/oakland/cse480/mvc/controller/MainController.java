@@ -65,6 +65,11 @@ public class MainController{
         return model;
     }
 
+    @RequestMapping(value = "/display", method = RequestMethod.GET)
+    public String display() {
+        return "display";
+    }
+
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register() {
         return "register";
