@@ -85,7 +85,7 @@ public class DrinkOrderService extends AbstractJdbcDriver {
             d.setUserId(rs.getInt("user_id"));
             d.setTimePlaced(rs.getInt("time_placed"));
             d.setTimeComplete(rs.getInt("time_complete"));
-            d.setBarId(rs.getString("bar_id"));
+            d.setBarId(rs.getInt("bar_id"));
 
             return d;
         }
