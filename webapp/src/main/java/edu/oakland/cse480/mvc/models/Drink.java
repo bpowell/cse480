@@ -11,6 +11,10 @@ public class Drink {
         return this.id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return this.name;
     }
@@ -39,7 +43,7 @@ public class Drink {
         return this.icon_url;
     }
 
-    public void setIconUrl() {
+    public void setIconUrl(String icon_url) {
         this.icon_url = icon_url;
     }
 }   
