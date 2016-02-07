@@ -12,10 +12,10 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import edu.oakland.cse480.service.CategoriesService;
 
 public class TestCategoriesService {
-        private EmbeddedDatabase db;
+        private static EmbeddedDatabase db;
 
         @BeforeClass
-        public void setUp() {
+        public static void setUp() {
                 db = new EmbeddedDatabaseBuilder()
                         .setType(EmbeddedDatabaseType.HSQL)
                         .addScript("sql/hsql.sql")
@@ -25,15 +25,14 @@ public class TestCategoriesService {
 
         @Test
         public void testFindById() {
-                JdbcTemplate j = new JdbcTemplate(db);
                 CategoriesService cs = new CategoriesService();
-                cs.setJdbcTemplate(j);
+                cs.setPostgresDataSource(db);
 
                 Assert.assertEquals(cs.getCategoryById(1).get(0).getName(), "Beer");
         }
 
         @AfterClass
-        public void shutdown() {
+        public static void shutdown() {
                 db.shutdown();
         }
 }

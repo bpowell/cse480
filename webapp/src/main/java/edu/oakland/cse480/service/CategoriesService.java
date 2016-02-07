@@ -19,10 +19,6 @@ import edu.oakland.cse480.mvc.models.Categories;
 public class CategoriesService extends AbstractJdbcDriver {
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcPostgres = jdbcTemplate;
-    }
-
     public List<Categories> getAllCategories() {
         List<Categories> c = new ArrayList<Categories>();
         try {
