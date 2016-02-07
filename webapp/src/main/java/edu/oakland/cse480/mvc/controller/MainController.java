@@ -7,7 +7,6 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -98,12 +97,7 @@ public class MainController{
             return model;
         }
 
-
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String hashedPassword = passwordEncoder.encode(registerNewUser.getPassword());
-        log.error(hashedPassword);
-
-        us.insertUser(registerNewUser, hashedPassword, "ROLE_USER");
+        us.insertUser(registerNewUser, "ROLE_USER");
 
         model.setViewName("index");
 

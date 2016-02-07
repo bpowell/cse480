@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.ArrayList;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import edu.oakland.cse480.mvc.models.User;
 
@@ -45,9 +47,12 @@ public class UserService extends AbstractJdbcDriver {
         }
     }
 
-    public void insertUser(User u, String passwordHash, String role) {
+    public void insertUser(User u, String role) {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(u.getPassword());
+
         try {
-            this.jdbcPostgres.update("insert into users (email, name, password_hash, role_id) values (?, ?, ?, (select id from roles where role = ?))", u.getEmail(), u.getName(), passwordHash, role);
+            this.jdbcPostgres.update("insert into users (email, name, password_hash, role_id) values (?, ?, ?, (select id from roles where role = ?))", u.getEmail(), u.getName(), hashedPassword, role);
         } catch(Exception e) {
         }
     }
