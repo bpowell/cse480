@@ -10,6 +10,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 import edu.oakland.cse480.service.CategoriesService;
+import edu.oakland.cse480.mvc.models.Categories;
 
 public class TestCategoriesService {
         private static EmbeddedDatabase db;
@@ -28,8 +29,39 @@ public class TestCategoriesService {
         }
 
         @Test
+        public void testGetAll() {
+                Assert.assertEquals(categoriesService.getAllCategories().size(), 1);
+        }
+
+        @Test
         public void testFindById() {
                 Assert.assertEquals(categoriesService.getCategoryById(1).get(0).getName(), "Beer");
+        }
+
+        @Test
+        public void testFindByName() {
+                Assert.assertEquals(categoriesService.getCategoryByName("Beer").get(0).getName(), "Beer");
+        }
+
+        @Test
+        public void testInsert() {
+                Categories c = new Categories();
+                c.setName("Test");
+                c.setDescription("Test category");
+                categoriesService.insertCategories(c);
+
+                Assert.assertEquals(categoriesService.getCategoryByName("Test").get(0).getName(), "Test");
+        }
+
+        @Test
+        public void testDelete() {
+                Categories c = new Categories();
+                c.setName("Test");
+                c.setDescription("Test category");
+                categoriesService.insertCategories(c);
+
+                categoriesService.deleteCategoryById(categoriesService.getCategoryByName("Test").get(0).getId());
+                Assert.assertEquals(categoriesService.getCategoryByName("Test").size(), 0);
         }
 
         @AfterClass
