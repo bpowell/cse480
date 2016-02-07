@@ -13,6 +13,7 @@ import edu.oakland.cse480.service.CategoriesService;
 
 public class TestCategoriesService {
         private static EmbeddedDatabase db;
+        private static CategoriesService categoriesService;
 
         @BeforeClass
         public static void setUp() {
@@ -21,14 +22,14 @@ public class TestCategoriesService {
                         .addScript("sql/hsql.sql")
                         .addScript("sql/create.sql")
                         .build();
+
+                categoriesService = new CategoriesService();
+                categoriesService.setPostgresDataSource(db);
         }
 
         @Test
         public void testFindById() {
-                CategoriesService cs = new CategoriesService();
-                cs.setPostgresDataSource(db);
-
-                Assert.assertEquals(cs.getCategoryById(1).get(0).getName(), "Beer");
+                Assert.assertEquals(categoriesService.getCategoryById(1).get(0).getName(), "Beer");
         }
 
         @AfterClass
