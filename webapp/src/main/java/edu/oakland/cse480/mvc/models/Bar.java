@@ -1,12 +1,16 @@
 package edu.oakland.cse480.mvc.models;
 
 public class Bar {
-    public int id;
-    public String name;
-    public int business_id;
+    private int id;
+    private String name;
+    private int business_id;
 
     public int getId() {
         return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

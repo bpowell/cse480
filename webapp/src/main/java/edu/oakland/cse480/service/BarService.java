@@ -30,9 +30,9 @@ public class BarService extends AbstractJdbcDriver {
 	private class BarMapper implements RowMapper<Bar>{
 		public Bar mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Bar r = new Bar();
-			r.name = rs.getString("name");
-			r.id = rs.getInt("id");
-			r.business_id = rs.getString("business_id");
+			r.setName(rs.getString("name"));
+			r.setId(rs.getInt("id"));
+			r.setBusinessId(rs.getInt("business_id"));
 			return r;
 		}
 	}
