@@ -27,6 +27,16 @@ public class BarService extends AbstractJdbcDriver {
 		}
 	}
 
+    public List<Bar> getBarsByBusinessId(int bid) {
+		try {
+			List<Bar> b = new ArrayList<Bar>();
+			b.addAll(this.jdbcPostgres.query("select * from bar where business_id = ?", new Object[] {bid}, new BarMapper()));
+			return b;
+		} catch(Exception er) {
+			throw new IllegalArgumentException(er.getMessage());
+		}
+	}
+
 	private class BarMapper implements RowMapper<Bar>{
 		public Bar mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Bar r = new Bar();
