@@ -1,10 +1,14 @@
 package edu.oakland.cse480.mvc.models;
 
 public class Business {
-    public int id;
-    public String name;
-    public String info;
-    public String icon_url;
+    private int id;
+    private String name;
+    private String info;
+    private String icon_url;
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return this.id;

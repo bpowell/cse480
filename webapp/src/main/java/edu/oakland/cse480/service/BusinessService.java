@@ -30,10 +30,10 @@ public class BusinessService extends AbstractJdbcDriver {
 	private class BusinessMapper implements RowMapper<Business>{
 		public Business mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Business r = new Business();
-			r.name = rs.getString("name");
-			r.id = rs.getInt("id");
-			r.info = rs.getString("info");
-			r.icon_url = rs.getString("icon_url");
+			r.setName(rs.getString("name"));
+			r.setId(rs.getInt("id"));
+			r.setInfo(rs.getString("info"));
+			r.setIconUrl(rs.getString("icon_url"));
 			return r;
 		}
 	}
