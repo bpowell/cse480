@@ -32,8 +32,6 @@ public class BusinessService extends AbstractJdbcDriver {
 			Business r = new Business();
 			r.name = rs.getString("name");
 			r.id = rs.getInt("id");
-			r.owner_id = rs.getInt("owner_id");
-			r.contact_info = rs.getString("contact_info");
 			r.info = rs.getString("info");
 			r.icon_url = rs.getString("icon_url");
 			return r;
