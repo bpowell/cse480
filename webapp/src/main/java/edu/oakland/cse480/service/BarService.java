@@ -33,6 +33,9 @@ public class BarService extends AbstractJdbcDriver {
 			r.setName(rs.getString("name"));
 			r.setId(rs.getInt("id"));
 			r.setBusinessId(rs.getInt("business_id"));
+            r.setOwnerId(rs.getInt("owner_id"));
+            r.setContactInfo(rs.getString("contact_info"));
+            r.setLocation(rs.getString("location"));
 			return r;
 		}
 	}
