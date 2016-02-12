@@ -64,6 +64,11 @@ public class MainController{
         return model;
     }
 
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public String profile() {
+        return "profile";
+    }
+
     @RequestMapping(value = "/display", method = RequestMethod.GET)
     public String display() {
         return "display";
