@@ -16,6 +16,12 @@ For WebApp:
 mvn clean package
 ```
 
+To create the database schema using maven, issue the following command:
+
+```bash
+mvn clean package -Ddb=create
+```
+
 ## How to deploy
 For WebApp:
 
