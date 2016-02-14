@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Map;
 import java.util.Objects;
@@ -61,6 +62,29 @@ public class MainController{
         }
         model.setViewName("login");
 
+        return model;
+    }
+
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public ModelAndView profile() {
+        ModelAndView model = new ModelAndView();
+
+        //check if user is login
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetail = (UserDetails) auth.getPrincipal();
+            model.addObject("username", userDetail.getUsername());
+        }
+
+        model.setViewName("profile");
+        return model;
+    }
+
+    @RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
+    public ModelAndView publicProfiles(@PathVariable("username") String username) {
+        ModelAndView model = new ModelAndView();
+        model.addObject("username", username);
+        model.setViewName("profile");
         return model;
     }
 
