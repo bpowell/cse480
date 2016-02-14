@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="col-md-8">
-            <h1>USER NAME</h1>
+            <h1>${username}</h1>
             <div id="userStats">
                 <h3>Drink Score: x</h3>
                 <h3>Recent Drinks:</h3>
