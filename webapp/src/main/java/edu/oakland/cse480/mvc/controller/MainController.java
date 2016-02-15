@@ -2,6 +2,7 @@ package edu.oakland.cse480.mvc.controller;
 
 import edu.oakland.cse480.mvc.models.User;
 import edu.oakland.cse480.service.UserService;
+import edu.oakland.cse480.service.BusinessAndBarService;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -34,6 +35,9 @@ public class MainController{
 
     @Autowired
     UserService us;
+
+    @Autowired
+    private BusinessAndBarService businessAndBarService;
 
     /**
      * Sends the user to the main page.
@@ -105,8 +109,12 @@ public class MainController{
     }
 
     @RequestMapping(value = "/barview", method = RequestMethod.GET)
-    public String barview() {
-            return "barview";
+    public ModelAndView barview() {
+        ModelAndView model = new ModelAndView();
+        model.addObject("businesses", businessAndBarService.getAllBusinessAndBars());
+        model.setViewName("barview");
+
+        return model;
     }
 
 
