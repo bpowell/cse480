@@ -15,17 +15,17 @@
         <%-- Placeholder for BarQue logo --%>
         <div class="col-md-6">
             <c:forEach items="${businesses}" var="b">
-                <c:forEach items="${businesses.getBars()}" var="bars">
+                <c:forEach items="${b.getBars()}" var="bar">
                     <div class="card">
                         <%-- <img class="card-img"> --%>
                         <div class="card-block">
-                            <h4 class="card-title">${bars.getName()}</h4>
+                            <h4 class="card-title">${bar.getName()}</h4>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                             <a href="#" class="btn btn-primary">Order Drinks Here!</a>
                         </div>
                     </div>
-                </c:forEeach>
-            </c:forEeach>
+                </c:forEach>
+            </c:forEach>
         </div>
     </body>
 </html>
