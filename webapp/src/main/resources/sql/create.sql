@@ -20,7 +20,8 @@ create table users (
     name varchar(100) NOT NULL,
     password_hash varchar(100) NOT NULL,
     email text NOT NULL,
-    role_id integer references roles(id)
+    role_id integer references roles(id),
+    enabled boolean
 )
 ;
 
