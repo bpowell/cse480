@@ -45,6 +45,14 @@ create table bar (
 )
 ;
 
+-- users that are not allowed to order drinks at a specific bar.
+create table bannedusers (
+    id serial primary key,
+    user_id integer references users(id),
+    bar_id integer references bar(id)
+)
+;
+
 -- this is to be considered as the receipt. stores drink orders, order and pickup timestamps.
 create table drinkorder (
     id serial primary key,
