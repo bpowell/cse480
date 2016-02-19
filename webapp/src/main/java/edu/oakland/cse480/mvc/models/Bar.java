@@ -11,6 +11,14 @@ public class Bar {
     private String state;
     private String number;
 
+    private String monday_hours;
+    private String tuesday_hours;
+    private String wednesday_hours;
+    private String thursday_hours;
+    private String friday_hours;
+    private String saturday_hours;
+    private String sunday_hours;
+
     public int getId() {
         return this.id;
     }
@@ -81,5 +89,61 @@ public class Bar {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getMondayHours() {
+        return this.monday_hours;
+    }
+
+    public void setMondayHours(String monday_hours) {
+        this.monday_hours = monday_hours;
+    }
+
+    public String getTuesdayHours() {
+        return this.tuesday_hours;
+    }
+
+    public void setTuesdayHours(String tuesday_hours) {
+        this.tuesday_hours = tuesday_hours;
+    }
+
+    public String getWednesdayHours() {
+        return this.wednesday_hours;
+    }
+
+    public void setWednesdayHours(String wednesday_hours) {
+        this.wednesday_hours = wednesday_hours;
+    }
+
+    public String getThursdayHours() {
+        return this.thursday_hours;
+    }
+
+    public void setThursdayHours(String thursday_hours) {
+        this.thursday_hours = thursday_hours;
+    }
+
+    public String getFridayHours() {
+        return this.friday_hours;
+    }
+
+    public void setFridayHours(String friday_hours) {
+        this.friday_hours = friday_hours;
+    }
+
+    public String getSaturdayHours() {
+        return this.saturday_hours;
+    }
+
+    public void setSaturdayHours(String saturday_hours) {
+        this.saturday_hours = saturday_hours;
+    }
+
+    public String getSundayHours() {
+        return this.sunday_hours;
+    }
+
+    public void setSundayHours(String sunday_hours) {
+        this.sunday_hours = sunday_hours;
     }
 }
