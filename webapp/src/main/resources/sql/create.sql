@@ -66,6 +66,14 @@ create table drink (
 )
 ;
 
+-- table that connects a bar to a list of drinks
+create table availabledrinks (
+    id serial primary key,
+    drink_id integer references drink(id),
+    bar_id integer references bar(id)
+)
+;
+
 -- gives ingredients a category
 create table categories (
     id serial primary key,
