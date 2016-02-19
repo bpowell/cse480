@@ -53,7 +53,8 @@ create table drinkorder (
     user_id integer references users(id),
     time_placed timestamp with time zone NOT NULL,
     time_complete timestamp with time zone NOT NULL,
-    bar_id integer references bar(id)
+    bar_id integer references bar(id),
+    comments text
 )
 ;
 -- table of individual drinks tied to each queue. 10oz pour, 20oz pour, pint, martini, rum & coke, $4 shot, $5 shot, etc.
