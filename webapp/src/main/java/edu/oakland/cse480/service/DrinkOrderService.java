@@ -54,7 +54,7 @@ public class DrinkOrderService extends AbstractJdbcDriver {
 
     public void insertDrinkOrder(DrinkOrder d) {
         try {
-            this.jdbcPostgres.update("insert into drinkorder (drink_count, user_id, time_placed, time_complete, bar_id) values(?, ?, CURRENT_TIME, NULL, ?)", new Object[] {d.getDrinkCount(), d.getUserId(), d.getBarId()});
+            this.jdbcPostgres.update("insert into drinkorder (drink_count, user_id, time_placed, time_complete, bar_id, comments) values(?, ?, CURRENT_TIME, NULL, ?, ?)", new Object[] {d.getDrinkCount(), d.getUserId(), d.getBarId(), d.getComments()});
         } catch(Exception e) {
             log.info("Cannot insert drinkorder");
         }
@@ -86,7 +86,7 @@ public class DrinkOrderService extends AbstractJdbcDriver {
             d.setTimePlaced(rs.getInt("time_placed"));
             d.setTimeComplete(rs.getInt("time_complete"));
             d.setBarId(rs.getInt("bar_id"));
-
+            d.setComments(rs.getString("comments"));
             return d;
         }
     }
