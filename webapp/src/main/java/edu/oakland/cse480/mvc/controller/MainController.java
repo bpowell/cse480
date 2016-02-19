@@ -133,6 +133,11 @@ public class MainController{
             return "barview";
     }
 
+    @RequestMapping(value = "/header", method = RequestMethod.GET)
+    public String header() {
+            return "header";
+    }
+
 
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public ModelAndView welcome() {
