@@ -8,6 +8,7 @@ public class DrinkOrder {
     public int time_placed;
     public int time_complete;
     public int bar_id;
+    public String comments;
 
     public int getId() {
         return this.id;
@@ -63,6 +64,14 @@ public class DrinkOrder {
 
     public void setBarId(int bar_id) {
         this.bar_id = bar_id;
+    }
+
+    public String getComments() {
+        return this.comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 }   
 
