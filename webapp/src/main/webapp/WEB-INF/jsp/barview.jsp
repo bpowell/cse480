@@ -33,8 +33,8 @@
                                 <h4 class="card-title">${bar.getName()}</h4>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Phone: ${bar.getContactInfo()}</li>
-                                    <li class="list-group-item">Address: ${bar.getLocation()}</li>
+                                    <li class="list-group-item">Phone: ${bar.getNumber()}</li>
+                                    <li class="list-group-item">Address: ${bar.getAddress()} ${bar.getCity()} ${bar.getZipcode()} ${bar.getState()}</li>
                                 </ul>
                                 <div class="card-block">
                                     <a href="#" class="btn btn-primary">Order Drinks Here!</a>

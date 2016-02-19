@@ -69,8 +69,11 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
 			r.setId(rs.getInt("id"));
 			r.setBusinessId(rs.getInt("business_id"));
             r.setOwnerId(rs.getInt("owner_id"));
-            r.setContactInfo(rs.getString("contact_info"));
-            r.setLocation(rs.getString("location"));
+            r.setAddress(rs.getString("address"));
+            r.setCity(rs.getString("city"));
+            r.setZipcode(rs.getString("zipcode"));
+            r.setState(rs.getString("state"));
+            r.setNumber(rs.getString("phonenumber"));
 			return r;
 		}
 	}

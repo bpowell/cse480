@@ -5,8 +5,11 @@ public class Bar {
     private String name;
     private int business_id;
     private int owner_id;
-    private String contact_info;
-    private String location;
+    private String address;
+    private String city;
+    private String zipcode;
+    private String state;
+    private String number;
 
     public int getId() {
         return this.id;
@@ -40,19 +43,43 @@ public class Bar {
          this.owner_id = owner_id;
     }
 
-    public String getContactInfo() {
-         return this.contact_info;
+    public String getAddress() {
+        return this.address;
     }
 
-    public void setContactInfo(String contact_info) {
-         this.contact_info = contact_info;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getLocation() {
-         return this.location;
+    public String getZipcode() {
+        return this.zipcode;
     }
 
-    public void setLocation(String location) {
-         this.location = location;
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public String getState() {
+        return this.state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getNumber() {
+        return this.number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getCity() {
+        return this.city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }
