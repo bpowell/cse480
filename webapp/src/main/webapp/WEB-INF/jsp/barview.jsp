@@ -35,6 +35,7 @@
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">Phone: ${bar.getNumber()}</li>
                                     <li class="list-group-item">Address: ${bar.getAddress()} ${bar.getCity()} ${bar.getZipcode()} ${bar.getState()}</li>
+                                    <li class="list-group-item">Hours: Monday ${bar.getMondayHours()}<br />Tuesday ${bar.getTuesdayHours()}<br />Wednesday ${bar.getWednesdayHours()}<br />Thursday ${bar.getThursdayHours()}<br />Friday ${bar.getFridayHours()}<br />Saturday ${bar.getSaturdayHours()}<br />Sunday ${bar.getSundayHours()}</li>
                                 </ul>
                                 <div class="card-block">
                                     <a href="#" class="btn btn-primary">Order Drinks Here!</a>

@@ -21,7 +21,7 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
 	public List<Bar> getAllBars() {
 		try {
 			List<Bar> b = new ArrayList<Bar>();
-			b.addAll(this.jdbcPostgres.query("select * from bar", new BarMapper()));
+			b.addAll(this.jdbcPostgres.query("select bar.id, name, business_id, owner_id, address, city, zipcode, state, phonenumber, monday, tuesday, wednesday, thursday, friday, saturday, sunday from bar left join barhours on barhours.id = bar.id", new BarMapper()));
 			return b;
 		} catch(Exception er) {
 			throw new IllegalArgumentException(er.getMessage());
@@ -31,7 +31,7 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
     public List<Bar> getBarsByBusinessId(int bid) {
 		try {
 			List<Bar> b = new ArrayList<Bar>();
-			b.addAll(this.jdbcPostgres.query("select * from bar where business_id = ?", new Object[] {bid}, new BarMapper()));
+			b.addAll(this.jdbcPostgres.query("select bar.id, name, business_id, owner_id, address, city, zipcode, state, phonenumber, monday, tuesday, wednesday, thursday, friday, saturday, sunday from bar left join barhours on barhours.id = bar.id where business_id = ?", new Object[] {bid}, new BarMapper()));
 			return b;
 		} catch(Exception er) {
 			throw new IllegalArgumentException(er.getMessage());
@@ -74,6 +74,13 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
             r.setZipcode(rs.getString("zipcode"));
             r.setState(rs.getString("state"));
             r.setNumber(rs.getString("phonenumber"));
+            r.setMondayHours(rs.getString("monday"));
+            r.setTuesdayHours(rs.getString("tuesday"));
+            r.setWednesdayHours(rs.getString("wednesday"));
+            r.setThursdayHours(rs.getString("thursday"));
+            r.setFridayHours(rs.getString("friday"));
+            r.setSaturdayHours(rs.getString("saturday"));
+            r.setSundayHours(rs.getString("sunday"));
 			return r;
 		}
 	}
