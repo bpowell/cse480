@@ -1,12 +1,22 @@
 package edu.oakland.cse480.mvc.models;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class Business {
-    public int id;
-    public String name;
-    public int owner_id;
-    public String contact_info;
-    public String info;
-    public String icon_url;
+    private int id;
+    private String name;
+    private String info;
+    private String icon_url;
+    private List<Bar> bars;
+
+    public Business() {
+        this.bars = new ArrayList<Bar>();
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return this.id;
@@ -18,22 +28,6 @@ public class Business {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getOwnerId() {
-        return this.owner_id;
-    }
-
-    public void setOwnerId(int owner_id) {
-        this.owner_id = owner_id;
-    }
-
-    public String getContactInfo() {
-        return this.contact_info;
-    }
-
-    public void setContactInfo(String contact_info) {
-        this.contact_info = contact_info;
     }
 
     public String getInfo() {
@@ -50,5 +44,17 @@ public class Business {
 
     public void setIconUrl(String icon_url) {
         this.icon_url = icon_url;
+    }
+
+    public void setBars(List<Bar> bars) {
+        this.bars = bars;
+    }
+
+    public List<Bar> getBars() {
+        return this.bars;
+    }
+
+    public void addBar(Bar b) {
+        this.bars.add(b);
     }
 }

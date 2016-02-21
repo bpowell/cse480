@@ -40,8 +40,24 @@ create table bar (
     name varchar(100) NOT NULL,
     business_id integer references business(id),
     owner_id integer references users(id),
-    contact_info varchar(100) NOT NULL,
-    location text NOT NULL
+    address varchar(100) NOT NULL,
+    city varchar(100) NOT NULL,
+    zipcode varchar(5) NOT NULL,
+    state varchar(2) NOT NULL,
+    phonenumber varchar(10) NOT NULL
+)
+;
+
+create table barhours (
+    id serial primary key,
+    bar_id integer references bar(id),
+    monday text,
+    tuesday text,
+    wednesday text,
+    thursday text,
+    friday text,
+    saturday text,
+    sunday text
 )
 ;
 
