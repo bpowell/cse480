@@ -1,0 +1,17 @@
+/* drinkQ super awesome colors */
+$drinkQblack='#292729';
+$drinkQgrey='#514FS1';
+$drinkQred='SF182A';
+$drinkQgold='CFAE60';
+$drinkQtan='E9D0A8';
+
+body {
+    font-size: 1em;
+    max-width: 700px;
+    background: $drinkQtan;
+    color: red;
+}
+
+h1 {
+    color: red;
+}
