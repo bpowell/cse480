@@ -141,7 +141,6 @@ public class MainController{
         return model;
     }
 
-
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public ModelAndView welcome() {
         ModelAndView model = new ModelAndView();
