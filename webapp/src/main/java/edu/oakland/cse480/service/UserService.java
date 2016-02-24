@@ -67,4 +67,20 @@ public class UserService extends AbstractJdbcDriver {
             return false;
         }
     }
+
+    public boolean updatePassword(String email, String password) {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(password);
+
+        try {
+            String result = this.jdbcPostgres.queryForObject("update users SET password_hash = ? where email = ? returning password_hash", new Object[] {email, hashedPassword}, String.class);
+            if (result != hashedPassword) {
+                return false;
+            }
+        } catch(Exception e) {
+            return false;
+        }
+
+        return true;
+    }
 }
