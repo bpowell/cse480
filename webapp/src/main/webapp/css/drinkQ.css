@@ -1,0 +1,55 @@
+/*
+DrinkQ Color Reference List
+
+DrinkQblack: #292729
+DrinkQgrey: #514F51
+DrinkQred: #SF182A
+DrinkQgold: #CFAE60
+DrinkQtan: #E9D0A8
+*/
+
+body {
+    font-size: 1em;
+    background: #514F51;
+    color: #292729;
+}
+
+h1 {
+    max-width: 90%;
+    color: #292729;
+    background: #CFAE60;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+}
+
+div.mainContent {
+    max-width: 90%;
+    color: #292729;
+    background: #E9D0A8;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+}
+
+div.mainContent input.form-control {
+    margin: 5px;
+    border: 1px solid #8e8e8e;
+}
+
+div.mainContent button.btn-primary {
+    background: #CFAE60;
+    color: #292729;
+    font-size: 1.4em;
+    border: 2px solid #8e8e8e;
+}

@@ -9,5 +9,7 @@
 
         <%-- Bootstrap core CSS --%>
         <link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet" type="text/css" />
+        <%-- drinkQ CSS --%>
+        <link href="<c:url value="/css/drinkQ.css"/>" rel="stylesheet" type="text/css" />
     </head>
-    <h1>AYY</h1>
+    <h1>Drink Q</h1>
