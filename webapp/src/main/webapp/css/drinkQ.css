@@ -16,9 +16,18 @@ body {
 
 h1 {
     color: #292729;
+    background: #CFAE60;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
 }
 
 div.mainContent {
     max-width: 700px;
     background: #E9D0A8;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }

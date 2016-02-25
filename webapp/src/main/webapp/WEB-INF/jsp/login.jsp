@@ -7,7 +7,7 @@
         <div class="msg">${msg}</div>
         </c:if>
 
-        <div class="container">
+        <div class="col-lg-12 mainContent">
             <h2 class="form-signin-heading">Please Sign In</h2>
             <div class="col-sm-8">
                 <h3>Returning Users:</h3>

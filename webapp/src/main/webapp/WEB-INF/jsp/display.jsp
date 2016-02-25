@@ -1,7 +1,7 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <%-- Placeholder for BarQue logo --%>
-        <div class="col-md-6 mainContent">
+        <div class="col-lg-12 mainContent">
             <div class="card">
                 <%-- <img class="card-img"> --%>
                 <div class="card-block">
