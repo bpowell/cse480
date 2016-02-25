@@ -132,6 +132,40 @@ public class MainController{
         return model;
     }
 
+    @RequestMapping(value = "/changepassword", method = RequestMethod.GET)
+    public String changePassword() {
+        return "changepassword";
+    }
+
+    @RequestMapping(value = "/changepassword", method = RequestMethod.POST)
+    public ModelAndView doChangePassword(@ModelAttribute("changepassword") @Valid User user, @ModelAttribute("currentpassword") String currentPassword, BindingResult result) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("changepassword");
+
+        if(result.hasErrors()){
+            model.addObject("error", "Error on registering");
+            return model;
+        }
+
+        if(!Objects.equals(user.getPassword(), user.getPasswordConfirm())) {
+            model.addObject("error", "Passwords do not match");
+            return model;
+        }
+
+        if(!us.verifyUser(user.getEmail(), currentPassword)) {
+            model.addObject("error", "Invalid username or password");
+            return model;
+        }
+
+        if(!us.updatePassword(user.getEmail(), user.getPassword())) {
+            model.addObject("error", "Cannot reset password at this time");
+            return model;
+        }
+
+        model.addObject("success", "Success!");
+        return model;
+    }
+
     @RequestMapping(value = "/barview", method = RequestMethod.GET)
     public ModelAndView barview() {
         ModelAndView model = new ModelAndView();
