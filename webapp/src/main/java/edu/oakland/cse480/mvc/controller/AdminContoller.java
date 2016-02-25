@@ -39,7 +39,7 @@ public class AdminContoller {
      */
     @RequestMapping("/")
     public String getIndex(Model model){
-        return "admin";
+        return "admin/admin";
     }
 
     @RequestMapping(value = "/addbusiness", method = RequestMethod.GET)
