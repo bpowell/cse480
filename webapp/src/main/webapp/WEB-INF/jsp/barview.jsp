@@ -19,14 +19,13 @@
                             <%-- <img class="card-img"> --%>
                             <div class="card-block">
                                 <h4 class="card-title">${bar.getName()}</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Phone: ${bar.getNumber()}</li>
-                                    <li class="list-group-item">Address: ${bar.getAddress()} ${bar.getCity()} ${bar.getZipcode()} ${bar.getState()}</li>
-                                    <li class="list-group-item">Hours: Monday ${bar.getMondayHours()}<br />Tuesday ${bar.getTuesdayHours()}<br />Wednesday ${bar.getWednesdayHours()}<br />Thursday ${bar.getThursdayHours()}<br />Friday ${bar.getFridayHours()}<br />Saturday ${bar.getSaturdayHours()}<br />Sunday ${bar.getSundayHours()}</li>
+                                    <li class="list-group-item"><h5>Phone:</h5>${bar.getNumber()}</li>
+                                    <li class="list-group-item"><h5>Address:</h5>${bar.getAddress()}<br />${bar.getCity()} ${bar.getZipcode()} ${bar.getState()}</li>
+                                    <li class="list-group-item"><h5>Hours:</h5>Monday ${bar.getMondayHours()}<br />Tuesday ${bar.getTuesdayHours()}<br />Wednesday ${bar.getWednesdayHours()}<br />Thursday ${bar.getThursdayHours()}<br />Friday ${bar.getFridayHours()}<br />Saturday ${bar.getSaturdayHours()}<br />Sunday ${bar.getSundayHours()}</li>
                                 </ul>
                                 <div class="card-block">
-                                    <a href="#" class="btn btn-primary">Order Drinks Here!</a>
+                                    <a href="display/${bar.getId()}" class="btn btn-primary">Order Drinks Here!</a>
                                 </div>
                             </div>
                         </div>
