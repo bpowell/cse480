@@ -41,4 +41,9 @@ public class AdminContoller {
     public String getIndex(Model model){
         return "admin";
     }
+
+    @RequestMapping(value = "/addbusiness", method = RequestMethod.GET)
+    public String getAddBusiness() {
+        return "admin/addbusiness";
+    }
 }
