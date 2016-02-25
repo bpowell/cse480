@@ -1,14 +1,22 @@
 package edu.oakland.cse480.mvc.models;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.util.List;
 import java.util.ArrayList;
 
 public class Business {
     private int id;
-    private String name;
-    private String info;
-    private String icon_url;
     private List<Bar> bars;
+
+    @NotBlank
+    private String name;
+
+    @NotBlank
+    private String info;
+
+    @NotBlank
+    private String iconUrl;
 
     public Business() {
         this.bars = new ArrayList<Bar>();
@@ -39,11 +47,11 @@ public class Business {
     }
 
     public String getIconUrl() {
-        return this.icon_url;
+        return this.iconUrl;
     }
 
-    public void setIconUrl(String icon_url) {
-        this.icon_url = icon_url;
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
     }
 
     public void setBars(List<Bar> bars) {
