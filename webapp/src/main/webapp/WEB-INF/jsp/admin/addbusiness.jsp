@@ -8,6 +8,9 @@
                     <c:if test="${not empty error}">
                     <div class="error">${error}</div>
                     </c:if>
+                    <c:if test="${not empty success}">
+                    <div class="has-success">${success}</div>
+                    </c:if>
                     <label for="name" class="sr-only">Name</label>
                     <input type="text" name="name" id="name" class="form-control" placeholder="Name" required autofocus>
                     <label for="info" class="sr-only">Description</label>
