@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -59,13 +60,17 @@ public class UserService extends AbstractJdbcDriver {
 
     public boolean verifyUser(String email, String password) {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String hashedPassword = passwordEncoder.encode(password);
 
+        String passwordFromdb;
         try {
-            return this.jdbcPostgres.queryForObject("select exists(select 1 from users where email = ? and password_hash = ?)", new Object[] {email, hashedPassword}, Boolean.class);
+            passwordFromdb = this.jdbcPostgres.queryForObject("select password_hash from users where email = ?", new Object[] {email}, String.class);
+            if(passwordEncoder.matches(password, passwordFromdb)) {
+                return true;
+            }
         } catch(Exception e) {
-            return false;
         }
+
+        return false;
     }
 
     public boolean updatePassword(String email, String password) {
@@ -73,11 +78,12 @@ public class UserService extends AbstractJdbcDriver {
         String hashedPassword = passwordEncoder.encode(password);
 
         try {
-            String result = this.jdbcPostgres.queryForObject("update users SET password_hash = ? where email = ? returning password_hash", new Object[] {email, hashedPassword}, String.class);
-            if (result != hashedPassword) {
+            String result = this.jdbcPostgres.queryForObject("update users SET password_hash = ? where email = ? returning password_hash", new Object[] {hashedPassword, email}, String.class);
+            if(!Objects.equals(result, hashedPassword)) {
                 return false;
             }
         } catch(Exception e) {
+            log.error(e.getMessage());
             return false;
         }
 
