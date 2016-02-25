@@ -1,17 +1,24 @@
-/* drinkQ super awesome colors */
-$drinkQblack='#292729';
-$drinkQgrey='#514FS1';
-$drinkQred='SF182A';
-$drinkQgold='CFAE60';
-$drinkQtan='E9D0A8';
+/*
+DrinkQ Color Reference List
+
+DrinkQblack: #292729
+DrinkQgrey: #514F51
+DrinkQred: #SF182A
+DrinkQgold: #CFAE60
+DrinkQtan: #E9D0A8
+*/
 
 body {
     font-size: 1em;
-    max-width: 700px;
-    background: $drinkQtan;
-    color: red;
+    background: #514F51;
+    color: #292729;
 }
 
 h1 {
-    color: red;
+    color: #292729;
+}
+
+div.mainContent {
+    max-width: 700px;
+    background: #E9D0A8;
 }
