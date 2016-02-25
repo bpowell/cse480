@@ -1,19 +1,7 @@
-<jsp:directive.include file="/WEB-INF/jsp/include.jsp"/>
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-        <head>
-                <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                <title>CSE480</title>
-
-                <%-- Bootstrap core CSS --%>
-                <link href="<c:url value='/css/bootstrap.min.css'/>" rel="stylesheet" type="text/css" />
-        </head>
-
+<jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
         <body>
-                <div class="container">
+                        <div class="col-lg-12 mainContent">
                         <h2 class="form-signin-heading">Change Password</h2>
-                        <div class="col-sm-4">
                                 <c:url value="/changepassword" var="post_url" />
                                 <form:form method="POST" action="${post_url}" class="form-signin" commandName="changepassword">
                                         <c:if test="${not empty error}">
@@ -36,6 +24,5 @@
                                         <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">Change Password</button>
                                 </form:form>
                         </div>
-                </div>
         </body>
 </html>
