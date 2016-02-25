@@ -8,23 +8,20 @@
         </c:if>
 
         <div class="col-lg-12 mainContent">
-            <h2 class="form-signin-heading">Please Sign In</h2>
-            <div class="col-sm-8">
-                <h3>Returning Users:</h3>
-                <form method="POST" name="loginForm" action="<c:url value='/login' />" class="form-signin">
-                    <label for="username" class="sr-only">Email address</label>
-                    <input name="username" type="email" id="username" class="form-control" placeholder="Email address" required autofocus>
-                    <label for="password" class="sr-only">Password</label>
-                    <input name="password" type="password" id="password" class="form-control" placeholder="Password" required>
-					<div class="checkbox">
-						<label>
-							<input name="remeber-me" type="checkbox" value="remember-me"> Remember me
-						</label>
-					</div>
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                    <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                </form>
-            </div>
+            <h2 class="form-signin-heading">Returning Users: Please Sign In</h2>
+            <form method="POST" name="loginForm" action="<c:url value='/login' />" class="form-signin">
+                <label for="username" class="sr-only">Email address</label>
+                <input name="username" type="email" id="username" class="form-control" placeholder="Email address" required autofocus>
+                <label for="password" class="sr-only">Password</label>
+                <input name="password" type="password" id="password" class="form-control" placeholder="Password" required>
+			    <div class="checkbox">
+				    <label>
+						<input name="remeber-me" type="checkbox" value="remember-me"> Remember me
+					</label>
+				</div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
         </div>
     </body>
 </html>
