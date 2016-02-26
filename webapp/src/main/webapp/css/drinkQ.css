@@ -14,7 +14,7 @@ body {
     color: #292729;
 }
 
-h1 {
+div.headerContent {
     max-width: 90%;
     color: #292729;
     background: #CFAE60;
@@ -48,6 +48,13 @@ div.mainContent input.form-control {
 }
 
 div.mainContent button.btn-primary {
+    background: #CFAE60;
+    color: #292729;
+    font-size: 1.4em;
+    border: 2px solid #8e8e8e;
+}
+
+div.headerContent button.btn-primary {
     background: #CFAE60;
     color: #292729;
     font-size: 1.4em;

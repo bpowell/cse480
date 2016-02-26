@@ -12,4 +12,19 @@
         <%-- drinkQ CSS --%>
         <link href="<c:url value="/css/drinkQ.css"/>" rel="stylesheet" type="text/css" />
     </head>
-    <h1>Drink Q</h1>
+    <div class="headerContent">
+        <div class="row">
+            <div class="col-sm-3">
+                <h1>Drink Q</h1>
+            </div>
+            <div class="col-sm-3">
+                <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">View Bars</button>
+            </div>
+            <div class="col-sm-3">
+                <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">View Drinks</button>
+            </div>
+            <div class="col-sm-3">
+                <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">Profile/Login</button>
+            </div>
+        </div>
+    </div>
