@@ -3,6 +3,7 @@ package edu.oakland.cse480.mvc.controller;
 import edu.oakland.cse480.mvc.models.User;
 import edu.oakland.cse480.service.UserService;
 import edu.oakland.cse480.service.BusinessAndBarService;
+import edu.oakland.cse480.service.AvailableDrinksService;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -39,6 +40,9 @@ public class MainController{
 
     @Autowired
     private BusinessAndBarService businessAndBarService;
+
+    @Autowired
+    private AvailableDrinksService availableDrinksService;
 
     /**
      * Sends the user to the main page.
@@ -93,8 +97,17 @@ public class MainController{
     }
 
     @RequestMapping(value = "/display", method = RequestMethod.GET)
-    public String display() {
-        return "display";
+    public ModelAndView display() {
+        return barview();
+    }
+
+    @RequestMapping(value = "/display/{bar_id}", method = RequestMethod.GET)
+    public ModelAndView displayBar(@PathVariable("bar_id") Integer bar_id) {
+        ModelAndView model = new ModelAndView();
+	model.addObject("bar", businessAndBarService.getBarById(bar_id));
+	model.addObject("drinks", availableDrinksService.getDrinksByBarId(bar_id));
+        model.setViewName("display");
+        return model;
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
