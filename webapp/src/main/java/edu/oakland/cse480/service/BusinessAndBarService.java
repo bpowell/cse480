@@ -71,14 +71,24 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
         }
     }
 
-    private class BusinessMapper implements RowMapper<Business>{
-        public Business mapRow(ResultSet rs, int rowNum) throws SQLException {
-            Business r = new Business();
-            r.setName(rs.getString("name"));
-            r.setId(rs.getInt("id"));
-            r.setInfo(rs.getString("info"));
-            r.setIconUrl(rs.getString("icon_url"));
-            return r;
+    public boolean insertBusiness(Business b) {
+        try {
+            this.jdbcPostgres.update("insert into business (name, info, icon_url) values(?, ?, ?)", b.getName(), b.getInfo(), b.getIconUrl());
+        } catch(Exception e) {
+            return false;
         }
+
+        return true;
     }
+
+	private class BusinessMapper implements RowMapper<Business>{
+		public Business mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Business r = new Business();
+			r.setName(rs.getString("name"));
+			r.setId(rs.getInt("id"));
+			r.setInfo(rs.getString("info"));
+			r.setIconUrl(rs.getString("icon_url"));
+			return r;
+		}
+	}
 }
