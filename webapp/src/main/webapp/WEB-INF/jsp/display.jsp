@@ -1,27 +1,24 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
-        <div class="col-lg-12 mainContent">
-            <div class="card-deck-wrapper">
-                <div class="card-deck">
-                    <c:forEach items="${drinks}" var="drink">
-                        <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <%-- <img class="card-img"> --%>
-                                    <div class="card-block display-drink">
-                                        <img src="${drink.getIconUrl()}" class="img-thumbnail" alt="${drink.getName()} icon" width="150" height="150"/>
-                                        <h4 class="card-title">${drink.getName()}</h4>
-                                        <p class="card-text">Make Time:<br />${drink.getMakeTime()}</p>
-                                        <p class="card-text">Description:<br />${drink.getInfo()}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3"></div>
+        <div class="container mainContent">
+            <c:forEach items="${drinks}" var="drink">
+                <div class="row">
+                    <a href="#">
+                        <div class="col-xs-3 col-md-2">
+                            <img src="<c:url value="${drink.getIconUrl()}"/>" class="img-fluid img-rounded" alt="${drink.getName()} icon" width="150"/>
                         </div>
-                    </c:forEach>
+                        <div class="col-xs-9 col-md-10">
+                            <h3>${drink.getName()}</h3>
+                            <p>
+                                <strong>Make Time:</strong> ${drink.getMakeTime()} Seconds<br />
+                                <strong>Description:</strong><br />
+                                ${drink.getInfo()}
+                            </p>
+                        </div>
+                    </a>
+                    <hr />
                 </div>
-            </div>
+            </c:forEach>
         </div>
     </body>
 </html>
