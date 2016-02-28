@@ -69,6 +69,16 @@ create table bannedusers (
 )
 ;
 
+-- table of individual drinks tied to each queue. 10oz pour, 20oz pour, pint, martini, rum & coke, $4 shot, $5 shot, etc.
+create table drink (
+    id serial primary key,
+    name varchar(100) NOT NULL,
+    info text NOT NULL,
+    make_time smallint NOT NULL,
+    icon_url text NOT NULL -- this is staying not null because every drink should have an icon for what glass it is served in..  Beer bottle for beers, wine glass for wine, cocktail glass for mixed drinks, shot glass for liquors, etc. It doesn't have to be a picture of the drink (i.e. marguerita), but a generic icon of the glass.
+)
+;
+
 -- this is to be considered as the receipt. stores drink orders, order and pickup timestamps.
 create table drinkorder (
     id serial primary key,
@@ -79,15 +89,6 @@ create table drinkorder (
     time_complete timestamp with time zone,
     bar_id integer references bar(id),
     comments text
-)
-;
--- table of individual drinks tied to each queue. 10oz pour, 20oz pour, pint, martini, rum & coke, $4 shot, $5 shot, etc.
-create table drink (
-    id serial primary key,
-    name varchar(100) NOT NULL,
-    info text NOT NULL,
-    make_time smallint NOT NULL,
-    icon_url text NOT NULL -- this is staying not null because every drink should have an icon for what glass it is served in..  Beer bottle for beers, wine glass for wine, cocktail glass for mixed drinks, shot glass for liquors, etc. It doesn't have to be a picture of the drink (i.e. marguerita), but a generic icon of the glass.
 )
 ;
 
