@@ -76,7 +76,7 @@ create table drinkorder (
     drink_count integer NOT NULL, -- This field contains the quantity of the ordered drink
     user_id integer references users(id),
     time_placed timestamp with time zone NOT NULL,
-    time_complete timestamp with time zone NOT NULL,
+    time_complete timestamp with time zone,
     bar_id integer references bar(id),
     comments text
 )
@@ -115,7 +115,7 @@ create table ingredient (
     name varchar(100) NOT NULL,
     description text NOT NULL,
     icon_url text NOT NULL,
-    category integer references categories(id)
+    category_id integer references categories(id)
 )
 ;
 
