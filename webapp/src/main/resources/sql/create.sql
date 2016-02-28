@@ -72,7 +72,7 @@ create table bannedusers (
 -- this is to be considered as the receipt. stores drink orders, order and pickup timestamps.
 create table drinkorder (
     id serial primary key,
-    drink_id integer NOT NULL,
+    drink_id integer references drink(id),
     drink_count integer NOT NULL, -- This field contains the quantity of the ordered drink
     user_id integer references users(id),
     time_placed timestamp with time zone NOT NULL,
