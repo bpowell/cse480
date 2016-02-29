@@ -25,7 +25,7 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
 
     public List<BarDrinkOrder> getDrinkOrdersByBarId(int bar_id) {
         try {
-            return this.jdbcPostgres.query("select drinkorder.id, blah, blah, blah from drinkorder left join drink on drink.id = drinkorder.drink_id where drinkorder.bar_id = ? order by drinkorder.time_placed", new Object[] {id}, new BarDrinkOrderMapper());
+            return this.jdbcPostgres.query("select drinkorder.id, blah, blah, blah from drinkorder left join drink on drink.id = drinkorder.drink_id where drinkorder.bar_id = ? order by drinkorder.time_placed", new Object[] {bar_id}, new BarDrinkOrderMapper());
         } catch(Exception e) {
             log.info("No drink orders found for bar id {}", bar_id);
             return new ArrayList<BarDrinkOrder>();
