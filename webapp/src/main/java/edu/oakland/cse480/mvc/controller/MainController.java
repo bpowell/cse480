@@ -202,4 +202,8 @@ public class MainController{
         model.setViewName("welcome");
         return model;
     }
+    @RequestMapping(value="/error/404", method = RequestMethod.GET)
+    public String error404(){
+        return "error/404";
+    }
 }

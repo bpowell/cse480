@@ -1,5 +1,8 @@
 package edu.oakland.cse480.mvc.controller;
 
+import edu.oakland.cse480.mvc.models.Business;
+import edu.oakland.cse480.service.BusinessAndBarService;
+
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -39,6 +42,8 @@ public class AdminContoller {
 
     @Autowired
     RoleService roleService;
+    @Autowired
+    private BusinessAndBarService businessAndBarService;
 
     /**
      * Sends the user to the main page.
@@ -88,6 +93,25 @@ public class AdminContoller {
 
         model.addObject("users", userService.getAllUsers());
         model.addObject("roles", roleService.getAllRoles());
+
+        model.addObject("success", "Success!");
+        return model;
+    }
+
+    @RequestMapping(value = "/addbusiness", method = RequestMethod.POST)
+    public ModelAndView addBusiness(@ModelAttribute("addBusiness") @Valid Business business, BindingResult result) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("admin/addbusiness");
+
+        if(result.hasErrors()){
+            model.addObject("error", "Try again");
+            return model;
+        }
+
+        if(!businessAndBarService.insertBusiness(business)) {
+            model.addObject("error", "Cannot add business, try again later");
+            return model;
+        }
 
         model.addObject("success", "Success!");
         return model;

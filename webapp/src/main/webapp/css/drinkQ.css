@@ -14,18 +14,14 @@ body {
     color: #292729;
 }
 
-h1 {
-    max-width: 90%;
+div.headerContent {
+    max-width: 100%;
     color: #292729;
     background: #CFAE60;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin 0px 10px 10px 10px;
     padding: 5px;
     border-style: solid;
     border-width: 2px;
-    border-radius: 5px;
 }
 
 div.mainContent {
@@ -48,6 +44,13 @@ div.mainContent input.form-control {
 }
 
 div.mainContent button.btn-primary {
+    background: #CFAE60;
+    color: #292729;
+    font-size: 1.4em;
+    border: 2px solid #8e8e8e;
+}
+
+div.headerContent button.btn-primary {
     background: #CFAE60;
     color: #292729;
     font-size: 1.4em;
