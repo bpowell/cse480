@@ -9,7 +9,7 @@ public class Bar {
     private String city;
     private String zipcode;
     private String state;
-    private String number;
+    private String phone_number;
 
     private String monday_hours;
     private String tuesday_hours;
@@ -75,12 +75,12 @@ public class Bar {
         this.state = state;
     }
 
-    public String getNumber() {
-        return this.number;
+    public String getPhoneNumber() {
+        return this.phone_number;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setPhoneNumber(String phone_number) {
+        this.phone_number = phone_number;
     }
 
     public String getCity() {
