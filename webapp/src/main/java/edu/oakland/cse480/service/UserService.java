@@ -23,7 +23,7 @@ public class UserService extends AbstractJdbcDriver {
     public List<User> getAllUsers() {
             try{
                     List<User> u = new ArrayList<User>();
-                    u.addAll(this.jdbcPostgres.query("select * from user", new UserMapper()));
+                    u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles where users.role_id = roles.id", new UserMapper()));
                     return u;
             } catch(Exception er) {
                     throw new IllegalArgumentException(er.getMessage());
@@ -33,9 +33,11 @@ public class UserService extends AbstractJdbcDriver {
     private class UserMapper implements RowMapper<User>{
             public User mapRow(ResultSet rs, int rowNum) throws SQLException {
                     User r = new User();
-                    r.setName(rs.getString("name"));
                     r.setId(rs.getInt("id"));
+                    r.setName(rs.getString("name"));
                     r.setEmail(rs.getString("email"));
+                    r.setEnabled(rs.getBoolean("enabled"));
+                    r.setRole(rs.getString("role"));
                     return r;
             }
     }
@@ -80,6 +82,20 @@ public class UserService extends AbstractJdbcDriver {
         try {
             String result = this.jdbcPostgres.queryForObject("update users SET password_hash = ? where email = ? returning password_hash", new Object[] {hashedPassword, email}, String.class);
             if(!Objects.equals(result, hashedPassword)) {
+                return false;
+            }
+        } catch(Exception e) {
+            log.error(e.getMessage());
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean updateRole(int userId, int roleId) {
+        try {
+            int id = this.jdbcPostgres.queryForObject("update users SET role_id = ? where id = ? returning role_id", new Object[] {roleId, userId}, Integer.class);
+            if(id!=roleId) {
                 return false;
             }
         } catch(Exception e) {
