@@ -23,7 +23,7 @@ public class UserService extends AbstractJdbcDriver {
     public List<User> getAllUsers() {
             try{
                     List<User> u = new ArrayList<User>();
-                    u.addAll(this.jdbcPostgres.query("select * from user", new UserMapper()));
+                    u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from user where users.role_id = roles.id", new UserMapper()));
                     return u;
             } catch(Exception er) {
                     throw new IllegalArgumentException(er.getMessage());
@@ -33,9 +33,11 @@ public class UserService extends AbstractJdbcDriver {
     private class UserMapper implements RowMapper<User>{
             public User mapRow(ResultSet rs, int rowNum) throws SQLException {
                     User r = new User();
+                    r.setId(rs.getInt("users.id"));
                     r.setName(rs.getString("name"));
-                    r.setId(rs.getInt("id"));
                     r.setEmail(rs.getString("email"));
+                    r.setEnabled(rs.getBoolean("enabled"));
+                    r.setRole(rs.getString("roles.role"));
                     return r;
             }
     }

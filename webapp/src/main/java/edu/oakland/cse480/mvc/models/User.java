@@ -4,6 +4,9 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class User {
     private int id;
+    private String role;
+    private int roleId;
+    private boolean enabled;
 
     @NotBlank
     private String name;
@@ -55,5 +58,29 @@ public class User {
 
     public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
+    }
+
+    public String getRole() {
+        return this.role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public int getRoleId() {
+        return this.roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public boolean getEnabled() {
+        return this.enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
