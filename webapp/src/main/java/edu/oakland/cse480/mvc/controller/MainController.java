@@ -4,7 +4,7 @@ import edu.oakland.cse480.mvc.models.User;
 import edu.oakland.cse480.service.UserService;
 import edu.oakland.cse480.service.BusinessAndBarService;
 import edu.oakland.cse480.service.AvailableDrinksService;
-import edu.oakland.cse480.service.DrinkOrderService;
+import edu.oakland.cse480.service.BarDrinkOrderService;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -44,6 +44,9 @@ public class MainController{
 
     @Autowired
     private AvailableDrinksService availableDrinksService;
+
+    @Autowired
+    private BarDrinkOrderService barDrinkOrderService;
 
     /**
      * Sends the user to the main page.
@@ -198,7 +201,7 @@ public class MainController{
     public ModelAndView displayBar(@PathVariable("bar_id") Integer bar_id) {
         ModelAndView model = new ModelAndView();
 	model.addObject("bar", businessAndBarService.getBarById(bar_id));
-	model.addObject("drinks", availableDrinksService.getDrinksByBarId(bar_id));
+	model.addObject("drinks", barDrinkOrderService.getDrinkOrdersByBarId(bar_id));
         model.setViewName("display");
         return model;
     }
