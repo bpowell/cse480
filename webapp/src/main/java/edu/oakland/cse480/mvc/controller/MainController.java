@@ -178,20 +178,6 @@ public class MainController{
         return model;
     }
 
-    @RequestMapping(value = "/drinklist", method = RequestMethod.GET)
-    public ModelAndView drinklist() {
-        return barview();
-    }
-
-    @RequestMapping(value = "/drinklist/{bar_id}", method = RequestMethod.GET)
-    public ModelAndView barDrinklist(@PathVariable("bar_id") Integer bar_id) {
-        ModelAndView model = new ModelAndView();
-	model.addObject("bar", businessAndBarService.getBarById(bar_id));
-	model.addObject("drinks", barDrinkOrderService.getDrinkOrdersByBarId(bar_id));
-        model.setViewName("display");
-        return model;
-    }
-
     @RequestMapping(value = "/display", method = RequestMethod.GET)
     public ModelAndView display() {
         return barview();
@@ -199,6 +185,20 @@ public class MainController{
 
     @RequestMapping(value = "/display/{bar_id}", method = RequestMethod.GET)
     public ModelAndView displayBar(@PathVariable("bar_id") Integer bar_id) {
+        ModelAndView model = new ModelAndView();
+	model.addObject("bar", businessAndBarService.getBarById(bar_id));
+	model.addObject("drinks", barDrinkOrderService.getDrinkOrdersByBarId(bar_id));
+        model.setViewName("display");
+        return model;
+    }
+
+    @RequestMapping(value = "/drinklist", method = RequestMethod.GET)
+    public ModelAndView drinklist() {
+        return barview();
+    }
+
+    @RequestMapping(value = "/drinklist/{bar_id}", method = RequestMethod.GET)
+    public ModelAndView barDrinklist(@PathVariable("bar_id") Integer bar_id) {
         ModelAndView model = new ModelAndView();
 	model.addObject("bar", businessAndBarService.getBarById(bar_id));
 	model.addObject("drinks", availableDrinksService.getDrinksByBarId(bar_id));
