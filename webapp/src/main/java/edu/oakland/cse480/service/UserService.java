@@ -91,4 +91,18 @@ public class UserService extends AbstractJdbcDriver {
 
         return true;
     }
+
+    public boolean updateRole(int userId, int roleId) {
+        try {
+            int id = this.jdbcPostgres.queryForObject("update users SET role_id = ? where id = ? returning role_id", new Object[] {roleId, userId}, Integer.class);
+            if(id!=roleId) {
+                return false;
+            }
+        } catch(Exception e) {
+            log.error(e.getMessage());
+            return false;
+        }
+
+        return true;
+    }
 }
