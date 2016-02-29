@@ -1,17 +1,17 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
-            <c:forEach items="${drinks}" var="drinkorder">
+            <c:forEach items="${drinks}" var="drink">
                 <div class="row">
                     <a href="#">
                         <div class="col-xs-3 col-md-2">
-                            <img src="<c:url value="${drinkorder.getDrinkIconUrl()}"/>" class="img-fluid img-rounded" alt="${drinkorder.getDrinkName()} icon" width="150"/>
+                            <img src="<c:url value="${drink.getDrinkIconUrl()}"/>" class="img-fluid img-rounded" alt="${drink.getDrinkName()} icon" width="150"/>
                         </div>
                         <div class="col-xs-9 col-md-10">
-                            <h3>${drinkorder.getDrinkName()}</h3>
+                            <h3>${drink.getDrinkName()}</h3>
                             <p>
-                                <strong>Quantity:</strong> ${drinkorder.getDrinkCount()}<br />
-                                <strong>User:</strong> ${drinkorder.getUserId()}
+                                <strong>Quantity:</strong> ${drink.getDrinkCount()}<br />
+                                <strong>User:</strong> ${drink.getUserId()}
                             </p>
                         </div>
                     </a>
