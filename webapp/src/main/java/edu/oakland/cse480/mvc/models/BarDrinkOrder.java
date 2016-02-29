@@ -1,5 +1,7 @@
 package edu.oakland.cse480.mvc.models;
 
+import java.sql.Timestamp;
+
 public class BarDrinkOrder {
     public int id;
     public int drink_id;
@@ -7,8 +9,8 @@ public class BarDrinkOrder {
     public String drink_name;
     public String drink_icon_url;
     public int user_id;
-    public int time_placed;
-    public int time_complete;
+    public Timestamp time_placed;
+    public Timestamp time_complete;
     public int bar_id;
     public String comments;
 
@@ -60,19 +62,19 @@ public class BarDrinkOrder {
         this.user_id = user_id;
     }
 
-    public int getTimePlaced() {
+    public Timestamp getTimePlaced() {
         return this.time_placed;
     }
 
-    public void setTimePlaced(int time_placed) {
+    public void setTimePlaced(Timestamp time_placed) {
         this.time_placed = time_placed;
     }
 
-    public int getTimeComplete() {
+    public Timestamp getTimeComplete() {
         return this.time_complete;
     }
 
-    public void setTimeComplete(int time_complete) {
+    public void setTimeComplete(Timestamp time_complete) {
         this.time_complete = time_complete;
     }
 
