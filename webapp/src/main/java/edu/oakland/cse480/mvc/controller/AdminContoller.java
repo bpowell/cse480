@@ -23,6 +23,9 @@ import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import edu.oakland.cse480.service.UserService;
+import edu.oakland.cse480.service.RoleService;
+
 /**
  * Handles the initial web page loading.
  */
@@ -30,6 +33,12 @@ import org.slf4j.LoggerFactory;
 @RequestMapping("/admin")
 public class AdminContoller {
     protected final Logger log = LoggerFactory.getLogger(getClass());
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    RoleService roleService;
 
     /**
      * Sends the user to the main page.
@@ -45,5 +54,42 @@ public class AdminContoller {
     @RequestMapping(value = "/addbusiness", method = RequestMethod.GET)
     public String getAddBusiness() {
         return "admin/addbusiness";
+    }
+
+    @RequestMapping(value = "/changeroles", method = RequestMethod.GET)
+    public String getChangeRoles(Model model) {
+        model.addAttribute("users", userService.getAllUsers());
+        model.addAttribute("roles", roleService.getAllRoles());
+        return "admin/changeroles";
+    }
+
+    @RequestMapping(value = "/changeroles", method = RequestMethod.POST)
+    public ModelAndView changeRoles(@ModelAttribute("userId") int userId, @ModelAttribute("roleId") int roleId, BindingResult result) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("admin/changeroles");
+
+        model.addObject("users", userService.getAllUsers());
+        model.addObject("roles", roleService.getAllRoles());
+
+        if(result.hasErrors()) {
+            model.addObject("error", "Problem");
+            return model;
+        }
+
+        if( (userId <= 0) || (roleId <= 0) ) {
+            model.addObject("error", "Problem");
+            return model;
+        }
+
+        if(!userService.updateRole(userId, roleId)) {
+            model.addObject("error", "Problem");
+            return model;
+        }
+
+        model.addObject("users", userService.getAllUsers());
+        model.addObject("roles", roleService.getAllRoles());
+
+        model.addObject("success", "Success!");
+        return model;
     }
 }
