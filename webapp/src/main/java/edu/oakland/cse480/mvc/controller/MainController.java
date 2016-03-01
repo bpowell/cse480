@@ -4,6 +4,7 @@ import edu.oakland.cse480.mvc.models.User;
 import edu.oakland.cse480.service.UserService;
 import edu.oakland.cse480.service.BusinessAndBarService;
 import edu.oakland.cse480.service.AvailableDrinksService;
+import edu.oakland.cse480.service.BarDrinkOrderService;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -43,6 +44,9 @@ public class MainController{
 
     @Autowired
     private AvailableDrinksService availableDrinksService;
+
+    @Autowired
+    private BarDrinkOrderService barDrinkOrderService;
 
     /**
      * Sends the user to the main page.
@@ -93,20 +97,6 @@ public class MainController{
         ModelAndView model = new ModelAndView();
         model.addObject("username", username);
         model.setViewName("profile");
-        return model;
-    }
-
-    @RequestMapping(value = "/display", method = RequestMethod.GET)
-    public ModelAndView display() {
-        return barview();
-    }
-
-    @RequestMapping(value = "/display/{bar_id}", method = RequestMethod.GET)
-    public ModelAndView displayBar(@PathVariable("bar_id") Integer bar_id) {
-        ModelAndView model = new ModelAndView();
-	model.addObject("bar", businessAndBarService.getBarById(bar_id));
-	model.addObject("drinks", availableDrinksService.getDrinksByBarId(bar_id));
-        model.setViewName("display");
         return model;
     }
 
@@ -185,6 +175,32 @@ public class MainController{
         model.addObject("businesses", businessAndBarService.getAllBusinessAndBars());
         model.setViewName("barview");
 
+        return model;
+    }
+
+    @RequestMapping(value = "/display", method = RequestMethod.GET)
+    public ModelAndView display() {
+        return barview();
+    }
+
+    @RequestMapping(value = "/display/{bar_id}", method = RequestMethod.GET)
+    public ModelAndView displayBar(@PathVariable("bar_id") Integer bar_id) {
+        ModelAndView model = new ModelAndView();
+	model.addObject("drinks", barDrinkOrderService.getDrinkOrdersByBarId(bar_id));
+        model.setViewName("display");
+        return model;
+    }
+
+    @RequestMapping(value = "/drinklist", method = RequestMethod.GET)
+    public ModelAndView drinklist() {
+        return barview();
+    }
+
+    @RequestMapping(value = "/drinklist/{bar_id}", method = RequestMethod.GET)
+    public ModelAndView barDrinklist(@PathVariable("bar_id") Integer bar_id) {
+        ModelAndView model = new ModelAndView();
+	model.addObject("drinks", availableDrinksService.getDrinksByBarId(bar_id));
+        model.setViewName("drinklist");
         return model;
     }
 

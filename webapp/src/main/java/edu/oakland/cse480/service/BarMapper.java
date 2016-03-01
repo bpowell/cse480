@@ -18,7 +18,7 @@ public class BarMapper implements RowMapper<Bar>{
         r.setCity(rs.getString("city"));
         r.setZipcode(rs.getString("zipcode"));
         r.setState(rs.getString("state"));
-        r.setNumber(rs.getString("phonenumber"));
+        r.setPhoneNumber(rs.getString("phonenumber"));
         r.setMondayHours(rs.getString("monday"));
         r.setTuesdayHours(rs.getString("tuesday"));
         r.setWednesdayHours(rs.getString("wednesday"));

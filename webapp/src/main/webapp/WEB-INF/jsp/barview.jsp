@@ -20,7 +20,7 @@
                             <div class="card-block">
                                 <h4 class="card-title">${bar.getName()}</h4>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><h5>Phone:</h5>${bar.getNumber()}</li>
+                                    <li class="list-group-item"><h5>Phone:</h5>${bar.getPhoneNumber()}</li>
                                     <li class="list-group-item"><h5>Address:</h5>${bar.getAddress()}<br />${bar.getCity()} ${bar.getZipcode()} ${bar.getState()}</li>
                                     <li class="list-group-item"><h5>Hours:</h5>Monday ${bar.getMondayHours()}<br />Tuesday ${bar.getTuesdayHours()}<br />Wednesday ${bar.getWednesdayHours()}<br />Thursday ${bar.getThursdayHours()}<br />Friday ${bar.getFridayHours()}<br />Saturday ${bar.getSaturdayHours()}<br />Sunday ${bar.getSundayHours()}</li>
                                 </ul>
