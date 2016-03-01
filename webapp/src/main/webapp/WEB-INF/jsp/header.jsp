@@ -15,7 +15,7 @@
     <div class="headerContent">
         <div class="row">
             <div class="col-sm-3">
-                <img src="<c:url value="/img/drinkQ_logo.png" />" alt="Drink Q" style="width:200px;height:80px;"/>
+                <img src="<c:url value="/img/drinkQ_logo.png" />" alt="Drink Q" style="width:70%;"/>
             </div>
             <div class="col-sm-3">
                 <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">View Bars</button>
