@@ -9,6 +9,7 @@
 
     <security:http auto-config="true" use-expressions="true">
         <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+        <security:intercept-url pattern="/owner/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_OWNER')" />
 
         <security:access-denied-handler error-page="/403" />
         <security:form-login
