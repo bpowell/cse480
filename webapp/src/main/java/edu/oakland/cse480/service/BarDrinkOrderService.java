@@ -25,7 +25,7 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
 
     public List<BarDrinkOrder> getDrinkOrdersByBarId(int bar_id) {
         try {
-            return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id where drinkorder.bar_id = ? order by drinkorder.time_placed", new Object[] {bar_id}, new BarDrinkOrderMapper());
+            return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.enabled = 't' and drinkorder.bar_id = ? order by drinkorder.time_placed", new Object[] {bar_id}, new BarDrinkOrderMapper());
         } catch(Exception e) {
             log.info("No drink orders found because {}", e);
             return new ArrayList<BarDrinkOrder>();
@@ -41,6 +41,7 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
             b.setDrinkName(rs.getString("name"));
             b.setDrinkIconUrl(rs.getString("icon_url"));
             b.setUserId(rs.getInt("user_id"));
+            b.setUserName(rs.getString("username"));
             b.setTimePlaced(rs.getTimestamp("time_placed"));
             b.setTimeComplete(rs.getTimestamp("time_complete"));
             b.setBarId(rs.getInt("bar_id"));
