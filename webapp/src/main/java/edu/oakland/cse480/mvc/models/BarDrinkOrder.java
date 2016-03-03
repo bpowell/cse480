@@ -9,6 +9,7 @@ public class BarDrinkOrder {
     public String drink_name;
     public String drink_icon_url;
     public int user_id;
+    public String user_name;
     public Timestamp time_placed;
     public Timestamp time_complete;
     public int bar_id;
@@ -60,6 +61,14 @@ public class BarDrinkOrder {
 
     public void setUserId(int user_id) {
         this.user_id = user_id;
+    }
+
+    public String getUserName() {
+        return this.user_name;
+    }
+
+    public void setUserName(String user_name) {
+        this.user_name = user_name;
     }
 
     public Timestamp getTimePlaced() {
