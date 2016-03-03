@@ -25,7 +25,7 @@
                                     <li class="list-group-item"><h5>Hours:</h5>Monday ${bar.getMondayHours()}<br />Tuesday ${bar.getTuesdayHours()}<br />Wednesday ${bar.getWednesdayHours()}<br />Thursday ${bar.getThursdayHours()}<br />Friday ${bar.getFridayHours()}<br />Saturday ${bar.getSaturdayHours()}<br />Sunday ${bar.getSundayHours()}</li>
                                 </ul>
                                 <div class="card-block">
-                                    <a href="display/${bar.getId()}" class="btn btn-primary">Order Drinks Here!</a>
+                                    <a href="<c:url value="/display/${bar.getId()}" />" class="btn btn-primary">Order Drinks Here!</a>
                                 </div>
                             </div>
                         </div>
