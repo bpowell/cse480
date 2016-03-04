@@ -54,6 +54,16 @@ div.headerContent button.btn-primary {
     background: #CFAE60;
     color: #292729;
     font-size: 1.4em;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 2px solid #8e8e8e;
+}
+
+div.headerContent button:hover.btn-primary {
+    background: #E9D0A8;
+    color: #292729;
+    font-size: 1.4em;
     border: 2px solid #8e8e8e;
 }
 
