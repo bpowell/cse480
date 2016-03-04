@@ -11,7 +11,7 @@
                             <h3>${drink.getDrinkName()}</h3>
                             <p>
                                 <strong>Quantity:</strong> ${drink.getDrinkCount()}<br />
-                                <strong>User:</strong> ${drink.getUserId()}
+                                <strong>User:</strong> ${drink.getUserName()}
                             </p>
                         </div>
                     </a>
