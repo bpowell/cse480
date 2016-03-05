@@ -30,6 +30,16 @@ public class UserService extends AbstractJdbcDriver {
             }
     }
 
+    public List<User> getAllOwners() {
+            try{
+                    List<User> u = new ArrayList<User>();
+                    u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles where users.role_id = roles.id and roles.role = 'ROLE_OWNER'", new UserMapper()));
+                    return u;
+            } catch(Exception er) {
+                    throw new IllegalArgumentException(er.getMessage());
+            }
+    }
+
     private class UserMapper implements RowMapper<User>{
             public User mapRow(ResultSet rs, int rowNum) throws SQLException {
                     User r = new User();
