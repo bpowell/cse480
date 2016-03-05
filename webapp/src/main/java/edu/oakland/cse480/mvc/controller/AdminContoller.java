@@ -2,6 +2,8 @@ package edu.oakland.cse480.mvc.controller;
 
 import edu.oakland.cse480.mvc.models.Business;
 import edu.oakland.cse480.service.BusinessAndBarService;
+import edu.oakland.cse480.service.UserService;
+import edu.oakland.cse480.service.RoleService;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -25,9 +27,6 @@ import java.util.Objects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import edu.oakland.cse480.service.UserService;
-import edu.oakland.cse480.service.RoleService;
 
 /**
  * Handles the initial web page loading.
