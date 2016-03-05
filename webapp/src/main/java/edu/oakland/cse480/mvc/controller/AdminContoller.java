@@ -61,6 +61,13 @@ public class AdminContoller {
         return "admin/addbusiness";
     }
 
+    @RequestMapping(value = "/addbar", method = RequestMethod.GET)
+    public String getAddBar(Model model) {
+        model.addAttribute("businesses", businessAndBarService.getAllBusinesses());
+        model.addAttribute("users", userService.getAllOwners());
+        return "admin/addbar";
+    }
+
     @RequestMapping(value = "/changeroles", method = RequestMethod.GET)
     public String getChangeRoles(Model model) {
         model.addAttribute("users", userService.getAllUsers());
