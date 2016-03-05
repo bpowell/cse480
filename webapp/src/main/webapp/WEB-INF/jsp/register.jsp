@@ -15,7 +15,9 @@
                 <input type="password" name="passwordConfirm" id="reInputPassword" class="form-control" placeholder="Re-enter Password" required>
                 <label for="newUsername" class="sr-only">Enter New Username</label>
                 <input type="text" name="name" id="enterNewUserName" class="form-control" placeholder="Enter new username" required>
-                <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                <div class="col-lg-6">
+                    <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                </div>
             </form:form>
         </div>
     </body>

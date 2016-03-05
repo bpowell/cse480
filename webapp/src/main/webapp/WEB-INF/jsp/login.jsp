@@ -20,7 +20,9 @@
 					</label>
 				</div>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <div class="col-lg-6">
+                    <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                </div>
             </form>
         </div>
     </body>
