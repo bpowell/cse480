@@ -1,6 +1,7 @@
 package edu.oakland.cse480.mvc.controller;
 
 import edu.oakland.cse480.mvc.models.Business;
+import edu.oakland.cse480.mvc.models.Bar;
 import edu.oakland.cse480.service.BusinessAndBarService;
 import edu.oakland.cse480.service.UserService;
 import edu.oakland.cse480.service.RoleService;
@@ -120,6 +121,29 @@ public class AdminContoller {
         }
 
         model.addObject("success", "Success!");
+        return model;
+    }
+
+    @RequestMapping(value = "/addbar", method = RequestMethod.POST)
+    public ModelAndView addBar(@ModelAttribute("addBar") @Valid Bar bar, BindingResult result) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("admin/addbar");
+
+        model.addObject("businesses", businessAndBarService.getAllBusinesses());
+        model.addObject("users", userService.getAllOwners());
+
+        if(result.hasErrors()){
+            model.addObject("error", "Try again");
+            return model;
+        }
+
+        if(!businessAndBarService.insertBar(bar)) {
+            model.addObject("error", "Cannot add bar, try again later");
+            return model;
+        }
+
+        model.addObject("success", "Success!");
+
         return model;
     }
 }
