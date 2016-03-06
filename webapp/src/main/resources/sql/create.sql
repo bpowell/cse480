@@ -48,6 +48,13 @@ create table bar (
 )
 ;
 
+create table bartenders (
+    id serial primary key,
+    user_id integer references users(id),
+    bar_id integer references bar(id)
+)
+;
+
 create table barhours (
     id serial primary key,
     bar_id integer references bar(id),
