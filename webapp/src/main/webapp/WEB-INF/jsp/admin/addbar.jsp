@@ -19,7 +19,7 @@
                         </c:forEach>
                     </select>
                     <br />
-                    <select name="userId">
+                    <select name="ownerId">
                         <c:forEach items="${users}" var="user">
                         <option value="${user.getId()}">${user.getEmail()} - ${user.getRole()}</option>
                         </c:forEach>
@@ -32,9 +32,9 @@
                     <input type="text" name="state" id="state" class="form-control" placeholder="MI" required>
                     <label for="zipcode" class="sr-only">ZipCode</label>
                     <input type="number" name="zipcode" id="zipcode" class="form-control" placeholder="48309" required>
-                    <label for="phonenumber" class="sr-only">Phonenumber</label>
-                    <input type="number" name="phonenumber" id="phonenumber" class="form-control" placeholder="5865551234" required>
-                    <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">Create Business</button>
+                    <label for="phoneNumber" class="sr-only">Phone Number</label>
+                    <input type="number" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="5865551234" required>
+                    <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">Create Bar</button>
                 </form:form>
             </div>
         </div>
