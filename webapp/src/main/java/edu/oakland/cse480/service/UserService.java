@@ -40,6 +40,16 @@ public class UserService extends AbstractJdbcDriver {
             }
     }
 
+    public List<User> getAllOwners() {
+            try{
+                    List<User> u = new ArrayList<User>();
+                    u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles where users.role_id = roles.id and roles.role = 'ROLE_OWNER'", new UserMapper()));
+                    return u;
+            } catch(Exception er) {
+                    throw new IllegalArgumentException(er.getMessage());
+            }
+    }
+
     public int getUserIdByEmail(String email) {
         try {
             return this.jdbcPostgres.queryForObject("select id from users where email = ?", new Object[] {email}, Integer.class);

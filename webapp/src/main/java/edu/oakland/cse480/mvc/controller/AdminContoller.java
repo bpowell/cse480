@@ -1,7 +1,10 @@
 package edu.oakland.cse480.mvc.controller;
 
 import edu.oakland.cse480.mvc.models.Business;
+import edu.oakland.cse480.mvc.models.Bar;
 import edu.oakland.cse480.service.BusinessAndBarService;
+import edu.oakland.cse480.service.UserService;
+import edu.oakland.cse480.service.RoleService;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -25,9 +28,6 @@ import java.util.Objects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import edu.oakland.cse480.service.UserService;
-import edu.oakland.cse480.service.RoleService;
 
 /**
  * Handles the initial web page loading.
@@ -59,6 +59,13 @@ public class AdminContoller {
     @RequestMapping(value = "/addbusiness", method = RequestMethod.GET)
     public String getAddBusiness() {
         return "admin/addbusiness";
+    }
+
+    @RequestMapping(value = "/addbar", method = RequestMethod.GET)
+    public String getAddBar(Model model) {
+        model.addAttribute("businesses", businessAndBarService.getAllBusinesses());
+        model.addAttribute("users", userService.getAllOwners());
+        return "admin/addbar";
     }
 
     @RequestMapping(value = "/changeroles", method = RequestMethod.GET)
@@ -114,6 +121,29 @@ public class AdminContoller {
         }
 
         model.addObject("success", "Success!");
+        return model;
+    }
+
+    @RequestMapping(value = "/addbar", method = RequestMethod.POST)
+    public ModelAndView addBar(@ModelAttribute("addBar") @Valid Bar bar, BindingResult result) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("admin/addbar");
+
+        model.addObject("businesses", businessAndBarService.getAllBusinesses());
+        model.addObject("users", userService.getAllOwners());
+
+        if(result.hasErrors()){
+            model.addObject("error", "Try again");
+            return model;
+        }
+
+        if(!businessAndBarService.insertBar(bar)) {
+            model.addObject("error", "Cannot add bar, try again later");
+            return model;
+        }
+
+        model.addObject("success", "Success!");
+
         return model;
     }
 }

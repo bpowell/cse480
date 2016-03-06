@@ -54,8 +54,18 @@ div.mainContent button.btn-primary {
     border: 2px solid #8e8e8e;
 }
 
-div.headerContent button.btn-primary {
+div.headerContent a.btn-primary {
     background: #CFAE60;
+    color: #292729;
+    font-size: 1.4em;
+    border-top: 2px solid #CFAE60;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 2px solid #8e8e8e;
+}
+
+div.headerContent a:hover.btn-primary {
+    background: #E9D0A8;
     color: #292729;
     font-size: 1.4em;
     border: 2px solid #8e8e8e;

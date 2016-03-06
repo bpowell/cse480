@@ -91,6 +91,16 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
         return true;
     }
 
+    public boolean insertBar(Bar b) {
+        try {
+            this.jdbcPostgres.update("insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values(?, ?, ?, ?, ?, ?, ?, ?)", b.getName(), b.getBusinessId(), b.getOwnerId(), b.getAddress(), b.getCity(), b.getZipcode(), b.getState(), b.getPhoneNumber());
+        } catch(Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+
 	private class BarMapper implements RowMapper<Bar>{
 		public Bar mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Bar b = new Bar();

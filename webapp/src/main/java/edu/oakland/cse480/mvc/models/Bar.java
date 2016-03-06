@@ -1,14 +1,23 @@
 package edu.oakland.cse480.mvc.models;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Bar {
     private int id;
+
+    @NotBlank
     private String name;
     private int business_id;
     private int owner_id;
+    @NotBlank
     private String address;
+    @NotBlank
     private String city;
+    @NotBlank
     private String zipcode;
+    @NotBlank
     private String state;
+    @NotBlank
     private String phone_number;
 
     private String monday_hours;

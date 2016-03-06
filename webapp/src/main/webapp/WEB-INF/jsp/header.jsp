@@ -23,13 +23,13 @@
                 <img src="<c:url value="/img/drinkQ_logo.png" />" alt="Drink Q"/>
             </div>
             <div class="col-sm-3">
-                <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">View Bars</button>
+                <a href="<c:url value="/barview" />" class="btn btn-lg btn-primary btn-block">View Bars</a>
             </div>
             <div class="col-sm-3">
-                <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">View Drinks</button>
+                <a href="<c:url value="/display" />" class="btn btn-lg btn-primary btn-block">View Drinks</a>
             </div>
             <div class="col-sm-3">
-                <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">Profile/Login</button>
+                <a href="<c:url value="/profile" />" class="btn btn-lg btn-primary btn-block">View Profile</a>
             </div>
         </div>
     </div>
