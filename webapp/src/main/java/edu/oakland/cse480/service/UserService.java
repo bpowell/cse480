@@ -105,4 +105,14 @@ public class UserService extends AbstractJdbcDriver {
 
         return true;
     }
+
+    public boolean addBartender(int userId, int barId) {
+        try {
+            this.jdbcPostgres.update("insert into bartenders (user_id, bar_id) values(?, ?)", userId, barId);
+        } catch(Exception e) {
+            return false;
+        }
+
+        return true;
+    }
 }
