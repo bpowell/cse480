@@ -38,6 +38,10 @@ div.mainContent {
     border-radius: 10px;
 }
 
+div.mainContent form.form-signin {
+    margin-right: 10px;
+}
+
 div.mainContent input.form-control {
     margin: 5px;
     border: 1px solid #8e8e8e;
