@@ -1,5 +1,9 @@
 package edu.oakland.cse480.mvc.controller;
 
+import edu.oakland.cse480.service.UserService;
+import edu.oakland.cse480.service.BusinessAndBarService;
+import edu.oakland.cse480.mvc.models.User;
+
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,6 +32,12 @@ import org.slf4j.LoggerFactory;
 public class OwnerController {
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    BusinessAndBarService businessAndBarService;
+
     /**
      * Sends the user to the main page.
      *
@@ -37,5 +47,35 @@ public class OwnerController {
     @RequestMapping("/")
     public String getIndex(Model model){
         return "owner/owner";
+    }
+
+    @RequestMapping("/addbartender")
+    public String getAddBartender(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userdetails = (UserDetails) auth.getPrincipal();
+
+        int ownerId = userService.getUserIdByEmail(userdetails.getUsername());
+        model.addAttribute("users", userService.getAllStandardUsers());
+        model.addAttribute("bars", businessAndBarService.getBarsByOwnerId(ownerId));
+        return "owner/addbartender";
+    }
+
+    @RequestMapping(value = "/addbartender", method = RequestMethod.POST)
+    public ModelAndView addBartender(@ModelAttribute("userId") int userId, @ModelAttribute("barId") int barId) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("owner/addbartender");
+
+        if(!userService.updateRole(userId, 4)) {
+            model.addObject("error", "Cannot update user");
+            return model;
+        }
+
+        if(!userService.addBartender(userId, barId)) {
+            model.addObject("error", "Cannot update user");
+            return model;
+        }
+
+        model.addObject("success", "Success!");
+        return model;
     }
 }
