@@ -6,25 +6,26 @@
                 <%-- Account Settings --%>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="container mainContent">
             <h1>${username}</h1>
             <div id="userStats">
                 <h3>Drink Score: x</h3>
                 <h3>Recent Drinks:</h3>
-                <div class="card">
-                    <%-- <img class="card-img"> --%>
-                    <div class="card-block">
-                        <h4 class="card-title">Bud Light</h4>
-                        <p class="card-text">If we need any more info.</p>
+                <c:forEach items="${drinks}" var="drink">
+                    <div class="row">
+                        <a href="#">
+                            <div class="col-xs-3 col-md-2">
+                                <img src="<c:url value="${drink.getDrinkIconUrl()}"/>" class="img-fluid img-rounded" alt="${drink.getDrinkName()} icon" width="150"/>
+                            </div>
+                            <div class="col-xs-9 col-md-10">
+                                <h3>${drink.getDrinkName()}</h3>
+                                <p>
+                                    <strong>Comments:</strong> ${drink.getComments()}
+                                </p>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="card">
-                    <%-- <img class="card-img"> --%>
-                    <div class="card-block">
-                        <h4 class="card-title">Long Island</h4>
-                        <p class="card-text">If we need any more info.</p>
-                    </div>
-                </div>
+                </c:forEach>
             </div>
         </div>
     </body>
