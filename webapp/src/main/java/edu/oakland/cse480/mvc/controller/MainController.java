@@ -86,6 +86,7 @@ public class MainController{
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             UserDetails userDetail = (UserDetails) auth.getPrincipal();
             model.addObject("username", userDetail.getUsername());
+	    model.addObject("drinks", barDrinkOrderService.getDrinkOrdersByUsername(userDetail.getUsername()));
         }
 
         model.setViewName("profile");
@@ -96,6 +97,7 @@ public class MainController{
     public ModelAndView publicProfiles(@PathVariable("username") String username) {
         ModelAndView model = new ModelAndView();
         model.addObject("username", username);
+	model.addObject("drinks", barDrinkOrderService.getDrinkOrdersByUsername(username));
         model.setViewName("profile");
         return model;
     }
