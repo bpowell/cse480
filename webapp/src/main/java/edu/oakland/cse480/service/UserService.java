@@ -30,6 +30,16 @@ public class UserService extends AbstractJdbcDriver {
             }
     }
 
+    public List<User> getAllStandardUsers() {
+            try{
+                    List<User> u = new ArrayList<User>();
+                    u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles where users.role_id = roles.id and roles.role = 'ROLE_USER'", new UserMapper()));
+                    return u;
+            } catch(Exception er) {
+                    throw new IllegalArgumentException(er.getMessage());
+            }
+    }
+
     public List<User> getAllOwners() {
             try{
                     List<User> u = new ArrayList<User>();
@@ -38,6 +48,14 @@ public class UserService extends AbstractJdbcDriver {
             } catch(Exception er) {
                     throw new IllegalArgumentException(er.getMessage());
             }
+    }
+
+    public int getUserIdByEmail(String email) {
+        try {
+            return this.jdbcPostgres.queryForObject("select id from users where email = ?", new Object[] {email}, Integer.class);
+        } catch(Exception e) {
+            return -1;
+        }
     }
 
     private class UserMapper implements RowMapper<User>{
@@ -110,6 +128,16 @@ public class UserService extends AbstractJdbcDriver {
             }
         } catch(Exception e) {
             log.error(e.getMessage());
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean addBartender(int userId, int barId) {
+        try {
+            this.jdbcPostgres.update("insert into bartenders (user_id, bar_id) values(?, ?)", userId, barId);
+        } catch(Exception e) {
             return false;
         }
 

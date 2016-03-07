@@ -47,6 +47,16 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
         }
     }
 
+    public List<Bar> getBarsByOwnerId(int oid) {
+        try {
+            List<Bar> b = new ArrayList<Bar>();
+            b.addAll(this.jdbcPostgres.query("select bar.id, name, business_id, owner_id, address, city, zipcode, state, phonenumber, monday, tuesday, wednesday, thursday, friday, saturday, sunday from bar left join barhours on barhours.id = bar.id where owner_id = ?", new Object[] {oid}, new BarMapper()));
+            return b;
+        } catch(Exception e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
+    }
+
     public List<Business> getAllBusinesses() {
         try {
             List<Business> b = new ArrayList<Business>();
