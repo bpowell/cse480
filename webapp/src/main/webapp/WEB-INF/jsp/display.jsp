@@ -15,7 +15,6 @@
                             </p>
                         </div>
                     </a>
-                    <hr />
                 </div>
             </c:forEach>
         </div>
