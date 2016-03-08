@@ -1,6 +1,6 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
-        <div class="container">
+        <div class="container mainContent">
             <div class="row">
                 <div class="jumbotron">
                     <h2>404 - Page Not Found!</h2>

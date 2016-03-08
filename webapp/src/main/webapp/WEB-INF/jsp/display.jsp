@@ -15,16 +15,12 @@
                             </p>
                         </div>
                     </a>
-                    <hr />
                 </div>
             </c:forEach>
-        </div>
-            <div class="row container">
-                <div class="col-xs-2">
+            <div class="col-xs-2">
                 <a href="<c:url value="/drinklist/${bar_id}" />" class="btn btn-primary">Order a Drink!</a>
-                </div>
-                <div class="col-xs-10"></div>
             </div>
+            <div class="col-xs-10"></div>
         </div>
     </body>
 </html>

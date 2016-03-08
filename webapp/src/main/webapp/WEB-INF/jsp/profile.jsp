@@ -1,12 +1,6 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
-        <div class="col-md-4">
-            <%-- Profile Image --%>
-            <div id="accountSettings">
-                <%-- Account Settings --%>
-            </div>
-        </div>
-        <div class="col-md-8">
+        <div class="container mainContent">
             <h1>${username}</h1>
             <div id="userStats">
                 <h3>Drink Score: x</h3>

@@ -1,6 +1,6 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
-        <div class="col-lg-12 mainContent">
+        <div class="container mainContent">
             <h2 class="form-signin-heading">New User Sign Up</h2>
             <c:url value="/register" var="post_url" />
             <form:form method="POST" action="${post_url}" class="form-signin" commandName="registerNewUser">
