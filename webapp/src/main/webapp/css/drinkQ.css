@@ -25,17 +25,10 @@ div.headerContent {
 }
 
 div.mainContent {
-    max-width: 90%;
     color: #292729;
     background: #E9D0A8;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    padding: 5px;
-    border-style: solid;
-    border-width: 2px;
     border-radius: 10px;
+    margin-top: 15px;
 }
 
 div.mainContent form.form-signin {
