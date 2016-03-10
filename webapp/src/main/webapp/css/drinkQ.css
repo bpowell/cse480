@@ -119,9 +119,13 @@ a:focus, a:hover {
 }
 
 .mainContent .btn-primary {
-    background: #CFAE60;
+    background-color: #CFAE60;
     color: #292729;
     border: 2px solid #8e8e8e;
+}
+.mainContent .btn-primary:focus, .mainContent .btn-primary:hover {
+    background-color: #5F182A;
+    color: #e9d0a8;
 }
 
 /** Barview.jsp **/
@@ -174,13 +178,15 @@ a:focus, a:hover {
     }
 
     .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a {
-        margin: 10px 10px;
-        padding: 10px 20px;
+        margin: 5px 10px;
+        padding: 15px 20px;
+        border-radius: 5px;
     }
 
     .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
-        margin: 10px 10px;
-        padding: 10px 20px;
+        margin: 5px 10px;
+        padding: 15px 20px;
+        border-radius: 5px;
     }
 }
 
