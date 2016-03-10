@@ -1,71 +1,195 @@
-/*
-DrinkQ Color Reference List
+/* 
 
-DrinkQblack: #292729
-DrinkQgrey: #514F51
-DrinkQred: #SF182A
-DrinkQgold: #CFAE60
-DrinkQtan: #E9D0A8
-*/
+[PLEASE READ BEFORE EDITING]
 
-body {
+[drinkQ] has been designed with the front-end framework Bootstrap 3.
+
+Bootstrap 3 is best utilized when designing for mobile first and making 
+  customizations for larger screens in separate media queries.
+
+Therefor, the main drinkQ.css file has been split into
+  the default breakpoints recommended by Bootstrap.
+
+ANYTHING BEFORE MEDIA QUERIES START IS GOING TO BE DEFAULT!
+
+Rules to remember:
+  Design for mobile first. Once mobile is perfect, then make specific changes to the appropriate media query.
+    (Easiest way to do this is to hit F-12 and change it to Reponsive Design Mode)
+  Keep things organized. Try to keep like elements near each other.
+    (Don't place footer related elements near header related elements) 
+
+
+DrinkQ Color Reference List:
+  DrinkQblack: #292729
+  DrinkQgrey: #514F51
+  DrinkQred: #5F182A
+  DrinkQgold: #CFAE60
+  DrinkQtan: #E9D0A8
+
+
+  Extra small devices (portrait phones, less than 34em)
+  No media query since this is the default in Bootstrap
+
+Default */
+
+html,body {
+    background-color: #292729;
+    color: #292729;
     font-size: 1em;
-    background: #514F51;
+}
+a {
     color: #292729;
 }
+a:focus, a:hover {
+    color: #5F182A;    
+}
 
-div.headerContent {
-    max-width: 100%;
+
+/* Header */
+.headerContent {
     color: #292729;
-    background: #CFAE60;
-    margin 0px 10px 10px 10px;
-    padding: 5px;
-    border-style: solid;
-    border-width: 2px;
+    background-color: #CFAE60;
+    border: none;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.50);
 }
 
-div.mainContent {
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a {
+    color: #e9d0a8;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
     color: #292729;
-    background: #E9D0A8;
-    border-radius: 10px;
-    margin-top: 15px;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border: none;
+    border-top: 1px dotted #292729;
 }
 
-div.mainContent form.form-signin {
-    margin-right: 10px;
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: #E9D0A8;
 }
 
-div.mainContent input.form-control {
-    margin: 5px;
+.navbar-default .navbar-toggle {
+    border: 2px solid #292729;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #292729;
+}
+
+
+#drinkQNavbar {
+    background-color: #cfae60;
+}
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a {
+    color: #5f182a;
+}
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    background-color: #5f182a;
+    color: #e9d0a8;
+}
+
+
+.headerContent img {
+    max-height: 3em;
+}
+
+.navbar-brand {
+    padding: 0;
+    height: inherit;
+}
+
+/* Body */
+.mainContent {
+    background-color: #e9d0a8;
+    color: #292729;
+    margin-top: 65px;
+    padding: 15px;
+}
+
+.mainContent .form-signin {
+}
+
+.mainContent .form-control {
+    border: 1px solid #8e8e8e;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.5) inset;
+}
+.mainContent .input-group-btn button {
     border: 1px solid #8e8e8e;
 }
 
-div.mainContent button.btn-primary {
+.mainContent .btn-primary {
     background: #CFAE60;
     color: #292729;
-    font-size: 1.4em;
     border: 2px solid #8e8e8e;
 }
 
-div.headerContent a.btn-primary {
-    background: #CFAE60;
-    color: #292729;
-    font-size: 1.4em;
-    border-top: 2px solid #CFAE60;
-    border-right: 0px;
-    border-left: 0px;
-    border-bottom: 2px solid #8e8e8e;
+/** Barview.jsp **/
+.bar-info {
+    padding: 0;
+    padding-bottom: 20px;
+}
+.bar-icon {
+}
+.bar-icon img {
+    width: 100%;
+}
+.bar-text h3 {
+    margin: 0;
+    margin-top: 5px;
+}
+.bar-text p {
+    margin-bottom: 20px;
 }
 
-div.headerContent a:hover.btn-primary {
-    background: #E9D0A8;
-    color: #292729;
-    font-size: 1.4em;
-    border: 2px solid #8e8e8e;
+/** Drinkview.jsp **/
+.drink-icon {
+    padding: 0;
+}
+.drink-icon img {
+    width: 100%;
+}
+.drink-text h3 {
+    margin: 0;
+    margin-top: 5px;
+}
+.drink-text p {
+    margin-bottom: 20px;
 }
 
-div.headerContent img {
-    width: 70%;
-    max-height: 57px;
-    max-width: 114px;
+
+/* Small devices (landscape phones, 34em and up) */
+@media (min-width: 768px) {
+
+    .navbar {
+        border-radius: 0;
+    }
+
+    .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a {
+        color: #454145;
+    }
+
+    .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+        border: none;
+    }
+
+    .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a {
+        margin: 10px 10px;
+        padding: 10px 20px;
+    }
+
+    .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+        margin: 10px 10px;
+        padding: 10px 20px;
+    }
+}
+
+/* Medium devices (tablets, 48em and up) */
+@media (min-width: 992px) {
+
+}
+
+/* Large devices (desktops, 62em and up) */
+@media (min-width: 1200px) {
+
 }
