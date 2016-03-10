@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-xs-0 col-md-4"></div>
                 <div class="col-xs-12 col-md-4">
-                    <a href="<c:url value="barview"/>" class="btn btn-primary btn-lrg btn-block">Return to Bars!</a>
+                    <a href="<c:url value="barview"/>" class="btn btn-primary btn-lrg btn-block"><strong>Return to Bars!</strong></a>
                 </div>
                 <div class="col-xs-0 col-md-4"></div>
             </div>

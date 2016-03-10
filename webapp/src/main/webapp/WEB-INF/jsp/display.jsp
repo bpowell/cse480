@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="col-xs-0 col-md-3"></div>
                 <div class="col-xs-12 col-md-6">
-                    <a href="<c:url value="/drinklist/${bar_id}" />" class="btn btn-primary btn-lrg btn-block">Order a Drink!</a>
+                    <a href="<c:url value="/drinklist/${bar_id}" />" class="btn btn-primary btn-lrg btn-block"><strong>Order a Drink!</strong></a>
                 </div>
                 <div class="col-xs-0 col-md-3"></div>
             </div>

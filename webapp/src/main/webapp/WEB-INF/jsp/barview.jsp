@@ -84,7 +84,7 @@
                         <div class="row">
                             <div class="col-xs-0 col-md-4"></div>
                             <div class="col-xs-12 col-md-4">
-                                <a href="<c:url value="/display/${bar.getId()}" />" class="btn btn-primary btn-lrg btn-block">Order Drinks Here!</a>
+                                <a href="<c:url value="/display/${bar.getId()}" />" class="btn btn-primary btn-lrg btn-block"><strong>Order Drinks Here!</strong></a>
                             </div>
                             <div class="col-xs-0 col-md-4"></div>
                         </div>
