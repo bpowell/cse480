@@ -1,6 +1,6 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
-        <div class="container">
+        <div class="container mainContent">
             <h2 class="form-signin-heading">Add Bar</h2>
             <div class="col-sm-4">
                 <c:url value="/admin/addbar" var="post_url" />

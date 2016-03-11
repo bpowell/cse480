@@ -7,7 +7,7 @@
         <div class="msg">${msg}</div>
         </c:if>
 
-        <div class="col-lg-12 mainContent">
+        <div class="container mainContent">
             <h2 class="form-signin-heading">Returning Users: Please Sign In</h2>
             <form method="POST" name="loginForm" action="<c:url value='/login' />" class="form-signin">
                 <label for="username" class="sr-only">Email address</label>

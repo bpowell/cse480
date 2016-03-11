@@ -11,7 +11,7 @@
     </head>
 
     <body>
-        <div class="container">
+        <div class="container mainContent">
             <h2>List of Ingredients</h2>
             <table class="table table-striped">
                 <tr>

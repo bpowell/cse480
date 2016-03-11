@@ -11,7 +11,7 @@
     </head>
 
     <body>
-        <div class="container">
+        <div class="container mainContent">
             <div>
                 <a href="<c:url value='/category/all' />">All</a>
             </div>

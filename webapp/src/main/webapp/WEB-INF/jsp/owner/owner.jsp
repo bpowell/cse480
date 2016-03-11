@@ -1,5 +1,7 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
-        <h1>Hello Admin or Owner!</h1><br />
+        <div class="container mainContent">
+            <h1>Hello Admin or Owner!</h1>
+        </div>
     </body>
 </html>
