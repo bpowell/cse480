@@ -14,7 +14,7 @@ import edu.oakland.cse480.mvc.models.AvailableDrinks;
 
 public class AvailableDrinkServiceTester {
         private static EmbeddedDatabase db;
-        private static AvailableDrinks availableDrinks;
+        private static AvailableDrinksService availableDrinks;
 
         @BeforeClass
         public static void setUp() {
@@ -24,7 +24,7 @@ public class AvailableDrinkServiceTester {
                         .addScript("sql/create.sql")
                         .build();
 
-                availableDrinks = new AvailableDrinks();
+                availableDrinks = new AvailableDrinksService();
                 availableDrinks.setPostgresDataSource(db);
         }
 
