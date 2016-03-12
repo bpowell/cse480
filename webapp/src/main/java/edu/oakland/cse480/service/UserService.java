@@ -153,4 +153,14 @@ public class UserService extends AbstractJdbcDriver {
 
         return true;
     }
+
+    public boolean removeBartender(int userId) {
+        try {
+            this.jdbcPostgres.update("delete from bartenders where user_id = ?", userId);
+        } catch(Exception e) {
+            return false;
+        }
+
+        return true;
+    }
 }
