@@ -1,31 +1,40 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
-            <c:if test="${not empty username}">
+            <div class="row">
                 <div class="col-xs-0 col-md-3"></div>
                 <div class="col-xs-12 col-md-6">
-                    <h1>${username}</h1>
-                    <h3>Drinks Ordered: ${count}</h3>
-                    <h3>Recent Drinks:</h3>
-                    <c:forEach items="${drinks}" var="drink">
-                        <a href="#">
-                            <div class="row">
-                                <div class="col-xs-0 col-md-3"></div>
-                                <div class="col-xs-3 col-md-1 drink-icon">
-                                    <img src="<c:url value="${drink.getDrinkIconUrl()}"/>" class="img-fluid img-rounded" alt="${drink.getDrinkName()} icon" />
-                                </div>
-                                <div class="col-xs-9 col-md-5 drink-text">
-                                    <h3><strong>${drink.getDrinkName()}</strong></h3>
-                                    <p>
-                                        <strong>Quantity:</strong> ${drink.getDrinkCount()}<br />
-                                    </p>
-                                </div>
-                                <div class="col-xs-0 col-md-3"></div>
-                            </div>
-                        </a>
-                    </c:forEach>
+                    <h1><strong>Profile</strong></h1>
                 </div>
                 <div class="col-xs-0 col-md-3"></div>
+            </div>
+            <c:if test="${not empty username}">
+                <div class="row">
+                    <div class="col-xs-0 col-md-3"></div>
+                    <div class="col-xs-12 col-md-6">
+                        <h3><strong>User:</strong> ${username}</h3>
+                        <h3><strong>Drink Total:</strong> ${count}</h3>
+                        <h3><strong>Recent Drinks:</strong></h3>
+                        <c:forEach items="${drinks}" var="drink">
+                            <a href="#">
+                                <div class="row">
+                                    <div class="col-xs-0 col-md-3"></div>
+                                    <div class="col-xs-3 col-md-1 drink-icon">
+                                        <img src="<c:url value="${drink.getDrinkIconUrl()}"/>" class="img-fluid img-rounded" alt="${drink.getDrinkName()} icon" />
+                                    </div>
+                                    <div class="col-xs-9 col-md-5 drink-text">
+                                        <h3><strong>${drink.getDrinkName()}</strong></h3>
+                                        <p>
+                                            <strong>Quantity:</strong> ${drink.getDrinkCount()}<br />
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-0 col-md-3"></div>
+                                </div>
+                            </a>
+                        </c:forEach>
+                    </div>
+                    <div class="col-xs-0 col-md-3"></div>
+                </div>
             </c:if>
             <c:if test="${empty username}">
                 <div class="row">
