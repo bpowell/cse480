@@ -115,7 +115,11 @@ create table categories (
 )
 ;
 
-insert into categories (name, description) values('Beer', 'Beer me');
+insert into categories (name, description) values('Beer', 'Beer');
+insert into categories (name, description) values('Wine', 'Wine');
+insert into categories (name, description) values('Liquor', 'Liquor');
+insert into categories (name, description) values('Mixers', 'Pop, club soda, etc');
+insert into categories (name, description) values('Garnish', 'Things to put in your drink!');
 
 -- contains each individual items. individual beers, liquors, fruits, garnishes, etc.
 create table ingredient (
