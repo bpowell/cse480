@@ -12,7 +12,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import edu.oakland.cse480.service.AvailableDrinksService;
 import edu.oakland.cse480.mvc.models.AvailableDrinks;
 
-public class AvailableDrinkServiceTester {
+public class TestAvailableDrinkServiceTester {
         private static EmbeddedDatabase db;
         private static AvailableDrinksService availableDrinks;
 
@@ -30,7 +30,7 @@ public class AvailableDrinkServiceTester {
 
         @Test
         public void testGetAll() {
-                Assert.assertEquals(availableDrinks.getAllAvailableDrinks().size(), 1);
+                Assert.assertEquals(availableDrinks.getAllAvailableDrinks().size(), 0);
         }
 
         @AfterClass
