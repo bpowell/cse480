@@ -37,6 +37,14 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
         }
     }
 
+    public List<Integer> getBarsIdByOwnerId(int oid) {
+        try {
+            return this.jdbcPostgres.queryForList("select bar.id from bar where bar.owner_id = ?", Integer.class, new Object[] {oid});
+        } catch(Exception e) {
+            return new ArrayList<Integer>();
+        }
+    }
+
     public List<Bar> getBarsByBusinessId(int bid) {
         try {
             List<Bar> b = new ArrayList<Bar>();
