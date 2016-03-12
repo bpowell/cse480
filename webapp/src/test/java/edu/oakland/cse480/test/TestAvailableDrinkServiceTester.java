@@ -33,6 +33,21 @@ public class TestAvailableDrinkServiceTester {
                 Assert.assertEquals(availableDrinks.getAllAvailableDrinks().size(), 0);
         }
 
+        @Test
+        public void testGetAllById() {
+                Assert.assertEquals(availableDrinks.getAvailableDrinksById(1).size(), 0);
+        }
+
+        @Test
+        public void testGetBarsByDrinkId() {
+                Assert.assertEquals(availableDrinks.getBarsByDrinkId(1).size(), 0);
+        }
+
+        @Test
+        public void testGetDrinksByBarId() {
+                Assert.assertEquals(availableDrinks.getDrinksByBarId(1).size(), 0);
+        }
+
         @AfterClass
         public static void shutdown() {
                 db.shutdown();
