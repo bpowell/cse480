@@ -6,10 +6,10 @@
                 <div class="col-xs-12 col-md-6">
                     <h1><strong>Owner Options</strong></h1>
                     <p>
-                        <a class="btn btn-primary" href="<c:url value='/owner/addbartender'/>"><strong>Add A Business</strong></a>
+                        <a class="btn btn-primary" href="<c:url value='/owner/addbartender'/>"><strong>Add Bartender</strong></a>
                     </p>
                     <p>
-                        <a class="btn btn-primary" href="<c:url value='/owner/removebartender'/>"><strong>Add A Bar</strong></a>
+                        <a class="btn btn-primary" href="<c:url value='/owner/removebartender'/>"><strong>Remove Bartender</strong></a>
                     </p>
                 </div>
                 <div class="col-xs-0 col-md-3"></div>
