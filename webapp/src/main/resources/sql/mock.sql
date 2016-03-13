@@ -38,10 +38,6 @@ insert into availabledrinks (drink_id, bar_id) values ('2', '2');
 insert into availabledrinks (drink_id, bar_id) values ('3', '2');
 
 
-insert into categories (name, description) values ('beer', 'ayy');
-insert into categories (name, description) values ('soft drinks', 'lmao');
-
-
 insert into ingredients (name, description, icon_url) values ('sugar', 'ayy', 'lmao');
 insert into ingredients (name, description, icon_url) values ('spice', 'ayy', 'lmao');
 insert into ingredients (name, description, icon_url) values ('everything nice', 'ayy', 'lmao');
