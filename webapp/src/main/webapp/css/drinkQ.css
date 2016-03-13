@@ -165,6 +165,16 @@ a:focus, a:hover {
     margin-bottom: 20px;
 }
 
+/** admin/addbar **/
+.form-signin > .col-xs-6 {
+    padding-left: 0;
+}
+.form-signin > .col-xs-2 {
+    padding: 0;
+}
+.form-signin > .col-xs-4 {
+    padding-right: 0;
+}
 
 /* Small devices (landscape phones, 34em and up) */
 @media (min-width: 768px) {
@@ -193,6 +203,17 @@ a:focus, a:hover {
         margin: 5px 10px;
         padding: 15px 20px;
         border-radius: 5px;
+    }
+
+    /** admin/addbar **/
+    .form-signin > .col-sm-7 {
+        padding-left: 0;
+    }
+    .form-signin > .col-sm-2 {
+        padding: 0;
+    }
+    .form-signin > .col-sm-3 {
+        padding-right: 0;
     }
 }
 
