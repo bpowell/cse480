@@ -1,6 +1,6 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
-        <div class="container mainContainer">
+        <div class="container mainContent">
             <c:if test="${not empty error}">
                 <div class="row bg-danger">
                     <div class="col-xs-0 col-md-3"></div>
