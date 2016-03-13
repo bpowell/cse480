@@ -2,7 +2,9 @@ package edu.oakland.cse480.mvc.controller;
 
 import edu.oakland.cse480.service.UserService;
 import edu.oakland.cse480.service.BusinessAndBarService;
+import edu.oakland.cse480.service.IngredientService;;
 import edu.oakland.cse480.mvc.models.User;
+import edu.oakland.cse480.mvc.models.Ingredient;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -39,6 +41,9 @@ public class OwnerController {
 
     @Autowired
     BusinessAndBarService businessAndBarService;
+
+    @Autowired
+    IngredientService ingredientService;
 
     /**
      * Sends the user to the main page.
@@ -114,5 +119,11 @@ public class OwnerController {
 
         model.addObject("success", "Success!");
         return model;
+    }
+
+    @RequestMapping("/addingredient")
+    public String getAddIngredient(Model model) {
+        model.addAttribute("ingredients", ingredientService.getAllIngredients());
+        return "owner/addingredient";
     }
 }
