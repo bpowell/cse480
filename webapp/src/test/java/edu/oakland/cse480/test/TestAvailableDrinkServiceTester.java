@@ -48,6 +48,17 @@ public class TestAvailableDrinkServiceTester {
                 Assert.assertEquals(availableDrinks.getDrinksByBarId(1).size(), 0);
         }
 
+				@Test
+				public void testInsertAvailableDrink() {
+								AvailableDrinks test = new AvailableDrinks();
+                availableDrinks.insertAvailableDrink(test);
+				}
+
+				@Test
+				public void testDeleteAvailableDrinkById() {
+                availableDrinks.deleteAvailableDrinkById(1);
+				}
+
         @AfterClass
         public static void shutdown() {
                 db.shutdown();
