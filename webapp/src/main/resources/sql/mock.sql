@@ -1,8 +1,12 @@
-insert into users (name, password_hash, email, role_id, enabled) values ('Don', 'ayylmao', 'don@don.com', 1, true); 
-insert into users (name, password_hash, email, role_id, enabled) values ('Brandon', 'ayylmao', 'brandon@brandon.com', 1, true); 
-insert into users (name, password_hash, email, role_id, enabled) values ('Josh', 'ayylmao', 'josh@josh.com', 1, true); 
-insert into users (name, password_hash, email, role_id, enabled) values ('Paul', 'ayylmao', 'paul@paul.com', 1, true); 
-insert into users (name, password_hash, email, role_id, enabled) values ('Eric', 'ayylmao', 'eric@eric.com', 1, true); 
+insert into users (name, password_hash, email, role_id, enabled) values ('Don', 'ayylmao', 'don@don.com', 1, true);
+insert into users (name, password_hash, email, role_id, enabled) values ('Brandon', 'ayylmao', 'brandon@brandon.com', 2, true);
+insert into users (name, password_hash, email, role_id, enabled) values ('Josh', 'ayylmao', 'josh@josh.com', 2, true);
+insert into users (name, password_hash, email, role_id, enabled) values ('Paul', 'ayylmao', 'paul@paul.com', 4, true);
+insert into users (name, password_hash, email, role_id, enabled) values ('Eric', 'ayylmao', 'eric@eric.com', 4, true);
+insert into users (name, password_hash, email, role_id, enabled) values ('Customer1', 'ayylmao', '1@1.com', 5, true);
+insert into users (name, password_hash, email, role_id, enabled) values ('Customer2', 'ayylmao', '2@2.com', 5, true);
+insert into users (name, password_hash, email, role_id, enabled) values ('Customer3', 'ayylmao', '3@3.com', 5, true);
+insert into users (name, password_hash, email, role_id, enabled) values ('Customer4', 'ayylmao', '4@4.com', 5, true);
 
 
 insert into business (name, info, icon_url) values ('BusinessA', 'This place sucks', 'ayy.lmao.com');
