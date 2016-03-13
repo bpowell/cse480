@@ -57,6 +57,7 @@ public class TestAvailableDrinkServiceTester {
 				@Test
 				public void testDeleteAvailableDrinkById() {
                 availableDrinks.deleteAvailableDrinkById(1);
+								Assert.assertNull(availableDrinks.getAvailableDrinksById(1));
 				}
 
         @AfterClass
