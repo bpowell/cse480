@@ -1,6 +1,15 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
+            <c:if test="${empty display}">
+                <div class="row">
+                    <div class="col-xs-0 col-md-3"></div>
+                    <div class="col-xs-12 col-md-6">
+                        <h1><strong>Drink Queue</strong></h1>
+                    </div>
+                    <div class="col-xs-0 col-md-3"></div>
+                </div>
+            </c:if>
             <div class="row">
                 <div class="col-xs-0 col-md-3"></div>
                 <div class="col-xs-12 col-md-6">
@@ -31,13 +40,15 @@
                     </div>
                 </a>
             </c:forEach>
-            <div class="row">
-                <div class="col-xs-0 col-md-3"></div>
-                <div class="col-xs-12 col-md-6">
-                    <a href="<c:url value="/drinklist/${bar_id}" />" class="btn btn-primary btn-lrg btn-block"><strong>Order a Drink!</strong></a>
+            <c:if test="${empty display}">
+                <div class="row">
+                    <div class="col-xs-0 col-md-3"></div>
+                    <div class="col-xs-12 col-md-6">
+                        <a href="<c:url value="/drinklist/${bar_id}" />" class="btn btn-primary btn-lrg btn-block"><strong>Order a Drink!</strong></a>
+                    </div>
+                    <div class="col-xs-0 col-md-3"></div>
                 </div>
-                <div class="col-xs-0 col-md-3"></div>
-            </div>
+            </c:if>
         </div>
     </body>
 </html>
