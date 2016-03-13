@@ -4,6 +4,13 @@
             <div class="row">
                 <div class="col-xs-0 col-md-3"></div>
                 <div class="col-xs-12 col-md-6">
+                    <h1><strong>Bar List</strong></h1>
+                </div>
+                <div class="col-xs-0 col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-0 col-md-3"></div>
+                <div class="col-xs-12 col-md-6">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search for...">
                         <span class="input-group-btn">

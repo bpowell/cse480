@@ -1,29 +1,55 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
-        <c:if test="${not empty error}">
-        <div class="error">${error}</div>
-        </c:if>
-        <c:if test="${not empty msg}">
-        <div class="msg">${msg}</div>
-        </c:if>
-
         <div class="container mainContent">
-            <h2 class="form-signin-heading">Returning Users: Please Sign In</h2>
-            <form method="POST" name="loginForm" action="<c:url value='/login' />" class="form-signin">
-                <label for="username" class="sr-only">Email address</label>
-                <input name="username" type="email" id="username" class="form-control" placeholder="Email address" required autofocus>
-                <label for="password" class="sr-only">Password</label>
-                <input name="password" type="password" id="password" class="form-control" placeholder="Password" required>
-			    <div class="checkbox">
-				    <label>
-						<input name="remeber-me" type="checkbox" value="remember-me"> Remember me
-					</label>
-				</div>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                <div class="col-lg-6">
-                    <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <c:if test="${not empty error}">
+                <div class="row bg-danger">
+                    <div class="col-xs-0 col-md-3"></div>
+                    <div class="col-xs-12 col-md-6">
+                        <h3>${error}</h3>
+                    </div>
+                    <div class="col-xs-0 col-md-3"></div>
                 </div>
-            </form>
+            </c:if>
+            <c:if test="${not empty msg}">
+                <div class="row bg-danger">
+                    <div class="col-xs-0 col-md-3"></div>
+                    <div class="col-xs-12 col-md-6">
+                        <h3>${msg}</h3>
+                    </div>
+                    <div class="col-xs-0 col-md-3"></div>
+                </div>
+            </c:if>
+            <div class="row">
+                <div class="col-xs-0 col-md-3"></div>
+                <div class="col-xs-12 col-md-6">
+                    <h1><strong>Please Sign In</strong></h1>
+                    <form method="POST" name="loginForm" action="<c:url value='/login' />" class="form-signin">
+                        <div class="form-group">
+                            <label for="username">Email address</label>
+                            <input name="username" type="email" id="username" class="form-control" placeholder="Email address" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input name="password" type="password" id="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input name="remember-me" type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                        <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit"><strong>Sign in</strong></button>
+                        <a class="btn btn-primary btn-lg btn-block" href="<c:url value="/register" />"><strong>Register for an account!</strong></a>
+                    </form>
+                </div>
+                <div class="col-xs-0 col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-0 col-md-3"></div>
+                <div class="col-xs-12 col-md-6">
+                </div>
+                <div class="col-xs-0 col-md-3"></div>
+            </div>
         </div>
     </body>
 </html>
