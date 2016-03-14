@@ -6,6 +6,7 @@ public class Ingredient {
     private String description;
     private String icon_url;
     private int category;
+    private String categoryName;
 
     public void setId(int id) {
         this.id = id;
@@ -45,5 +46,13 @@ public class Ingredient {
 
     public void setCategory(int category) {
         this.category = category;
+    }
+
+    public String getCategoryName() {
+        return this.categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }   
