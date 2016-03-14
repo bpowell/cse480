@@ -22,6 +22,7 @@ public class TestAvailableDrinkServiceTester {
                         .setType(EmbeddedDatabaseType.HSQL)
                         .addScript("sql/hsql.sql")
                         .addScript("sql/create.sql")
+                        .addScript("sql/mock.sql")
                         .build();
 
                 availableDrinks = new AvailableDrinksService();
