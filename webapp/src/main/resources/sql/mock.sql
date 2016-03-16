@@ -33,8 +33,8 @@ insert into drink (name, info, make_time, icon_url) values ('beer2', 'info', '20
 insert into drink (name, info, make_time, icon_url) values ('scotch', 'info', '200', 'ayyLmao');
 
 
-insert into drinkorder (drink_id, drink_count, user_id, time_placed) values ('1', '1', '1', '1');
-insert into drinkorder (drink_id, drink_count, user_id, time_placed) values ('2', '2', '2', '2');
+insert into drinkorder (drink_id, drink_count, user_id, time_placed) values ('1', '1', '1', '2015-12-21');
+insert into drinkorder (drink_id, drink_count, user_id, time_placed) values ('2', '2', '2', '2015-12-22');
 
 
 insert into availabledrinks (drink_id, bar_id) values ('1', '1');
