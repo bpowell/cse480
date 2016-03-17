@@ -50,6 +50,16 @@ public class UserService extends AbstractJdbcDriver {
             }
     }
 
+    public List<User> getAllBartendersByBarId(int barId) {
+            try{
+                    List<User> u = new ArrayList<User>();
+                    u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles, bartenders where users.role_id = roles.id and roles.role = 'ROLE_EMPLOYEE' and users.id = bartenders.user_id and bartenders.bar_id = ?", new Object[] {barId}, new UserMapper()));
+                    return u;
+            } catch(Exception er) {
+                    throw new IllegalArgumentException(er.getMessage());
+            }
+    }
+
     public int getUserIdByEmail(String email) {
         try {
             return this.jdbcPostgres.queryForObject("select id from users where email = ?", new Object[] {email}, Integer.class);
@@ -137,6 +147,16 @@ public class UserService extends AbstractJdbcDriver {
     public boolean addBartender(int userId, int barId) {
         try {
             this.jdbcPostgres.update("insert into bartenders (user_id, bar_id) values(?, ?)", userId, barId);
+        } catch(Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean removeBartender(int userId) {
+        try {
+            this.jdbcPostgres.update("delete from bartenders where user_id = ?", userId);
         } catch(Exception e) {
             return false;
         }

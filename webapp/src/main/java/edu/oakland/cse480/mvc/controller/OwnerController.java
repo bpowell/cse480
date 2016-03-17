@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Map;
 import java.util.Objects;
+import java.util.List;
+import java.util.ArrayList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,6 +73,41 @@ public class OwnerController {
         }
 
         if(!userService.addBartender(userId, barId)) {
+            model.addObject("error", "Cannot update user");
+            return model;
+        }
+
+        model.addObject("success", "Success!");
+        return model;
+    }
+
+    @RequestMapping("/removebartender")
+    public String getRemoveBartender(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userdetails = (UserDetails) auth.getPrincipal();
+
+        int ownerId = userService.getUserIdByEmail(userdetails.getUsername());
+        List<User> bartenders = new ArrayList<User>();
+        for(int bid : businessAndBarService.getBarsIdByOwnerId(ownerId)) {
+            bartenders.addAll(userService.getAllBartendersByBarId(bid));
+        }
+
+        model.addAttribute("users", bartenders);
+
+        return "owner/removebartender";
+    }
+
+    @RequestMapping(value = "/removebartender", method = RequestMethod.POST)
+    public ModelAndView removeBartender(@ModelAttribute("userId") int userId) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("owner/removebartender");
+
+        if(!userService.updateRole(userId, 5)) {
+            model.addObject("error", "Cannot update user");
+            return model;
+        }
+
+        if(!userService.removeBartender(userId)) {
             model.addObject("error", "Cannot update user");
             return model;
         }

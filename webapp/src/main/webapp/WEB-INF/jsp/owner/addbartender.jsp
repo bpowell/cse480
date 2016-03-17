@@ -1,28 +1,51 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
-        <div class="container">
-            <h2 class="form-signin-heading">Add Bartender</h2>
-            <div class="col-sm-4">
-                <c:url value="/owner/addbartender" var="post_url" />
-                <form:form method="POST" action="${post_url}" class="form-signin">
-                    <c:if test="${not empty error}">
-                    <div class="error">${error}</div>
-                    </c:if>
-                    <c:if test="${not empty success}">
-                    <div class="has-success">${success}</div>
-                    </c:if>
-                    <select name="userId">
-                        <c:forEach items="${users}" var="user">
-                        <option value="${user.getId()}">${user.getEmail()}</option>
-                        </c:forEach>
-                    </select>
-                    <select name="barId">
-                        <c:forEach items="${bars}" var="bar">
-                        <option value="${bar.getId()}">${bar.getName()} - ${bar.getAddress()}</option>
-                        </c:forEach>
-                    </select>
-                    <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
-                </form:form>
+        <div class="container mainContent">
+            <c:if test="${not empty error}">
+                <div class="row bg-danger">
+                    <div class="col-xs-0 col-md-3"></div>
+                    <div class="col-xs-12 col-md-6">
+                        <h3>${error}</h3>
+                    </div>
+                    <div class="col-xs-0 col-md-3"></div>
+                </div>
+            </c:if>
+            <c:if test="${not empty success}">
+                <div class="row bg-success">
+                    <div class="col-xs-0 col-md-3"></div>
+                    <div class="col-xs-12 col-md-6">
+                        <h3>${success}</h3>
+                    </div>
+                    <div class="col-xs-0 col-md-3"></div>
+                </div>
+            </c:if>
+            <div class="row">
+                <div class="col-xs-0 col-md-3"></div>
+                <div class="col-xs-12 col-md-6">
+                    <h1><strong><a href="<c:url value='/owner/'/>">Owner</a> &frasl;<br />
+                        Add Bartender</strong></h1>
+                    <c:url value="/owner/addbartender" var="post_url" />
+                    <form:form method="POST" action="${post_url}" class="form-signin">
+                        <div class="form-group">
+                            <label for="ownerId">Bartender</label><br />
+                            <select name="userId">
+                                <c:forEach items="${users}" var="user">
+                                    <option value="${user.getId()}">${user.getEmail()}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ownerId">Bar Name</label><br />
+                            <select name="barId">
+                                <c:forEach items="${bars}" var="bar">
+                                    <option value="${bar.getId()}">${bar.getName()} - ${bar.getAddress()}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit"><strong>Update</strong></button>
+                    </form:form>
+                </div>
+                <div class="col-xs-0 col-md-3"></div>
             </div>
         </div>
     </body>

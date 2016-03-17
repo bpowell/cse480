@@ -41,6 +41,15 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
         }
     }
 
+    public List<BarDrinkOrder> getFiveDrinksByEmail(String email) {
+        try {
+            return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.email = ? order by drinkorder.time_placed desc limit 5", new Object[] {email}, new BarDrinkOrderMapper());
+        } catch(Exception e)  {
+            log.info("No drink orders found for email {}", email);
+            return new ArrayList<BarDrinkOrder>();
+        }
+    }
+
     private class BarDrinkOrderMapper implements RowMapper<BarDrinkOrder> {
         public BarDrinkOrder mapRow(ResultSet rs, int rowNum) throws SQLException {
             BarDrinkOrder b = new BarDrinkOrder();
