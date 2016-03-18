@@ -13,7 +13,7 @@
                     <div class="col-xs-0 col-md-2"></div>
                     <div class="col-xs-12 col-md-8">
 			<h3><strong>Username:</strong> ${username}</h3>
-                        <h3><strong>Email Address:</strong> ${username}</h3>
+                        <h3><strong>Email Address:</strong> ${email}</h3>
                         <h3><strong>Password:</strong> <a href="<c:url value="/changepassword" />" class="btn btn-primary btn-lrg">Change Password</a></h3>
                     </div>
                     <div class="col-xs-0 col-md-2"></div>
@@ -40,13 +40,21 @@
                         <h3><strong>Recent Bars:</strong></h3>
                         <c:forEach items="${business}" var="bar">
                             <div class="row">
-                                <div class="col-xs-3 bar-icon">
-                                    <img src="<c:url value="${bar.getIconUrl()}"/>" class="img-fluid img-rounded" alt="${bar.getBarName()} icon" />
+                                <div class="col-xs-12 drink-text">
+                                    <h3><strong>${bar.getName()}</strong></h3>
                                 </div>
-                                <div class="col-xs-9 drink-text">
-                                    <h3><strong>${bar.getBarName()}</strong></h3>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 drink-text">
                                     <p>
-                                        <strong>Quantity:</strong> ${drink.getBarInfo()}<br />
+                                        ${bar.getAddress()}<br />
+                                        ${bar.getCity()}, ${bar.getState()} ${bar.getZipcode()}
+                                    </p>
+                                </div>
+                                <div class="col-xs-6 drink-text">
+                                    <p>
+                                        <strong>Phone Number:</strong><br />
+                                        ${bar.getPhoneNumber()}
                                     </p>
                                 </div>
                             </div>
