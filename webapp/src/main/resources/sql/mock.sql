@@ -34,7 +34,10 @@ insert into drink (name, info, make_time, icon_url) values ('scotch', 'info', '2
 
 
 insert into drinkorder (drink_id, drink_count, user_id, time_placed) values ('1', '1', '1', '2015-12-16 12:21:13');
-insert into drinkorder (drink_id, drink_count, user_id, time_placed) values ('2', '2', '2', '2015-12-17 12:22:15');
+insert into drinkorder (drink_id, drink_count, user_id, time_placed) values ('2', '1', '2', '2015-12-16 12:22:13');
+insert into drinkorder (drink_id, drink_count, user_id, time_placed) values ('1', '3', '3', '2015-12-16 12:24:13');
+insert into drinkorder (drink_id, drink_count, user_id, time_placed) values ('1', '1', '4', '2015-12-16 12:25:13');
+insert into drinkorder (drink_id, drink_count, user_id, time_placed) values ('2', '1', '5', '2015-12-17 12:22:15');
 
 
 insert into availabledrinks (drink_id, bar_id) values ('1', '1');
