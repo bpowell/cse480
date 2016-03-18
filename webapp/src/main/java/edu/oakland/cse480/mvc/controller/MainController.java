@@ -85,8 +85,11 @@ public class MainController{
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             UserDetails userDetail = (UserDetails) auth.getPrincipal();
-            model.addObject("username", userDetail.getUsername());
-	    model.addObject("drinks", barDrinkOrderService.getFiveDrinksByEmail(userDetail.getUsername()));
+            String email = userDetail.getUsername();
+            model.addObject("email", email);
+            model.addObject("username", us.getUsernameByEmail(email));
+	    model.addObject("drinks", barDrinkOrderService.getFiveDrinksByEmail(email));
+            model.addObject("business", businessAndBarService.getFiveBarsByEmail(email));
         }
 
         model.setViewName("profile");
