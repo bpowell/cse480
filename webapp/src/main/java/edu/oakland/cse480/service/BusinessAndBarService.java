@@ -65,6 +65,16 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
         }
     }
 
+    public List<Bar> getFiveBarsByEmail(String email) {
+        try {
+            List<Bar> b = new ArrayList<Bar>();
+            b.addAll(this.jdbcPostgres.query("select distinct on (bar.id) bar.id, bar.name, bar.business_id, bar.owner_id, bar.address, bar.city, bar.zipcode, bar.state, bar.phonenumber, barhours.monday, barhours.tuesday, barhours.wednesday, barhours.thursday, barhours.friday, barhours.saturday, barhours.sunday from bar left join barhours on barhours.bar_id = bar.id left join drinkorder on drinkorder.bar_id = bar.id left join users on users.id = drinkorder.user_id where users.email = ?", new Object[] {email}, new BarMapper())); 
+            return b;
+        } catch(Exception e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
+    }
+
     public List<Business> getAllBusinesses() {
         try {
             List<Business> b = new ArrayList<Business>();
