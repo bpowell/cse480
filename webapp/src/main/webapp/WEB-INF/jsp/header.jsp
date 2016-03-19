@@ -31,11 +31,13 @@
                         <div class="collapse navbar-collapse" id="drinkQNavbar">
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="<c:url value="/barview" />"><strong>View Bars</strong></a></li>
-                                <sec:authorize access="isAnonymous()">
-                                    <li><a href="<c:url value="/login" />"><strong>Login</strong></a></li>
+                                <li><a href="<c:url value="/profile" />"><strong>View Profile</strong></a></li>
+                                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                                    <li><a href="<c:url value="/owner/" />"><strong>Owner Menu</strong></a></li>
+                                    <li><a href="<c:url value="/admin/" />"><strong>Admin Menu</strong></a></li>
                                 </sec:authorize>
-                                <sec:authorize access="isAuthenticated()">
-                                    <li><a href="<c:url value="/profile" />"><strong>View Profile</strong></a></li>
+                                <sec:authorize access="hasRole('ROLE_OWNER')">
+                                    <li><a href="<c:url value="/owner/" />"><strong>Owner Menu</strong></a></li>
                                 </sec:authorize>
                             </ul>
                        </div>
