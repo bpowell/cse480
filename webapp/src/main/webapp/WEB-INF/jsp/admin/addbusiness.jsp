@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group">
                             <label for="info">Business Description</label>
-                            <input type="text" name="info" id="info" class="form-control" placeholder="Description" required>
+                            <textarea name="info" id="info" class="form-control" rows="4" placeholder="Description" required></textarea>
                         </div>
                         <div class="form-group">
                             <label for="iconUrl">Business Image URL</label>
