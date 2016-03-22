@@ -130,19 +130,27 @@ public class OwnerController {
 
     @RequestMapping(value = "/updatehours", method = RequestMethod.POST)
     public ModelAndView updateHours(@ModelAttribute("hours") @Valid Hours hours, BindingResult result) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userdetails = (UserDetails) auth.getPrincipal();
+
+        int ownerId = userService.getUserIdByEmail(userdetails.getUsername());
+
         ModelAndView model = new ModelAndView();
         model.setViewName("owner/updatehours");
 
         if(result.hasErrors()) {
+            model.addObject("bars", businessAndBarService.getBarsByOwnerId(ownerId));
             model.addObject("error", "Try again");
             return model;
         }
 
         if(!businessAndBarService.updateBarHoursById(hours)) {
+            model.addObject("bars", businessAndBarService.getBarsByOwnerId(ownerId));
             model.addObject("error", "Try again");
             return model;
         }
 
+        model.addObject("bars", businessAndBarService.getBarsByOwnerId(ownerId));
         model.addObject("success", hours.getSundayHours());
 
         return model;
