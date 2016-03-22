@@ -11,8 +11,6 @@ public class Ingredient {
     @NotBlank
     private String description;
     private String icon_url;
-
-    @NotBlank
     private int category;
     private String categoryName;
 
