@@ -119,30 +119,6 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
         return true;
     }
 
-	private class BarMapper implements RowMapper<Bar>{
-		public Bar mapRow(ResultSet rs, int rowNum) throws SQLException {
-			Bar b = new Bar();
-			b.setId(rs.getInt("id"));
-			b.setName(rs.getString("name"));
-			b.setBusinessId(rs.getInt("business_id"));
-			b.setOwnerId(rs.getInt("owner_id"));
-                        b.setAddress(rs.getString("address"));
-                        b.setCity(rs.getString("city"));
-                        b.setZipcode(rs.getString("zipcode"));
-                        b.setState(rs.getString("state"));
-                        b.setPhoneNumber(rs.getString("phonenumber"));
-                        b.setMondayHours(rs.getString("monday"));
-                        b.setTuesdayHours(rs.getString("tuesday"));
-                        b.setWednesdayHours(rs.getString("wednesday"));
-                        b.setThursdayHours(rs.getString("thursday"));
-                        b.setFridayHours(rs.getString("friday"));
-                        b.setSaturdayHours(rs.getString("saturday"));
-                        b.setSundayHours(rs.getString("sunday"));
- 
-			return b;
-		}
-	}
-
 	private class BusinessMapper implements RowMapper<Business>{
 		public Business mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Business r = new Business();
