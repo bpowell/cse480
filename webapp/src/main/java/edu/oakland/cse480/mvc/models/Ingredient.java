@@ -1,10 +1,18 @@
 package edu.oakland.cse480.mvc.models;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Ingredient {
     private int id;
+
+    @NotBlank
     private String name;
+
+    @NotBlank
     private String description;
     private String icon_url;
+
+    @NotBlank
     private int category;
     private String categoryName;
 
