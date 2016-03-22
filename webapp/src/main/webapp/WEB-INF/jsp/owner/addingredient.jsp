@@ -25,6 +25,30 @@
                     <h1><strong><a href="<c:url value='/owner/'/>">Owner</a> &frasl;<br />
                         Add Ingredient</strong></h1>
                         <c:url value="/owner/addingredient" var="post_url" />
+                        <form:form method="POST" action="${post_url}" class="form-signin">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Name" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea rows="5" cols="50" type="text" name="description" id="description" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="iconUrl">Image URL</label>
+                                <input type="text" name="iconUrl" id="iconUrl" class="form-control" placeholder="https://mybeer.com/logo.png" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ownerId">Category</label><br />
+                                <select name="category">
+                                    <c:forEach items="${categories}" var="c">
+                                    <option value="${c.getId()}">${c.getName()}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit"><strong>Update</strong></button>
+                        </form:form>
+
                         <div class="row">
                             <div class="col-md-2">Name</div>
                             <div class="col-md-2">Description</div>

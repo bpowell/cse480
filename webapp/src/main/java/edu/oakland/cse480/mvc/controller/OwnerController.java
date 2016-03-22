@@ -3,6 +3,7 @@ package edu.oakland.cse480.mvc.controller;
 import edu.oakland.cse480.service.UserService;
 import edu.oakland.cse480.service.BusinessAndBarService;
 import edu.oakland.cse480.service.IngredientService;;
+import edu.oakland.cse480.service.CategoriesService;;
 import edu.oakland.cse480.mvc.models.User;
 import edu.oakland.cse480.mvc.models.Ingredient;
 
@@ -44,6 +45,9 @@ public class OwnerController {
 
     @Autowired
     IngredientService ingredientService;
+
+    @Autowired
+    CategoriesService categoriesService;
 
     /**
      * Sends the user to the main page.
@@ -124,6 +128,7 @@ public class OwnerController {
     @RequestMapping("/addingredient")
     public String getAddIngredient(Model model) {
         model.addAttribute("ingredients", ingredientService.getAllIngredients());
+        model.addAttribute("categories", categoriesService.getAllCategories());
         return "owner/addingredient";
     }
 }
