@@ -55,7 +55,7 @@ public class IngredientService extends AbstractJdbcDriver {
 
     public void updateIngredientById(Ingredient i, int id) {
         try {
-            this.jdbcPostgres.update("update ingredient set name = ?, description = ?, icon_url = ?, category = ? where id = ?", new Object[] {i.getName(), i.getDescription(), i.getIconUrl(), i.getCategory(), id});
+            this.jdbcPostgres.update("update ingredient set name = ?, description = ?, icon_url = ?, category_id = ? where id = ?", new Object[] {i.getName(), i.getDescription(), i.getIconUrl(), i.getCategory(), id});
         } catch(Exception e) {
             log.info("Cannot update ingredient with id {}", id);
         }
@@ -63,7 +63,7 @@ public class IngredientService extends AbstractJdbcDriver {
 
     public boolean insertIngredient(Ingredient i) {
         try {
-            this.jdbcPostgres.update("insert into ingredient (name, description, icon_url, category) values(?, ?, ?, ?)", new Object[] {i.getName(), i.getDescription(), i.getIconUrl(), i.getCategory()});
+            this.jdbcPostgres.update("insert into ingredient (name, description, icon_url, category_id) values(?, ?, ?, ?)", new Object[] {i.getName(), i.getDescription(), i.getIconUrl(), i.getCategory()});
             return true;
         } catch(Exception e) {
             log.info("Cannot insert ingredient");
