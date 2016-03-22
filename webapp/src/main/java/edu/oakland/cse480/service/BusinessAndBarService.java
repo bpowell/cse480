@@ -122,7 +122,7 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
 
     public boolean updateBarHoursById(Hours hours) {
         try {
-            if(!this.jdbcPostgres.queryForObject("select exists(select 1 from barhours where id = ?)", new Object[] {hours.getBarId()}, Boolean.class)) {
+            if(!this.jdbcPostgres.queryForObject("select exists(select 1 from barhours where bar_id = ?)", new Object[] {hours.getBarId()}, Boolean.class)) {
                 this.jdbcPostgres.update("insert into barhours (bar_id, monday, tuesday, wednesday, thursday, friday, saturday, sunday) values (?, ?, ?, ?, ?, ?, ?, ?)", hours.getBarId(), hours.getMondayHours(), hours.getTuesdayHours(), hours.getWednesdayHours(), hours.getThursdayHours(), hours.getFridayHours(), hours.getSaturdayHours(), hours.getSundayHours());
             } else {
                 this.jdbcPostgres.update("update barhours set monday = ?, tuesday = ?, wednesday = ?, thursday = ?, friday = ?, saturday = ?, sunday = ? where bar_id = ?", hours.getMondayHours(), hours.getTuesdayHours(), hours.getWednesdayHours(), hours.getThursdayHours(), hours.getFridayHours(), hours.getSaturdayHours(), hours.getSundayHours(), hours.getBarId());
