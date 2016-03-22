@@ -28,8 +28,9 @@ insert into barhours (bar_id, monday, tuesday, wednesday, thursday, friday, satu
 insert into bannedusers (user_id, bar_id) values (1, 1);
 
 
-insert into drink (name, info, make_time, icon_url) values ('beer1', 'info', '200', 'ayyLmao');
-insert into drink (name, info, make_time, icon_url) values ('beer2', 'info', '200', 'ayyLmao');
+insert into drink (name, info, make_time, icon_url) values ('beer1', 'info', '100', 'ayyLmao');
+insert into drink (name, info, make_time, icon_url) values ('beer2', 'info', '100', 'ayyLmao');
+insert into drink (name, info, make_time, icon_url) values ('beer3', 'info', '100', 'ayyLmao');
 insert into drink (name, info, make_time, icon_url) values ('scotch', 'info', '200', 'ayyLmao');
 
 
