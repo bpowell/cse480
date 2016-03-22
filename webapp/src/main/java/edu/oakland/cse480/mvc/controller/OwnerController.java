@@ -3,6 +3,7 @@ package edu.oakland.cse480.mvc.controller;
 import edu.oakland.cse480.service.UserService;
 import edu.oakland.cse480.service.BusinessAndBarService;
 import edu.oakland.cse480.mvc.models.User;
+import edu.oakland.cse480.mvc.models.Hours;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -113,6 +114,37 @@ public class OwnerController {
         }
 
         model.addObject("success", "Success!");
+        return model;
+    }
+
+    @RequestMapping("/updatehours")
+    public String getUpdateHours(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userdetails = (UserDetails) auth.getPrincipal();
+
+        int ownerId = userService.getUserIdByEmail(userdetails.getUsername());
+
+        model.addAttribute("bars", businessAndBarService.getBarsByOwnerId(ownerId));
+        return "owner/updatehours";
+    }
+
+    @RequestMapping(value = "/updatehours", method = RequestMethod.POST)
+    public ModelAndView updateHours(@ModelAttribute("hours") @Valid Hours hours, BindingResult result) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("owner/updatehours");
+
+        if(result.hasErrors()) {
+            model.addObject("error", "Try again");
+            return model;
+        }
+
+        if(!businessAndBarService.updateBarHoursById(hours)) {
+            model.addObject("error", "Try again");
+            return model;
+        }
+
+        model.addObject("success", hours.getSundayHours());
+
         return model;
     }
 }
