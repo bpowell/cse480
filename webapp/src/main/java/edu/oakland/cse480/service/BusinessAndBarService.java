@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import edu.oakland.cse480.mvc.models.Bar;
+import edu.oakland.cse480.mvc.models.Hours;
 import edu.oakland.cse480.mvc.models.Business;
 
 import java.sql.ResultSet;
@@ -113,6 +114,21 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
         try {
             this.jdbcPostgres.update("insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values(?, ?, ?, ?, ?, ?, ?, ?)", b.getName(), b.getBusinessId(), b.getOwnerId(), b.getAddress(), b.getCity(), b.getZipcode(), b.getState(), b.getPhoneNumber());
         } catch(Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean updateBarHoursById(Hours hours) {
+        try {
+            if(!this.jdbcPostgres.queryForObject("select exists(select 1 from barhours where id = ?)", new Object[] {hours.getBarId()}, Boolean.class)) {
+                this.jdbcPostgres.update("insert into barhours (bar_id, monday, tuesday, wednesday, thursday, friday, saturday, sunday) values (?, ?, ?, ?, ?, ?, ?, ?)", hours.getBarId(), hours.getMondayHours(), hours.getTuesdayHours(), hours.getWednesdayHours(), hours.getThursdayHours(), hours.getFridayHours(), hours.getSaturdayHours(), hours.getSundayHours());
+            } else {
+                this.jdbcPostgres.update("update barhours set monday = ?, tuesday = ?, wednesday = ?, thursday = ?, friday = ?, saturday = ?, sunday = ? where bar_id = ?", hours.getMondayHours(), hours.getTuesdayHours(), hours.getWednesdayHours(), hours.getThursdayHours(), hours.getFridayHours(), hours.getSaturdayHours(), hours.getSundayHours(), hours.getBarId());
+            }
+        } catch(Exception e) {
+            log.error("", e);
             return false;
         }
 
