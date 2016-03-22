@@ -40,22 +40,22 @@
                                 <input type="text" name="sundayHours" value="${bar.getSundayHours()}" >
                                 <br />
                                 <label for="mondayHours">Monday Hours</label><br />
-                                <input type="text" name="mondayHours" value="${bar.getSundayHours()}" >
+                                <input type="text" name="mondayHours" value="${bar.getMondayHours()}" >
                                 <br />
                                 <label for="tuesdayHours">Tuesday Hours</label><br />
-                                <input type="text" name="tuesdayHours" value="${bar.getSundayHours()}" >
+                                <input type="text" name="tuesdayHours" value="${bar.getTuesdayHours()}" >
                                 <br />
                                 <label for="wednesdayHours">Wednesday Hours</label><br />
-                                <input type="text" name="wednesdayHours" value="${bar.getSundayHours()}" >
+                                <input type="text" name="wednesdayHours" value="${bar.getWednesdayHours()}" >
                                 <br />
                                 <label for="thursdayHours">Thursday Hours</label><br />
-                                <input type="text" name="thursdayHours" value="${bar.getSundayHours()}" >
+                                <input type="text" name="thursdayHours" value="${bar.getThursdayHours()}" >
                                 <br />
                                 <label for="fridayHours">Friday Hours</label><br />
-                                <input type="text" name="fridayHours" value="${bar.getSundayHours()}" >
+                                <input type="text" name="fridayHours" value="${bar.getFridayHours()}" >
                                 <br />
                                 <label for="saturdayHours">Saturday Hours</label><br />
-                                <input type="text" name="saturdayHours" value="${bar.getSundayHours()}" >
+                                <input type="text" name="saturdayHours" value="${bar.getSaturdayHours()}" >
                             </div>
                             <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit"><strong>Update</strong></button>
                         </form:form>
