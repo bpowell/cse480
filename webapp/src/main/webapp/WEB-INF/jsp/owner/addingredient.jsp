@@ -25,7 +25,7 @@
                     <h1><strong><a href="<c:url value='/owner/'/>">Owner</a> &frasl;<br />
                         Add Ingredient</strong></h1>
                         <c:url value="/owner/addingredient" var="post_url" />
-                        <form:form method="POST" action="${post_url}" class="form-signin">
+                        <form:form method="POST" action="${post_url}" class="form-signin" commandName="addIngredient">
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" name="name" id="name" class="form-control" placeholder="Name" required autofocus>
@@ -46,7 +46,7 @@
                                     </c:forEach>
                                 </select>
                             </div>
-                            <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit"><strong>Update</strong></button>
+                            <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit"><strong>Submit</strong></button>
                         </form:form>
 
                         <div class="row">
