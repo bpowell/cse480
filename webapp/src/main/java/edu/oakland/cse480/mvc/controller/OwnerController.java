@@ -131,4 +131,26 @@ public class OwnerController {
         model.addAttribute("categories", categoriesService.getAllCategories());
         return "owner/addingredient";
     }
+
+    @RequestMapping(value = "/addingredient", method = RequestMethod.POST)
+    public ModelAndView addBusiness(@ModelAttribute("addIngredient") @Valid Ingredient ingredient, BindingResult result) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("owner/addingredient");
+
+        model.addAttribute("ingredients", ingredientService.getAllIngredients());
+        model.addAttribute("categories", categoriesService.getAllCategories());
+
+        if(result.hasErrors()){
+            model.addObject("error", "Try again");
+            return model;
+        }
+
+        if(!ingredientService.insertIngredient(ingredient)) {
+            model.addObject("error", "Cannot add ingredient, try again later");
+            return model;
+        }
+
+        model.addObject("success", "Success!");
+        return model;
+    }
 }
