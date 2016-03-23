@@ -26,9 +26,10 @@ public class IngredientService extends AbstractJdbcDriver {
     public List<Ingredient> getAllIngredients() {
         List<Ingredient> i = new ArrayList<Ingredient>();
         try {
-            i.addAll(this.jdbcPostgres.query("select * from ingredient", new IngredientMapper()));
+            i.addAll(this.jdbcPostgres.query("select ingredient.id, ingredient.name, ingredient.description, icon_url, category_id, categories.name as catname from ingredient, categories where categories.id = ingredient.category_id", new IngredientMapper()));
         } catch(Exception e) {
             log.error("No ingredient found");
+            log.error("",e);
         }
 
         return i;
@@ -36,7 +37,7 @@ public class IngredientService extends AbstractJdbcDriver {
 
     public List<Ingredient> getIngredientById(int id) {
         try {
-            return this.jdbcPostgres.query("select * from ingredient where id = ?", new Object[] {id}, new IngredientMapper());
+            return this.jdbcPostgres.query("select ingredient.id, ingredient.name, ingredient.description, icon_url, category_id, categories.name as catname from ingredient, categories where categories.id = ingredient.category_id and ingredient.id = ?", new Object[] {id}, new IngredientMapper());
         } catch(Exception e) {
             log.info("No ingredient found for id {}", id);
             return new ArrayList<Ingredient>();
@@ -45,7 +46,7 @@ public class IngredientService extends AbstractJdbcDriver {
 
     public List<Ingredient> getIngredientByName(String name) {
         try {
-            return this.jdbcPostgres.query("select * from ingredient where name = ?", new Object[] {name}, new IngredientMapper());
+            return this.jdbcPostgres.query("select ingredient.id, ingredient.name, ingredient.description, icon_url, category_id, categories.name as catname from ingredient, categories where categories.id = ingredient.category_id and ingredient.name = ?", new Object[] {name}, new IngredientMapper());
         } catch(Exception e) {
             log.info("No ingredient found for name {}", name);
             return new ArrayList<Ingredient>();
@@ -54,18 +55,21 @@ public class IngredientService extends AbstractJdbcDriver {
 
     public void updateIngredientById(Ingredient i, int id) {
         try {
-            this.jdbcPostgres.update("update ingredient set name = ?, description = ?, icon_url = ?, category = ? where id = ?", new Object[] {i.getName(), i.getDescription(), i.getIconUrl(), i.getCategory(), id});
+            this.jdbcPostgres.update("update ingredient set name = ?, description = ?, icon_url = ?, category_id = ? where id = ?", new Object[] {i.getName(), i.getDescription(), i.getIconUrl(), i.getCategory(), id});
         } catch(Exception e) {
             log.info("Cannot update ingredient with id {}", id);
         }
     }
 
-    public void insertIngredient(Ingredient i) {
+    public boolean insertIngredient(Ingredient i) {
         try {
-            this.jdbcPostgres.update("insert into ingredient (name, description, icon_url, category) values(?, ?, ?, ?)", new Object[] {i.getName(), i.getDescription(), i.getIconUrl(), i.getCategory()});
+            this.jdbcPostgres.update("insert into ingredient (name, description, icon_url, category_id) values(?, ?, ?, ?)", new Object[] {i.getName(), i.getDescription(), i.getIconUrl(), i.getCategory()});
+            return true;
         } catch(Exception e) {
             log.info("Cannot insert ingredient");
         }
+
+        return false;
     }
 
     public void deleteIngredientById(int id) {
@@ -83,7 +87,8 @@ public class IngredientService extends AbstractJdbcDriver {
             i.setName(rs.getString("name"));
             i.setDescription(rs.getString("description"));
             i.setIconUrl(rs.getString("icon_url"));
-            i.setCategory(rs.getInt("category"));
+            i.setCategory(rs.getInt("category_id"));
+            i.setCategoryName(rs.getString("catname"));
 
             return i;
         }

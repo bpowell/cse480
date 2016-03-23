@@ -2,7 +2,10 @@ package edu.oakland.cse480.mvc.controller;
 
 import edu.oakland.cse480.service.UserService;
 import edu.oakland.cse480.service.BusinessAndBarService;
+import edu.oakland.cse480.service.IngredientService;
+import edu.oakland.cse480.service.CategoriesService;
 import edu.oakland.cse480.mvc.models.User;
+import edu.oakland.cse480.mvc.models.Ingredient;
 import edu.oakland.cse480.mvc.models.Hours;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -40,6 +43,12 @@ public class OwnerController {
 
     @Autowired
     BusinessAndBarService businessAndBarService;
+
+    @Autowired
+    IngredientService ingredientService;
+
+    @Autowired
+    CategoriesService categoriesService;
 
     /**
      * Sends the user to the main page.
@@ -113,6 +122,38 @@ public class OwnerController {
             return model;
         }
 
+        model.addObject("success", "Success!");
+        return model;
+    }
+
+    @RequestMapping("/addingredient")
+    public String getAddIngredient(Model model) {
+        model.addAttribute("ingredients", ingredientService.getAllIngredients());
+        model.addAttribute("categories", categoriesService.getAllCategories());
+        return "owner/addingredient";
+    }
+
+    @RequestMapping(value = "/addingredient", method = RequestMethod.POST)
+    public ModelAndView addBusiness(@ModelAttribute("addIngredient") @Valid Ingredient ingredient, BindingResult result) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("owner/addingredient");
+
+        if(result.hasErrors()){
+            model.addObject("ingredients", ingredientService.getAllIngredients());
+            model.addObject("categories", categoriesService.getAllCategories());
+            model.addObject("error", "Try again");
+            return model;
+        }
+
+        if(!ingredientService.insertIngredient(ingredient)) {
+            model.addObject("ingredients", ingredientService.getAllIngredients());
+            model.addObject("categories", categoriesService.getAllCategories());
+            model.addObject("error", "Cannot add ingredient, try again later");
+            return model;
+        }
+
+        model.addObject("ingredients", ingredientService.getAllIngredients());
+        model.addObject("categories", categoriesService.getAllCategories());
         model.addObject("success", "Success!");
         return model;
     }
