@@ -2,8 +2,8 @@ package edu.oakland.cse480.mvc.controller;
 
 import edu.oakland.cse480.service.UserService;
 import edu.oakland.cse480.service.BusinessAndBarService;
-import edu.oakland.cse480.service.IngredientService;;
-import edu.oakland.cse480.service.CategoriesService;;
+import edu.oakland.cse480.service.IngredientService;
+import edu.oakland.cse480.service.CategoriesService;
 import edu.oakland.cse480.mvc.models.User;
 import edu.oakland.cse480.mvc.models.Ingredient;
 
@@ -137,8 +137,8 @@ public class OwnerController {
         ModelAndView model = new ModelAndView();
         model.setViewName("owner/addingredient");
 
-        model.addAttribute("ingredients", ingredientService.getAllIngredients());
-        model.addAttribute("categories", categoriesService.getAllCategories());
+        model.addObject("ingredients", ingredientService.getAllIngredients());
+        model.addObject("categories", categoriesService.getAllCategories());
 
         if(result.hasErrors()){
             model.addObject("error", "Try again");
