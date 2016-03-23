@@ -25,7 +25,8 @@
                         <div class="col-xs-9 col-md-7 drink-text">
                             <h3><strong>${q.getDrinkName()}</strong></h3>
                             <p>
-                                <strong>Description:</strong>
+                                <strong>Quantity:</strong>${q.getDrinkCount()}<br />
+                                <strong>User:</strong>${q.getUserName()}
                             </p>
                         </div>
                         <div class="col-xs-0 col-md-2"></div>
@@ -36,7 +37,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <div class="col-xs-10 col-md-11">
-                                    <h3>${q.getDrinkName()}</h3>
+                                    <strong class="h3">${q.getDrinkName()}</strong>
                                 </div>
                                 <div class="col-xs-2 col-md-1">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -88,7 +89,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <div class="col-xs-10 col-md-11">
-                                        <h3>${drink.getName()}</h3>
+                                        <strong class="h3">${drink.getName()}</strong>
                                     </div>
                                     <div class="col-xs-2 col-md-1">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
