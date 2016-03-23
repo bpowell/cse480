@@ -151,7 +151,7 @@ public class OwnerController {
         }
 
         model.addObject("bars", businessAndBarService.getBarsByOwnerId(ownerId));
-        model.addObject("success", hours.getSundayHours());
+        model.addObject("success", "Hours Updated!");
 
         return model;
     }
