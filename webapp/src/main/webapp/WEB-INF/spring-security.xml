@@ -19,7 +19,7 @@
             authentication-failure-url="/login?error"
             username-parameter="username"
             password-parameter="password" />
-        <security:logout logout-success-url="/login?logout"  />
+        <security:logout logout-success-url="/login?logout" logout-url="/j_spring_security_logout" />
         <security:csrf/>
         <security:remember-me
             remember-me-parameter="_spring_security_remember_me"
