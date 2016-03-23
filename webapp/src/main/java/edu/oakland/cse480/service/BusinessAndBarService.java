@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import edu.oakland.cse480.mvc.models.Bar;
+import edu.oakland.cse480.mvc.models.Hours;
 import edu.oakland.cse480.mvc.models.Business;
 
 import java.sql.ResultSet;
@@ -119,29 +120,20 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
         return true;
     }
 
-	private class BarMapper implements RowMapper<Bar>{
-		public Bar mapRow(ResultSet rs, int rowNum) throws SQLException {
-			Bar b = new Bar();
-			b.setId(rs.getInt("id"));
-			b.setName(rs.getString("name"));
-			b.setBusinessId(rs.getInt("business_id"));
-			b.setOwnerId(rs.getInt("owner_id"));
-                        b.setAddress(rs.getString("address"));
-                        b.setCity(rs.getString("city"));
-                        b.setZipcode(rs.getString("zipcode"));
-                        b.setState(rs.getString("state"));
-                        b.setPhoneNumber(rs.getString("phonenumber"));
-                        b.setMondayHours(rs.getString("monday"));
-                        b.setTuesdayHours(rs.getString("tuesday"));
-                        b.setWednesdayHours(rs.getString("wednesday"));
-                        b.setThursdayHours(rs.getString("thursday"));
-                        b.setFridayHours(rs.getString("friday"));
-                        b.setSaturdayHours(rs.getString("saturday"));
-                        b.setSundayHours(rs.getString("sunday"));
- 
-			return b;
-		}
-	}
+    public boolean updateBarHoursById(Hours hours) {
+        try {
+            if(!this.jdbcPostgres.queryForObject("select exists(select 1 from barhours where bar_id = ?)", new Object[] {hours.getBarId()}, Boolean.class)) {
+                this.jdbcPostgres.update("insert into barhours (bar_id, monday, tuesday, wednesday, thursday, friday, saturday, sunday) values (?, ?, ?, ?, ?, ?, ?, ?)", hours.getBarId(), hours.getMondayHours(), hours.getTuesdayHours(), hours.getWednesdayHours(), hours.getThursdayHours(), hours.getFridayHours(), hours.getSaturdayHours(), hours.getSundayHours());
+            } else {
+                this.jdbcPostgres.update("update barhours set monday = ?, tuesday = ?, wednesday = ?, thursday = ?, friday = ?, saturday = ?, sunday = ? where bar_id = ?", hours.getMondayHours(), hours.getTuesdayHours(), hours.getWednesdayHours(), hours.getThursdayHours(), hours.getFridayHours(), hours.getSaturdayHours(), hours.getSundayHours(), hours.getBarId());
+            }
+        } catch(Exception e) {
+            log.error("", e);
+            return false;
+        }
+
+        return true;
+    }
 
 	private class BusinessMapper implements RowMapper<Business>{
 		public Business mapRow(ResultSet rs, int rowNum) throws SQLException {
