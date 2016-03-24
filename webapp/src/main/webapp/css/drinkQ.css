@@ -32,10 +32,19 @@ DrinkQ Color Reference List:
 
 Default */
 
+@font-face {
+  font-family: 'Nobile';
+  src: url('Nobile-Medium.woff2') format('woff2'), /* Super Modern Browsers */
+       url('Nobile-Medium.woff') format('woff'), /* Pretty Modern Browsers */
+       url('Nobile-Medium.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
 html,body {
     background-color: #292729;
     color: #292729;
+    font-family: 'Nobile', Fallback, sans-serif;
     font-size: 1em;
+    letter-spacing: -1px;
 }
 a {
     color: #292729;
