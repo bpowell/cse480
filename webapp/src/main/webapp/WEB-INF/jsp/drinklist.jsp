@@ -53,7 +53,12 @@
                                 </p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Order ${q.getDrinkName()}</button>
+                                <sec:authorize access="isAuthenticated()">
+                                    <a href="#" type="button" class="btn btn-primary">Order ${q.getDrinkName()}</a>
+                                </sec:authorize>
+                                <sec:authorize access="isAnonymous()">
+                                    <a href="<c:url value="/login" />" type="button" class="btn btn-primary">Sign in to Order!</a>
+                                </sec:authorize>
                                 <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -105,7 +110,12 @@
                                     </p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary">Order ${drink.getName()}</button>
+                                    <sec:authorize access="isAuthenticated()">
+                                        <a href="#" type="button" class="btn btn-primary">Order ${q.getDrinkName()}</a>
+                                    </sec:authorize>
+                                    <sec:authorize access="isAnonymous()">
+                                        <a href="<c:url value="/login" />" type="button" class="btn btn-primary">Sign in to Order!</a>
+                                    </sec:authorize>
                                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
