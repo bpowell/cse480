@@ -54,11 +54,13 @@ public class MainController{
      * @param model
      * @return The index jsp page.
      */
-    @RequestMapping("/")
-    public String getIndex(Model model){
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView getIndex(){
+        ModelAndView model = new ModelAndView();
         log.trace("MainController -> Entering getIndex(model=)");
         log.trace("MainController -> Leaving getIndex(): index");
-        return "index";
+        model.setViewName("welcome");
+        return model;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -126,7 +128,7 @@ public class MainController{
 
         us.insertUser(registerNewUser, "ROLE_USER");
 
-        model.setViewName("index");
+        model.setViewName("login");
 
         return model;
     }

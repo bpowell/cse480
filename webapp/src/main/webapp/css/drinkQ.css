@@ -132,6 +132,42 @@ a:focus, a:hover {
     color: #e9d0a8;
 }
 
+/** Welcome.jsp **/
+.welcomeImage {
+    
+    background-image: url('../img/team_pic_sm.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    margin-top:65px;
+    min-height:600px;
+}
+.welcomeContentLight {
+    background-color: #e9d0a8;
+    color: #292729;
+    padding: 15px;
+    min-height: 400px;
+}
+.welcomeContentDark {
+    background-color: #292729;
+    color: #e9d0a8;
+    padding: 15px;
+    min-height: 400px;
+}
+.welcomeRegister {
+    background-color: #e9d0a8;
+    color: #292729;
+    padding: 15px;
+    min-height: 200px;
+}
+#welcomeRegister > div > a {
+    background-color: #cfae60;
+    color: #292729;
+}
+#welcomeRegister > div > a:focus, #welcomeRegister > div > a:hover {
+    background-color: #5F182A;
+    color: #e9d0a8;
+}
 /** Barview.jsp **/
 .bar-info {
     padding: 0;
