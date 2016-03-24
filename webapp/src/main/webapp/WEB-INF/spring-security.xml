@@ -14,7 +14,7 @@
         <security:access-denied-handler error-page="/403" />
         <security:form-login
             login-page="/login"
-            default-target-url="/welcome"
+            default-target-url="/profile"
             login-processing-url="/login"
             authentication-failure-url="/login?error"
             username-parameter="username"
