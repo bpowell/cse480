@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-xs-0 col-md-3"></div>
                 <div class="col-xs-12 col-md-6 text-center">
-                    <h1><strong>FOR THE THIRSTY AND IMPATIENT</strong></h1>
+                    <h1><strong>For the Thirsty and Impatient</strong></h1>
                 </div>
                 <div class="col-xs-0 col-md-3"></div>
             </div>
