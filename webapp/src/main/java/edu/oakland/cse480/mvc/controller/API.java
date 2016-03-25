@@ -2,6 +2,7 @@ package edu.oakland.cse480.mvc.controller;
 
 import edu.oakland.cse480.mvc.models.Drink;
 import edu.oakland.cse480.service.DrinkService;
+import edu.oakland.cse480.service.IngredientService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,10 +22,18 @@ public class API {
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
+    private IngredientService ingredientService;
+
+    @Autowired
     private DrinkService drinkService;
 
     @RequestMapping(value = "/drinklist/{barId}", method = RequestMethod.GET)
     public @ResponseBody List<Drink> getDrinkList(@PathVariable int barId) {
-        return drinkService.getDrinksByBarId(barId);
+        List<Drink> drinks = drinkService.getDrinksByBarId(barId);
+        for(Drink drink : drinks) {
+            drink.setIngredients(ingredientService.getIngredientsByDrinkId(drink.getId()));
+        }
+
+        return drinks;
     }
 }
