@@ -14,8 +14,7 @@ insert into business (name, info, icon_url) values ('BusinessB', 'This place is 
 
 
 insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values ('BarA', 1, 1, '123 Street', 'Big City', '32423', 'MI', '3242342123');
-insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values ('BarB', 1, 1, '1234 Street', 'Big City', '32423', 'MI', '9785760345');
-insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values ('BarC', 2, 2, '12345 Street', 'Big City', '32423', 'MI', '0928374648');
+insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values ('BarB', 2, 2, '1234 Street', 'Big City', '32423', 'MI', '9785760345');
 
 
 insert into bartenders (user_id, bar_id) values (1, 1);

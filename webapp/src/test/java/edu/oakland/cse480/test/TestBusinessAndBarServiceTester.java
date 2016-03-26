@@ -32,7 +32,7 @@ public class TestBusinessAndBarServiceTester {
 
         @Test
         public void testAyyLmao() {
-                Assert.assertEquals(4, 4);
+                Assert.assertEquals(businessAndBar.getBarsIdByOwnerId(1).size(), 1);
         }
 
         @AfterClass
