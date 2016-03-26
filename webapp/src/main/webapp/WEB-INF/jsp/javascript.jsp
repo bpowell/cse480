@@ -2,7 +2,7 @@
 //the data from the json API
 var d;
 //number of drinks per page
-var page_size = 5;
+var page_size = 15;
 
 function display(page) {
     $('#content').html("");
