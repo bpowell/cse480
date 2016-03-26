@@ -84,7 +84,7 @@
             <div class="row">
                 <div class="col-xs-0 col-md-2"></div>
                 <div class="col-xs-12 col-md-8">
-                    <div class="container" id="welcomeRegister">
+                    <div id="welcomeRegister">
                         <div class="col-xs-0 col-md-4"></div>
                         <div class="col-xs-12 col-md-4 text-center">
                             <h1><strong>Want to Sign Up?</strong></h1>
