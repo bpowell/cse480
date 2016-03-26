@@ -51,8 +51,8 @@ insert into ingredients (name, description, icon_url) values ('spice', 'ayy', 'l
 insert into ingredients (name, description, icon_url) values ('everything nice', 'ayy', 'lmao');
 
 
-insert into drink_ingredients (drink_id, ingredient_id) vlaues (1, 1);
-insert into drink_ingredients (drink_id, ingredient_id) vlaues (1, 2);
-insert into drink_ingredients (drink_id, ingredient_id) vlaues (1, 3);
-insert into drink_ingredients (drink_id, ingredient_id) vlaues (2, 1);
-insert into drink_ingredients (drink_id, ingredient_id) vlaues (2, 2);
+insert into drink_ingredients (drink_id, ingredient_id) values (1, 1);
+insert into drink_ingredients (drink_id, ingredient_id) values (1, 2);
+insert into drink_ingredients (drink_id, ingredient_id) values (1, 3);
+insert into drink_ingredients (drink_id, ingredient_id) values (2, 1);
+insert into drink_ingredients (drink_id, ingredient_id) values (2, 2);
