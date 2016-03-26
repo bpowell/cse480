@@ -72,7 +72,7 @@
                 </div>
                 <div class="col-xs-0 col-md-2"></div>
             </div>
-            <div><div id="content"></div><a onclick="prevpage()">Previous</a> <a onclick="nextpage()">Next</a></div>
+            <div><div id="content"></div><nav><ul class="pagination" id="paginator"></ul></nav></div>
         </div>
         <jsp:directive.include file="/WEB-INF/jsp/javascript.jsp"/>
     </body>

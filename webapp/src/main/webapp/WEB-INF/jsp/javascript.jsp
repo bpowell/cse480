@@ -2,11 +2,14 @@
 //the data from the json API
 var d;
 //number of drinks per page
-var page_size = 15;
-var start = 0;
+var page_size = 5;
 
-function display() {
+function display(page) {
     $('#content').html("");
+    pages(d.length);
+    document.getElementById('page'+page).className = "active";
+
+    start = page*page_size;
     for(i=start; i<start+page_size && i<d.length; i++) {
         var template = '' +
             ' <a href="#" data-toggle="modal" data-target="#id' + d[i].id + '">  ' +
@@ -61,22 +64,13 @@ function display() {
     }
 }
 
-function nextpage() {
-    if((start+page_size)>=d.length) {
-        return;
-    } else {
-        start = start + page_size;
-    }
-    display();
-}
+function pages(size) {
+    $('#paginator').html("");
+    num_pages = Math.floor(size/page_size);
 
-function prevpage() {
-    if((start-page_size)<0) {
-        start = 0;
-    } else {
-        start = start - page_size;
+    for(i=0; i<=num_pages; i++) {
+        $('#paginator').append('<li><a onclick="display(' + i + ')" id="page' + i + '">' + (i+1) + '</a></li>');
     }
-    display();
 }
 
 $(document).ready(function() {
@@ -86,10 +80,11 @@ $(document).ready(function() {
         success: function(a) {
             console.log(a);
             d = a;
-            display();
+            pages(d.length);
+            display(0);
         },
         error: function() {
-            console.log("poop");
+            console.log("Error");
         },
         dataType: 'json'
     });
