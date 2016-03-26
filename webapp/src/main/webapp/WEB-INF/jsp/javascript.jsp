@@ -16,7 +16,7 @@ function display(page) {
             '     <div class="row">' +
             '         <div class="col-xs-0 col-md-2"></div>' +
             '         <div class="col-xs-3 col-md-1 drink-icon">' +
-            '             <img src="<c:url value="' + d[i].icon_url + '"/>" class="img-fluid img-rounded" alt="' + d[i].name + ' icon"/>' +
+            '             <img src="<c:url value="/' + d[i].icon_url + '" context="/cse480" />" class="img-fluid img-rounded" alt="' + d[i].name + ' icon"/>' +
             '         </div>' +
             '         <div class="col-xs-9 col-md-7 drink-text">' +
             '             <h3><strong>' + d[i].name + '</strong></h3>' +
@@ -28,7 +28,7 @@ function display(page) {
             '         <div class="col-xs-0 col-md-2"></div>' +
             '     </div>' +
             ' </a>' +
-            '     <div class="modal fade drink-modal-lg" id="id' + d[i].id + '" tabindex="-1" role="dialog" aria-labelledby="<c:url value="' + d[i].name + '" />Modal" aria-hidden="true">' +
+            '     <div class="modal fade drink-modal-lg" id="id' + d[i].id + '" tabindex="-1" role="dialog" aria-labelledby="<c:url value="' + d[i].name + '" /> Modal" aria-hidden="true">' +
             '         <div class="modal-dialog modal-lg">' +
             '             <div class="modal-content">' +
             '                 <div class="modal-header">' +
