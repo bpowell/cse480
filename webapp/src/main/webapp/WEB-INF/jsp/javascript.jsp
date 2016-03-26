@@ -67,6 +67,9 @@ function display(page) {
 function pages(size) {
     $('#paginator').html("");
     num_pages = Math.floor(size/page_size);
+    if((size%page_size)==0) {
+        num_pages = num_pages - 1;
+    }
 
     for(i=0; i<=num_pages; i++) {
         $('#paginator').append('<li><a onclick="display(' + i + ')" id="page' + i + '">' + (i+1) + '</a></li>');
