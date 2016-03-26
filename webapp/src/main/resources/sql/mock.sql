@@ -46,9 +46,9 @@ insert into availabledrinks (drink_id, bar_id) values ('2', '2');
 insert into availabledrinks (drink_id, bar_id) values ('3', '2');
 
 
-insert into ingredients (name, description, icon_url) values ('sugar', 'ayy', 'lmao');
-insert into ingredients (name, description, icon_url) values ('spice', 'ayy', 'lmao');
-insert into ingredients (name, description, icon_url) values ('everything nice', 'ayy', 'lmao');
+insert into ingredient (name, description, icon_url, category_id) values ('sugar', 'ayy', 'lmao', 1);
+insert into ingredient (name, description, icon_url, category_id) values ('spice', 'ayy', 'lmao', 1);
+insert into ingredient (name, description, icon_url, category_id) values ('everything nice', 'ayy', 'lmao', 1);
 
 
 insert into drink_ingredients (drink_id, ingredient_id) values (1, 1);
