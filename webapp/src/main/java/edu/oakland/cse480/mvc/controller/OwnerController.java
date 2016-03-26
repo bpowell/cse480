@@ -2,11 +2,15 @@ package edu.oakland.cse480.mvc.controller;
 
 import edu.oakland.cse480.service.UserService;
 import edu.oakland.cse480.service.BusinessAndBarService;
+import edu.oakland.cse480.service.AvailableDrinksService;
+import edu.oakland.cse480.service.DrinkService;
 import edu.oakland.cse480.service.IngredientService;
 import edu.oakland.cse480.service.CategoriesService;
 import edu.oakland.cse480.mvc.models.User;
 import edu.oakland.cse480.mvc.models.Ingredient;
 import edu.oakland.cse480.mvc.models.Hours;
+import edu.oakland.cse480.mvc.models.Drink;
+import edu.oakland.cse480.mvc.models.AvailableDrinks;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -49,6 +53,12 @@ public class OwnerController {
 
     @Autowired
     CategoriesService categoriesService;
+
+    @Autowired
+    AvailableDrinksService availableDrinksService;
+
+    @Autowired
+    DrinkService drinkService;
 
     /**
      * Sends the user to the main page.
@@ -194,6 +204,61 @@ public class OwnerController {
         model.addObject("bars", businessAndBarService.getBarsByOwnerId(ownerId));
         model.addObject("success", "Hours Updated!");
 
+        return model;
+    }
+
+    @RequestMapping("/adddrink")
+    public String getAddDrink(Model model) {
+        model.addAttribute("ingredients", ingredientService.getAllIngredients());
+        model.addAttribute("barId", 0);
+        return "owner/adddrink";
+    }
+
+    @RequestMapping(value = "/adddrink", method = RequestMethod.POST)
+    public ModelAndView addDrink(@ModelAttribute("addDrink") @Valid Drink drink, @ModelAttribute("i1") int i1, @ModelAttribute("i2") int i2, @ModelAttribute("i3") int i3, BindingResult result) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("owner/adddrink");
+        model.addObject("barId", 0);
+        model.addObject("ingredients", ingredientService.getAllIngredients());
+
+        if(result.hasErrors()) {
+            model.addObject("error", "Try again");
+            return model;
+        }
+
+        List<Ingredient> ingredients = new ArrayList<Ingredient>();
+        if(i1>0) {
+            ingredients.addAll(ingredientService.getIngredientById(i1));
+        }
+        if(i2>0) {
+            ingredients.addAll(ingredientService.getIngredientById(i2));
+        }
+        if(i3>0) {
+            ingredients.addAll(ingredientService.getIngredientById(i3));
+        }
+
+        drink.setIngredients(ingredients);
+        int drinkId = drinkService.insertDrink(drink);
+        if(drinkId==0) {
+            model.addObject("error", "Try again");
+            return model;
+        }
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userdetails = (UserDetails) auth.getPrincipal();
+        int ownerId = userService.getUserIdByEmail(userdetails.getUsername());
+        int barId = businessAndBarService.getBarsByOwnerId(ownerId).get(0).getId();
+
+        AvailableDrinks a = new AvailableDrinks();
+        a.setDrinkId(drinkId);
+        a.setBarId(barId);
+
+        if(!availableDrinksService.insertAvailableDrink(a)) {
+            model.addObject("error", "Try again");
+            return model;
+        }
+
+        model.addObject("success", "Hours Updated!");
         return model;
     }
 }
