@@ -53,6 +53,15 @@ public class IngredientService extends AbstractJdbcDriver {
         }
     }
 
+    public List<Ingredient> getIngredientsByDrinkId(int did) {
+        try {
+            return this.jdbcPostgres.query("select ingredient.id, ingredient.name, ingredient.description, icon_url, category_id, categories.name as catname from ingredient, categories, drink_ingredients where categories.id = ingredient.category_id and ingredient.id = drink_ingredients.ingredient_id and drink_ingredients.drink_id = ?", new Object[] {did}, new IngredientMapper());
+        } catch(Exception e) {
+            log.error("", e);
+            return new ArrayList<Ingredient>();
+        }
+    }
+
     public void updateIngredientById(Ingredient i, int id) {
         try {
             this.jdbcPostgres.update("update ingredient set name = ?, description = ?, icon_url = ?, category_id = ? where id = ?", new Object[] {i.getName(), i.getDescription(), i.getIconUrl(), i.getCategory(), id});
