@@ -199,6 +199,7 @@ public class MainController{
         ModelAndView model = new ModelAndView();
         model.addObject("queue", barDrinkOrderService.getThreeDrinkOrdersByBarId(bar_id));
         model.addObject("drinks", availableDrinksService.getDrinksByBarId(bar_id));
+        model.addObject("barId", bar_id);
         model.setViewName("drinklist");
         return model;
     }
