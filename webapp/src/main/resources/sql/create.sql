@@ -25,6 +25,8 @@ create table users (
 )
 ;
 
+insert into users(name, password_hash, email, role_id, enabled) values('admin', '$2a$10$2d2XUELuLvWTszNH7YViN.Gw.4CcX/3nn.WuUUlOtSjGp8OQnJ8Mu', 'admin@admin', 1, true);
+
 -- these are the overlying companies that own the individual bars.
 create table business (
     id serial primary key,
@@ -115,7 +117,11 @@ create table categories (
 )
 ;
 
-insert into categories (name, description) values('Beer', 'Beer me');
+insert into categories (name, description) values('Beer', 'Beer');
+insert into categories (name, description) values('Wine', 'Wine');
+insert into categories (name, description) values('Liquor', 'Liquor');
+insert into categories (name, description) values('Mixers', 'Pop, club soda, etc');
+insert into categories (name, description) values('Garnish', 'Things to put in your drink!');
 
 -- contains each individual items. individual beers, liquors, fruits, garnishes, etc.
 create table ingredient (

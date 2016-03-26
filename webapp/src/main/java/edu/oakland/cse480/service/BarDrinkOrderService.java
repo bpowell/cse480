@@ -27,7 +27,34 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.enabled = 't' and drinkorder.bar_id = ? order by drinkorder.time_placed", new Object[] {bar_id}, new BarDrinkOrderMapper());
         } catch(Exception e) {
-            log.info("No drink orders found because {}", e);
+            log.info("No drink orders found for bar id {}", bar_id);
+            return new ArrayList<BarDrinkOrder>();
+        }
+    }
+
+    public List<BarDrinkOrder> getThreeDrinkOrdersByBarId(int bar_id) {
+        try {
+            return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.enabled = 't' and drinkorder.bar_id = ? order by drinkorder.time_placed limit 3", new Object[] {bar_id}, new BarDrinkOrderMapper());
+        } catch(Exception e) {
+            log.info("No drink orders found for bar id {}", bar_id);
+            return new ArrayList<BarDrinkOrder>();
+        }
+    }
+
+    public List<BarDrinkOrder> getDrinkOrdersByUsername(String username) {
+        try {
+            return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.name = ? order by drinkorder.time_placed desc", new Object[] {username}, new BarDrinkOrderMapper());
+        } catch(Exception e) {
+            log.info("No drink orders found for username {}", username);
+            return new ArrayList<BarDrinkOrder>();
+        }
+    }
+
+    public List<BarDrinkOrder> getFiveDrinksByEmail(String email) {
+        try {
+            return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.email = ? order by drinkorder.time_placed desc limit 5", new Object[] {email}, new BarDrinkOrderMapper());
+        } catch(Exception e)  {
+            log.info("No drink orders found for email {}", email);
             return new ArrayList<BarDrinkOrder>();
         }
     }

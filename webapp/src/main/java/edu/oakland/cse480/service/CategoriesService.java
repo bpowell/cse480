@@ -30,40 +30,6 @@ public class CategoriesService extends AbstractJdbcDriver {
         return c;
     }
 
-    public List<Categories> getCategoryById(int id) {
-        try {
-            return this.jdbcPostgres.query("select * from categories where id = ?", new Object[] {id}, new CategoriesMapper());
-        } catch(Exception e) {
-            log.info("No category found for id {}", id);
-            return new ArrayList<Categories>();
-        }
-    }
-
-    public List<Categories> getCategoryByName(String name) {
-        try {
-            return this.jdbcPostgres.query("select * from categories where name = ?", new Object[] {name}, new CategoriesMapper());
-        } catch(Exception e) {
-            log.info("No category found for name {}", name);
-            return new ArrayList<Categories>();
-        }
-    }
-
-    public void insertCategories(Categories c) {
-        try {
-            this.jdbcPostgres.update("insert into categories (name, description) values(?, ?)", new Object[] {c.getName(), c.getDescription()});
-        } catch(Exception e) {
-            log.info("Cannot insert categories");
-        }
-    }
-
-    public void deleteCategoryById(int id) {
-        try {
-                this.jdbcPostgres.update("delete from categories where id = ?", new Object[] {id});
-        } catch(Exception e) {
-            log.info("Cannot delete category for id {}", id);
-        }
-    }
-
     private class CategoriesMapper implements RowMapper<Categories> {
         public Categories mapRow(ResultSet rs, int rowNum) throws SQLException {
             Categories c = new Categories();

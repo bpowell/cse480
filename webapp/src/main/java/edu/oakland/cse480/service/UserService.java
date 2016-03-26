@@ -18,36 +18,46 @@ import org.springframework.jdbc.core.simple.*;
 
 @Service
 public class UserService extends AbstractJdbcDriver {
-	protected final Logger log = LoggerFactory.getLogger(getClass());
+    protected final Logger log = LoggerFactory.getLogger(getClass());
 
     public List<User> getAllUsers() {
-            try{
-                    List<User> u = new ArrayList<User>();
-                    u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles where users.role_id = roles.id", new UserMapper()));
-                    return u;
-            } catch(Exception er) {
-                    throw new IllegalArgumentException(er.getMessage());
-            }
+        try{
+            List<User> u = new ArrayList<User>();
+            u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles where users.role_id = roles.id", new UserMapper()));
+            return u;
+        } catch(Exception er) {
+            throw new IllegalArgumentException(er.getMessage());
+        }
     }
 
     public List<User> getAllStandardUsers() {
-            try{
-                    List<User> u = new ArrayList<User>();
-                    u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles where users.role_id = roles.id and roles.role = 'ROLE_USER'", new UserMapper()));
-                    return u;
-            } catch(Exception er) {
-                    throw new IllegalArgumentException(er.getMessage());
-            }
+        try{
+            List<User> u = new ArrayList<User>();
+            u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles where users.role_id = roles.id and roles.role = 'ROLE_USER'", new UserMapper()));
+            return u;
+        } catch(Exception er) {
+            throw new IllegalArgumentException(er.getMessage());
+        }
     }
 
     public List<User> getAllOwners() {
-            try{
-                    List<User> u = new ArrayList<User>();
-                    u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles where users.role_id = roles.id and roles.role = 'ROLE_OWNER'", new UserMapper()));
-                    return u;
-            } catch(Exception er) {
-                    throw new IllegalArgumentException(er.getMessage());
-            }
+        try{
+            List<User> u = new ArrayList<User>();
+            u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles where users.role_id = roles.id and roles.role = 'ROLE_OWNER'", new UserMapper()));
+            return u;
+        } catch(Exception er) {
+            throw new IllegalArgumentException(er.getMessage());
+        }
+    }
+
+    public List<User> getAllBartendersByBarId(int barId) {
+        try{
+            List<User> u = new ArrayList<User>();
+            u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles, bartenders where users.role_id = roles.id and roles.role = 'ROLE_EMPLOYEE' and users.id = bartenders.user_id and bartenders.bar_id = ?", new Object[] {barId}, new UserMapper()));
+            return u;
+        } catch(Exception er) {
+            throw new IllegalArgumentException(er.getMessage());
+        }
     }
 
     public int getUserIdByEmail(String email) {
@@ -58,16 +68,24 @@ public class UserService extends AbstractJdbcDriver {
         }
     }
 
+    public String getUsernameByEmail(String email) {
+        try {
+            return this.jdbcPostgres.queryForObject("select name from users where email = ?", new Object[] {email}, String.class);
+        } catch(Exception e) {
+            return e.getMessage();
+        }
+    }
+
     private class UserMapper implements RowMapper<User>{
-            public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-                    User r = new User();
-                    r.setId(rs.getInt("id"));
-                    r.setName(rs.getString("name"));
-                    r.setEmail(rs.getString("email"));
-                    r.setEnabled(rs.getBoolean("enabled"));
-                    r.setRole(rs.getString("role"));
-                    return r;
-            }
+        public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+            User r = new User();
+            r.setId(rs.getInt("id"));
+            r.setName(rs.getString("name"));
+            r.setEmail(rs.getString("email"));
+            r.setEnabled(rs.getBoolean("enabled"));
+            r.setRole(rs.getString("role"));
+            return r;
+        }
     }
 
     public boolean userExists(String name) {
@@ -137,6 +155,16 @@ public class UserService extends AbstractJdbcDriver {
     public boolean addBartender(int userId, int barId) {
         try {
             this.jdbcPostgres.update("insert into bartenders (user_id, bar_id) values(?, ?)", userId, barId);
+        } catch(Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean removeBartender(int userId) {
+        try {
+            this.jdbcPostgres.update("delete from bartenders where user_id = ?", userId);
         } catch(Exception e) {
             return false;
         }

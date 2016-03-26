@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
         <title>CSE480</title>
 
         <%-- Bootstrap core CSS --%>
@@ -18,22 +18,38 @@
         <link href="<c:url value="/css/drinkQ.css"/>" rel="stylesheet" type="text/css" />
     </head>
     <body>
-            <nav class="navbar navbar-default navbar-fixed-top headerContent">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#drinkQNavbar">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="#"><img src="<c:url value="/img/drinkQ_logo.png" />" alt="drinkQ" /></a>
-                        </div>
-                        <div class="collapse navbar-collapse" id="drinkQNavbar">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="<c:url value="/barview" />"><strong>View Bars</strong></a></li>
-                                <li><a href="<c:url value="/profile" />"><strong>View Profile</strong></a></li>
-                            </ul>
-                       </div>
-                   </div>
-           </nav>
-        </div>
+        <c:url var="logoutUrl" value="/j_spring_security_logout" />
+        <form action="${logoutUrl}" id="logout" method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        </form>
+        <nav class="navbar navbar-default navbar-fixed-top headerContent">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#drinkQNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<c:url value="/" />"><img src="<c:url value="/img/drinkQ_logo.png" />" alt="drinkQ" /></a>
+                </div>
+                <div class="collapse navbar-collapse" id="drinkQNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="<c:url value="/barview" />"><strong>View Bars</strong></a></li>
+                        <sec:authorize access="isAnonymous()">
+                            <li><a href="<c:url value="/login" />"><strong>Log In</strong></a></li>
+                        </sec:authorize>
+                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+                            <li><a href="<c:url value="/owner/" />"><strong>Owner Menu</strong></a></li>
+                            <li><a href="<c:url value="/admin/" />"><strong>Admin Menu</strong></a></li>
+                        </sec:authorize>
+                        <sec:authorize access="hasRole('ROLE_OWNER')">
+                            <li><a href="<c:url value="/owner/" />"><strong>Owner Menu</strong></a></li>
+                        </sec:authorize>
+                        <sec:authorize access="isAuthenticated()">
+                            <li><a href="<c:url value="/profile" />"><strong>View Profile</strong></a></li>
+                            <li><a href="#" onclick="document.getElementById('logout').submit();"><strong>Logout</strong></a></li>
+                        </sec:authorize>
+                    </ul>
+                </div>
+            </div>
+        </nav>

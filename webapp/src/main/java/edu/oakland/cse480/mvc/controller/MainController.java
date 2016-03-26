@@ -54,11 +54,13 @@ public class MainController{
      * @param model
      * @return The index jsp page.
      */
-    @RequestMapping("/")
-    public String getIndex(Model model){
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView getIndex(){
+        ModelAndView model = new ModelAndView();
         log.trace("MainController -> Entering getIndex(model=)");
         log.trace("MainController -> Leaving getIndex(): index");
-        return "index";
+        model.setViewName("welcome");
+        return model;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -85,17 +87,13 @@ public class MainController{
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             UserDetails userDetail = (UserDetails) auth.getPrincipal();
-            model.addObject("username", userDetail.getUsername());
+            String email = userDetail.getUsername();
+            model.addObject("email", email);
+            model.addObject("username", us.getUsernameByEmail(email));
+            model.addObject("drinks", barDrinkOrderService.getFiveDrinksByEmail(email));
+            model.addObject("business", businessAndBarService.getFiveBarsByEmail(email));
         }
 
-        model.setViewName("profile");
-        return model;
-    }
-
-    @RequestMapping(value = "/profile/{username}", method = RequestMethod.GET)
-    public ModelAndView publicProfiles(@PathVariable("username") String username) {
-        ModelAndView model = new ModelAndView();
-        model.addObject("username", username);
         model.setViewName("profile");
         return model;
     }
@@ -130,7 +128,7 @@ public class MainController{
 
         us.insertUser(registerNewUser, "ROLE_USER");
 
-        model.setViewName("index");
+        model.setViewName("login");
 
         return model;
     }
@@ -186,7 +184,7 @@ public class MainController{
     @RequestMapping(value = "/display/{bar_id}", method = RequestMethod.GET)
     public ModelAndView displayBar(@PathVariable("bar_id") Integer bar_id) {
         ModelAndView model = new ModelAndView();
-	model.addObject("drinks", barDrinkOrderService.getDrinkOrdersByBarId(bar_id));
+        model.addObject("drinks", barDrinkOrderService.getDrinkOrdersByBarId(bar_id));
         model.setViewName("display");
         return model;
     }
@@ -199,7 +197,8 @@ public class MainController{
     @RequestMapping(value = "/drinklist/{bar_id}", method = RequestMethod.GET)
     public ModelAndView barDrinklist(@PathVariable("bar_id") Integer bar_id) {
         ModelAndView model = new ModelAndView();
-	model.addObject("drinks", availableDrinksService.getDrinksByBarId(bar_id));
+        model.addObject("queue", barDrinkOrderService.getThreeDrinkOrdersByBarId(bar_id));
+        model.addObject("drinks", availableDrinksService.getDrinksByBarId(bar_id));
         model.setViewName("drinklist");
         return model;
     }

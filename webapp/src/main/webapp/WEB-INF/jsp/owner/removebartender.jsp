@@ -22,23 +22,15 @@
             <div class="row">
                 <div class="col-xs-0 col-md-3"></div>
                 <div class="col-xs-12 col-md-6">
-                    <h1><strong><a href="<c:url value='/admin/'/>">Admin</a> &frasl;<br />
-                        Change User Role</strong></h3>
-                    <c:url value="/admin/changeroles" var="post_url" />
-                    <form:form method="POST" action="${post_url}" class="form-signin" commandName="addBusiness">
+                    <h1><strong><a href="<c:url value='/owner/'/>">Owner</a> &frasl;<br />
+                        Remove Bartender</strong></h1>
+                    <c:url value="/owner/removebartender" var="post_url" />
+                    <form:form method="POST" action="${post_url}" class="form-signin">
                         <div class="form-group">
-                            <label for="name">User</label><br />
+                            <label for="ownerId">Bartender</label><br />
                             <select name="userId">
                                 <c:forEach items="${users}" var="user">
-                                <option value="${user.getId()}">${user.getEmail()} - ${user.getRole()}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="name">New Role</label><br />
-                            <select name="roleId">
-                                <c:forEach items="${roles}" var="role">
-                                <option value="${role.getId()}">${role.getInfo()}</option>
+                                    <option value="${user.getId()}">${user.getEmail()}</option>
                                 </c:forEach>
                             </select>
                         </div>

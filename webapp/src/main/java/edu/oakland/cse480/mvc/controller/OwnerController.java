@@ -2,7 +2,11 @@ package edu.oakland.cse480.mvc.controller;
 
 import edu.oakland.cse480.service.UserService;
 import edu.oakland.cse480.service.BusinessAndBarService;
+import edu.oakland.cse480.service.IngredientService;
+import edu.oakland.cse480.service.CategoriesService;
 import edu.oakland.cse480.mvc.models.User;
+import edu.oakland.cse480.mvc.models.Ingredient;
+import edu.oakland.cse480.mvc.models.Hours;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,6 +27,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Map;
 import java.util.Objects;
+import java.util.List;
+import java.util.ArrayList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +43,12 @@ public class OwnerController {
 
     @Autowired
     BusinessAndBarService businessAndBarService;
+
+    @Autowired
+    IngredientService ingredientService;
+
+    @Autowired
+    CategoriesService categoriesService;
 
     /**
      * Sends the user to the main page.
@@ -76,6 +88,112 @@ public class OwnerController {
         }
 
         model.addObject("success", "Success!");
+        return model;
+    }
+
+    @RequestMapping("/removebartender")
+    public String getRemoveBartender(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userdetails = (UserDetails) auth.getPrincipal();
+
+        int ownerId = userService.getUserIdByEmail(userdetails.getUsername());
+        List<User> bartenders = new ArrayList<User>();
+        for(int bid : businessAndBarService.getBarsIdByOwnerId(ownerId)) {
+            bartenders.addAll(userService.getAllBartendersByBarId(bid));
+        }
+
+        model.addAttribute("users", bartenders);
+
+        return "owner/removebartender";
+    }
+
+    @RequestMapping(value = "/removebartender", method = RequestMethod.POST)
+    public ModelAndView removeBartender(@ModelAttribute("userId") int userId) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("owner/removebartender");
+
+        if(!userService.updateRole(userId, 5)) {
+            model.addObject("error", "Cannot update user");
+            return model;
+        }
+
+        if(!userService.removeBartender(userId)) {
+            model.addObject("error", "Cannot update user");
+            return model;
+        }
+
+        model.addObject("success", "Success!");
+        return model;
+    }
+
+    @RequestMapping("/addingredient")
+    public String getAddIngredient(Model model) {
+        model.addAttribute("ingredients", ingredientService.getAllIngredients());
+        model.addAttribute("categories", categoriesService.getAllCategories());
+        return "owner/addingredient";
+    }
+
+    @RequestMapping(value = "/addingredient", method = RequestMethod.POST)
+    public ModelAndView addBusiness(@ModelAttribute("addIngredient") @Valid Ingredient ingredient, BindingResult result) {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("owner/addingredient");
+
+        if(result.hasErrors()){
+            model.addObject("ingredients", ingredientService.getAllIngredients());
+            model.addObject("categories", categoriesService.getAllCategories());
+            model.addObject("error", "Try again");
+            return model;
+        }
+
+        if(!ingredientService.insertIngredient(ingredient)) {
+            model.addObject("ingredients", ingredientService.getAllIngredients());
+            model.addObject("categories", categoriesService.getAllCategories());
+            model.addObject("error", "Cannot add ingredient, try again later");
+            return model;
+        }
+
+        model.addObject("ingredients", ingredientService.getAllIngredients());
+        model.addObject("categories", categoriesService.getAllCategories());
+        model.addObject("success", "Success!");
+        return model;
+    }
+
+    @RequestMapping("/updatehours")
+    public String getUpdateHours(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userdetails = (UserDetails) auth.getPrincipal();
+
+        int ownerId = userService.getUserIdByEmail(userdetails.getUsername());
+
+        model.addAttribute("bars", businessAndBarService.getBarsByOwnerId(ownerId));
+        return "owner/updatehours";
+    }
+
+    @RequestMapping(value = "/updatehours", method = RequestMethod.POST)
+    public ModelAndView updateHours(@ModelAttribute("hours") @Valid Hours hours, BindingResult result) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userdetails = (UserDetails) auth.getPrincipal();
+
+        int ownerId = userService.getUserIdByEmail(userdetails.getUsername());
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("owner/updatehours");
+
+        if(result.hasErrors()) {
+            model.addObject("bars", businessAndBarService.getBarsByOwnerId(ownerId));
+            model.addObject("error", "Try again");
+            return model;
+        }
+
+        if(!businessAndBarService.updateBarHoursById(hours)) {
+            model.addObject("bars", businessAndBarService.getBarsByOwnerId(ownerId));
+            model.addObject("error", "Try again");
+            return model;
+        }
+
+        model.addObject("bars", businessAndBarService.getBarsByOwnerId(ownerId));
+        model.addObject("success", "Hours Updated!");
+
         return model;
     }
 }

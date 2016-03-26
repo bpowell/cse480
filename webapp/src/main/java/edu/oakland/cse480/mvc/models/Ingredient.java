@@ -1,11 +1,18 @@
 package edu.oakland.cse480.mvc.models;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Ingredient {
     private int id;
+
+    @NotBlank
     private String name;
+
+    @NotBlank
     private String description;
     private String icon_url;
     private int category;
+    private String categoryName;
 
     public void setId(int id) {
         this.id = id;
@@ -45,5 +52,13 @@ public class Ingredient {
 
     public void setCategory(int category) {
         this.category = category;
+    }
+
+    public String getCategoryName() {
+        return this.categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }   
