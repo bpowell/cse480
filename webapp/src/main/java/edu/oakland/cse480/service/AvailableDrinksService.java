@@ -63,12 +63,15 @@ public class AvailableDrinksService extends AbstractJdbcDriver {
         }
     }
 
-    public void insertAvailableDrink(AvailableDrinks a) {
+    public boolean insertAvailableDrink(AvailableDrinks a) {
         try {
             this.jdbcPostgres.update("insert into availabledrinks (drink_id, bar_id) values(?, ?)", new Object[] {a.getDrinkId(), a.getBarId()});
         } catch(Exception e) {
             log.info("Cannot insert available drink");
+            return false;
         }
+
+        return true;
     }
 
     public void deleteAvailableDrinkById(int id) {
