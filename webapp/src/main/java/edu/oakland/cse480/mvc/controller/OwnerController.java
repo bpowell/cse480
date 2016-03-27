@@ -209,16 +209,26 @@ public class OwnerController {
 
     @RequestMapping("/adddrink")
     public String getAddDrink(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userdetails = (UserDetails) auth.getPrincipal();
+        int ownerId = userService.getUserIdByEmail(userdetails.getUsername());
+        int barId = businessAndBarService.getBarsByOwnerId(ownerId).get(0).getId();
+
         model.addAttribute("ingredients", ingredientService.getAllIngredients());
-        model.addAttribute("barId", 0);
+        model.addAttribute("barId", barId);
         return "owner/adddrink";
     }
 
     @RequestMapping(value = "/adddrink", method = RequestMethod.POST)
     public ModelAndView addDrink(@ModelAttribute("addDrink") @Valid Drink drink, @ModelAttribute("i1") int i1, @ModelAttribute("i2") int i2, @ModelAttribute("i3") int i3, BindingResult result) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userdetails = (UserDetails) auth.getPrincipal();
+        int ownerId = userService.getUserIdByEmail(userdetails.getUsername());
+        int barId = businessAndBarService.getBarsByOwnerId(ownerId).get(0).getId();
+
         ModelAndView model = new ModelAndView();
         model.setViewName("owner/adddrink");
-        model.addObject("barId", 0);
+        model.addObject("barId", barId);
         model.addObject("ingredients", ingredientService.getAllIngredients());
 
         if(result.hasErrors()) {
@@ -243,11 +253,6 @@ public class OwnerController {
             model.addObject("error", "Try again");
             return model;
         }
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userdetails = (UserDetails) auth.getPrincipal();
-        int ownerId = userService.getUserIdByEmail(userdetails.getUsername());
-        int barId = businessAndBarService.getBarsByOwnerId(ownerId).get(0).getId();
 
         AvailableDrinks a = new AvailableDrinks();
         a.setDrinkId(drinkId);
