@@ -28,7 +28,7 @@ public class DrinkOrderService extends AbstractJdbcDriver {
         try {
             d.addAll(this.jdbcPostgres.query("select * from drinkorder", new DrinkOrderMapper()));
         } catch(Exception e) {
-            log.error("No drinkorder found");
+            log.error("", e);
         }
 
         return d;
@@ -38,7 +38,7 @@ public class DrinkOrderService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.query("select * from drinkorder where id = ?", new Object[] {id}, new DrinkOrderMapper());
         } catch(Exception e) {
-            log.info("No drinkorder found for id {}", id);
+            log.error("", e);
             return new ArrayList<DrinkOrder>();
         }
     }
@@ -47,7 +47,7 @@ public class DrinkOrderService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.query("select * from drinkorder where user_id = ?", new Object[] {user_id}, new DrinkOrderMapper());
         } catch(Exception e) {
-            log.info("No drinkorder found for user_id {}", user_id);
+            log.error("", e);
             return new ArrayList<DrinkOrder>();
         }
     }
@@ -56,7 +56,7 @@ public class DrinkOrderService extends AbstractJdbcDriver {
         try {
             this.jdbcPostgres.update("insert into drinkorder (drink_count, user_id, time_placed, time_complete, bar_id, comments) values(?, ?, CURRENT_TIME, NULL, ?, ?)", new Object[] {d.getDrinkCount(), d.getUserId(), d.getBarId(), d.getComments()});
         } catch(Exception e) {
-            log.info("Cannot insert drinkorder");
+            log.error("", e);
         }
     }
 
@@ -64,7 +64,7 @@ public class DrinkOrderService extends AbstractJdbcDriver {
         try {
             this.jdbcPostgres.update("update drinkorder set time_complete = CURRENT_TIME where id = ?", new Object[] {id});
         } catch(Exception e) {
-            log.info("Cannot close drinkorder for id {}", id);
+            log.error("", e);
         }
     }
 
@@ -72,7 +72,7 @@ public class DrinkOrderService extends AbstractJdbcDriver {
         try {
                 this.jdbcPostgres.update("delete from drinkorder where id = ?", new Object[] {id});
         } catch(Exception e) {
-            log.info("Cannot delete drinkorder for id {}", id);
+            log.error("", e);
         }
     }
 

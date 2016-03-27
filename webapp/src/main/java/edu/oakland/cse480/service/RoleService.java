@@ -24,7 +24,7 @@ public class RoleService extends AbstractJdbcDriver {
         try {
             r.addAll(this.jdbcPostgres.query("select * from roles", new RoleMapper()));
         } catch(Exception e) {
-            log.error("No roles");
+            log.error("", e);
         }
 
         return r;
