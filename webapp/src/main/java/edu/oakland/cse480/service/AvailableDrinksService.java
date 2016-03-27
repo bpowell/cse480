@@ -30,7 +30,7 @@ public class AvailableDrinksService extends AbstractJdbcDriver {
         try {
             a.addAll(this.jdbcPostgres.query("select * from availabledrinks", new AvailableDrinksMapper()));
         } catch(Exception e) {
-            log.error("No available drinks found");
+            log.error("", e);
         }
 
         return a;
@@ -40,7 +40,7 @@ public class AvailableDrinksService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.query("select * from availabledrinks where id = ?", new Object[] {id}, new AvailableDrinksMapper());
         } catch(Exception e) {
-            log.info("No available drinks found for id {}", id);
+            log.info("", e);
             return new ArrayList<AvailableDrinks>();
         }
     }
@@ -49,7 +49,7 @@ public class AvailableDrinksService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.query("select bar.id, bar.name, business_id, owner_id, address, city, zipcode, state, phonenumber, monday, tuesday, wednesday, thursday, friday, saturday, sunday from bar left join barhours on barhours.id = bar.id, drink left join availabledrinks on availabledrinks.drink_id = drink.id where availabledrinks.drink_id = ? and bar.id = availabledrinks.bar_id", new Object[] {drink_id}, new BarMapper());
         } catch(Exception e) {
-            log.info("No available drinks found for drink_id {}", drink_id);
+            log.info("", e);
             return new ArrayList<Bar>();
         }
     }
@@ -58,7 +58,7 @@ public class AvailableDrinksService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.query("select * from drink left join availabledrinks on availabledrinks.drink_id = drink.id where availabledrinks.bar_id = ?", new Object[] {bar_id}, new DrinkMapper());
         } catch(Exception e) {
-            log.info("No available drinks found for bar_id {}", bar_id);
+            log.info("", e);
             return new ArrayList<Drink>();
         }
     }
@@ -67,7 +67,7 @@ public class AvailableDrinksService extends AbstractJdbcDriver {
         try {
             this.jdbcPostgres.update("insert into availabledrinks (drink_id, bar_id) values(?, ?)", new Object[] {a.getDrinkId(), a.getBarId()});
         } catch(Exception e) {
-            log.info("Cannot insert available drink");
+            log.info("", e);
         }
     }
 
@@ -75,7 +75,7 @@ public class AvailableDrinksService extends AbstractJdbcDriver {
         try {
             this.jdbcPostgres.update("delete from availabledrinks where id = ?", new Object[] {id});
         } catch(Exception e) {
-            log.info("Cannot delete available drink for id {}", id);
+            log.info("", e);
         }
     }
 
@@ -83,7 +83,7 @@ public class AvailableDrinksService extends AbstractJdbcDriver {
         try {
             this.jdbcPostgres.update("delete from availabledrinks where bar_id = ?", new Object[] {bar_id});
         } catch(Exception e) {
-            log.info("Cannot delete available drink for bar id {}", bar_id);
+            log.info("", e);
         }
     }
 

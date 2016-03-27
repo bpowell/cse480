@@ -26,6 +26,7 @@ public class UserService extends AbstractJdbcDriver {
             u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles where users.role_id = roles.id", new UserMapper()));
             return u;
         } catch(Exception er) {
+            log.error("", er);
             throw new IllegalArgumentException(er.getMessage());
         }
     }
@@ -36,6 +37,7 @@ public class UserService extends AbstractJdbcDriver {
             u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles where users.role_id = roles.id and roles.role = 'ROLE_USER'", new UserMapper()));
             return u;
         } catch(Exception er) {
+            log.error("", er);
             throw new IllegalArgumentException(er.getMessage());
         }
     }
@@ -46,6 +48,7 @@ public class UserService extends AbstractJdbcDriver {
             u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles where users.role_id = roles.id and roles.role = 'ROLE_OWNER'", new UserMapper()));
             return u;
         } catch(Exception er) {
+            log.error("", er);
             throw new IllegalArgumentException(er.getMessage());
         }
     }
@@ -56,6 +59,7 @@ public class UserService extends AbstractJdbcDriver {
             u.addAll(this.jdbcPostgres.query("select users.id, name, email, enabled, roles.role from users, roles, bartenders where users.role_id = roles.id and roles.role = 'ROLE_EMPLOYEE' and users.id = bartenders.user_id and bartenders.bar_id = ?", new Object[] {barId}, new UserMapper()));
             return u;
         } catch(Exception er) {
+            log.error("", er);
             throw new IllegalArgumentException(er.getMessage());
         }
     }
@@ -64,6 +68,7 @@ public class UserService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.queryForObject("select id from users where email = ?", new Object[] {email}, Integer.class);
         } catch(Exception e) {
+            log.error("", e);
             return -1;
         }
     }
@@ -72,6 +77,7 @@ public class UserService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.queryForObject("select name from users where email = ?", new Object[] {email}, String.class);
         } catch(Exception e) {
+            log.error("", e);
             return e.getMessage();
         }
     }
@@ -92,6 +98,7 @@ public class UserService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.queryForObject("select exists(select 1 from users where name = ?)", new Object[] {name}, Boolean.class);
         } catch(Exception e) {
+            log.error("", e);
             return false;
         }
     }
@@ -103,6 +110,7 @@ public class UserService extends AbstractJdbcDriver {
         try {
             this.jdbcPostgres.update("insert into users (email, name, password_hash, role_id, enabled) values (?, ?, ?, (select id from roles where role = ?), true)", u.getEmail(), u.getName(), hashedPassword, role);
         } catch(Exception e) {
+            log.error("", e);
         }
     }
 
@@ -116,6 +124,7 @@ public class UserService extends AbstractJdbcDriver {
                 return true;
             }
         } catch(Exception e) {
+            log.error("", e);
         }
 
         return false;
@@ -131,7 +140,7 @@ public class UserService extends AbstractJdbcDriver {
                 return false;
             }
         } catch(Exception e) {
-            log.error(e.getMessage());
+            log.error("", e);
             return false;
         }
 
@@ -145,7 +154,7 @@ public class UserService extends AbstractJdbcDriver {
                 return false;
             }
         } catch(Exception e) {
-            log.error(e.getMessage());
+            log.error("", e);
             return false;
         }
 
@@ -156,6 +165,7 @@ public class UserService extends AbstractJdbcDriver {
         try {
             this.jdbcPostgres.update("insert into bartenders (user_id, bar_id) values(?, ?)", userId, barId);
         } catch(Exception e) {
+            log.error("", e);
             return false;
         }
 
@@ -166,6 +176,7 @@ public class UserService extends AbstractJdbcDriver {
         try {
             this.jdbcPostgres.update("delete from bartenders where user_id = ?", userId);
         } catch(Exception e) {
+            log.error("", e);
             return false;
         }
 

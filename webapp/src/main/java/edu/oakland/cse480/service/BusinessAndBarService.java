@@ -25,6 +25,7 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
             b.addAll(this.jdbcPostgres.query("select bar.id, name, business_id, owner_id, address, city, zipcode, state, phonenumber, monday, tuesday, wednesday, thursday, friday, saturday, sunday from bar left join barhours on barhours.id = bar.id", new BarMapper()));
             return b;
         } catch(Exception er) {
+            log.error("", er);
             throw new IllegalArgumentException(er.getMessage());
         }
     }
@@ -33,7 +34,7 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.query("select bar.id, name, business_id, owner_id, address, city, zipcode, state, phonenumber, monday, tuesday, wednesday, thursday, friday, saturday, sunday from bar left join barhours on barhours.id = bar.id where id = ?", new Object[] {id}, new BarMapper());
         } catch(Exception e) {
-            log.info("No bar found for id {}", id);
+            log.error("", e);
             return new ArrayList<Bar>();
         }
     }
@@ -42,6 +43,7 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.queryForList("select bar.id from bar where bar.owner_id = ?", Integer.class, new Object[] {oid});
         } catch(Exception e) {
+            log.error("", e);
             return new ArrayList<Integer>();
         }
     }
@@ -52,6 +54,7 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
             b.addAll(this.jdbcPostgres.query("select bar.id, name, business_id, owner_id, address, city, zipcode, state, phonenumber, monday, tuesday, wednesday, thursday, friday, saturday, sunday from bar left join barhours on barhours.id = bar.id where business_id = ?", new Object[] {bid}, new BarMapper()));
             return b;
         } catch(Exception er) {
+            log.error("", er);
             throw new IllegalArgumentException(er.getMessage());
         }
     }
@@ -62,6 +65,7 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
             b.addAll(this.jdbcPostgres.query("select bar.id, name, business_id, owner_id, address, city, zipcode, state, phonenumber, monday, tuesday, wednesday, thursday, friday, saturday, sunday from bar left join barhours on barhours.id = bar.id where owner_id = ?", new Object[] {oid}, new BarMapper()));
             return b;
         } catch(Exception e) {
+            log.error("", e);
             throw new IllegalArgumentException(e.getMessage());
         }
     }
@@ -72,6 +76,7 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
             b.addAll(this.jdbcPostgres.query("select distinct on (bar.id) bar.id, bar.name, bar.business_id, bar.owner_id, bar.address, bar.city, bar.zipcode, bar.state, bar.phonenumber, barhours.monday, barhours.tuesday, barhours.wednesday, barhours.thursday, barhours.friday, barhours.saturday, barhours.sunday from bar left join barhours on barhours.bar_id = bar.id left join drinkorder on drinkorder.bar_id = bar.id left join users on users.id = drinkorder.user_id where users.email = ?", new Object[] {email}, new BarMapper())); 
             return b;
         } catch(Exception e) {
+            log.error("", e);
             throw new IllegalArgumentException(e.getMessage());
         }
     }
@@ -82,6 +87,7 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
             b.addAll(this.jdbcPostgres.query("select * from business", new BusinessMapper()));
             return b;
         } catch(Exception er) {
+            log.error("", er);
             throw new IllegalArgumentException(er.getMessage());
         }
     }
@@ -96,6 +102,7 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
 
             return business;
         } catch(Exception e) {
+            log.error("", e);
             throw new IllegalArgumentException(e.getMessage());
         }
     }
@@ -104,6 +111,7 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
         try {
             this.jdbcPostgres.update("insert into business (name, info, icon_url) values(?, ?, ?)", b.getName(), b.getInfo(), b.getIconUrl());
         } catch(Exception e) {
+            log.error("", e);
             return false;
         }
 
@@ -114,6 +122,7 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
         try {
             this.jdbcPostgres.update("insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values(?, ?, ?, ?, ?, ?, ?, ?)", b.getName(), b.getBusinessId(), b.getOwnerId(), b.getAddress(), b.getCity(), b.getZipcode(), b.getState(), b.getPhoneNumber());
         } catch(Exception e) {
+            log.error("", e);
             return false;
         }
 

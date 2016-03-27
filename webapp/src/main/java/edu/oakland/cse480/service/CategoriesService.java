@@ -24,7 +24,7 @@ public class CategoriesService extends AbstractJdbcDriver {
         try {
             c.addAll(this.jdbcPostgres.query("select * from categories", new CategoriesMapper()));
         } catch(Exception e) {
-            log.error("No categories found");
+            log.error("", e);
         }
 
         return c;

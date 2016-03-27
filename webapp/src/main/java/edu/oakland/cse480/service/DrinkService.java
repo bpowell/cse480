@@ -28,7 +28,7 @@ public class DrinkService extends AbstractJdbcDriver {
         try {
             d.addAll(this.jdbcPostgres.query("select * from drink", new DrinkMapper()));
         } catch(Exception e) {
-            log.error("No drink found");
+            log.error("", e);
         }
 
         return d;
@@ -38,7 +38,7 @@ public class DrinkService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.query("select * from drink where id = ?", new Object[] {id}, new DrinkMapper());
         } catch(Exception e) {
-            log.info("No drink found for id {}", id);
+            log.error("", e);
             return new ArrayList<Drink>();
         }
     }
@@ -47,7 +47,7 @@ public class DrinkService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.query("select * from drink where name = ?", new Object[] {name}, new DrinkMapper());
         } catch(Exception e) {
-            log.info("No drink found for name {}", name);
+            log.error("", e);
             return new ArrayList<Drink>();
         }
     }
@@ -65,7 +65,7 @@ public class DrinkService extends AbstractJdbcDriver {
         try {
             this.jdbcPostgres.update("update drink set name = ?, info = ?, make_time = ?, icon_url = ? where id = ?", new Object[] {d.getName(), d.getInfo(), d.getMakeTime(), d.getIconUrl(), id});
         } catch(Exception e) {
-            log.info("Cannot update drink with id {}", id);
+            log.info("", e);
         }
     }
 
@@ -73,7 +73,7 @@ public class DrinkService extends AbstractJdbcDriver {
         try {
             this.jdbcPostgres.update("insert into drink (name, info, make_time, icon_url) values(?, ?, ?, ?)", new Object[] {d.getName(), d.getInfo(), d.getMakeTime(), d.getIconUrl()});
         } catch(Exception e) {
-            log.info("Cannot insert drink");
+            log.error("", e);
         }
     }
 
@@ -81,7 +81,7 @@ public class DrinkService extends AbstractJdbcDriver {
         try {
                 this.jdbcPostgres.update("delete from drink where id = ?", new Object[] {id});
         } catch(Exception e) {
-            log.info("Cannot delete drink for id {}", id);
+            log.error("", e);
         }
     }
 
