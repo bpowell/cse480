@@ -247,6 +247,11 @@ public class OwnerController {
             ingredients.addAll(ingredientService.getIngredientById(i3));
         }
 
+        if(ingredients.size()==0) {
+            model.addObject("error", "Try again");
+            return model;
+        }
+
         drink.setIngredients(ingredients);
         int drinkId = drinkService.insertDrink(drink);
         if(drinkId==0) {
