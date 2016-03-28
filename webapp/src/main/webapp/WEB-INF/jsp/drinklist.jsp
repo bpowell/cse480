@@ -75,5 +75,6 @@
             <div><div id="content"></div><nav><ul class="pagination" id="paginator"></ul></nav></div>
         </div>
         <jsp:directive.include file="/WEB-INF/jsp/javascript.jsp"/>
+        <jsp:directive.include file="/WEB-INF/jsp/orderdrinkjs.jsp"/>
     </body>
 </html>
