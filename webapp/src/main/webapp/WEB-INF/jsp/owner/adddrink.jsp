@@ -69,8 +69,17 @@
                             </div>
                             <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit"><strong>Submit</strong></button>
                         </form:form>
-                        <div><div id="content"></div><nav><ul class="pagination" id="paginator"></ul></nav></div>
-                        <jsp:directive.include file="/WEB-INF/jsp/javascript.jsp"/>
+                        <div>
+                            <div>
+                                <div class="col-md-6" id="bardrinks"></div>
+                                <nav><ul class="pagination" id="barpaginator"></ul></nav>
+                            </div>
+                            <div>
+                                <div class="col-md-6" id="alldrinks"></div>
+                                <nav><ul class="pagination" id="allpaginator"></ul></nav>
+                            </div>
+                        </div>
+                        <jsp:directive.include file="/WEB-INF/jsp/javascript2.jsp"/>
                 </div>
                 <div class="col-xs-0 col-md-3"></div>
             </div>
