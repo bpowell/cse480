@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -35,5 +38,11 @@ public class API {
         }
 
         return drinks;
+    }
+
+    @RequestMapping(value = "/orderdrink", method = RequestMethod.POST)
+    public ResponseEntity orderDrink(@ModelAttribute("drinkId") int drinkId, @ModelAttribute("userId") int userId, @ModelAttribute("barId") int barId, @ModelAttribute("comments") String comments) {
+        log.error("{}", drinkId);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
