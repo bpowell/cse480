@@ -18,14 +18,15 @@ insert into bar (name, business_id, owner_id, address, city, zipcode, state, pho
 insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values ('BarC', 2, 2, '12345 Street', 'Big City', '32423', 'MI', '0928374648');
 
 
-insert into bartenders (user_id, bar_id) values (1, 1);
+insert into bartenders (user_id, bar_id) values ((select id from users where email='paul@paul.com'), 1);
+insert into bartenders (user_id, bar_id) values ((select id from users where email='eric@eric.com'), 1);
 
 
 insert into barhours (bar_id, monday, tuesday, wednesday, thursday, friday, saturday, sunday) values (1, 'ayy', 'lmao', 'ayy', 'lmao', 'ayy', 'lmao', 'ayy');
 insert into barhours (bar_id, monday, tuesday, wednesday, thursday, friday, saturday, sunday) values (2, 'ayy', 'lmao', 'ayy', 'lmao', 'ayy', 'lmao', 'ayy');
 
 
-insert into bannedusers (user_id, bar_id) values (1, 1);
+insert into bannedusers (user_id, bar_id) values (9, 1);
 
 
 insert into drink (name, info, make_time, icon_url) values ('beer1', 'info', 100, 'ayyLmao');
