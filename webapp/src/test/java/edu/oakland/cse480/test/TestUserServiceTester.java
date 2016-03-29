@@ -30,8 +30,28 @@ public class TestUserServiceTester {
         }
 
         @Test
-        public void testGetAllDrinks() {
+        public void testGetAllUsers() {
                 Assert.assertEquals(userService.getAllUsers().size(), 10);
+        }
+
+        @Test
+        public void testGetAllStandardUsers() {
+                Assert.assertEquals(userService.getAllStandardUsers().size(), 4);
+        }
+
+        @Test
+        public void testGetAllOwners() {
+                Assert.assertEquals(userService.getAllOwners().size(), 2);
+        }
+
+        @Test
+        public void testGetAllBartendersByBarId() {
+                Assert.assertEquals(userService.getAllBartendersByBarId(1).size(), 2);
+        }
+
+        @Test
+        public void testGetUserIdByEmail() {
+                Assert.assertEquals(userService.getUserIdByEmail("admin@admin"), 1);
         }
 
         @AfterClass
