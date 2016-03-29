@@ -47,10 +47,15 @@ function display(page) {
             '                         Right? We want stuff here?<br />' +
             '                         Yes... yes we do.' +
             '                     </p>' +
+            '                     <div id="extra' + d[i].id +'">' +
+            '                         <textarea name="comments" id="comments' + d[i].id +'" rows="3" placeholder="Extras??"></textarea><br />' +
+            '                         <a onclick="orderDrink(' + d[i].id + ');" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
+            '                     </div>' +
             '                 </div>' +
             '                 <div class="modal-footer">' +
             '                     <sec:authorize access="isAuthenticated()">' +
-            '                         <a onclick="orderDrink(' + d[i].id + ');" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
+            '                         <a onclick="unhide(' + d[i].id + ')" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
+            '                         <a onclick="orderDrink(' + d[i].id + ');" type="button" class="btn btn-primary">Quick Order ' + d[i].name + '</a>' +
             '                     </sec:authorize>' +
             '                     <sec:authorize access="isAnonymous()">' +
             '                         <a href="<c:url value="/login" />" type="button" class="btn btn-primary">Sign in to Order!</a>' +
@@ -61,6 +66,7 @@ function display(page) {
             '         </div>' +
             '     </div>';
         $('#content').append(template);
+        $('#extra'+d[i].id).hide();
     }
 }
 

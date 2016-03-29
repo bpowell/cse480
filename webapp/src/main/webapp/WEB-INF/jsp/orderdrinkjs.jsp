@@ -1,6 +1,7 @@
 <script>
     function orderDrink(drinkId) {
-        comments = '';
+        comments = $('#comments'+drinkId).val();
+        $('#comments'+drinkId).val('');
         $.ajax({
             type: "POST",
             url: '<c:url value="/api/orderdrink" />',
@@ -19,5 +20,9 @@
                 console.log(err);
             }
         });
+    }
+
+    function unhide(drinkId) {
+        $('#extra'+drinkId).show();
     }
 </script>
