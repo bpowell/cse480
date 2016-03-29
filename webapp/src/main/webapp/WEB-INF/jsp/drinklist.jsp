@@ -54,7 +54,7 @@
                             </div>
                             <div class="modal-footer">
                                 <sec:authorize access="isAuthenticated()">
-                                    <a href="#" type="button" class="btn btn-primary">Order ${q.getDrinkName()}</a>
+                                    <a onclick="orderDrink(${q.getId()})" type="button" class="btn btn-primary">Order ${q.getDrinkName()}</a>
                                 </sec:authorize>
                                 <sec:authorize access="isAnonymous()">
                                     <a href="<c:url value="/login" />" type="button" class="btn btn-primary">Sign in to Order!</a>

@@ -50,7 +50,7 @@ function display(page) {
             '                 </div>' +
             '                 <div class="modal-footer">' +
             '                     <sec:authorize access="isAuthenticated()">' +
-            '                         <a href="#" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
+            '                         <a onclick="orderDrink(' + d[i].id + ');" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
             '                     </sec:authorize>' +
             '                     <sec:authorize access="isAnonymous()">' +
             '                         <a href="<c:url value="/login" />" type="button" class="btn btn-primary">Sign in to Order!</a>' +
