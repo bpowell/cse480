@@ -54,6 +54,11 @@ public class TestUserServiceTester {
                 Assert.assertEquals(userService.getUserIdByEmail("admin@admin"), 1);
         }
 
+        @Test
+        public void testGetUsernameByEmail() {
+                Assert.assertEquals(userService.getUsernameByEmail("admin@admin"), "admin");
+        }
+
         @AfterClass
         public static void shutdown() {
                 db.shutdown();
