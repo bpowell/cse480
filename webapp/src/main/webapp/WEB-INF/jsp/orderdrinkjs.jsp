@@ -1,9 +1,10 @@
 <script>
-    function orderDrink() {
+    function orderDrink(drinkId) {
+        comments = '';
         $.ajax({
             type: "POST",
             url: '<c:url value="/api/orderdrink" />',
-            data: 'drinkId=1&userId=1&barId=1&comments=none',
+            data: {drinkId: drinkId, userId: '${userId}', barId: '${barId}', comments: comments},
             beforeSend: function(xhr, settings) {
                 var token = $("meta[name='_csrf']").attr("content");
                 var header = $("meta[name='_csrf_header']").attr("content");
