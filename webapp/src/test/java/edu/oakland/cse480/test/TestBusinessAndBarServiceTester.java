@@ -31,7 +31,17 @@ public class TestBusinessAndBarServiceTester {
         }
 
         @Test
-        public void testAyyLmao() {
+        public void testGetAllBars() {
+                Assert.assertEquals(businessAndBar.getAllBars().size(), 2);
+        }
+
+        @Test
+        public void testGetBarsById() {
+                Assert.assertEquals(businessAndBar.getBarsIdByOwnerId(1).size(), 1);
+        }
+
+        @Test
+        public void testGetBarsIdByOwnerId() {
                 Assert.assertEquals(businessAndBar.getBarsIdByOwnerId(1).size(), 1);
         }
 
