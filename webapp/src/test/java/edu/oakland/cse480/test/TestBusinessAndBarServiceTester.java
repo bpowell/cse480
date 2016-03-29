@@ -45,6 +45,21 @@ public class TestBusinessAndBarServiceTester {
                 Assert.assertEquals(businessAndBar.getBarsIdByOwnerId(1).size(), 1);
         }
 
+        @Test
+        public void testGetBarsByBusinessId() {
+                Assert.assertEquals(businessAndBar.getBarsByBusinessId(1).size(), 1);
+        }
+
+        @Test
+        public void testGetBarsByOwnerId() {
+                Assert.assertEquals(businessAndBar.getBarsByOwnerId(1).size(), 1);
+        }
+
+        @Test
+        public void testGetAllBusinesses() {
+                Assert.assertEquals(businessAndBar.getAllBusinesses().size(), 2);
+        }
+
         @AfterClass
         public static void shutdown() {
                 db.shutdown();
