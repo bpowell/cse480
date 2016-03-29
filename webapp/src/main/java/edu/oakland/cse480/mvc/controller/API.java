@@ -43,6 +43,9 @@ public class API {
     @RequestMapping(value = "/orderdrink", method = RequestMethod.POST)
     public ResponseEntity orderDrink(@ModelAttribute("drinkId") int drinkId, @ModelAttribute("userId") int userId, @ModelAttribute("barId") int barId, @ModelAttribute("comments") String comments) {
         log.error("{}", drinkId);
+        log.error("{}", userId);
+        log.error("{}", barId);
+        log.error("{}", comments);
         return new ResponseEntity(HttpStatus.OK);
     }
 }
