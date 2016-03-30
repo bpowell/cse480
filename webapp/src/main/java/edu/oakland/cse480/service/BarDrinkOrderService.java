@@ -59,6 +59,17 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
         }
     }
 
+    public boolean placeOrder(BarDrinkOrder order) {
+        try {
+            this.jdbcPostgres.update("insert into drinkorder (drink_id, drink_count, bar_id, user_id, time_placed, comments) values(?,?,?,?,?,?)", order.getDrinkId(), order.getDrinkCount(), order.getBarId(), order.getUserId(), order.getTimePlaced(), order.getComments());
+        } catch(Exception e) {
+            log.info("", e);
+            return false;
+        }
+
+        return true;
+    }
+
     private class BarDrinkOrderMapper implements RowMapper<BarDrinkOrder> {
         public BarDrinkOrder mapRow(ResultSet rs, int rowNum) throws SQLException {
             BarDrinkOrder b = new BarDrinkOrder();
