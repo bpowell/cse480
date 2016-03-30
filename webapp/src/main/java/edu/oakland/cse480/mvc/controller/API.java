@@ -61,6 +61,11 @@ public class API {
         order.setDrinkCount(1);
         order.setTimePlaced(new Timestamp(System.currentTimeMillis()));
 
+        if(!barDrinkOrderService.placeOrder(order)) {
+            //Failed to insert drink order
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+
         return new ResponseEntity(HttpStatus.OK);
     }
 }
