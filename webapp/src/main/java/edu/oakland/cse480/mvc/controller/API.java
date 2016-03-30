@@ -58,7 +58,7 @@ public class API {
         order.setBarId(barId);
         order.setUserId(userId);
         order.setComments(comments);
-        order.setDrinkCount(0);
+        order.setDrinkCount(1);
         order.setTimePlaced(new Timestamp(System.currentTimeMillis()));
 
         return new ResponseEntity(HttpStatus.OK);
