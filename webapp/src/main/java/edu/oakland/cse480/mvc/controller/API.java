@@ -1,7 +1,9 @@
 package edu.oakland.cse480.mvc.controller;
 
 import edu.oakland.cse480.mvc.models.Drink;
+import edu.oakland.cse480.mvc.models.BarDrinkOrder;
 import edu.oakland.cse480.service.DrinkService;
+import edu.oakland.cse480.service.BarDrinkOrderService;
 import edu.oakland.cse480.service.IngredientService;
 
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -29,6 +32,9 @@ public class API {
 
     @Autowired
     private DrinkService drinkService;
+
+    @Autowired
+    private BarDrinkOrderService barDrinkOrderService;
 
     @RequestMapping(value = "/drinklist/{barId}", method = RequestMethod.GET)
     public @ResponseBody List<Drink> getDrinkList(@PathVariable int barId) {
@@ -46,6 +52,15 @@ public class API {
         log.error("{}", userId);
         log.error("{}", barId);
         log.error("{}", comments);
+
+        BarDrinkOrder order = new BarDrinkOrder();
+        order.setDrinkId(drinkId);
+        order.setBarId(barId);
+        order.setUserId(userId);
+        order.setComments(comments);
+        order.setDrinkCount(0);
+        order.setTimePlaced(new Timestamp(System.currentTimeMillis()));
+
         return new ResponseEntity(HttpStatus.OK);
     }
 }
