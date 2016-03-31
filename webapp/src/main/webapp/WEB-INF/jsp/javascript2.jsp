@@ -123,7 +123,8 @@ function removeDrink(drinkId) {
         },
         success: function(a) {
             console.log(a);
-            getDrinkListForBar();
+            $('.modal').modal('hide');
+            location.reload();
         },
         error: function(xhr, status, err) {
             console.log("Error");
