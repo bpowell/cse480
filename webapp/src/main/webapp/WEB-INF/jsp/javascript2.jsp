@@ -10,7 +10,7 @@ function displayDrinksAtThisBar(page) {
 
     start = page*page_size;
     for(i=start; i<start+page_size && i<dataAtThisBar.length; i++) {
-        addContent("#bardrinks", dataAtThisBar[i]);
+        addContent("#bardrinks", dataAtThisBar[i], "");
     }
 }
 
@@ -19,11 +19,11 @@ function displayDrinksAtAllBars(page) {
 
     start = page*page_size;
     for(i=start; i<start+page_size && i<dataAtAllBars.length; i++) {
-        addContent("#alldrinks", dataAtAllBars[i]);
+        addContent("#alldrinks", dataAtAllBars[i], '<a type="button" class="btn btn-primary" onclick="addDrink(${barId}, ' + dataAtAllBars[i].id + ')">Add to bar!</a>');
     }
 }
 
-function addContent(divid, item) {
+function addContent(divid, item, extra) {
     var template = '' +
         ' <a href="#" data-toggle="modal" data-target="#id' + item.id + '">  ' +
         '     <div class="row">' +
@@ -62,6 +62,7 @@ function addContent(divid, item) {
         '                     </p>' +
         '                 </div>' +
         '                 <div class="modal-footer">' +
+                                extra +
         '                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>' +
         '                 </div>' +
         '             </div>' +
