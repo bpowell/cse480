@@ -101,6 +101,7 @@ function addDrink(drinkId) {
         },
         success: function(a) {
             console.log(a);
+            getDrinkListForBar();
         },
         error: function(xhr, status, err) {
             console.log("Error");
@@ -110,7 +111,7 @@ function addDrink(drinkId) {
     });
 }
 
-$(document).ready(function() {
+function getDrinkListForBar() {
     $.ajax({
         type: "GET",
         url: '<c:url value="/api/drinklist/${barId}" />',
@@ -124,7 +125,9 @@ $(document).ready(function() {
         },
         dataType: 'json'
     });
+}
 
+function getAllDrinkLists() {
     $.ajax({
         type: "GET",
         url: '<c:url value="/api/alldrinks" />',
@@ -138,5 +141,10 @@ $(document).ready(function() {
         },
         dataType: 'json'
     });
+}
+
+$(document).ready(function() {
+    getDrinkListForBar();
+    getAllDrinkLists();
 });
 </script>
