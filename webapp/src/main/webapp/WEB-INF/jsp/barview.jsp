@@ -10,13 +10,11 @@
             </div>
             <div class="row">
                 <div class="col-xs-0 col-md-3"></div>
-                <div class="col-xs-12 col-md-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                    </div>
+                <div class="col-xs-12 col-md-6 input-group">
+                    <input type="text" class="search-hints form-control" placeholder="Search for..." />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
                 </div>
                 <div class="col-xs-0 col-md-3"></div>
             </div>
@@ -100,5 +98,35 @@
                 </c:forEach>
             </c:forEach>
         </div>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var search_hints_query = new Bloodhound({
+                datumTokenizer: function (d) {
+                    return Bloodhound.tokenizers.whitespace(d.value);
+                },
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '<c:url value="/api/drinklist/1" />',
+                    filter: function (search_hints_list) {
+                        return $.map(search_hints_list, function (artist) {
+                            return {
+                               value: artist.name
+                            };
+                        });
+                    }
+                }
+              });
+
+              // initialize the bloodhound suggestion engine
+              search_hints_query.initialize();
+
+              // instantiate the typeahead UI
+              $('.search-hints').typeahead(null, {
+                  displayKey: 'value',
+                  source: search_hints_query.ttAdapter()
+              });
+              $(".tt-hint").addClass("form-control");
+            });
+        </script>
     </body>
 </html>
