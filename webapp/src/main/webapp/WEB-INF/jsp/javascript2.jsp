@@ -10,7 +10,7 @@ function displayDrinksAtThisBar(page) {
 
     start = page*page_size;
     for(i=start; i<start+page_size && i<dataAtThisBar.length; i++) {
-        addContent("#bardrinks", dataAtThisBar[i], "");
+        addContent("#bardrinks", dataAtThisBar[i], '<a type="button" class="btn btn-primary" onclick="removeDrink(' + dataAtThisBar[i].id + ')">Remove from bar!</a>');
     }
 }
 
@@ -93,6 +93,28 @@ function addDrink(drinkId) {
     $.ajax({
         type: "POST",
         url: '<c:url value="/api/adddrink" />',
+        data: {drinkId: drinkId, barId: '${barId}'},
+        beforeSend: function(xhr, settings) {
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+            xhr.setRequestHeader(header, token);
+        },
+        success: function(a) {
+            console.log(a);
+            getDrinkListForBar();
+        },
+        error: function(xhr, status, err) {
+            console.log("Error");
+            console.log(status);
+            console.log(err);
+        }
+    });
+}
+
+function removeDrink(drinkId) {
+    $.ajax({
+        type: "POST",
+        url: '<c:url value="/api/removedrink" />',
         data: {drinkId: drinkId, barId: '${barId}'},
         beforeSend: function(xhr, settings) {
             var token = $("meta[name='_csrf']").attr("content");
