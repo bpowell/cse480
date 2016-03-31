@@ -56,7 +56,7 @@ public class API {
     }
 
     @RequestMapping(value = "/adddrink", method = RequestMethod.POST)
-    public ResponseEntity orderDrink(@ModelAttribute("drinkId") int drinkId, @ModelAttribute("barId") int barId) {
+    public ResponseEntity addDrink(@ModelAttribute("drinkId") int drinkId, @ModelAttribute("barId") int barId) {
         AvailableDrinks a = new AvailableDrinks();
         a.setDrinkId(drinkId);
         a.setBarId(barId);
