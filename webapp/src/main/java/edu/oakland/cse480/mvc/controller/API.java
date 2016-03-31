@@ -36,4 +36,14 @@ public class API {
 
         return drinks;
     }
+
+    @RequestMapping(value = "/alldrinks", method = RequestMethod.GET)
+    public @ResponseBody List<Drink> getAllDrinks() {
+        List<Drink> drinks = drinkService.getAllDrinks();
+        for(Drink drink : drinks) {
+            drink.setIngredients(ingredientService.getIngredientsByDrinkId(drink.getId()));
+        }
+
+        return drinks;
+    }
 }
