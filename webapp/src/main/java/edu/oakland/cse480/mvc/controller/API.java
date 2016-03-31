@@ -67,4 +67,17 @@ public class API {
 
         return new ResponseEntity(HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/removedrink", method = RequestMethod.POST)
+    public ResponseEntity removeDrink(@ModelAttribute("drinkId") int drinkId, @ModelAttribute("barId") int barId) {
+        AvailableDrinks a = new AvailableDrinks();
+        a.setDrinkId(drinkId);
+        a.setBarId(barId);
+
+        if(!availableDrinksService.deleteAvailableDrinkByDrinkId(a)) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

@@ -90,6 +90,17 @@ public class AvailableDrinksService extends AbstractJdbcDriver {
         }
     }
 
+    public boolean deleteAvailableDrinkByDrinkId(AvailableDrinks a) {
+        try {
+            this.jdbcPostgres.update("delete from availabledrinks where drink_id = ? and bar_id = ?", new Object[] {a.getDrinkId(), a.getBarId()});
+        } catch(Exception e) {
+            log.error("", e);
+            return false;
+        }
+
+        return true;
+    }
+
     private class AvailableDrinksMapper implements RowMapper<AvailableDrinks> {
         public AvailableDrinks mapRow(ResultSet rs, int rowNum) throws SQLException {
             AvailableDrinks a = new AvailableDrinks();
