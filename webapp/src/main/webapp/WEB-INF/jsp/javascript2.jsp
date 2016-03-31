@@ -19,7 +19,7 @@ function displayDrinksAtAllBars(page) {
 
     start = page*page_size;
     for(i=start; i<start+page_size && i<dataAtAllBars.length; i++) {
-        addContent("#alldrinks", dataAtAllBars[i], '<a type="button" class="btn btn-primary" onclick="addDrink(${barId}, ' + dataAtAllBars[i].id + ')">Add to bar!</a>');
+        addContent("#alldrinks", dataAtAllBars[i], '<a type="button" class="btn btn-primary" onclick="addDrink(' + dataAtAllBars[i].id + ')">Add to bar!</a>');
     }
 }
 
@@ -87,6 +87,27 @@ function pagesAtAllBars(size) {
     for(i=0; i<=num_pages; i++) {
         $('#allpaginator').append('<li><a onclick="displayDrinksAtAllBars(' + i + ')" id="page' + i + '">' + (i+1) + '</a></li>');
     }
+}
+
+function addDrink(drinkId) {
+    $.ajax({
+        type: "POST",
+        url: '<c:url value="/api/adddrink" />',
+        data: {drinkId: drinkId, barId: '${barId}'},
+        beforeSend: function(xhr, settings) {
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+            xhr.setRequestHeader(header, token);
+        },
+        success: function(a) {
+            console.log(a);
+        },
+        error: function(xhr, status, err) {
+            console.log("Error");
+            console.log(status);
+            console.log(err);
+        }
+    });
 }
 
 $(document).ready(function() {
