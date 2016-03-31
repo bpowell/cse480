@@ -81,7 +81,7 @@
                         <nav><ul class="pagination" id="barpaginator"></ul></nav>
                     </div>
                     <div class="col-md-6">
-                        <center>All Drinks</center>
+                        <center>All Drinks:</center>
                         <div id="alldrinks"></div>
                         <nav><ul class="pagination" id="allpaginator"></ul></nav>
                     </div>

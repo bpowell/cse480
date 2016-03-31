@@ -1,6 +1,7 @@
 <script>
 //the data from the json API
 var dataAtThisBar;
+var dataAtAllBars;
 //number of drinks per page
 var page_size = 15;
 
@@ -10,6 +11,15 @@ function displayDrinksAtThisBar(page) {
     start = page*page_size;
     for(i=start; i<start+page_size && i<dataAtThisBar.length; i++) {
         addContent("#bardrinks", dataAtThisBar[i]);
+    }
+}
+
+function displayDrinksAtAllBars(page) {
+    $('#alldrinks').html("");
+
+    start = page*page_size;
+    for(i=start; i<start+page_size && i<dataAtAllBars.length; i++) {
+        addContent("#alldrinks", dataAtAllBars[i]);
     }
 }
 
@@ -69,6 +79,15 @@ function pagesAtThisBar(size) {
     }
 }
 
+function pagesAtAllBars(size) {
+    $('#allpaginator').html("");
+    num_pages = Math.floor(size/page_size);
+
+    for(i=0; i<=num_pages; i++) {
+        $('#allpaginator').append('<li><a onclick="displayDrinksAtAllBars(' + i + ')" id="page' + i + '">' + (i+1) + '</a></li>');
+    }
+}
+
 $(document).ready(function() {
     $.ajax({
         type: "GET",
@@ -77,6 +96,20 @@ $(document).ready(function() {
             dataAtThisBar = a;
             pagesAtThisBar(dataAtThisBar.length);
             displayDrinksAtThisBar(0);
+        },
+        error: function() {
+            console.log("Error");
+        },
+        dataType: 'json'
+    });
+
+    $.ajax({
+        type: "GET",
+        url: '<c:url value="/api/alldrinks" />',
+        success: function(a) {
+            dataAtAllBars = a;
+            pagesAtAllBars(dataAtAllBars.length);
+            displayDrinksAtAllBars(0);
         },
         error: function() {
             console.log("Error");
