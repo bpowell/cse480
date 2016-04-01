@@ -12,7 +12,7 @@ function display(page) {
     start = page*page_size;
     for(i=start; i<start+page_size && i<d.length; i++) {
         var template = '' +
-            ' <a href="#" data-toggle="modal" data-target="#id' + d[i].id + '">  ' +
+            ' <a href="#" data-toggle="modal" data-target="#did' + d[i].id + '">  ' +
             '     <div class="row">' +
             '         <div class="col-xs-0 col-md-2"></div>' +
             '         <div class="col-xs-3 col-md-1 drink-icon">' +
@@ -28,7 +28,7 @@ function display(page) {
             '         <div class="col-xs-0 col-md-2"></div>' +
             '     </div>' +
             ' </a>' +
-            '     <div class="modal fade drink-modal-lg" id="id' + d[i].id + '" tabindex="-1" role="dialog" aria-labelledby="<c:url value="' + d[i].name + '" /> Modal" aria-hidden="true">' +
+            '     <div class="modal fade drink-modal-lg" id="did' + d[i].id + '" tabindex="-1" role="dialog" aria-labelledby="<c:url value="' + d[i].name + '" /> Modal" aria-hidden="true">' +
             '         <div class="modal-dialog modal-lg">' +
             '             <div class="modal-content">' +
             '                 <div class="modal-header">' +
