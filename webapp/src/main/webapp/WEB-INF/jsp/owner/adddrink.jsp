@@ -23,7 +23,7 @@
                 <div class="col-xs-0 col-md-3"></div>
                 <div class="col-xs-12 col-md-6">
                     <h1><strong><a href="<c:url value='/owner/'/>">Owner</a> &frasl;<br />
-                        Add Ingredient</strong></h1>
+                        Add Drink</strong></h1>
                         <c:url value="/owner/adddrink" var="post_url" />
                         <form:form method="POST" action="${post_url}" class="form-signin" commandName="addDrink">
                             <div class="form-group">
