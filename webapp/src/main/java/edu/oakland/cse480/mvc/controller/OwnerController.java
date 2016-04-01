@@ -268,7 +268,7 @@ public class OwnerController {
             return model;
         }
 
-        model.addObject("success", "Hours Updated!");
+        model.addObject("success", "Drink has been added!");
         return model;
     }
 }
