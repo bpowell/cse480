@@ -110,7 +110,7 @@
                 },
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 prefetch: {
-                    url: '<c:url value="/api/drinklist/1" />',
+                    url: '<c:url value="/api/allbars" />',
                     filter: function (search_hints_list) {
                         return $.map(search_hints_list, function (artist) {
                             return {
