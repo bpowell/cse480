@@ -116,9 +116,9 @@
                 prefetch: {
                     url: '<c:url value="/api/allbars" />',
                     filter: function (search_hints_list) {
-                        return $.map(search_hints_list, function (artist) {
+                        return $.map(search_hints_list, function (bar) {
                             return {
-                               value: artist.name
+                               value: bar.name
                             };
                         });
                     }
