@@ -9,6 +9,24 @@
                 <div class="col-xs-0 col-md-2"></div>
             </div>
             <div class="row">
+                <div class="col-xs-0 col-md-3"></div>
+                <div class="col-xs-12 col-md-6">
+                    <c:url value="/drinklist/${barId}" var="post_url" />
+                    <form:form action="${post_url}" method="POST" class="search-box" role="search">
+                        <div class="col-md-12 input-group">
+                            <input id="drinkName" name="drinkName" type="text" class="search-hints form-control" placeholder="Search for..." />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" value="submit" type="submit">Go!</button>
+                                <c:if test="${clearSearch}">
+                                    <a class="btn btn-default" value="submit" href="${post_url}" type="Button">Clear!</a>
+                                </c:if>
+                            </span>
+                        </div>
+                    </form:form>
+                </div>
+                <div class="col-xs-0 col-md-3"></div>
+            </div>
+            <div class="row">
                 <div class="col-xs-0 col-md-2"></div>
                 <div class="col-xs-12 col-md-8">
                     <h3><strong>Up Next</strong></h3>
@@ -76,5 +94,35 @@
         </div>
         <jsp:directive.include file="/WEB-INF/jsp/javascript.jsp"/>
         <jsp:directive.include file="/WEB-INF/jsp/orderdrinkjs.jsp"/>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var search_hints_query = new Bloodhound({
+                datumTokenizer: function (d) {
+                    return Bloodhound.tokenizers.whitespace(d.value);
+                },
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                prefetch: {
+                    url: '<c:url value="/api/drinklist/${barId}" />',
+                    filter: function (search_hints_list) {
+                        return $.map(search_hints_list, function (drink) {
+                            return {
+                               value: drink.name
+                            };
+                        });
+                    }
+                }
+              });
+
+              // initialize the bloodhound suggestion engine
+              search_hints_query.initialize();
+
+              // instantiate the typeahead UI
+              $('.search-hints').typeahead(null, {
+                  displayKey: 'value',
+                  source: search_hints_query.ttAdapter()
+              });
+              $(".tt-hint").addClass("form-control");
+            });
+        </script>
     </body>
 </html>

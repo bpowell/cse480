@@ -96,19 +96,28 @@ function pages(size) {
 }
 
 $(document).ready(function() {
-    $.ajax({
-        type: "GET",
-        url: '<c:url value="/api/drinklist/${barId}" />',
-        success: function(a) {
-            console.log(a);
-            d = a;
+    <c:choose>
+        <c:when test="${not empty drinks}">
+            d = ${drinks};
             pages(d.length);
             display(0);
-        },
-        error: function() {
-            console.log("Error");
-        },
-        dataType: 'json'
-    });
+        </c:when>
+        <c:otherwise>
+            $.ajax({
+                type: "GET",
+                url: '<c:url value="/api/drinklist/${barId}" />',
+                success: function(a) {
+                    console.log(a);
+                    d = a;
+                    pages(d.length);
+                    display(0);
+                },
+                error: function() {
+                    console.log("Error");
+                },
+                dataType: 'json'
+            });
+        </c:otherwise>
+    </c:choose>
 });
 </script>
