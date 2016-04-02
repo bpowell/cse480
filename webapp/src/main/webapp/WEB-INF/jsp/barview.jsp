@@ -109,7 +109,7 @@
                     return Bloodhound.tokenizers.whitespace(d.value);
                 },
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
-                remote: {
+                prefetch: {
                     url: '<c:url value="/api/drinklist/1" />',
                     filter: function (search_hints_list) {
                         return $.map(search_hints_list, function (artist) {
