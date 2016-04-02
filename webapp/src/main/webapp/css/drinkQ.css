@@ -196,8 +196,23 @@ a:focus, a:hover {
 }
 
 /** Drinkview.jsp **/
+.drink {
+    padding-bottom: 20px;
+    border-bottom: 5px dotted #999;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
 .drink-icon {
     padding: 0;
+}
+.drink-text {
+}
+.drink-quickorder {
+    margin-top: 15px;
+}
+.drink-quickorder > a {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .drink-icon img {
     width: 100%;
@@ -207,7 +222,10 @@ a:focus, a:hover {
     margin-top: 5px;
 }
 .drink-text p {
-    margin-bottom: 20px;
+}
+
+.pagination {
+    margin-top: 0;
 }
 
 /** admin/addbar **/

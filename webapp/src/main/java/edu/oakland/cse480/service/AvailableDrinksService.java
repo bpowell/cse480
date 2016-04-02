@@ -63,12 +63,15 @@ public class AvailableDrinksService extends AbstractJdbcDriver {
         }
     }
 
-    public void insertAvailableDrink(AvailableDrinks a) {
+    public boolean insertAvailableDrink(AvailableDrinks a) {
         try {
             this.jdbcPostgres.update("insert into availabledrinks (drink_id, bar_id) values(?, ?)", new Object[] {a.getDrinkId(), a.getBarId()});
         } catch(Exception e) {
             log.info("", e);
+            return false;
         }
+
+        return true;
     }
 
     public void deleteAvailableDrinkById(int id) {
@@ -85,6 +88,17 @@ public class AvailableDrinksService extends AbstractJdbcDriver {
         } catch(Exception e) {
             log.info("", e);
         }
+    }
+
+    public boolean deleteAvailableDrinkByDrinkId(AvailableDrinks a) {
+        try {
+            this.jdbcPostgres.update("delete from availabledrinks where drink_id = ? and bar_id = ?", new Object[] {a.getDrinkId(), a.getBarId()});
+        } catch(Exception e) {
+            log.error("", e);
+            return false;
+        }
+
+        return true;
     }
 
     private class AvailableDrinksMapper implements RowMapper<AvailableDrinks> {

@@ -12,12 +12,13 @@ function display(page) {
     start = page*page_size;
     for(i=start; i<start+page_size && i<d.length; i++) {
         var template = '' +
-            ' <a href="#" data-toggle="modal" data-target="#id' + d[i].id + '">  ' +
-            '     <div class="row">' +
+            ' <a href="#" data-toggle="modal" data-target="#did' + d[i].id + '">  ' +
+            '     <div class="row drink">' +
             '         <div class="col-xs-0 col-md-2"></div>' +
             '         <div class="col-xs-3 col-md-1 drink-icon">' +
             '             <img src="<c:url value="/' + d[i].icon_url + '" context="/cse480" />" class="img-fluid img-rounded" alt="' + d[i].name + ' icon"/>' +
             '         </div>' +
+            '         <sec:authorize access="isAnonymous()">' +
             '         <div class="col-xs-9 col-md-7 drink-text">' +
             '             <h3><strong>' + d[i].name + '</strong></h3>' +
             '             <p>' +
@@ -25,10 +26,23 @@ function display(page) {
             '                 <strong>Description:</strong> ' + d[i].info + '' +
             '             </p>' +
             '         </div>' +
+            '         </sec:authorize>' +
+            '         <sec:authorize access="isAuthenticated()">' +
+            '         <div class="col-xs-9 col-md-5 drink-text">' +
+            '             <h3><strong>' + d[i].name + '</strong></h3>' +
+            '             <p>' +
+            '                 <strong>Make Time:</strong> ' + d[i].makeTime + ' Seconds<br />' +
+            '                 <strong>Description:</strong> ' + d[i].info + '' +
+            '             </p>' +
+            '         </div>' +
+            '         <div class="col-xs-12 col-md-2 drink-quickorder">' +
+            '             <a onclick="orderDrink(' + d[i].id + ');" type="button" class="btn btn-primary btn-block"><strong>Quick Order</strong></a>' +
+            '         </div>' +
+            '         </sec:authorize>' +
             '         <div class="col-xs-0 col-md-2"></div>' +
             '     </div>' +
             ' </a>' +
-            '     <div class="modal fade drink-modal-lg" id="id' + d[i].id + '" tabindex="-1" role="dialog" aria-labelledby="<c:url value="' + d[i].name + '" /> Modal" aria-hidden="true">' +
+            '     <div class="modal fade drink-modal-lg" id="did' + d[i].id + '" tabindex="-1" role="dialog" aria-labelledby="<c:url value="' + d[i].name + '" /> Modal" aria-hidden="true">' +
             '         <div class="modal-dialog modal-lg">' +
             '             <div class="modal-content">' +
             '                 <div class="modal-header">' +
@@ -47,10 +61,14 @@ function display(page) {
             '                         Right? We want stuff here?<br />' +
             '                         Yes... yes we do.' +
             '                     </p>' +
+            '                     <div id="extra' + d[i].id +'">' +
+            '                         <textarea name="comments" id="comments' + d[i].id +'" rows="3" placeholder="Extras??"></textarea><br />' +
+            '                         <a onclick="orderDrink(' + d[i].id + ');" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
+            '                     </div>' +
             '                 </div>' +
             '                 <div class="modal-footer">' +
             '                     <sec:authorize access="isAuthenticated()">' +
-            '                         <a href="#" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
+            '                         <a onclick="unhide(' + d[i].id + ')" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
             '                     </sec:authorize>' +
             '                     <sec:authorize access="isAnonymous()">' +
             '                         <a href="<c:url value="/login" />" type="button" class="btn btn-primary">Sign in to Order!</a>' +
@@ -61,6 +79,7 @@ function display(page) {
             '         </div>' +
             '     </div>';
         $('#content').append(template);
+        $('#extra'+d[i].id).hide();
     }
 }
 
