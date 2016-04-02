@@ -13,11 +13,12 @@ function display(page) {
     for(i=start; i<start+page_size && i<d.length; i++) {
         var template = '' +
             ' <a href="#" data-toggle="modal" data-target="#did' + d[i].id + '">  ' +
-            '     <div class="row">' +
+            '     <div class="row drink">' +
             '         <div class="col-xs-0 col-md-2"></div>' +
             '         <div class="col-xs-3 col-md-1 drink-icon">' +
             '             <img src="<c:url value="/' + d[i].icon_url + '" context="/cse480" />" class="img-fluid img-rounded" alt="' + d[i].name + ' icon"/>' +
             '         </div>' +
+            '         <sec:authorize access="isAnonymous()">' +
             '         <div class="col-xs-9 col-md-7 drink-text">' +
             '             <h3><strong>' + d[i].name + '</strong></h3>' +
             '             <p>' +
@@ -25,6 +26,19 @@ function display(page) {
             '                 <strong>Description:</strong> ' + d[i].info + '' +
             '             </p>' +
             '         </div>' +
+            '         </sec:authorize>' +
+            '         <sec:authorize access="isAuthenticated()">' +
+            '         <div class="col-xs-9 col-md-5 drink-text">' +
+            '             <h3><strong>' + d[i].name + '</strong></h3>' +
+            '             <p>' +
+            '                 <strong>Make Time:</strong> ' + d[i].makeTime + ' Seconds<br />' +
+            '                 <strong>Description:</strong> ' + d[i].info + '' +
+            '             </p>' +
+            '         </div>' +
+            '         <div class="col-xs-12 col-md-2 drink-quickorder">' +
+            '             <a onclick="orderDrink(' + d[i].id + ');" type="button" class="btn btn-primary btn-block"><strong>Quick Order</strong></a>' +
+            '         </div>' +
+            '         </sec:authorize>' +
             '         <div class="col-xs-0 col-md-2"></div>' +
             '     </div>' +
             ' </a>' +
@@ -55,7 +69,6 @@ function display(page) {
             '                 <div class="modal-footer">' +
             '                     <sec:authorize access="isAuthenticated()">' +
             '                         <a onclick="unhide(' + d[i].id + ')" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
-            '                         <a onclick="orderDrink(' + d[i].id + ');" type="button" class="btn btn-primary">Quick Order ' + d[i].name + '</a>' +
             '                     </sec:authorize>' +
             '                     <sec:authorize access="isAnonymous()">' +
             '                         <a href="<c:url value="/login" />" type="button" class="btn btn-primary">Sign in to Order!</a>' +
