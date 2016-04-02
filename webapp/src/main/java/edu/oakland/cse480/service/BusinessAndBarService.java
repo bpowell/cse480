@@ -30,6 +30,21 @@ public class BusinessAndBarService extends AbstractJdbcDriver {
         }
     }
 
+    public List<Business> getBusinessAndBarsByName(String name) {
+        try {
+            List<Business> business = new ArrayList<Business>();
+            business = this.jdbcPostgres.query("select * from business where name LIKE ?", new Object[] {name}, new BusinessMapper());
+            for (Business b : business) {
+                b.setBars(getBarsByBusinessId(b.getId()));
+            }
+
+            return business;
+        } catch(Exception e) {
+            log.error("", e);
+            return new ArrayList<Business>();
+        }
+    }
+
     public List<Bar> getBarById(int id) {
         try {
             return this.jdbcPostgres.query("select bar.id, name, business_id, owner_id, address, city, zipcode, state, phonenumber, monday, tuesday, wednesday, thursday, friday, saturday, sunday from bar left join barhours on barhours.id = bar.id where id = ?", new Object[] {id}, new BarMapper());
