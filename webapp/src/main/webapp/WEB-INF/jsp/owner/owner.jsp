@@ -15,6 +15,9 @@
                         <a class="btn btn-primary" href="<c:url value='/owner/addingredient'/>"><strong>Add Ingredients</strong></a>
                     </p>
                     <p>
+                        <a class="btn btn-primary" href="<c:url value='/owner/adddrink'/>"><strong>Add Drink</strong></a>
+                    </p>
+                    <p>
                         <a class="btn btn-primary" href="<c:url value='/owner/updatehours'/>"><strong>Update Bar Hours</strong></a>
                     </p>
                 </div>
