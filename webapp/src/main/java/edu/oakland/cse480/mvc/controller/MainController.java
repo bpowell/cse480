@@ -176,6 +176,20 @@ public class MainController{
         return model;
     }
 
+    @RequestMapping(value = "/barview", method = RequestMethod.POST)
+    public ModelAndView postBarview(@ModelAttribute("barName") String barName) {
+        if(Objects.equals(barName, "")) {
+            return barview();
+        }
+
+        ModelAndView model = new ModelAndView();
+        model.addObject("businesses", businessAndBarService.getBusinessAndBarsByName(barName));
+        model.addObject("clearSearch", true);
+        model.setViewName("barview");
+
+        return model;
+    }
+
     @RequestMapping(value = "/display", method = RequestMethod.GET)
     public ModelAndView display() {
         return barview();

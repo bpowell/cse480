@@ -11,11 +11,15 @@
             <div class="row">
                 <div class="col-xs-0 col-md-3"></div>
                 <div class="col-xs-12 col-md-6">
-                    <form:form class="search-box" role="search">
+                    <c:url value="/barview" var="post_url" />
+                    <form:form action="${post_url}" method="POST" class="search-box" role="search">
                         <div class="col-md-12 input-group">
-                            <input type="text" class="search-hints form-control" placeholder="Search for..." />
+                            <input id="barName" name="barName" type="text" class="search-hints form-control" placeholder="Search for..." />
                             <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Go!</button>
+                                <button class="btn btn-default" value="submit" type="submit">Go!</button>
+                                <c:if test="${clearSearch}">
+                                    <a class="btn btn-default" value="submit" href="<c:url value="/barview" />" type="Button">Clear!</a>
+                                </c:if>
                             </span>
                         </div>
                     </form:form>
