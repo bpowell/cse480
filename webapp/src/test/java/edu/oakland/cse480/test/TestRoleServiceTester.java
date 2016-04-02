@@ -9,12 +9,12 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
-import edu.oakland.cse480.service.AvailableDrinksService;
-import edu.oakland.cse480.mvc.models.AvailableDrinks;
+import edu.oakland.cse480.service.RoleService;
+import edu.oakland.cse480.mvc.models.Role;
 
-public class TestAvailableDrinkServiceTester {
+public class TestRoleServiceTester {
         private static EmbeddedDatabase db;
-        private static AvailableDrinksService availableDrinks;
+        private static RoleService roleService;
 
         @BeforeClass
         public static void setUp() {
@@ -25,28 +25,13 @@ public class TestAvailableDrinkServiceTester {
                         .addScript("sql/mock.sql")
                         .build();
 
-                availableDrinks = new AvailableDrinksService();
-                availableDrinks.setPostgresDataSource(db);
+                roleService = new RoleService();
+                roleService.setPostgresDataSource(db);
         }
 
         @Test
-        public void testGetAllDrinks() {
-                Assert.assertEquals(availableDrinks.getAllAvailableDrinks().size(), 4);
-        }
-
-        @Test
-        public void testGetAllById() {
-                Assert.assertEquals(availableDrinks.getAvailableDrinksById(1).size(), 1);
-        }
-
-        @Test
-        public void testGetBarsByDrinkId() {
-                Assert.assertEquals(availableDrinks.getBarsByDrinkId(2).size(), 1);
-        }
-
-        @Test
-        public void testGetDrinksByBarId() {
-                Assert.assertEquals(availableDrinks.getDrinksByBarId(1).size(), 1);
+        public void testGetAllRoles() {
+                Assert.assertEquals(roleService.getAllRoles().size(), 7);
         }
 
         @AfterClass

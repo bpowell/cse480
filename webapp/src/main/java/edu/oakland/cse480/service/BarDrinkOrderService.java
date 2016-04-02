@@ -27,7 +27,7 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.enabled = 't' and drinkorder.bar_id = ? order by drinkorder.time_placed", new Object[] {bar_id}, new BarDrinkOrderMapper());
         } catch(Exception e) {
-            log.info("No drink orders found for bar id {}", bar_id);
+            log.info("", e);
             return new ArrayList<BarDrinkOrder>();
         }
     }
@@ -36,7 +36,7 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.enabled = 't' and drinkorder.bar_id = ? order by drinkorder.time_placed limit 3", new Object[] {bar_id}, new BarDrinkOrderMapper());
         } catch(Exception e) {
-            log.info("No drink orders found for bar id {}", bar_id);
+            log.info("", e);
             return new ArrayList<BarDrinkOrder>();
         }
     }
@@ -45,7 +45,7 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.name = ? order by drinkorder.time_placed desc", new Object[] {username}, new BarDrinkOrderMapper());
         } catch(Exception e) {
-            log.info("No drink orders found for username {}", username);
+            log.info("", e);
             return new ArrayList<BarDrinkOrder>();
         }
     }
@@ -54,9 +54,20 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.email = ? order by drinkorder.time_placed desc limit 5", new Object[] {email}, new BarDrinkOrderMapper());
         } catch(Exception e)  {
-            log.info("No drink orders found for email {}", email);
+            log.info("", e);
             return new ArrayList<BarDrinkOrder>();
         }
+    }
+
+    public boolean placeOrder(BarDrinkOrder order) {
+        try {
+            this.jdbcPostgres.update("insert into drinkorder (drink_id, drink_count, bar_id, user_id, time_placed, comments) values(?,?,?,?,?,?)", order.getDrinkId(), order.getDrinkCount(), order.getBarId(), order.getUserId(), order.getTimePlaced(), order.getComments());
+        } catch(Exception e) {
+            log.info("", e);
+            return false;
+        }
+
+        return true;
     }
 
     private class BarDrinkOrderMapper implements RowMapper<BarDrinkOrder> {

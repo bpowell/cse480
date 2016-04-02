@@ -196,10 +196,19 @@ public class MainController{
 
     @RequestMapping(value = "/drinklist/{bar_id}", method = RequestMethod.GET)
     public ModelAndView barDrinklist(@PathVariable("bar_id") Integer bar_id) {
+        int userId = 0;
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            UserDetails userdetails = (UserDetails) auth.getPrincipal();
+            userId = us.getUserIdByEmail(userdetails.getUsername());
+        } catch(Exception e) {
+        }
+
         ModelAndView model = new ModelAndView();
         model.addObject("queue", barDrinkOrderService.getThreeDrinkOrdersByBarId(bar_id));
         model.addObject("drinks", availableDrinksService.getDrinksByBarId(bar_id));
         model.addObject("barId", bar_id);
+        model.addObject("userId", userId);
         model.setViewName("drinklist");
         return model;
     }

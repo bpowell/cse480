@@ -12,11 +12,11 @@ function display(page) {
     start = page*page_size;
     for(i=start; i<start+page_size && i<d.length; i++) {
         var template = '' +
-            ' <a href="#" data-toggle="modal" data-target="#id' + d[i].id + '">  ' +
+            ' <a href="#" data-toggle="modal" data-target="#did' + d[i].id + '">  ' +
             '     <div class="row">' +
             '         <div class="col-xs-0 col-md-2"></div>' +
             '         <div class="col-xs-3 col-md-1 drink-icon">' +
-            '             <img src="<c:url value="' + d[i].icon_url + '"/>" class="img-fluid img-rounded" alt="' + d[i].name + ' icon"/>' +
+            '             <img src="<c:url value="/' + d[i].icon_url + '" context="/cse480" />" class="img-fluid img-rounded" alt="' + d[i].name + ' icon"/>' +
             '         </div>' +
             '         <div class="col-xs-9 col-md-7 drink-text">' +
             '             <h3><strong>' + d[i].name + '</strong></h3>' +
@@ -28,7 +28,7 @@ function display(page) {
             '         <div class="col-xs-0 col-md-2"></div>' +
             '     </div>' +
             ' </a>' +
-            '     <div class="modal fade drink-modal-lg" id="id' + d[i].id + '" tabindex="-1" role="dialog" aria-labelledby="<c:url value="' + d[i].name + '" />Modal" aria-hidden="true">' +
+            '     <div class="modal fade drink-modal-lg" id="did' + d[i].id + '" tabindex="-1" role="dialog" aria-labelledby="<c:url value="' + d[i].name + '" /> Modal" aria-hidden="true">' +
             '         <div class="modal-dialog modal-lg">' +
             '             <div class="modal-content">' +
             '                 <div class="modal-header">' +
@@ -47,10 +47,15 @@ function display(page) {
             '                         Right? We want stuff here?<br />' +
             '                         Yes... yes we do.' +
             '                     </p>' +
+            '                     <div id="extra' + d[i].id +'">' +
+            '                         <textarea name="comments" id="comments' + d[i].id +'" rows="3" placeholder="Extras??"></textarea><br />' +
+            '                         <a onclick="orderDrink(' + d[i].id + ');" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
+            '                     </div>' +
             '                 </div>' +
             '                 <div class="modal-footer">' +
             '                     <sec:authorize access="isAuthenticated()">' +
-            '                         <a href="#" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
+            '                         <a onclick="unhide(' + d[i].id + ')" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
+            '                         <a onclick="orderDrink(' + d[i].id + ');" type="button" class="btn btn-primary">Quick Order ' + d[i].name + '</a>' +
             '                     </sec:authorize>' +
             '                     <sec:authorize access="isAnonymous()">' +
             '                         <a href="<c:url value="/login" />" type="button" class="btn btn-primary">Sign in to Order!</a>' +
@@ -61,12 +66,16 @@ function display(page) {
             '         </div>' +
             '     </div>';
         $('#content').append(template);
+        $('#extra'+d[i].id).hide();
     }
 }
 
 function pages(size) {
     $('#paginator').html("");
     num_pages = Math.floor(size/page_size);
+    if((size%page_size)==0) {
+        num_pages = num_pages - 1;
+    }
 
     for(i=0; i<=num_pages; i++) {
         $('#paginator').append('<li><a onclick="display(' + i + ')" id="page' + i + '">' + (i+1) + '</a></li>');

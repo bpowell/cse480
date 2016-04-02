@@ -28,7 +28,6 @@ public class IngredientService extends AbstractJdbcDriver {
         try {
             i.addAll(this.jdbcPostgres.query("select ingredient.id, ingredient.name, ingredient.description, icon_url, category_id, categories.name as catname from ingredient, categories where categories.id = ingredient.category_id", new IngredientMapper()));
         } catch(Exception e) {
-            log.error("No ingredient found");
             log.error("",e);
         }
 
@@ -39,7 +38,7 @@ public class IngredientService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.query("select ingredient.id, ingredient.name, ingredient.description, icon_url, category_id, categories.name as catname from ingredient, categories where categories.id = ingredient.category_id and ingredient.id = ?", new Object[] {id}, new IngredientMapper());
         } catch(Exception e) {
-            log.info("No ingredient found for id {}", id);
+            log.error("", e);
             return new ArrayList<Ingredient>();
         }
     }
@@ -48,7 +47,7 @@ public class IngredientService extends AbstractJdbcDriver {
         try {
             return this.jdbcPostgres.query("select ingredient.id, ingredient.name, ingredient.description, icon_url, category_id, categories.name as catname from ingredient, categories where categories.id = ingredient.category_id and ingredient.name = ?", new Object[] {name}, new IngredientMapper());
         } catch(Exception e) {
-            log.info("No ingredient found for name {}", name);
+            log.error("", e);
             return new ArrayList<Ingredient>();
         }
     }
@@ -66,7 +65,7 @@ public class IngredientService extends AbstractJdbcDriver {
         try {
             this.jdbcPostgres.update("update ingredient set name = ?, description = ?, icon_url = ?, category_id = ? where id = ?", new Object[] {i.getName(), i.getDescription(), i.getIconUrl(), i.getCategory(), id});
         } catch(Exception e) {
-            log.info("Cannot update ingredient with id {}", id);
+            log.error("", e);
         }
     }
 
@@ -75,7 +74,7 @@ public class IngredientService extends AbstractJdbcDriver {
             this.jdbcPostgres.update("insert into ingredient (name, description, icon_url, category_id) values(?, ?, ?, ?)", new Object[] {i.getName(), i.getDescription(), i.getIconUrl(), i.getCategory()});
             return true;
         } catch(Exception e) {
-            log.info("Cannot insert ingredient");
+            log.error("", e);
         }
 
         return false;
@@ -85,7 +84,7 @@ public class IngredientService extends AbstractJdbcDriver {
         try {
                 this.jdbcPostgres.update("delete from ingredient where id = ?", new Object[] {id});
         } catch(Exception e) {
-            log.info("Cannot delete ingredient for id {}", id);
+            log.error("", e);
         }
     }
 

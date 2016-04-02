@@ -10,6 +10,7 @@
                     <div class="col-xs-0 col-md-2"></div>
                 </div>
             </c:if>
+            <sec:authorize access="!hasRole('ROLE_DISPLAY')">
             <div class="row">
                 <div class="col-xs-0 col-md-2"></div>
                 <div class="col-xs-12 col-md-8">
@@ -22,6 +23,7 @@
                 </div>
                 <div class="col-xs-0 col-md-2"></div>
             </div>
+            </sec:authorize>
             <c:forEach items="${drinks}" var="drink">
                 <a href="#" data-toggle="modal" data-target="#id${drink.getId()}">
                     <div class="row">
@@ -39,6 +41,7 @@
                         <div class="col-xs-0 col-md-2"></div>
                     </div>
                 </a>
+                <sec:authorize access="!hasRole('ROLE_DISPLAY')">
                     <div class="modal fade drink-modal-lg" id="id${drink.getId()}" tabindex="-1" role="dialog" aria-labelledby="<c:url value="${drink.getDrinkName()}" />Modal" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -71,8 +74,10 @@
                             </div>
                         </div>
                     </div>
+                </sec:authorize>
             </c:forEach>
             <c:if test="${empty display}">
+                <sec:authorize access="!hasRole('ROLE_DISPLAY')">
                 <div class="row">
                     <div class="col-xs-0 col-md-2"></div>
                     <div class="col-xs-12 col-md-8">
@@ -80,6 +85,7 @@
                     </div>
                     <div class="col-xs-0 col-md-2"></div>
                 </div>
+                </sec:authorize>
             </c:if>
         </div>
     </body>

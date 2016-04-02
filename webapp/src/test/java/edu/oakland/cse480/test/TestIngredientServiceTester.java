@@ -9,12 +9,12 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
-import edu.oakland.cse480.service.AvailableDrinksService;
-import edu.oakland.cse480.mvc.models.AvailableDrinks;
+import edu.oakland.cse480.service.IngredientService;
+import edu.oakland.cse480.mvc.models.Ingredient;
 
-public class TestAvailableDrinkServiceTester {
+public class TestIngredientServiceTester {
         private static EmbeddedDatabase db;
-        private static AvailableDrinksService availableDrinks;
+        private static IngredientService ingredientService;
 
         @BeforeClass
         public static void setUp() {
@@ -25,28 +25,28 @@ public class TestAvailableDrinkServiceTester {
                         .addScript("sql/mock.sql")
                         .build();
 
-                availableDrinks = new AvailableDrinksService();
-                availableDrinks.setPostgresDataSource(db);
+                ingredientService = new IngredientService();
+                ingredientService.setPostgresDataSource(db);
         }
 
         @Test
-        public void testGetAllDrinks() {
-                Assert.assertEquals(availableDrinks.getAllAvailableDrinks().size(), 4);
+        public void testGetAllIngredients() {
+                Assert.assertEquals(ingredientService.getAllIngredients().size(), 3);
         }
 
         @Test
-        public void testGetAllById() {
-                Assert.assertEquals(availableDrinks.getAvailableDrinksById(1).size(), 1);
+        public void testIngredientById() {
+                Assert.assertEquals(ingredientService.getIngredientById(1).size(), 1);
         }
 
         @Test
-        public void testGetBarsByDrinkId() {
-                Assert.assertEquals(availableDrinks.getBarsByDrinkId(2).size(), 1);
+        public void testIngredientByName() {
+                Assert.assertEquals(ingredientService.getIngredientByName("spice").size(), 1);
         }
 
         @Test
-        public void testGetDrinksByBarId() {
-                Assert.assertEquals(availableDrinks.getDrinksByBarId(1).size(), 1);
+        public void testGetIngredientsByDrinkId() {
+                Assert.assertEquals(ingredientService.getIngredientsByDrinkId(2).size(), 2);
         }
 
         @AfterClass
