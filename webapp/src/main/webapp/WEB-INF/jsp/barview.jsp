@@ -11,12 +11,18 @@
             <div class="row">
                 <div class="col-xs-0 col-md-3"></div>
                 <div class="col-xs-12 col-md-6">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                    </div>
+                    <c:url value="/barview" var="post_url" />
+                    <form:form action="${post_url}" method="POST" class="search-box" role="search">
+                        <div class="col-md-12 input-group">
+                            <input id="barName" name="barName" type="text" class="search-hints form-control" placeholder="Search for..." />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" value="submit" type="submit">Go!</button>
+                                <c:if test="${clearSearch}">
+                                    <a class="btn btn-default" value="submit" href="<c:url value="/barview" />" type="Button">Clear!</a>
+                                </c:if>
+                            </span>
+                        </div>
+                    </form:form>
                 </div>
                 <div class="col-xs-0 col-md-3"></div>
             </div>
@@ -100,5 +106,35 @@
                 </c:forEach>
             </c:forEach>
         </div>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var search_hints_query = new Bloodhound({
+                datumTokenizer: function (d) {
+                    return Bloodhound.tokenizers.whitespace(d.value);
+                },
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                prefetch: {
+                    url: '<c:url value="/api/allbars" />',
+                    filter: function (search_hints_list) {
+                        return $.map(search_hints_list, function (bar) {
+                            return {
+                               value: bar.name
+                            };
+                        });
+                    }
+                }
+              });
+
+              // initialize the bloodhound suggestion engine
+              search_hints_query.initialize();
+
+              // instantiate the typeahead UI
+              $('.search-hints').typeahead(null, {
+                  displayKey: 'value',
+                  source: search_hints_query.ttAdapter()
+              });
+              $(".tt-hint").addClass("form-control");
+            });
+        </script>
     </body>
 </html>

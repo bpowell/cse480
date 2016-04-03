@@ -1,10 +1,12 @@
 package edu.oakland.cse480.mvc.controller;
 
 import edu.oakland.cse480.mvc.models.User;
+import edu.oakland.cse480.mvc.models.Drink;
 import edu.oakland.cse480.service.UserService;
 import edu.oakland.cse480.service.BusinessAndBarService;
 import edu.oakland.cse480.service.AvailableDrinksService;
 import edu.oakland.cse480.service.BarDrinkOrderService;
+import edu.oakland.cse480.service.IngredientService;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -24,7 +26,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Map;
+import java.util.List;
 import java.util.Objects;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,6 +54,9 @@ public class MainController{
 
     @Autowired
     private BarDrinkOrderService barDrinkOrderService;
+
+    @Autowired
+    private IngredientService ingredientService;
 
     /**
      * Sends the user to the main page.
@@ -176,6 +186,20 @@ public class MainController{
         return model;
     }
 
+    @RequestMapping(value = "/barview", method = RequestMethod.POST)
+    public ModelAndView postBarview(@ModelAttribute("barName") String barName) {
+        if(Objects.equals(barName, "")) {
+            return barview();
+        }
+
+        ModelAndView model = new ModelAndView();
+        model.addObject("businesses", businessAndBarService.getBusinessAndBarsByName(barName));
+        model.addObject("clearSearch", true);
+        model.setViewName("barview");
+
+        return model;
+    }
+
     @RequestMapping(value = "/display", method = RequestMethod.GET)
     public ModelAndView display() {
         return barview();
@@ -206,7 +230,49 @@ public class MainController{
 
         ModelAndView model = new ModelAndView();
         model.addObject("queue", barDrinkOrderService.getThreeDrinkOrdersByBarId(bar_id));
-        model.addObject("drinks", availableDrinksService.getDrinksByBarId(bar_id));
+        model.addObject("barId", bar_id);
+        model.addObject("userId", userId);
+        model.setViewName("drinklist");
+        return model;
+    }
+
+    private String writeListToJsonArray(List<Drink> list) throws Exception {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        ObjectMapper mapper = new ObjectMapper();
+
+        mapper.writeValue(out, list);
+
+        return out.toString();
+    }
+
+    @RequestMapping(value = "/drinklist/{bar_id}", method = RequestMethod.POST)
+    public ModelAndView postBarDrinklist(@PathVariable("bar_id") Integer bar_id, @ModelAttribute("drinkName") String drinkName) {
+        if(Objects.equals(drinkName, "")) {
+            return barDrinklist(bar_id);
+        }
+
+        int userId = 0;
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            UserDetails userdetails = (UserDetails) auth.getPrincipal();
+            userId = us.getUserIdByEmail(userdetails.getUsername());
+        } catch(Exception e) {
+        }
+
+        List<Drink> drinks = availableDrinksService.getDrinksByBarIdAndDrinkName(bar_id, drinkName);
+        for(Drink drink : drinks) {
+            drink.setIngredients(ingredientService.getIngredientsByDrinkId(drink.getId()));
+        }
+
+        ModelAndView model = new ModelAndView();
+        model.addObject("queue", barDrinkOrderService.getThreeDrinkOrdersByBarId(bar_id));
+        model.addObject("clearSearch", true);
+
+        try {
+            model.addObject("drinks", writeListToJsonArray(drinks));
+        } catch(Exception e) {
+        }
+
         model.addObject("barId", bar_id);
         model.addObject("userId", userId);
         model.setViewName("drinklist");

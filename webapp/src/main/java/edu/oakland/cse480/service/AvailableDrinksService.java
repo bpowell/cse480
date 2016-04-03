@@ -63,6 +63,15 @@ public class AvailableDrinksService extends AbstractJdbcDriver {
         }
     }
 
+    public List<Drink> getDrinksByBarIdAndDrinkName(int bar_id, String drinkName) {
+        try {
+            return this.jdbcPostgres.query("select * from drink left join availabledrinks on availabledrinks.drink_id = drink.id where availabledrinks.bar_id = ? and drink.name LIKE ?", new Object[] {bar_id, drinkName}, new DrinkMapper());
+        } catch(Exception e) {
+            log.info("", e);
+            return new ArrayList<Drink>();
+        }
+    }
+
     public boolean insertAvailableDrink(AvailableDrinks a) {
         try {
             this.jdbcPostgres.update("insert into availabledrinks (drink_id, bar_id) values(?, ?)", new Object[] {a.getDrinkId(), a.getBarId()});

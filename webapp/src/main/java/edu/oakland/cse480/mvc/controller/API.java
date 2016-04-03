@@ -3,10 +3,12 @@ package edu.oakland.cse480.mvc.controller;
 import edu.oakland.cse480.mvc.models.Drink;
 import edu.oakland.cse480.mvc.models.AvailableDrinks;
 import edu.oakland.cse480.mvc.models.BarDrinkOrder;
+import edu.oakland.cse480.mvc.models.Bar;
 import edu.oakland.cse480.service.DrinkService;
 import edu.oakland.cse480.service.BarDrinkOrderService;
 import edu.oakland.cse480.service.IngredientService;
 import edu.oakland.cse480.service.AvailableDrinksService;
+import edu.oakland.cse480.service.BusinessAndBarService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +43,9 @@ public class API {
 
     @Autowired
     private BarDrinkOrderService barDrinkOrderService;
+
+    @Autowired
+    private BusinessAndBarService businessAndBarService;
 
     @RequestMapping(value = "/drinklist/{barId}", method = RequestMethod.GET)
     public @ResponseBody List<Drink> getDrinkList(@PathVariable int barId) {
@@ -90,11 +95,6 @@ public class API {
 
     @RequestMapping(value = "/orderdrink", method = RequestMethod.POST)
     public ResponseEntity orderDrink(@ModelAttribute("drinkId") int drinkId, @ModelAttribute("userId") int userId, @ModelAttribute("barId") int barId, @ModelAttribute("comments") String comments) {
-        log.error("{}", drinkId);
-        log.error("{}", userId);
-        log.error("{}", barId);
-        log.error("{}", comments);
-
         BarDrinkOrder order = new BarDrinkOrder();
         order.setDrinkId(drinkId);
         order.setBarId(barId);
@@ -109,5 +109,10 @@ public class API {
         }
 
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/allbars", method = RequestMethod.GET)
+    public @ResponseBody List<Bar> getAllBars() {
+        return businessAndBarService.getAllBars();
     }
 }
