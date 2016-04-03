@@ -11,6 +11,17 @@ function display(page) {
 
     start = page*page_size;
     for(i=start; i<start+page_size && i<d.length; i++) {
+        // Setup ingredients list for modal
+        var ingredient_list = '';
+        if (d[i].ingredients.length <= 1) {
+            ingredient_list += d[i].ingredients[0].name;
+        } else {
+            ingredient_list += d[i].ingredients[0].name;
+            for (j = 1; j < d[i].ingredients.length; j++) {
+                ingredient_list += ', ' + d[i].ingredients[j].name;
+            }
+        }
+        // Setup drinklist and modal
         var template = '' +
             ' <a href="#" data-toggle="modal" data-target="#did' + d[i].id + '">  ' +
             '     <div class="row drink">' +
@@ -42,8 +53,8 @@ function display(page) {
             '         <div class="col-xs-0 col-md-2"></div>' +
             '     </div>' +
             ' </a>' +
-            '     <div class="modal fade drink-modal-lg" id="did' + d[i].id + '" tabindex="-1" role="dialog" aria-labelledby="<c:url value="' + d[i].name + '" /> Modal" aria-hidden="true">' +
-            '         <div class="modal-dialog modal-lg">' +
+            '     <div class="modal fade" id="did' + d[i].id + '" tabindex="-1" role="dialog" aria-labelledby="<c:url value="' + d[i].name + '" /> Modal" aria-hidden="true">' +
+            '         <div class="modal-dialog modal-md">' +
             '             <div class="modal-content">' +
             '                 <div class="modal-header">' +
             '                     <div class="col-xs-10 col-md-11">' +
@@ -56,19 +67,22 @@ function display(page) {
             '                     </div>' +
             '                 </div>' +
             '                 <div class="modal-body">  ' +
-            '                     <p>' +
-            '                         <strong>Stuff goes here!</strong>' +
-            '                         Right? We want stuff here?<br />' +
-            '                         Yes... yes we do.' +
-            '                     </p>' +
-            '                     <div id="extra' + d[i].id +'">' +
-            '                         <textarea name="comments" id="comments' + d[i].id +'" rows="3" placeholder="Extras??"></textarea><br />' +
-            '                         <a onclick="orderDrink(' + d[i].id + ');" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
+            '                     <div class="row">' +
+            '                         <div class="col-xs-12 col-sm-7">' +
+            '                             <p>' +
+            '                                 <strong>Make Time:</strong> ' + d[i].makeTime + ' Seconds<br />' +
+            '                                 <strong>Ingredients:</strong> ' + ingredient_list + '<br />' +
+            '                             </p> ' +
+            '                         </div>' +
+            '                         <div class="col-xs-12 col-sm-5">' +
+            '                                 <textarea name="comments" id="comments' + d[i].id +'" style="width: 100%;" rows="3" placeholder="Special requests&hellip;"></textarea>' +
+            '                         </div>' +
             '                     </div>' +
             '                 </div>' +
             '                 <div class="modal-footer">' +
+            '                     Qty: <input name="quantity" size="2">' +
             '                     <sec:authorize access="isAuthenticated()">' +
-            '                         <a onclick="unhide(' + d[i].id + ')" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
+            '                         <a onclick="orderDrink(' + d[i].id + ');" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
             '                     </sec:authorize>' +
             '                     <sec:authorize access="isAnonymous()">' +
             '                         <a href="<c:url value="/login" />" type="button" class="btn btn-primary">Sign in to Order!</a>' +
@@ -79,7 +93,6 @@ function display(page) {
             '         </div>' +
             '     </div>';
         $('#content').append(template);
-        $('#extra'+d[i].id).hide();
     }
 }
 
