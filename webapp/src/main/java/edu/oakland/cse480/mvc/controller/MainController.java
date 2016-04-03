@@ -6,6 +6,7 @@ import edu.oakland.cse480.service.UserService;
 import edu.oakland.cse480.service.BusinessAndBarService;
 import edu.oakland.cse480.service.AvailableDrinksService;
 import edu.oakland.cse480.service.BarDrinkOrderService;
+import edu.oakland.cse480.service.IngredientService;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -53,6 +54,9 @@ public class MainController{
 
     @Autowired
     private BarDrinkOrderService barDrinkOrderService;
+
+    @Autowired
+    private IngredientService ingredientService;
 
     /**
      * Sends the user to the main page.
@@ -256,6 +260,9 @@ public class MainController{
         }
 
         List<Drink> drinks = availableDrinksService.getDrinksByBarIdAndDrinkName(bar_id, drinkName);
+        for(Drink drink : drinks) {
+            drink.setIngredients(ingredientService.getIngredientsByDrinkId(drink.getId()));
+        }
 
         ModelAndView model = new ModelAndView();
         model.addObject("queue", barDrinkOrderService.getThreeDrinkOrdersByBarId(bar_id));
