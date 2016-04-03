@@ -239,6 +239,11 @@ a:focus, a:hover {
     padding-right: 0;
 }
 
+/** modal **/
+.modal-footer > .btn {
+    margin-left: 4px;
+}
+
 /* Small devices (landscape phones, 34em and up) */
 @media (min-width: 768px) {
     .mainContent {
