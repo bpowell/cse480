@@ -94,13 +94,18 @@ public class API {
     }
 
     @RequestMapping(value = "/orderdrink", method = RequestMethod.POST)
-    public ResponseEntity orderDrink(@ModelAttribute("drinkId") int drinkId, @ModelAttribute("userId") int userId, @ModelAttribute("barId") int barId, @ModelAttribute("comments") String comments) {
+    public ResponseEntity orderDrink(@ModelAttribute("drinkId") int drinkId, @ModelAttribute("userId") int userId, @ModelAttribute("barId") int barId, @ModelAttribute("comments") String comments, @ModelAttribute("quantity") int quantity) {
         BarDrinkOrder order = new BarDrinkOrder();
         order.setDrinkId(drinkId);
         order.setBarId(barId);
         order.setUserId(userId);
         order.setComments(comments);
-        order.setDrinkCount(1);
+
+        if(quantity<=0) {
+            quantity = 1;
+        }
+
+        order.setDrinkCount(quantity);
         order.setTimePlaced(new Timestamp(System.currentTimeMillis()));
 
         if(!barDrinkOrderService.placeOrder(order)) {
