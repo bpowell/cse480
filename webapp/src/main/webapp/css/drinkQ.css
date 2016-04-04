@@ -22,7 +22,7 @@ DrinkQ Color Reference List:
   DrinkQblack: #2D2D2D
   DrinkQgrey: #787878
   DrinkQbuttonGrey: #B1B1B1
-  DrinkQburg: #B40000
+  DrinkQburg: #820000
   DrinkQwhite: #E1E1E1
 
 
@@ -49,10 +49,10 @@ a {
     color: #2D2D2D;
 }
 a:focus, a:hover {
-    color: #B40000;    
+    color: #820000;    
 }
 .bg-danger {
-    background-color: #B40000;
+    background-color: #820000;
     color: #E1E1E1;
 }
 
@@ -93,10 +93,10 @@ a:focus, a:hover {
     background-color: #E1E1E1;
 }
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a {
-    color: #B40000;
+    color: #820000;
 }
 .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
-    background-color: #B40000;
+    background-color: #820000;
     color: #E1E1E1;
 }
 
@@ -136,7 +136,7 @@ a:focus, a:hover {
     border: 2px solid #8E8E8E;
 }
 .mainContent .btn-primary:focus, .mainContent .btn-primary:hover {
-    background-color: #B40000;
+    background-color: #820000;
     color: #E1E1E1;
 }
 
@@ -173,7 +173,7 @@ a:focus, a:hover {
     color: #2D2D2D;
 }
 #welcomeRegister > div > a:focus, #welcomeRegister > div > a:hover {
-    background-color: #B40000;
+    background-color: #820000;
     color: #E1E1E1;
 }
 /** Barview.jsp **/
