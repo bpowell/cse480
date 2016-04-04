@@ -217,8 +217,7 @@ public class MainController{
 
         ModelAndView model = new ModelAndView();
         model.addObject("drinks", barDrinkOrderService.getDrinkOrdersByBarId(bar_id));
-        model.addObject("barId", bar_id);
-        model.addObject("userId", userId);
+        model.addObject("canClear", us.isUserABartenderOrOwner(bar_id, userId));
         model.setViewName("display");
         return model;
     }
