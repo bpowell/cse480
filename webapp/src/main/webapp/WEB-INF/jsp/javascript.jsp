@@ -80,7 +80,7 @@ function display(page) {
             '                     </div>' +
             '                 </div>' +
             '                 <div class="modal-footer">' +
-            '                     Qty: <input name="quantity" size="2">' +
+            '                     Qty: <input name="quantity" id="quantity' + d[i].id + '" value="1" size="2">' +
             '                     <sec:authorize access="isAuthenticated()">' +
             '                         <a onclick="orderDrink(' + d[i].id + ');" type="button" class="btn btn-primary">Order ' + d[i].name + '</a>' +
             '                     </sec:authorize>' +
