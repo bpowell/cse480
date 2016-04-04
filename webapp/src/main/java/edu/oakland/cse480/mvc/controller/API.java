@@ -111,6 +111,19 @@ public class API {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/clearorder", method = RequestMethod.POST)
+    public ResponseEntity clearOrder(@ModelAttribute("drinkOrderId") int drinkOrderId) {
+        BarDrinkOrder order = new BarDrinkOrder();
+        order.setId(drinkOrderId);
+        order.setTimeComplete(new Timestamp(System.currentTimeMillis()));
+
+        if(!barDrinkOrderService.clearOrder(order)) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/allbars", method = RequestMethod.GET)
     public @ResponseBody List<Bar> getAllBars() {
         return businessAndBarService.getAllBars();
