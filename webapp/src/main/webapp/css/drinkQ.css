@@ -18,13 +18,12 @@ Rules to remember:
   Keep things organized. Try to keep like elements near each other.
     (Don't place footer related elements near header related elements) 
 
-
 DrinkQ Color Reference List:
-  DrinkQblack: #292729
-  DrinkQgrey: #514F51
-  DrinkQred: #5F182A
-  DrinkQgold: #CFAE60
-  DrinkQtan: #E9D0A8
+  DrinkQblack: #2D2D2D
+  DrinkQgrey: #787878
+  DrinkQbuttonGrey: #B1B1B1
+  DrinkQburg: #B40000
+  DrinkQwhite: #E1E1E1
 
 
   Extra small devices (portrait phones, less than 34em)
@@ -40,65 +39,65 @@ Default */
 }
 
 html,body {
-    background-color: #292729;
-    color: #292729;
+    background-color: #2D2D2D;
+    color: #2D2D2D;
     font-family: 'Nobile', Fallback, sans-serif;
     font-size: 1em;
     letter-spacing: -1px;
 }
 a {
-    color: #292729;
+    color: #2D2D2D;
 }
 a:focus, a:hover {
-    color: #5F182A;    
+    color: #B40000;    
 }
 .bg-danger {
-    background-color: #5F182A;
-    color: #E9D0A8;
+    background-color: #B40000;
+    color: #E1E1E1;
 }
 
 /* Header */
 .headerContent {
-    color: #292729;
-    background-color: #CFAE60;
+    color: #2D2D2D;
+    background-color: #E1E1E1;
     border: none;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.50);
 }
 
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a {
-    color: #E9D0A8;
+    color: #E1E1E1;
 }
 
 .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
-    color: #292729;
+    color: #2D2D2D;
 }
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
     border: none;
-    border-top: 1px dotted #292729;
+    border-top: 1px dotted #2D2D2D;
 }
 
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
-    background-color: #E9D0A8;
+    background-color: #E1E1E1;
 }
 
 .navbar-default .navbar-toggle {
-    border: 2px solid #292729;
+    border: 2px solid #2D2D2D;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-    background-color: #292729;
+    background-color: #2D2D2D;
 }
 
 
 #drinkQNavbar {
-    background-color: #CFAE60;
+    background-color: #E1E1E1;
 }
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a {
-    color: #5F182A;
+    color: #B40000;
 }
 .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
-    background-color: #5F182A;
-    color: #E9D0A8;
+    background-color: #B40000;
+    color: #E1E1E1;
 }
 
 
@@ -113,8 +112,8 @@ a:focus, a:hover {
 
 /* Body */
 .mainContent {
-    background-color: #E9D0A8;
-    color: #292729;
+    background-color: #E1E1E1;
+    color: #2D2D2D;
     margin-top: 65px;
     padding: 15px;
     min-height: 400px;
@@ -132,13 +131,13 @@ a:focus, a:hover {
 }
 
 .mainContent .btn-primary {
-    background-color: #CFAE60;
-    color: #292729;
+    background-color: #B1B1B1;
+    color: #2D2D2D;
     border: 2px solid #8E8E8E;
 }
 .mainContent .btn-primary:focus, .mainContent .btn-primary:hover {
-    background-color: #5F182A;
-    color: #E9D0A8;
+    background-color: #B40000;
+    color: #E1E1E1;
 }
 
 /** Welcome.jsp **/
@@ -152,30 +151,30 @@ a:focus, a:hover {
     min-height:600px;
 }
 .welcomeContentLight {
-    background-color: #E9D0A8;
-    color: #292729;
+    background-color: #E1E1E1;
+    color: #2D2D2D;
     padding: 15px;
     min-height: 400px;
 }
 .welcomeContentDark {
-    background-color: #292729;
-    color: #E9D0A8;
+    background-color: #2D2D2D;
+    color: #E1E1E1;
     padding: 15px;
     min-height: 400px;
 }
 .welcomeRegister {
-    background-color: #E9D0A8;
-    color: #292729;
+    background-color: #E1E1E1;
+    color: #2D2D2D;
     padding: 15px;
     min-height: 200px;
 }
 #welcomeRegister > div > a {
-    background-color: #CFAE60;
-    color: #292729;
+    background-color: #E1E1E1;
+    color: #2D2D2D;
 }
 #welcomeRegister > div > a:focus, #welcomeRegister > div > a:hover {
-    background-color: #5F182A;
-    color: #E9D0A8;
+    background-color: #B40000;
+    color: #E1E1E1;
 }
 /** Barview.jsp **/
 .bar-info {
