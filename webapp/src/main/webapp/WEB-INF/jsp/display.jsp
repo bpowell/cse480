@@ -24,11 +24,11 @@
                                 <strong>User:</strong> ${drink.getUserName()}
                             </p>
                         </div>
-                        <sec:authorize access="hasRole('ROLE_EMPLOYEE') or hasRole('ROLE_MANAGER') or hasRole('ROLE_OWNER') or hasRole('ROLE_ADMIN')">
-                        <div class="col-xs-12 col-md-2 drink-clearorder">
-                            <a onclick="clearOrder(${drink.getId()});" type="button" class="btn btn-primary btn-block"><strong>Clear Order</strong></a>
-                        </div>
-                        </sec:authorize>
+                        <c:if test="${canClear}">
+                            <div class="col-xs-12 col-md-2 drink-clearorder">
+                                <a onclick="clearOrder(${drink.getId()});" type="button" class="btn btn-primary btn-block"><strong>Clear Order</strong></a>
+                            </div>
+                        </c:if>
                         <div class="col-xs-0 col-md-2"></div>
                     </div>
                 </a>
