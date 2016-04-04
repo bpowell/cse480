@@ -9,6 +9,7 @@ import edu.oakland.cse480.service.BarDrinkOrderService;
 import edu.oakland.cse480.service.IngredientService;
 import edu.oakland.cse480.service.AvailableDrinksService;
 import edu.oakland.cse480.service.BusinessAndBarService;
+import edu.oakland.cse480.service.UserService;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +47,9 @@ public class API {
 
     @Autowired
     private BusinessAndBarService businessAndBarService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/drinklist/{barId}", method = RequestMethod.GET)
     public @ResponseBody List<Drink> getDrinkList(@PathVariable int barId) {
@@ -112,10 +116,15 @@ public class API {
     }
 
     @RequestMapping(value = "/clearorder", method = RequestMethod.POST)
-    public ResponseEntity clearOrder(@ModelAttribute("drinkOrderId") int drinkOrderId) {
+    public ResponseEntity clearOrder(@ModelAttribute("drinkOrderId") int drinkOrderId, @ModelAttribute("barId") int barId, @ModelAttribute("userId") int userId) {
         BarDrinkOrder order = new BarDrinkOrder();
         order.setId(drinkOrderId);
         order.setTimeComplete(new Timestamp(System.currentTimeMillis()));
+
+        log.error("{}", userService.isUserABartenderOrOwner(barId, userId));
+        if(!userService.isUserABartenderOrOwner(barId, userId)) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
 
         if(!barDrinkOrderService.clearOrder(order)) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);

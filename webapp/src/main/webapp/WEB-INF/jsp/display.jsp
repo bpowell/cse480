@@ -84,7 +84,7 @@
                 $.ajax({
                     type: "POST",
                     url: '<c:url value="/api/clearorder" />',
-                    data: {drinkOrderId: drinkOrderId},
+                    data: {drinkOrderId: drinkOrderId, barId: ${barId}, userId: ${userId}},
                     beforeSend: function(xhr, settings) {
                         var token = $("meta[name='_csrf']").attr("content");
                         var header = $("meta[name='_csrf_header']").attr("content");
