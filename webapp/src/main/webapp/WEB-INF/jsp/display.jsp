@@ -10,20 +10,6 @@
                     <div class="col-xs-0 col-md-2"></div>
                 </div>
             </c:if>
-            <sec:authorize access="!hasRole('ROLE_DISPLAY')">
-            <div class="row">
-                <div class="col-xs-0 col-md-2"></div>
-                <div class="col-xs-12 col-md-8">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                    </div>
-                </div>
-                <div class="col-xs-0 col-md-2"></div>
-            </div>
-            </sec:authorize>
             <c:forEach items="${drinks}" var="drink">
                 <a href="#" data-toggle="modal" data-target="#id${drink.getId()}">
                     <div class="row">
