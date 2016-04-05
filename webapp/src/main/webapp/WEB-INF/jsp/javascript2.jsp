@@ -35,6 +35,7 @@ function addContent(divid, item, extra) {
         '             <h3><strong>' + item.name + '</strong></h3>' +
         '             <p>' +
         '                 <strong>Make Time:</strong> ' + item.makeTime + ' Seconds<br />' +
+                           (item.price == 0 ? '' : '<strong>Price: $</strong>' + item.price + '<br />') +
         '                 <strong>Description:</strong> ' + item.info + '' +
         '             </p>' +
         '         </div>' +
