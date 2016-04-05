@@ -84,7 +84,7 @@
 										</div>
 										<div class="row">
 											<div class="col-xs-12 col-md-6">
-												<img src="<c:url value="/img/profile/steve.jpg" />"  class="img-circle stevesBeautifulHead" alt="SteveWiggins" /></a>
+												<img src="<c:url value="/img/profile/steve.jpg" />"  class="img-circle img-responsive" alt="SteveWiggins" /></a>
 											</div>
 											<div class="col-xs-12 col-md-6">
 												<span class="glyphicon glyphicon-star"></span>
