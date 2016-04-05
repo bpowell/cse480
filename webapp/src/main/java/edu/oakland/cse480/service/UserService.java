@@ -182,4 +182,13 @@ public class UserService extends AbstractJdbcDriver {
 
         return true;
     }
+
+    public boolean isUserABartenderOrOwner(int barId, int userId) {
+        try {
+            return this.jdbcPostgres.queryForObject("select exists(select 1 from bar where owner_id = ? and id = ?) or exists(select 1 from bartenders where user_id = ? and bar_id = ?)", new Object[] {userId, barId, userId, barId}, Boolean.class);
+        } catch(Exception e) {
+            log.error("", e);
+            return false;
+        }
+    }
 }
