@@ -49,7 +49,7 @@ public class API {
 
     @RequestMapping(value = "/drinklist/{barId}", method = RequestMethod.GET)
     public @ResponseBody List<Drink> getDrinkList(@PathVariable int barId) {
-        List<Drink> drinks = drinkService.getDrinksByBarId(barId);
+        List<Drink> drinks = availableDrinksService.getDrinksByBarId(barId);
         for(Drink drink : drinks) {
             drink.setIngredients(ingredientService.getIngredientsByDrinkId(drink.getId()));
         }
