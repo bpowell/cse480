@@ -10,20 +10,6 @@
                     <div class="col-xs-0 col-md-2"></div>
                 </div>
             </c:if>
-            <sec:authorize access="!hasRole('ROLE_DISPLAY')">
-            <div class="row">
-                <div class="col-xs-0 col-md-2"></div>
-                <div class="col-xs-12 col-md-8">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                    </div>
-                </div>
-                <div class="col-xs-0 col-md-2"></div>
-            </div>
-            </sec:authorize>
             <c:forEach items="${drinks}" var="drink">
                 <a href="#" data-toggle="modal" data-target="#id${drink.getId()}">
                     <div class="row">
@@ -31,7 +17,7 @@
                         <div class="col-xs-3 col-md-1 drink-icon">
                             <img src="<c:url value="${drink.getDrinkIconUrl()}"/>" class="img-fluid img-rounded" alt="${drink.getDrinkName()} icon" />
                         </div>
-                        <div class="col-xs-9 col-md-7 drink-text">
+                        <div class="col-xs-9 col-md-5 drink-text">
                             <h3><strong>${drink.getDrinkName()}</strong></h3>
                             <p>
                                 <strong>Quantity:</strong> ${drink.getDrinkCount()}<br />
@@ -39,6 +25,11 @@
                                 <strong>Price: $</strong>${drink.getPrice()}
                             </p>
                         </div>
+                        <c:if test="${canClear}">
+                            <div class="col-xs-12 col-md-2 drink-clearorder">
+                                <a onclick="clearOrder(${drink.getId()});" type="button" class="btn btn-primary btn-block"><strong>Clear Order</strong></a>
+                            </div>
+                        </c:if>
                         <div class="col-xs-0 col-md-2"></div>
                     </div>
                 </a>
@@ -89,5 +80,28 @@
                 </sec:authorize>
             </c:if>
         </div>
+        <script>
+            function clearOrder(drinkOrderId) {
+                $.ajax({
+                    type: "POST",
+                    url: '<c:url value="/api/clearorder" />',
+                    data: {drinkOrderId: drinkOrderId},
+                    beforeSend: function(xhr, settings) {
+                        var token = $("meta[name='_csrf']").attr("content");
+                        var header = $("meta[name='_csrf_header']").attr("content");
+                        xhr.setRequestHeader(header, token);
+                    },
+                    success: function(a) {
+                        console.log(a);
+                        location.reload();
+                    },
+                    error: function(xhr, status, err) {
+                        console.log("Error");
+                        console.log(status);
+                        console.log(err);
+                    }
+                });
+            }
+        </script>
     </body>
 </html>

@@ -207,8 +207,17 @@ public class MainController{
 
     @RequestMapping(value = "/display/{bar_id}", method = RequestMethod.GET)
     public ModelAndView displayBar(@PathVariable("bar_id") Integer bar_id) {
+        int userId = 0;
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            UserDetails userdetails = (UserDetails) auth.getPrincipal();
+            userId = us.getUserIdByEmail(userdetails.getUsername());
+        } catch(Exception e) {
+        }
+
         ModelAndView model = new ModelAndView();
         model.addObject("drinks", barDrinkOrderService.getDrinkOrdersByBarId(bar_id));
+        model.addObject("canClear", us.isUserABartenderOrOwner(bar_id, userId));
         model.setViewName("display");
         return model;
     }
