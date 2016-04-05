@@ -72,6 +72,7 @@ public class API {
         AvailableDrinks a = new AvailableDrinks();
         a.setDrinkId(drinkId);
         a.setBarId(barId);
+        a.setPrice(0);
 
         if(!availableDrinksService.insertAvailableDrink(a)) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
