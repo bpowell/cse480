@@ -217,7 +217,11 @@ public class MainController{
         }
 
         ModelAndView model = new ModelAndView();
-        model.addObject("drinks", barDrinkOrderService.getDrinkOrdersByBarId(bar_id));
+        List<BarDrinkOrder> orders = barDrinkOrderService.getDrinkOrdersByBarId(bar_id);
+        for(BarDrinkOrder order : orders) {
+            order.setIngredients(ingredientService.getIngredientsByDrinkId(order.getDrinkId()));
+        }
+        model.addObject("queue", orders);
         model.addObject("canClear", us.isUserABartenderOrOwner(bar_id, userId));
         model.setViewName("display");
         return model;
