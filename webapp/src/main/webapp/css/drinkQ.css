@@ -364,3 +364,9 @@ a:focus, a:hover {
 .tt-suggestion p {
     margin: 0;
 }
+
+.testimonial {
+	color: black;
+	background-color: #FFFFFF;
+	border: 5px solid black;
+}
