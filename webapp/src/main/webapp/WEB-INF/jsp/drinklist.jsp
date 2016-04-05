@@ -44,7 +44,8 @@
                             <h3><strong>${q.getDrinkName()}</strong></h3>
                             <p>
                                 <strong>Quantity:</strong>${q.getDrinkCount()}<br />
-                                <strong>User:</strong>${q.getUserName()}
+                                <strong>User:</strong>${q.getUserName()}<br />
+                                <strong>Price: $</strong>${q.getPrice()}
                             </p>
                         </div>
                         <div class="col-xs-0 col-md-2"></div>

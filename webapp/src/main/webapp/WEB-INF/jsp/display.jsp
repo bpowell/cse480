@@ -35,7 +35,8 @@
                             <h3><strong>${drink.getDrinkName()}</strong></h3>
                             <p>
                                 <strong>Quantity:</strong> ${drink.getDrinkCount()}<br />
-                                <strong>User:</strong> ${drink.getUserName()}
+                                <strong>User:</strong> ${drink.getUserName()}<br />
+                                <strong>Price: $</strong>${drink.getPrice()}
                             </p>
                         </div>
                         <div class="col-xs-0 col-md-2"></div>
