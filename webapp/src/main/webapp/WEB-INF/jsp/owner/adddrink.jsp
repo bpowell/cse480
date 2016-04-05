@@ -43,6 +43,10 @@
                                 <input type="text" name="iconUrl" id="iconUrl" class="form-control" placeholder="http://mycompany.com/logo.png" required>
                             </div>
                             <div class="form-group">
+                                <label for="price">Price</label>
+                                <input type="text" name="price" id="orice" class="form-control" placeholder="2.00" required>
+                            </div>
+                            <div class="form-group">
                                 <label for="i1">Ingredient #1</label>
                                 <select name="i1">
                                     <option value="0">None</option>
