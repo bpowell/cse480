@@ -19,7 +19,7 @@ function displayDrinksAtAllBars(page) {
 
     start = page*page_size;
     for(i=start; i<start+page_size && i<dataAtAllBars.length; i++) {
-        addContent("#alldrinks", dataAtAllBars[i], '<a type="button" class="btn btn-primary" onclick="addDrink(' + dataAtAllBars[i].id + ')">Add to bar!</a>');
+        addContent("#alldrinks", dataAtAllBars[i], '<a type="button" class="btn btn-primary" onclick="show('+dataAtAllBars[i].id+')">Add to bar!</a>');
     }
 }
 
@@ -60,6 +60,10 @@ function addContent(divid, item, extra) {
         '                         Right? We want stuff here?<br />' +
         '                         Yes... yes we do.' +
         '                     </p>' +
+        '                     <div id="extra' + item.id +'">' +
+        '                         <input name="price" id="price' + item.id +'" placeholder="2.00" /><br />' +
+        '                         <a onclick="addDrink(' + item.id + ');" type="button" class="btn btn-primary">Add ' + item.name + '</a>' +
+        '                     </div>' +
         '                 </div>' +
         '                 <div class="modal-footer">' +
                                 extra +
@@ -69,6 +73,7 @@ function addContent(divid, item, extra) {
         '         </div>' +
         '     </div>';
     $(divid).append(template);
+    $('#extra'+item.id).hide();
 }
 
 function pagesAtThisBar(size) {
@@ -165,6 +170,10 @@ function getAllDrinkLists() {
         },
         dataType: 'json'
     });
+}
+
+function show(id) {
+    $('#extra'+id).show();
 }
 
 $(document).ready(function() {
