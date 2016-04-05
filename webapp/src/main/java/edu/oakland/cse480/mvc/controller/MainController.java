@@ -2,6 +2,7 @@ package edu.oakland.cse480.mvc.controller;
 
 import edu.oakland.cse480.mvc.models.User;
 import edu.oakland.cse480.mvc.models.Drink;
+import edu.oakland.cse480.mvc.models.BarDrinkOrder;
 import edu.oakland.cse480.service.UserService;
 import edu.oakland.cse480.service.BusinessAndBarService;
 import edu.oakland.cse480.service.AvailableDrinksService;
@@ -238,7 +239,11 @@ public class MainController{
         }
 
         ModelAndView model = new ModelAndView();
-        model.addObject("queue", barDrinkOrderService.getThreeDrinkOrdersByBarId(bar_id));
+        List<BarDrinkOrder> orders = barDrinkOrderService.getThreeDrinkOrdersByBarId(bar_id);
+        for(BarDrinkOrder order : orders) {
+            order.setIngredients(ingredientService.getIngredientsByDrinkId(order.getDrinkId()));
+        }
+        model.addObject("queue", orders);
         model.addObject("barId", bar_id);
         model.addObject("userId", userId);
         model.setViewName("drinklist");
@@ -274,7 +279,11 @@ public class MainController{
         }
 
         ModelAndView model = new ModelAndView();
-        model.addObject("queue", barDrinkOrderService.getThreeDrinkOrdersByBarId(bar_id));
+        List<BarDrinkOrder> orders = barDrinkOrderService.getThreeDrinkOrdersByBarId(bar_id);
+        for(BarDrinkOrder order : orders) {
+            order.setIngredients(ingredientService.getIngredientsByDrinkId(order.getDrinkId()));
+        }
+        model.addObject("queue", orders);
         model.addObject("clearSearch", true);
 
         try {
