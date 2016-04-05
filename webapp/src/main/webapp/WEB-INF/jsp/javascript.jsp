@@ -27,7 +27,7 @@ function display(page) {
             '     <div class="row drink">' +
             '         <div class="col-xs-0 col-md-2"></div>' +
             '         <div class="col-xs-3 col-md-1 drink-icon">' +
-            '             <img src="<c:url value="/' + d[i].icon_url + '" context="/cse480" />" class="img-fluid img-rounded" alt="' + d[i].name + ' icon"/>' +
+            '             <img src="<c:url value="' + d[i].icon_url + '" />" class="img-fluid img-rounded" alt="' + d[i].name + ' icon"/>' +
             '         </div>' +
             '         <sec:authorize access="isAnonymous()">' +
             '         <div class="col-xs-9 col-md-7 drink-text">' +
