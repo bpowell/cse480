@@ -14,6 +14,7 @@ public class BarDrinkOrder {
     public Timestamp time_complete;
     public int bar_id;
     public String comments;
+    private float price;
 
     public int getId() {
         return this.id;
@@ -102,5 +103,12 @@ public class BarDrinkOrder {
     public void setComments(String comments) {
         this.comments = comments;
     }
-}   
 
+    public float getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+}
