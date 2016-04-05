@@ -68,11 +68,15 @@ public class API {
     }
 
     @RequestMapping(value = "/adddrink", method = RequestMethod.POST)
-    public ResponseEntity addDrink(@ModelAttribute("drinkId") int drinkId, @ModelAttribute("barId") int barId) {
+    public ResponseEntity addDrink(@ModelAttribute("drinkId") int drinkId, @ModelAttribute("barId") int barId, @ModelAttribute("price") float price) {
         AvailableDrinks a = new AvailableDrinks();
         a.setDrinkId(drinkId);
         a.setBarId(barId);
-        a.setPrice(0);
+
+        if(price<=0) {
+            price = 1;
+        }
+        a.setPrice(price);
 
         if(!availableDrinksService.insertAvailableDrink(a)) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);

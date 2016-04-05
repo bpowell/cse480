@@ -95,10 +95,12 @@ function pagesAtAllBars(size) {
 }
 
 function addDrink(drinkId) {
+    price = $('#price'+drinkId).val();
+    $('#price'+drinkId).val('');
     $.ajax({
         type: "POST",
         url: '<c:url value="/api/adddrink" />',
-        data: {drinkId: drinkId, barId: '${barId}'},
+        data: {drinkId: drinkId, barId: '${barId}', price: price},
         beforeSend: function(xhr, settings) {
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
