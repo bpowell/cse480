@@ -128,6 +128,7 @@ public class AvailableDrinksService extends AbstractJdbcDriver {
             d.setInfo(rs.getString("info"));
             d.setMakeTime(rs.getInt("make_time"));
             d.setIconUrl(rs.getString("icon_url"));
+            d.setPrice(rs.getFloat("price"));
             return d;
         }
     }
