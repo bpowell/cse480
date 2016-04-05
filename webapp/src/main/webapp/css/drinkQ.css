@@ -370,3 +370,12 @@ a:focus, a:hover {
 	background-color: #FFFFFF;
 	border: 5px solid black;
 }
+
+.stevesBeautifulHead {
+	max-width: 200px;
+	max-height: 200px;
+}
+
+.testim-quote {
+	padding-left: 30px;
+}

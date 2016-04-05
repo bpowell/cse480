@@ -80,11 +80,11 @@
                 <div class="col-xs-12 col-md-4">
 									<div class="testimonial">
 										<div class="row">
-											<h3>"Drink Q has made the bar experince hella dope!"</h3>
+											<h3 class= "testim-quote">"Drink Q has made the bar experince hella dope!" ~Steven Wiggins</h3>
 										</div>
 										<div class="row">
 											<div class="col-xs-12 col-md-6">
-                    		<a class="img-circle" width="100%"><img src="<c:url value="/img/profile/steve.jpg" />" alt="SteveWiggins" /></a>
+												<img src="<c:url value="/img/profile/steve.jpg" />"  class="img-circle stevesBeautifulHead" alt="SteveWiggins" /></a>
 											</div>
 											<div class="col-xs-12 col-md-6">
 												<span class="glyphicon glyphicon-star"></span>
