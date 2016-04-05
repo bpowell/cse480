@@ -4,6 +4,7 @@ public class AvailableDrinks {
     private int id;
     private int drink_id;
     private int bar_id;
+    private float price;
 
     public int getId() {
         return this.id;
@@ -27,5 +28,13 @@ public class AvailableDrinks {
 
     public void setBarId(int bar_id) {
         this.bar_id = bar_id;
+    }
+
+    public float getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 }
