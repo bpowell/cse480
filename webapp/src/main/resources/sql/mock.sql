@@ -34,12 +34,11 @@ insert into drink (name, info, make_time, icon_url) values ('beer3', 'info', 100
 insert into drink (name, info, make_time, icon_url) values ('scotch', 'info', 200, 'ayyLmao');
 
 
-insert into drinkorder (drink_id, drink_count, user_id, time_placed) values (1, 1, 1, '2015-12-16 12:21:13');
-insert into drinkorder (drink_id, drink_count, user_id, time_placed) values (2, 1, 2, '2015-12-16 12:22:13');
-insert into drinkorder (drink_id, drink_count, user_id, time_placed) values (1, 3, 3, '2015-12-16 12:24:13');
-insert into drinkorder (drink_id, drink_count, user_id, time_placed) values (1, 1, 4, '2015-12-16 12:25:13');
-insert into drinkorder (drink_id, drink_count, user_id, time_placed) values (2, 1, 5, '2015-12-17 12:22:15');
-
+insert into drinkorder (drink_id, drink_count, user_id, time_placed, time_complete, bar_id) values (1, 1, 1, '2015-12-16 12:21:13', '2015-12-16 12:22:13', '1');
+insert into drinkorder (drink_id, drink_count, user_id, time_placed, time_complete, bar_id) values (2, 1, 2, '2015-12-16 12:22:13','2015-12-16 12:23:13', '2');
+insert into drinkorder (drink_id, drink_count, user_id, time_placed, time_complete, bar_id) values (1, 1, 3, '2015-12-16 12:24:13', '2015-12-16 12:25:13', '2');
+insert into drinkorder (drink_id, drink_count, user_id, time_placed, time_complete, bar_id) values (1, 1, 4, '2015-12-16 12:25:13', '2015-12-16 12:26:13', '2');
+insert into drinkorder (drink_id, drink_count, user_id, time_placed, time_complete, bar_id) values (2, 1, 5, '2015-12-17 12:22:15', '2015-12-17 12:23:15', '2');
 
 insert into availabledrinks (drink_id, bar_id) values (1, 1);
 insert into availabledrinks (drink_id, bar_id) values (2, 2);
