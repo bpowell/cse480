@@ -54,9 +54,6 @@ public class TestAvailableDrinkServiceTester {
                 Assert.assertEquals(availableDrinks.getDrinksByBarIdAndDrinkName(2, "beer3").size(), 1);
         }
 
-
-
-
         @AfterClass
         public static void shutdown() {
                 db.shutdown();
