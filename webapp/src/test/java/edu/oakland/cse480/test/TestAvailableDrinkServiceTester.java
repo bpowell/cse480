@@ -30,12 +30,12 @@ public class TestAvailableDrinkServiceTester {
         }
 
         @Test
-        public void testGetAllDrinks() {
+        public void testGetAllAvailableDrinks() {
                 Assert.assertEquals(availableDrinks.getAllAvailableDrinks().size(), 4);
         }
 
         @Test
-        public void testGetAllById() {
+        public void testGetAvailableDrinksById() {
                 Assert.assertEquals(availableDrinks.getAvailableDrinksById(1).size(), 1);
         }
 
@@ -46,7 +46,12 @@ public class TestAvailableDrinkServiceTester {
 
         @Test
         public void testGetDrinksByBarId() {
-                Assert.assertEquals(availableDrinks.getDrinksByBarId(1).size(), 1);
+                Assert.assertEquals(availableDrinks.getDrinksByBarId(2).size(), 3);
+        }
+
+        @Test
+        public void testGetDrinksByBarIdAndDrinkName() {
+                Assert.assertEquals(availableDrinks.getDrinksByBarIdAndDrinkName(2, "beer3").size(), 1);
         }
 
         @AfterClass
