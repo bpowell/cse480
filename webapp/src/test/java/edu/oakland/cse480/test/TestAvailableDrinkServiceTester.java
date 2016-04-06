@@ -46,7 +46,7 @@ public class TestAvailableDrinkServiceTester {
 
         @Test
         public void testGetDrinksByBarId() {
-                Assert.assertEquals(availableDrinks.getDrinksByBarId(1).size(), 1);
+                Assert.assertEquals(availableDrinks.getDrinksByBarId(2).size(), 3);
         }
 
         @Test
