@@ -34,6 +34,7 @@ function display(page) {
             '             <h3><strong>' + d[i].name + '</strong></h3>' +
             '             <p>' +
             '                 <strong>Make Time:</strong> ' + d[i].makeTime + ' Seconds<br />' +
+                              (d[i].price == 0 ? '' : '<strong>Price: $</strong>' + d[i].price + '<br />') +
             '                 <strong>Description:</strong> ' + d[i].info + '' +
             '             </p>' +
             '         </div>' +

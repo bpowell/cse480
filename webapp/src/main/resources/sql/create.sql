@@ -105,7 +105,8 @@ create table drinkorder (
 create table availabledrinks (
     id serial primary key,
     drink_id integer references drink(id),
-    bar_id integer references bar(id)
+    bar_id integer references bar(id),
+    price numeric
 )
 ;
 

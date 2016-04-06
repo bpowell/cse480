@@ -10,6 +10,7 @@ public class Drink {
     public int make_time;
     public String icon_url;
     private List<Ingredient> ingredients;
+    private float price;
 
     public Drink() {
         this.ingredients = new ArrayList<Ingredient>();
@@ -61,5 +62,13 @@ public class Drink {
 
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public float getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 }   

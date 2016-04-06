@@ -74,7 +74,7 @@ public class AvailableDrinksService extends AbstractJdbcDriver {
 
     public boolean insertAvailableDrink(AvailableDrinks a) {
         try {
-            this.jdbcPostgres.update("insert into availabledrinks (drink_id, bar_id) values(?, ?)", new Object[] {a.getDrinkId(), a.getBarId()});
+            this.jdbcPostgres.update("insert into availabledrinks (drink_id, bar_id, price) values(?, ?, ?)", new Object[] {a.getDrinkId(), a.getBarId(), a.getPrice()});
         } catch(Exception e) {
             log.info("", e);
             return false;
@@ -128,6 +128,7 @@ public class AvailableDrinksService extends AbstractJdbcDriver {
             d.setInfo(rs.getString("info"));
             d.setMakeTime(rs.getInt("make_time"));
             d.setIconUrl(rs.getString("icon_url"));
+            d.setPrice(rs.getFloat("price"));
             return d;
         }
     }

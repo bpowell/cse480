@@ -262,6 +262,7 @@ public class OwnerController {
         AvailableDrinks a = new AvailableDrinks();
         a.setDrinkId(drinkId);
         a.setBarId(barId);
+        a.setPrice(drink.getPrice());
 
         if(!availableDrinksService.insertAvailableDrink(a)) {
             model.addObject("error", "Try again");

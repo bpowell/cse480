@@ -49,7 +49,7 @@ public class API {
 
     @RequestMapping(value = "/drinklist/{barId}", method = RequestMethod.GET)
     public @ResponseBody List<Drink> getDrinkList(@PathVariable int barId) {
-        List<Drink> drinks = drinkService.getDrinksByBarId(barId);
+        List<Drink> drinks = availableDrinksService.getDrinksByBarId(barId);
         for(Drink drink : drinks) {
             drink.setIngredients(ingredientService.getIngredientsByDrinkId(drink.getId()));
         }
@@ -68,10 +68,15 @@ public class API {
     }
 
     @RequestMapping(value = "/adddrink", method = RequestMethod.POST)
-    public ResponseEntity addDrink(@ModelAttribute("drinkId") int drinkId, @ModelAttribute("barId") int barId) {
+    public ResponseEntity addDrink(@ModelAttribute("drinkId") int drinkId, @ModelAttribute("barId") int barId, @ModelAttribute("price") float price) {
         AvailableDrinks a = new AvailableDrinks();
         a.setDrinkId(drinkId);
         a.setBarId(barId);
+
+        if(price<=0) {
+            price = 1;
+        }
+        a.setPrice(price);
 
         if(!availableDrinksService.insertAvailableDrink(a)) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);

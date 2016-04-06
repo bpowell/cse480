@@ -17,6 +17,7 @@ public class BarDrinkOrder {
     public Timestamp time_complete;
     public int bar_id;
     public String comments;
+    private float price;
     public List<Ingredient> ingredients;
 
     public BarDrinkOrder() {
@@ -126,5 +127,12 @@ public class BarDrinkOrder {
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
-}   
 
+    public float getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+}

@@ -19,7 +19,7 @@ function displayDrinksAtAllBars(page) {
 
     start = page*page_size;
     for(i=start; i<start+page_size && i<dataAtAllBars.length; i++) {
-        addContent("#alldrinks", dataAtAllBars[i], '<a type="button" class="btn btn-primary" onclick="addDrink(' + dataAtAllBars[i].id + ')">Add to bar!</a>');
+        addContent("#alldrinks", dataAtAllBars[i], '<a type="button" class="btn btn-primary" onclick="show('+dataAtAllBars[i].id+')">Add to bar!</a>');
     }
 }
 
@@ -35,6 +35,7 @@ function addContent(divid, item, extra) {
         '             <h3><strong>' + item.name + '</strong></h3>' +
         '             <p>' +
         '                 <strong>Make Time:</strong> ' + item.makeTime + ' Seconds<br />' +
+                           (item.price == 0 ? '' : '<strong>Price: $</strong>' + item.price + '<br />') +
         '                 <strong>Description:</strong> ' + item.info + '' +
         '             </p>' +
         '         </div>' +
@@ -60,6 +61,10 @@ function addContent(divid, item, extra) {
         '                         Right? We want stuff here?<br />' +
         '                         Yes... yes we do.' +
         '                     </p>' +
+        '                     <div id="extra' + item.id +'">' +
+        '                         <input name="price" id="price' + item.id +'" placeholder="2.00" /><br />' +
+        '                         <a onclick="addDrink(' + item.id + ');" type="button" class="btn btn-primary">Add ' + item.name + '</a>' +
+        '                     </div>' +
         '                 </div>' +
         '                 <div class="modal-footer">' +
                                 extra +
@@ -69,6 +74,7 @@ function addContent(divid, item, extra) {
         '         </div>' +
         '     </div>';
     $(divid).append(template);
+    $('#extra'+item.id).hide();
 }
 
 function pagesAtThisBar(size) {
@@ -90,10 +96,12 @@ function pagesAtAllBars(size) {
 }
 
 function addDrink(drinkId) {
+    price = $('#price'+drinkId).val();
+    $('#price'+drinkId).val('');
     $.ajax({
         type: "POST",
         url: '<c:url value="/api/adddrink" />',
-        data: {drinkId: drinkId, barId: '${barId}'},
+        data: {drinkId: drinkId, barId: '${barId}', price: price},
         beforeSend: function(xhr, settings) {
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
@@ -165,6 +173,10 @@ function getAllDrinkLists() {
         },
         dataType: 'json'
     });
+}
+
+function show(id) {
+    $('#extra'+id).show();
 }
 
 $(document).ready(function() {
