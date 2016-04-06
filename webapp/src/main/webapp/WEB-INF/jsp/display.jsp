@@ -10,7 +10,7 @@
                     <div class="col-xs-0 col-md-2"></div>
                 </div>
             </c:if>
-            <c:forEach items="${drinks}" var="drink">
+            <c:forEach items="${queue}" var="drink">
                 <a href="#" data-toggle="modal" data-target="#id${drink.getId()}">
                     <div class="row">
                         <div class="col-xs-0 col-md-2"></div>
@@ -33,8 +33,8 @@
                     </div>
                 </a>
                 <sec:authorize access="!hasRole('ROLE_DISPLAY')">
-                    <div class="modal fade drink-modal-lg" id="id${drink.getId()}" tabindex="-1" role="dialog" aria-labelledby="<c:url value="${drink.getDrinkName()}" />Modal" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
+                    <div class="modal fade drink-modal-md" id="id${drink.getId()}" tabindex="-1" role="dialog" aria-labelledby="<c:url value="${drink.getDrinkName()}" />Modal" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <div class="col-xs-10 col-md-11">
@@ -47,15 +47,22 @@
                                     </div>
                                 </div>
                                 <div class="modal-body">  
-                                    <p>
-                                        <strong>Stuff goes here!</strong>
-                                        Right? We want stuff here?<br />
-                                        Yes... yes we do.
-                                    </p>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-7">
+                                            <p>
+                                                <strong>Make Time:</strong> ${drink.getMakeTime()} Seconds<br />
+                                                <strong>Ingredients:</strong> <c:forEach items="${drink.getIngredients()}" var="first" end="0">${first.getName()}</c:forEach><c:forEach items="${drink.getIngredients()}" var="ing" begin="1">, ${ing.getName()}</c:forEach>
+                                            </p>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-5">
+                                            <textarea name="comments" id="comments${drink.getId()}" style="width: 100%;" rows="3" placeholder="Special requests&hellip;"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
+                                    Qty: <input name="quantity" id="quantity${drink.getId()}" value="1" size="2">
                                     <sec:authorize access="isAuthenticated()">
-                                        <a href="#" type="button" class="btn btn-primary">Order ${q.getDrinkName()}</a>
+                                        <a href="#" type="button" class="btn btn-primary">Order ${drink.getDrinkName()}</a>
                                     </sec:authorize>
                                     <sec:authorize access="isAnonymous()">
                                         <a href="<c:url value="/login" />" type="button" class="btn btn-primary">Sign in to Order!</a>

@@ -25,7 +25,7 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
 
     public List<BarDrinkOrder> getDrinkOrdersByBarId(int bar_id) {
         try {
-            return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where drinkorder.time_complete is null and users.enabled = 't' and drinkorder.bar_id = ? order by drinkorder.time_placed", new Object[] {bar_id}, new BarDrinkOrderMapper());
+            return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.make_time, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where drinkorder.time_complete is null and users.enabled = 't' and drinkorder.bar_id = ? order by drinkorder.time_placed", new Object[] {bar_id}, new BarDrinkOrderMapper());
         } catch(Exception e) {
             log.info("", e);
             return new ArrayList<BarDrinkOrder>();
@@ -34,7 +34,7 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
 
     public List<BarDrinkOrder> getThreeDrinkOrdersByBarId(int bar_id) {
         try {
-            return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.enabled = 't' and drinkorder.bar_id = ? order by drinkorder.time_placed limit 3", new Object[] {bar_id}, new BarDrinkOrderMapper());
+            return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.make_time, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.enabled = 't' and drinkorder.bar_id = ? order by drinkorder.time_placed limit 3", new Object[] {bar_id}, new BarDrinkOrderMapper());
         } catch(Exception e) {
             log.info("", e);
             return new ArrayList<BarDrinkOrder>();
@@ -43,7 +43,7 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
 
     public List<BarDrinkOrder> getDrinkOrdersByUsername(String username) {
         try {
-            return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.name = ? order by drinkorder.time_placed desc", new Object[] {username}, new BarDrinkOrderMapper());
+            return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.make_time, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.name = ? order by drinkorder.time_placed desc", new Object[] {username}, new BarDrinkOrderMapper());
         } catch(Exception e) {
             log.info("", e);
             return new ArrayList<BarDrinkOrder>();
@@ -52,7 +52,7 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
 
     public List<BarDrinkOrder> getFiveDrinksByEmail(String email) {
         try {
-            return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.email = ? order by drinkorder.time_placed desc limit 5", new Object[] {email}, new BarDrinkOrderMapper());
+            return this.jdbcPostgres.query("select drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.make_time, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.email = ? order by drinkorder.time_placed desc limit 5", new Object[] {email}, new BarDrinkOrderMapper());
         } catch(Exception e)  {
             log.info("", e);
             return new ArrayList<BarDrinkOrder>();
@@ -88,6 +88,7 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
             b.setDrinkId(rs.getInt("drink_id"));
             b.setDrinkCount(rs.getInt("drink_count"));
             b.setDrinkName(rs.getString("name"));
+            b.setMakeTime(rs.getInt("make_time"));
             b.setDrinkIconUrl(rs.getString("icon_url"));
             b.setUserId(rs.getInt("user_id"));
             b.setUserName(rs.getString("username"));

@@ -1,12 +1,15 @@
 package edu.oakland.cse480.mvc.models;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BarDrinkOrder {
     public int id;
     public int drink_id;
     public int drink_count;
     public String drink_name;
+    public int make_time;
     public String drink_icon_url;
     public int user_id;
     public String user_name;
@@ -14,6 +17,11 @@ public class BarDrinkOrder {
     public Timestamp time_complete;
     public int bar_id;
     public String comments;
+    public List<Ingredient> ingredients;
+
+    public BarDrinkOrder() {
+        this.ingredients = new ArrayList<Ingredient>();
+    }
 
     public int getId() {
         return this.id;
@@ -45,6 +53,14 @@ public class BarDrinkOrder {
 
     public void setDrinkName(String drink_name) {
         this.drink_name = drink_name;
+    }
+
+    public int getMakeTime() {
+        return this.make_time;
+    }
+
+    public void setMakeTime(int make_time) {
+        this.make_time = make_time;
     }
 
     public String getDrinkIconUrl() {
@@ -101,6 +117,14 @@ public class BarDrinkOrder {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public List<Ingredient> getIngredients() {
+        return this.ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }   
 
