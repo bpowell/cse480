@@ -18,9 +18,8 @@
                 $('#orderSuccess').modal('show');
             },
             error: function(xhr, status, err) {
-                console.log("Error");
-                console.log(status);
-                console.log(err);
+                $('.modal').modal('hide');
+                $('#orderFailure').modal('show');
             }
         });
     }
