@@ -14,7 +14,8 @@
                 xhr.setRequestHeader(header, token);
             },
             success: function(a) {
-                console.log(a);
+                $('.modal').modal('hide');
+                $('#orderSuccess').modal('show');
             },
             error: function(xhr, status, err) {
                 console.log("Error");
