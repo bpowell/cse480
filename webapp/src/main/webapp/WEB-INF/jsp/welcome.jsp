@@ -85,16 +85,10 @@
 											</div>
 										</div>
 										<div class="row">
-											<div class="col-xs-12 col-md-12">
-												<span class="glyphicon glyphicon-star"></span>
-												<span class="glyphicon glyphicon-star"></span>
-												<span class="glyphicon glyphicon-star"></span>
-												<span class="glyphicon glyphicon-star"></span>
-												<span class="glyphicon glyphicon-star-empty"></span>
-											</div>
+											<img src="<c:url value="/img/4stars.png" />"  class="stevesBeautifulFace img-responsive" alt="SteveWiggins" /></a>
 										</div>
 										<div class="row">
-											<h3 class= "testim-quote">"Drink Q has made the bar experince hella dope!" ~Steven Wiggins</h3>
+											<h3 class= "testim-quote">"Drink Q has changed the entire bar experience for me.  It eliminates the wait and adds to the fun!" ~Steven Wiggins</h3>
 										</div>
 									</div>
                 </div>
