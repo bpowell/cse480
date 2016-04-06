@@ -80,19 +80,21 @@
                 <div class="col-xs-12 col-md-4">
 									<div class="testimonial">
 										<div class="row">
-											<h3 class= "testim-quote">"Drink Q has made the bar experince hella dope!" ~Steven Wiggins</h3>
+											<div class="col-xs-12 col-md-12">
+												<img src="<c:url value="/img/profile/steve.jpg" />"  class="stevesBeautifulFace img-circle img-responsive" alt="SteveWiggins" /></a>
+											</div>
 										</div>
 										<div class="row">
-											<div class="col-xs-12 col-md-6">
-												<img src="<c:url value="/img/profile/steve.jpg" />"  class="img-circle img-responsive" alt="SteveWiggins" /></a>
-											</div>
-											<div class="col-xs-12 col-md-6">
+											<div class="col-xs-12 col-md-12">
 												<span class="glyphicon glyphicon-star"></span>
 												<span class="glyphicon glyphicon-star"></span>
 												<span class="glyphicon glyphicon-star"></span>
 												<span class="glyphicon glyphicon-star"></span>
 												<span class="glyphicon glyphicon-star-empty"></span>
 											</div>
+										</div>
+										<div class="row">
+											<h3 class= "testim-quote">"Drink Q has made the bar experince hella dope!" ~Steven Wiggins</h3>
 										</div>
 									</div>
                 </div>

@@ -366,11 +366,18 @@ a:focus, a:hover {
 }
 
 .testimonial {
-	color: black;
-	background-color: #FFFFFF;
+	background-color: #E9D0A8;
+	color: #292729;
 	border: 5px solid black;
+	border-radius: 5px;
 }
 
 .testim-quote {
 	padding-left: 30px;
+}
+
+.stevesBeautifulFace {
+	max-width: 50%;
+	margin-left: 25%;
+	margin-right: 25%;
 }
