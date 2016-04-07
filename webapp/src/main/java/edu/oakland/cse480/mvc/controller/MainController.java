@@ -181,6 +181,15 @@ public class MainController{
     @RequestMapping(value = "/barview", method = RequestMethod.GET)
     public ModelAndView barview() {
         ModelAndView model = new ModelAndView();
+        //check if user is login
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetail = (UserDetails) auth.getPrincipal();
+            String email = userDetail.getUsername();
+            model.addObject("username", us.getUsernameByEmail(email));
+            model.addObject("totaldrinks", barDrinkOrderService.getTotalDrinksOrderedByEmail(email));
+        }
+
         model.addObject("businesses", businessAndBarService.getAllBusinessAndBars());
         model.setViewName("barview");
 
@@ -194,6 +203,15 @@ public class MainController{
         }
 
         ModelAndView model = new ModelAndView();
+        //check if user is login
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetail = (UserDetails) auth.getPrincipal();
+            String email = userDetail.getUsername();
+            model.addObject("username", us.getUsernameByEmail(email));
+            model.addObject("totaldrinks", barDrinkOrderService.getTotalDrinksOrderedByEmail(email));
+        }
+
         model.addObject("businesses", businessAndBarService.getBusinessAndBarsByName(barName));
         model.addObject("clearSearch", true);
         model.setViewName("barview");
