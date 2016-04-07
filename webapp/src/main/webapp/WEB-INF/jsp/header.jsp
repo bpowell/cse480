@@ -42,13 +42,6 @@
                         <sec:authorize access="isAnonymous()">
                             <li><a href="<c:url value="/login" />"><strong>Log In</strong></a></li>
                         </sec:authorize>
-                        <sec:authorize access="hasRole('ROLE_ADMIN')">
-                            <li><a href="<c:url value="/owner/" />"><strong>Owner Menu</strong></a></li>
-                            <li><a href="<c:url value="/admin/" />"><strong>Admin Menu</strong></a></li>
-                        </sec:authorize>
-                        <sec:authorize access="hasRole('ROLE_OWNER')">
-                            <li><a href="<c:url value="/owner/" />"><strong>Owner Menu</strong></a></li>
-                        </sec:authorize>
                         <sec:authorize access="isAuthenticated()">
                             <li><a href="<c:url value="/profile" />"><strong>View Profile</strong></a></li>
                             <li><a href="#" onclick="document.getElementById('logout').submit();"><strong>Logout</strong></a></li>
