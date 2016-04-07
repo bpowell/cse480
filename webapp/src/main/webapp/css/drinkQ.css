@@ -369,14 +369,15 @@ a:focus, a:hover {
 }
 
 .testimonial {
-	background-color: #E9D0A8;
-	color: #292729;
+	background-color: #E1E1E1;
+	color: #2D2D2D;
 	border: 5px solid black;
 	border-radius: 5px;
 }
 
 .testim-quote {
 	padding-left: 30px;
+	padding-right: 15px;
 }
 
 .stevesBeautifulFace {
