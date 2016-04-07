@@ -7,6 +7,8 @@
                         <div class="col-xs-0"></div>
                         <div class="col-xs-12">
                             <h3><strong>Profile</strong></h3>
+                            <strong>Username:</strong> ${username}<br />
+                            <strong>Total Orders:</strong> ${totaldrinks}<br />
                         </div>
                         <div class="col-xs-0"></div>
                     </div>
