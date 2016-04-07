@@ -50,6 +50,16 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
         }
     }
 
+    public int getTotalDrinksOrderedByEmail(String email) {
+        int num = 0;
+        try {
+            num = this.jdbcPostgres.queryForObject("select count(drinkorder.id) from drinkorder left join users on users.id = drinkorder.user_id where users.email = ?", new Object[] {email}, Integer.class);
+        } catch(Exception e) {
+            log.info("", e);
+        }
+        return num;
+    }
+
     public List<BarDrinkOrder> getFiveDrinksByEmail(String email) {
         try {
             return this.jdbcPostgres.query("select availabledrinks.price, drink.make_time, drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from availabledrinks, drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.email = ? and availabledrinks.drink_id = drinkorder.drink_id order by drinkorder.time_placed desc limit 5", new Object[] {email}, new BarDrinkOrderMapper());
