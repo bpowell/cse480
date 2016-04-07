@@ -223,6 +223,8 @@ public class MainController{
         }
         model.addObject("queue", orders);
         model.addObject("canClear", us.isUserABartenderOrOwner(bar_id, userId));
+        model.addObject("userId", userId);
+        model.addObject("barId", bar_id);
         model.setViewName("display");
         return model;
     }
