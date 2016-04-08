@@ -146,39 +146,67 @@ a:focus, a:hover {
 
 /** Welcome.jsp **/
 .welcomeImage {
-    
-    background-image: url('../img/team_pic_sm.png');
+    background-image: url('../img/welcome_bar.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     color: #FFF;
     margin-top:65px;
     min-height:600px;
+}
+.welcomeImage > div > div > h1 {
+    font-size: 300%;
+    text-shadow: 0px 0px 6px #000, 0px 0px 8px #FFF;;
 }
 .welcomeContentLight {
     background-color: #E1E1E1;
     color: #2D2D2D;
     padding: 15px;
     min-height: 400px;
+    font-size: 125%;
 }
 .welcomeContentDark {
     background-color: #2D2D2D;
     color: #E1E1E1;
     padding: 15px;
     min-height: 400px;
+    font-size: 125%;
 }
 .welcomeRegister {
     background-color: #E1E1E1;
     color: #2D2D2D;
     padding: 15px;
-    min-height: 200px;
+    min-height: 300px;
+}
+#welcomeRegister > div > h1 {
+    margin-top: 50px;
 }
 #welcomeRegister > div > a {
-    background-color: #E1E1E1;
-    color: #2D2D2D;
+    background-color: #2D2D2D;
+    color: #E1E1E1;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 #welcomeRegister > div > a:focus, #welcomeRegister > div > a:hover {
     background-color: #820000;
     color: #E1E1E1;
+}
+
+.testimonial {
+}
+
+.testim-quote {
+	padding-left: 30px;
+	padding-right: 15px;
+}
+
+.stevesBeautifulFace {
+	max-width: 80%;
+	margin:15px 10% 30px 10%;
+    border: 10px solid #E1E1E1;
+}
+.steve-rating {
+    margin-bottom: 30px;
 }
 /** Barview.jsp **/
 .bar-info {
@@ -294,8 +322,51 @@ a:focus, a:hover {
 
 /* Medium devices (tablets, 48em and up) */
 @media (min-width: 992px) {
-
-}
+    .welcomeImage {
+        min-height:800px;
+    }
+    .welcomeImage > div > div > h1 {
+        margin-top: 50px;
+        font-size: 400%;
+    }
+    .welcomeContentLight {
+        padding: 15px;
+        font-size: 150%;
+        min-height: 800px;
+    }
+    .welcomeContentLight > div > div > h1 {
+        font-size: 175%;
+        margin-top: 150px;
+        margin-bottom: 50px;
+    }
+    .welcomeContentLight > div > div > h3 {
+        font-size: 150%;
+    }
+    .welcomeContentDark {
+        padding: 15px;
+        font-size: 150%;
+        min-height: 800px;
+    }
+    .welcomeContentDark > div > div > h1 {
+        font-size: 175%;
+        margin-top: 100px;
+        margin-bottom: 50px;
+    }
+    .welcomeContentDark > div > div > h3 {
+        font-size: 150%;
+    }
+    .welcomeRegister {
+        padding: 15px;
+        min-height: 400px;
+    }
+    #welcomeRegister > div > h1 {
+        margin-top: 100px;
+    }
+    .stevesBeautifulFace {
+    	max-width: 50%;
+    	margin-left: 25%;
+    	margin-right: 25%;
+    }
 
 /* Large devices (desktops, 62em and up) */
 @media (min-width: 1200px) {
@@ -372,21 +443,3 @@ a:focus, a:hover {
     margin: 0;
 }
 
-.testimonial {
-	background-color: #E1E1E1;
-	color: #2D2D2D;
-	border: 5px solid black;
-	border-radius: 5px;
-}
-
-.testim-quote {
-	padding-left: 30px;
-	padding-right: 15px;
-}
-
-.stevesBeautifulFace {
-	max-width: 50%;
-	margin-left: 25%;
-	margin-right: 25%;
-	margin-top:15px;
-}
