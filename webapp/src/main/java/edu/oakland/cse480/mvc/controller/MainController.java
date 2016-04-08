@@ -7,6 +7,7 @@ import edu.oakland.cse480.service.UserService;
 import edu.oakland.cse480.service.BusinessAndBarService;
 import edu.oakland.cse480.service.AvailableDrinksService;
 import edu.oakland.cse480.service.BarDrinkOrderService;
+import edu.oakland.cse480.service.BarStatsService;
 import edu.oakland.cse480.service.IngredientService;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -58,6 +59,9 @@ public class MainController{
 
     @Autowired
     private IngredientService ingredientService;
+
+    @Autowired
+    private BarStatsService barStatsService;
 
     /**
      * Sends the user to the main page.
@@ -221,6 +225,14 @@ public class MainController{
         for(BarDrinkOrder order : orders) {
             order.setIngredients(ingredientService.getIngredientsByDrinkId(order.getDrinkId()));
         }
+        // bar stats
+        model.addObject("bar", businessAndBarService.getBarById(bar_id));
+        model.addObject("availabledrinks", barStatsService.totalNumberOfAvailableDrinksForBar(bar_id));
+        model.addObject("drinksserved", barStatsService.totalNumberOfDrinksServedAtBar(bar_id));
+        model.addObject("drinksinqueue", barStatsService.totalNumberOfDrinksInQueueAtBar(bar_id));
+        model.addObject("waittime", barStatsService.totalQueueWaitTimeForBar(bar_id));
+
+        // queue information
         model.addObject("queue", orders);
         model.addObject("canClear", us.isUserABartenderOrOwner(bar_id, userId));
         model.setViewName("display");
