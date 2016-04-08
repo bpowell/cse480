@@ -64,6 +64,32 @@
                         You know, in case you're <strong>*really*</strong> thirsty.
                     </p>
                 </div>
+                <div class="col-xs-12 col-md-4">
+                    <div class="testimonial">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12">
+                                <img src="<c:url value="/img/profile/steve.jpg" />"  class="stevesBeautifulFace img-circle img-responsive" alt="SteveWiggins" /></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-0 col-sm-1"></div>
+                            <div class="col-xs-12 col-sm-10">
+                                <blockquote class="testim-quote">
+                                    <p>Drink Q has changed the entire bar experience for me.  It eliminates the wait and adds to the fun!</p>
+                                    <footer>Steven Wiggins</footer>
+                                </blockquote>
+                            </div>
+                            <div class="col-xs-0 col-sm-1"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2 col-sm-3"></div>
+                            <div class="col-xs-8 col-sm-6">
+                                <img src="<c:url value="/img/4stars.png" />"  class="steve-rating img-responsive" alt="SteveWiggins" /></a>
+                            </div>
+                            <div class="col-xs-2 col-sm-3"></div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-xs-12 col-md-3">
                     <h3><strong>Drink Notifications</strong></h3>
                     <p>
@@ -76,21 +102,6 @@
                     <p>
                         Now you can receive notifications of when your drink is being served!
                     </p>
-                </div>
-                <div class="col-xs-12 col-md-4">
-									<div class="testimonial">
-										<div class="row">
-											<div class="col-xs-12 col-md-12">
-												<img src="<c:url value="/img/profile/steve.jpg" />"  class="stevesBeautifulFace img-circle img-responsive" alt="SteveWiggins" /></a>
-											</div>
-										</div>
-										<div class="row">
-											<img src="<c:url value="/img/4stars.png" />"  class="stevesBeautifulFace img-responsive" alt="SteveWiggins" /></a>
-										</div>
-										<div class="row">
-											<h3 class= "testim-quote">"Drink Q has changed the entire bar experience for me.  It eliminates the wait and adds to the fun!" ~Steven Wiggins</h3>
-										</div>
-									</div>
                 </div>
                 <div class="col-xs-0 col-md-1"></div>
             </div>

@@ -149,6 +149,7 @@ a:focus, a:hover {
     background-image: url('../img/welcome_bar.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     color: #FFF;
     margin-top:65px;
     min-height:600px;
@@ -189,6 +190,23 @@ a:focus, a:hover {
 #welcomeRegister > div > a:focus, #welcomeRegister > div > a:hover {
     background-color: #820000;
     color: #E1E1E1;
+}
+
+.testimonial {
+}
+
+.testim-quote {
+	padding-left: 30px;
+	padding-right: 15px;
+}
+
+.stevesBeautifulFace {
+	max-width: 80%;
+	margin:15px 10% 30px 10%;
+    border: 10px solid #E1E1E1;
+}
+.steve-rating {
+    margin-bottom: 30px;
 }
 /** Barview.jsp **/
 .bar-info {
@@ -340,7 +358,11 @@ a:focus, a:hover {
     #welcomeRegister > div > h1 {
         margin-top: 100px;
     }
-}
+    .stevesBeautifulFace {
+    	max-width: 50%;
+    	margin-left: 25%;
+    	margin-right: 25%;
+    }
 
 /* Large devices (desktops, 62em and up) */
 @media (min-width: 1200px) {
@@ -417,21 +439,3 @@ a:focus, a:hover {
     margin: 0;
 }
 
-.testimonial {
-	background-color: #E1E1E1;
-	color: #2D2D2D;
-	border: 5px solid black;
-	border-radius: 5px;
-}
-
-.testim-quote {
-	padding-left: 30px;
-	padding-right: 15px;
-}
-
-.stevesBeautifulFace {
-	max-width: 50%;
-	margin-left: 25%;
-	margin-right: 25%;
-	margin-top:15px;
-}
