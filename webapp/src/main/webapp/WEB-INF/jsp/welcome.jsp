@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-xs-0 col-md-4"></div>
                 <div class="col-xs-12 col-md-4">
-                    <h1><strong>Why use drinkQ?</strong></h1>
+                    <h1 class="text-center"><strong>Why use drinkQ?</strong></h1>
                 </div>
                 <div class="col-xs-0 col-md-4"></div>
             </div>
@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-xs-0 col-md-3"></div>
                 <div class="col-xs-12 col-md-6">
-                    <h1><strong>See when you will get served!</strong></h1>
+                    <h1 class="text-center"><strong>See when you will get served!</strong></h1>
                 </div>
                 <div class="col-xs-0 col-md-3"></div>
             </div>
@@ -101,8 +101,8 @@
                 <div class="col-xs-12 col-md-8">
                     <div id="welcomeRegister">
                         <div class="col-xs-0 col-md-4"></div>
-                        <div class="col-xs-12 col-md-4 text-center">
-                            <h1><strong>Want to Sign Up?</strong></h1>
+                        <div class="col-xs-12 col-md-4">
+                            <h1 class="text-center"><strong>Want to Sign Up?</strong></h1>
                             <a href="<c:url value="/register" />" class="btn btn-default btn-lrg btn-block"><strong>Join drinkQ!</strong></a>
                         </div>
                         <div class="col-xs-0 col-md-4"></div>
