@@ -83,7 +83,7 @@
                                 <div class="modal-footer">
                                     Qty: <input name="quantity" id="quantity${drink.getId()}" value="1" size="2">
                                     <sec:authorize access="isAuthenticated()">
-                                        <a href="#" type="button" class="btn btn-primary">Order ${drink.getDrinkName()}</a>
+                                        <a onclick="orderDrink(${drink.getId()})" type="button" class="btn btn-primary">Order ${drink.getDrinkName()}</a>
                                     </sec:authorize>
                                     <sec:authorize access="isAnonymous()">
                                         <a href="<c:url value="/login" />" type="button" class="btn btn-primary">Sign in to Order!</a>
@@ -106,6 +106,7 @@
             </sec:authorize>
         </div>
         </div>
+        <jsp:directive.include file="/WEB-INF/jsp/orderdrinkjs.jsp"/>
         <script>
             function clearOrder(drinkOrderId) {
                 $.ajax({

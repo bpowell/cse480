@@ -1,110 +1,142 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
-            <div class="row">
-                <div class="col-xs-0 col-md-3"></div>
-                <div class="col-xs-12 col-md-6">
-                    <h1><strong>Bar List</strong></h1>
-                </div>
-                <div class="col-xs-0 col-md-3"></div>
-            </div>
-            <div class="row">
-                <div class="col-xs-0 col-md-3"></div>
-                <div class="col-xs-12 col-md-6">
-                    <c:url value="/barview" var="post_url" />
-                    <form:form action="${post_url}" method="POST" class="search-box" role="search">
-                        <div class="col-md-12 input-group">
-                            <input id="barName" name="barName" type="text" class="search-hints form-control" placeholder="Search for..." />
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" value="submit" type="submit">Go!</button>
-                                <c:if test="${clearSearch}">
-                                    <a class="btn btn-default" value="submit" href="<c:url value="/barview" />" type="Button">Clear!</a>
-                                </c:if>
-                            </span>
+            <div class="col-md-4 col-md-push-8">
+                <c:if test="${not empty username}">
+                    <div class="row">
+                        <div class="col-xs-0"></div>
+                        <div class="col-xs-12">
+                            <h3><strong>Profile</strong></h3>
+                            <strong>Username:</strong> ${username}<br />
+                            <strong>Total Orders:</strong> ${totaldrinks}<br />
                         </div>
-                    </form:form>
-                </div>
-                <div class="col-xs-0 col-md-3"></div>
-            </div>
-            <c:forEach items="${businesses}" var="b">
-                <c:forEach items="${b.getBars()}" var="bar">
-                    <div class="bar-info container">
-                        <div class="row">
-                        <%-- TEMPORARY --%>
-                            <div class="col-xs-0 col-md-4"></div>
-                            <div class="col-xs-12 col-md-4 bar-text">
-                                <h1><strong>${bar.getName()}</strong></h1>
-                            </div>
-                            <div class="col-xs-0 col-md-4"></div>
-                        <%-- When we get icons working for each business
-                            <div class="col-xs-3 col-md-2 bar-icon">
-                                <img class="img-fluid img-rounded" alt="${bar.getName()} icon" src="<c:url value="${b.getIconUrl()}" />" />
-                            </div>
-                            <div class="col-xs-9 col-md-10 bar-text">
-                                <h3><strong>${bar.getName()}</strong></h3>
-                            </div>
-                        --%>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-0 col-md-4"></div>
-                            <div class="col-xs-3 col-md-1">
-                                <p>
-                                    <strong>Phone</strong>
-                                </p>
-                            </div>
-                            <div class="col-xs-9 col-md-3">
-                                <p>
-                                        ${bar.getPhoneNumber()}<br />
-                                </p>
-                            </div>
-                            <div class="col-xs-0 col-md-4"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-0 col-md-4"></div>
-                            <div class="col-xs-3 col-md-1">
-                                <p>
-                                    <strong>Address</strong><br />
-                                </p>
-                            </div>
-                            <div class="col-xs-9 col-md-3">
-                                <p>
-                                        ${bar.getAddress()}<br />
-                                        ${bar.getCity()} ${bar.getZipcode()} ${bar.getState()}<br />
-                                </p>
-                            </div>
-                            <div class="col-xs-0 col-md-4"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-0 col-md-4"></div>
-                            <div class="col-xs-3 col-md-1">
-                                <p>
-                                    <strong>Hours</strong><br />
-                                </p>
-                            </div>
-                            <div class="col-xs-9 col-md-3">
-                                <p>
-                                        Monday: ${bar.getMondayHours()}<br />
-                                        Tuesday: ${bar.getTuesdayHours()}<br />
-                                        Wednesday: ${bar.getWednesdayHours()}<br />
-                                        Thursday: ${bar.getThursdayHours()}<br />
-                                        Friday: ${bar.getFridayHours()}<br />
-                                        Saturday: ${bar.getSaturdayHours()}<br />
-                                        Sunday: ${bar.getSundayHours()}
-                                </p>
-                            </div>
-                            <div class="col-xs-0 col-md-4"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-0 col-md-4"></div>
-                            <div class="col-xs-12 col-md-4">
-                                <a href="<c:url value="/display/${bar.getId()}" />" class="btn btn-primary btn-lrg btn-block"><strong>View the Queue!</strong></a>
-                                <a href="<c:url value="/drinklist/${bar.getId()}" />" class="btn btn-primary btn-lrg btn-block"><strong>Order at this bar!</strong></a>
-                            </div>
-                            <div class="col-xs-0 col-md-4"></div>
-                        </div>
+                        <div class="col-xs-0"></div>
                     </div>
+                </c:if>
+            </div>
+            <div class="col-md-8 col-md-pull-4">
+                <div class="row">
+                    <div class="col-xs-0 col-md-1"></div>
+                    <div class="col-xs-12 col-md-10">
+                        <h1><strong>Bar List</strong></h1>
+                    </div>
+                    <div class="col-xs-0 col-md-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-0 col-md-1"></div>
+                    <div class="col-xs-12 col-md-10">
+                        <c:url value="/barview" var="post_url" />
+                        <form:form action="${post_url}" method="POST" class="search-box" role="search">
+                            <div class="col-md-12 input-group">
+                                <input id="barName" name="barName" type="text" class="search-hints form-control" placeholder="Search for..." />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" value="submit" type="submit">Go!</button>
+                                    <c:if test="${clearSearch}">
+                                        <a class="btn btn-default" value="submit" href="<c:url value="/barview" />" type="Button">Clear!</a>
+                                    </c:if>
+                                </span>
+                            </div>
+                        </form:form>
+                    </div>
+                    <div class="col-xs-0 col-md-1"></div>
+                </div>
+                <c:forEach items="${businesses}" var="b">
+                    <c:forEach items="${b.getBars()}" var="bar">
+                        <a href="#" data-toggle="modal" data-target="#id${bar.getId()}">
+                            <div class="row">
+                                <div class="col-xs-0 col-md-2"></div>
+                                <div class="col-xs-3 col-md-2 business-icon">
+                                    <img src="<c:url value="${b.getIconUrl()}"/>" class="img-fluid img-rounded" alt="${bar.getName()} icon" />
+                                </div>
+                                <div class="col-xs-9 col-md-6 bar-text">
+                                    <h3><strong>${bar.getName()}</strong></h3>
+                                    <p>
+                                        <strong>Phone:</strong> ${bar.getPhoneNumber()}<br />
+                                        <strong>Location:</strong> ${bar.getCity()}, ${bar.getState()}<br />
+                                        <!-- foritem dayofweek thevalue -->
+                                        <strong>Today's Hours:</strong> ${bar.getWednesdayHours()}
+                                    </p>
+                                </div>
+                                <div class="col-xs-0 col-md-2"></div>
+                            </div>
+                        </a>
+                        <div class="modal fade drink-modal-md" id="id${bar.getId()}" tabindex="-1" role="dialog" aria-labelledby="<c:url value="${bar.getName()}" />Modal" aria-hidden="true">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <div class="col-xs-10 col-md-11">
+                                            <strong class="h1">${bar.getName()}</strong>
+                                        </div>
+                                        <div class="col-xs-2 col-md-1">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                         </div>
+                                    </div>
+                                    <div class="modal-body">  
+                                        <div class="row">
+                                            <div class="col-xs-1"></div>
+                                            <div class="col-xs-3 col-sm-2">
+                                                <img src="<c:url value="${b.getIconUrl()}"/>" class="img-fluid img-rounded" alt="${bar.getName()} icon" />
+                                            </div>
+                                            <div class="col-xs-7">
+                                                <p>
+                                                    <strong>Phone:</strong><br />
+                                                    ${bar.getPhoneNumber()}
+                                                </p>
+                                                <p>
+                                                    <strong>Address:</strong><br />
+                                                    ${bar.getAddress()}<br />
+                                                    ${bar.getCity()} ${bar.getZipcode()} ${bar.getState()}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-1"></div>
+                                            <div class="col-xs-5 col-sm-3">
+                                                <p>
+                                                    <strong>Hours:</strong><br />
+                                                    Monday :<br />
+                                                    Tuesday :<br />
+                                                    Wednesday :<br />
+                                                    Thursday :<br />
+                                                    Friday :<br />
+                                                    Saturday :<br />
+                                                    Sunday :
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-4 col-sm-8">
+                                                <p>
+                                                    <br />
+                                                    ${bar.getMondayHours()}<br />
+                                                    ${bar.getTuesdayHours()}<br />
+                                                    ${bar.getWednesdayHours()}<br />
+                                                    ${bar.getThursdayHours()}<br />
+                                                    ${bar.getFridayHours()}<br />
+                                                    ${bar.getSaturdayHours()}<br />
+                                                    ${bar.getSundayHours()}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="col-xs-0 col-sm-6"></div>
+                                        <div class="col-xs-4 col-sm-2">
+                                            <a href="<c:url value="/display/${bar.getId()}" />" type="button" class="btn btn-primary">Queue!</a>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-2">
+                                            <a href="<c:url value="/drinklist/${bar.getId()}" />" type="button" class="btn btn-primary">All Drinks!</a>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-2">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
                 </c:forEach>
-            </c:forEach>
+            </div>
         </div>
         <script type="text/javascript">
             $(document).ready(function(){
