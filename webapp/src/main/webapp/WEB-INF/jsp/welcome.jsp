@@ -76,7 +76,7 @@
                             <div class="col-xs-0 col-sm-1"></div>
                             <div class="col-xs-12 col-sm-10">
                                 <blockquote class="testim-quote">
-                                    <p>Drink Q has changed the entire bar experience for me.  It eliminates the wait and adds to the fun!</p>
+                                    <p>Drink Q has changed the entire bar experience for me and my friends.  It eliminates the wait and hassle of ordering drinks at a crowded bar and adds to the fun and overall experience!</p>
                                     <footer>Steven Wiggins</footer>
                                 </blockquote>
                             </div>
