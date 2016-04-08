@@ -18,7 +18,7 @@ public class BarStatsService extends AbstractJdbcDriver {
         return 0;
     }
 
-    public int totalNumberOfDrinksServedAtBat(int barId) {
+    public int totalNumberOfDrinksServedAtBar(int barId) {
         try {
             return this.jdbcPostgres.queryForObject("select count(id) from drinkorder where bar_id = ? and time_complete is not null", Integer.class, barId);
         } catch(Exception e) {
