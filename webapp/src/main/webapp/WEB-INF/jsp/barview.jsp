@@ -40,11 +40,12 @@
                     </div>
                     <div class="col-xs-0 col-md-1"></div>
                 </div>
+                <div class="bar-info">
                 <c:forEach items="${businesses}" var="b">
                     <c:forEach items="${b.getBars()}" var="bar">
                         <a href="#" data-toggle="modal" data-target="#id${bar.getId()}">
                             <div class="row">
-                                <div class="col-xs-0 col-md-2"></div>
+                                <div class="col-xs-0 col-md-1"></div>
                                 <div class="col-xs-3 col-md-2 business-icon">
                                     <img src="<c:url value="${b.getIconUrl()}"/>" class="img-fluid img-rounded" alt="${bar.getName()} icon" />
                                 </div>
@@ -57,7 +58,11 @@
                                         <strong>Today's Hours:</strong> ${bar.getWednesdayHours()}
                                     </p>
                                 </div>
-                                <div class="col-xs-0 col-md-2"></div>
+                                <div class="col-xs-12 col-md-2 bar-quick-links">
+                                    <a href="<c:url value="/display/${bar.getId()}" />" type="button" class="btn btn-primary btn-block"><strong>Queue</strong></a>
+                                    <a href="<c:url value="/drinklist/${bar.getId()}" />" type="button" class="btn btn-primary btn-block"><strong>Drink List</strong></a>
+                                </div>
+                                <div class="col-xs-0 col-md-1"></div>
                             </div>
                         </a>
                         <div class="modal fade drink-modal-md" id="id${bar.getId()}" tabindex="-1" role="dialog" aria-labelledby="<c:url value="${bar.getName()}" />Modal" aria-hidden="true">
@@ -122,10 +127,10 @@
                                     <div class="modal-footer">
                                         <div class="col-xs-0 col-sm-6"></div>
                                         <div class="col-xs-4 col-sm-2">
-                                            <a href="<c:url value="/display/${bar.getId()}" />" type="button" class="btn btn-primary">Queue!</a>
+                                            <a href="<c:url value="/display/${bar.getId()}" />" type="button" class="btn btn-primary">Queue</a>
                                         </div>
                                         <div class="col-xs-4 col-sm-2">
-                                            <a href="<c:url value="/drinklist/${bar.getId()}" />" type="button" class="btn btn-primary">All Drinks!</a>
+                                            <a href="<c:url value="/drinklist/${bar.getId()}" />" type="button" class="btn btn-primary">Drink List</a>
                                         </div>
                                         <div class="col-xs-4 col-sm-2">
                                             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
@@ -136,6 +141,7 @@
                         </div>
                     </c:forEach>
                 </c:forEach>
+                </div>
             </div>
         </div>
         <script type="text/javascript">

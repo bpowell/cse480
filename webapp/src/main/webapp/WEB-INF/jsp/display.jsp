@@ -1,36 +1,56 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
+            <div class="col-md-4 col-md-push-8">
+                <div class="row">
+                <c:forEach items="${bar}" var="b">
+                    <h3><strong>${b.getName()}</strong></h3>
+                    <p>
+                        ${b.getPhoneNumber()}<br />
+                    </p>
+                    <p>
+                        ${b.getAddress()}<br />
+                        ${b.getCity()}, ${b.getState()} ${b.getZipcode()}
+                    </p>
+                </c:forEach>
+                    <p>
+                        <strong>Wait Time:</strong> ${waittime}<br />
+                        <strong>Drinks in Queue:</strong> ${drinksinqueue}<br />
+                        <strong>Drinks Served:</strong> ${drinksserved}<br />
+                        <strong>Drinks Available:</strong> ${availabledrinks}<br />
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-8 col-md-pull-4">
             <c:if test="${empty display}">
                 <div class="row">
-                    <div class="col-xs-0 col-md-2"></div>
-                    <div class="col-xs-12 col-md-8">
+                    <div class="col-xs-0 col-md-1"></div>
+                    <div class="col-xs-12 col-md-10">
                         <h1><strong>Drink Queue</strong></h1>
                     </div>
-                    <div class="col-xs-0 col-md-2"></div>
+                    <div class="col-xs-0 col-md-1"></div>
                 </div>
             </c:if>
             <c:forEach items="${queue}" var="drink">
                 <a href="#" data-toggle="modal" data-target="#id${drink.getId()}">
                     <div class="row">
-                        <div class="col-xs-0 col-md-2"></div>
+                        <div class="col-xs-0 col-md-1"></div>
                         <div class="col-xs-3 col-md-1 drink-icon">
                             <img src="<c:url value="${drink.getDrinkIconUrl()}"/>" class="img-fluid img-rounded" alt="${drink.getDrinkName()} icon" />
                         </div>
-                        <div class="col-xs-9 col-md-5 drink-text">
+                        <div class="col-xs-9 col-md-7 drink-text">
                             <h3><strong>${drink.getDrinkName()}</strong></h3>
                             <p>
-                                <strong>Quantity:</strong> ${drink.getDrinkCount()}<br />
                                 <strong>User:</strong> ${drink.getUserName()}<br />
-                                <strong>Price: $</strong>${drink.getPrice()}
+                                <strong>Quantity:</strong> ${drink.getDrinkCount()}<br />
                             </p>
                         </div>
-                        <c:if test="${canClear}">
-                            <div class="col-xs-12 col-md-2 drink-clearorder">
+                        <div class="col-xs-12 col-md-2 drink-clearorder">
+                            <c:if test="${canClear}">
                                 <a onclick="clearOrder(${drink.getId()});" type="button" class="btn btn-primary btn-block"><strong>Clear Order</strong></a>
-                            </div>
-                        </c:if>
-                        <div class="col-xs-0 col-md-2"></div>
+                            </c:if>
+                        </div>
+                        <div class="col-xs-0 col-md-1"></div>
                     </div>
                 </a>
                 <sec:authorize access="!hasRole('ROLE_DISPLAY')">
@@ -75,17 +95,16 @@
                     </div>
                 </sec:authorize>
             </c:forEach>
-            <c:if test="${empty display}">
-                <sec:authorize access="!hasRole('ROLE_DISPLAY')">
+            <sec:authorize access="!hasRole('ROLE_DISPLAY')">
                 <div class="row">
-                    <div class="col-xs-0 col-md-2"></div>
-                    <div class="col-xs-12 col-md-8">
+                    <div class="col-xs-0 col-md-1"></div>
+                    <div class="col-xs-12 col-md-10">
                         <a href="<c:url value="/drinklist/${bar_id}" />" class="btn btn-primary btn-lrg btn-block"><strong>Order a Drink!</strong></a>
                     </div>
-                    <div class="col-xs-0 col-md-2"></div>
+                    <div class="col-xs-0 col-md-1"></div>
                 </div>
-                </sec:authorize>
-            </c:if>
+            </sec:authorize>
+        </div>
         </div>
         <jsp:directive.include file="/WEB-INF/jsp/orderdrinkjs.jsp"/>
         <script>
