@@ -44,11 +44,11 @@
                     <c:forEach items="${b.getBars()}" var="bar">
                         <a href="#" data-toggle="modal" data-target="#id${bar.getId()}">
                             <div class="row">
-                                <div class="col-xs-0 col-md-2"></div>
+                                <div class="col-xs-0 col-md-1"></div>
                                 <div class="col-xs-3 col-md-2 business-icon">
                                     <img src="<c:url value="${b.getIconUrl()}"/>" class="img-fluid img-rounded" alt="${bar.getName()} icon" />
                                 </div>
-                                <div class="col-xs-9 col-md-6 bar-text">
+                                <div class="col-xs-9 col-md-8 bar-text">
                                     <h3><strong>${bar.getName()}</strong></h3>
                                     <p>
                                         <strong>Phone:</strong> ${bar.getPhoneNumber()}<br />
@@ -57,7 +57,7 @@
                                         <strong>Today's Hours:</strong> ${bar.getWednesdayHours()}
                                     </p>
                                 </div>
-                                <div class="col-xs-0 col-md-2"></div>
+                                <div class="col-xs-0 col-md-1"></div>
                             </div>
                         </a>
                         <div class="modal fade drink-modal-md" id="id${bar.getId()}" tabindex="-1" role="dialog" aria-labelledby="<c:url value="${bar.getName()}" />Modal" aria-hidden="true">
