@@ -182,6 +182,7 @@ a:focus, a:hover {
 }
 /** Barview.jsp **/
 .bar-info {
+    margin-top: 25px;
     padding: 0;
     padding-bottom: 20px;
 }
@@ -196,6 +197,9 @@ a:focus, a:hover {
 }
 .bar-text p {
     margin-bottom: 20px;
+}
+.bar-quick-links {
+    padding-top: 15px;
 }
 
 /** Drinkview.jsp **/
