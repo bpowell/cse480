@@ -1,29 +1,32 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
+            <div class="col-md-4 col-md-push-8">
+                <jsp:directive.include file="/WEB-INF/jsp/owner/ownermenu.jsp"/>
+            </div>
+            <div class="col-md-8 col-md-pull-4">
             <c:if test="${not empty error}">
                 <div class="row bg-danger">
-                    <div class="col-xs-0 col-md-3"></div>
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-xs-0"></div>
+                    <div class="col-xs-12">
                         <h3>${error}</h3>
                     </div>
-                    <div class="col-xs-0 col-md-3"></div>
+                    <div class="col-xs-0"></div>
                 </div>
             </c:if>
             <c:if test="${not empty success}">
                 <div class="row bg-success">
-                    <div class="col-xs-0 col-md-3"></div>
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-xs-0"></div>
+                    <div class="col-xs-12">
                         <h3>${success}</h3>
                     </div>
-                    <div class="col-xs-0 col-md-3"></div>
+                    <div class="col-xs-0"></div>
                 </div>
             </c:if>
             <div class="row">
-                <div class="col-xs-0 col-md-3"></div>
-                <div class="col-xs-12 col-md-6">
-                    <h1><strong><a href="<c:url value='/owner/'/>">Owner</a> &frasl;<br />
-                        Remove Bartender</strong></h1>
+                <div class="col-xs-0 col-md-1"></div>
+                <div class="col-xs-12 col-md-10">
+                    <h1><strong>Remove Bartender</strong></h1>
                     <c:url value="/owner/removebartender" var="post_url" />
                     <form:form method="POST" action="${post_url}" class="form-signin">
                         <div class="form-group">
@@ -37,8 +40,9 @@
                         <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit"><strong>Update</strong></button>
                     </form:form>
                 </div>
-                <div class="col-xs-0 col-md-3"></div>
+                <div class="col-xs-0 col-md-1"></div>
             </div>
+        </div>
         </div>
     </body>
 </html>
