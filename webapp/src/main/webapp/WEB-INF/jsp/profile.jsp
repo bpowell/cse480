@@ -7,7 +7,7 @@
                         <div class="col-xs-0"></div>
                         <div class="col-xs-12">
                             <h3><strong>User Menu</strong></h3>
-                            <p><a href="<c:url value="/changepassword" />" class="btn btn-primary btn-lrg">Change Password</a></p>
+                            <p><a href="<c:url value="/changepassword" />" class="btn btn-primary btn-lrg"><strong>Change Password</strong></a></p>
                         </div>
                         <div class="col-xs-0"></div>
                     </div>
@@ -24,18 +24,7 @@
                         </div>
                     </sec:authorize>
                     <sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_OWNER')">
-                        <div class="row">
-                            <div class="col-xs-0"></div>
-                            <div class="col-xs-12">
-                                <h3><strong>Owner Menu</strong></h3>
-                                <p><a class="btn btn-primary" href="<c:url value='/owner/addbartender'/>"><strong>Add Bartender</strong></a></p>
-                                <p><a class="btn btn-primary" href="<c:url value='/owner/removebartender'/>"><strong>Remove Bartender</strong></a></p>
-                                <p><a class="btn btn-primary" href="<c:url value='/owner/addingredient'/>"><strong>Add Ingredients</strong></a></p>
-                                <p><a class="btn btn-primary" href="<c:url value='/owner/adddrink'/>"><strong>Add Drink</strong></a></p>
-                                <p><a class="btn btn-primary" href="<c:url value='/owner/updatehours'/>"><strong>Update Bar Hours</strong></a></p>
-                            </div>
-                            <div class="col-xs-0"></div>
-                        </div>
+                        <jsp:directive.include file="/WEB-INF/jsp/owner/ownermenu.jsp"/>
                     </sec:authorize>
                 </div>
                 <div class="col-md-8 col-md-pull-4">
