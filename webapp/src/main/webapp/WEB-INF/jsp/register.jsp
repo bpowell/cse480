@@ -41,6 +41,10 @@
                             <label for="newUsername">Enter New Username</label>
                             <input type="text" name="name" id="enterNewUserName" class="form-control" placeholder="Enter new username" required>
                         </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Enter Phone Number</label>
+                            <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="Enter Phone Number" required>
+                        </div>
                         <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit"><strong>Sign up</strong></button>
                     </form:form>
                 </div>
