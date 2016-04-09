@@ -7,7 +7,11 @@
                 <c:forEach items="${bar}" var="b">
                     <h3><strong>${b.getName()}</strong></h3>
                     <p>
-                        ${b.getPhoneNumber()}<br />
+                        <script>
+                            var phone = '${b.getPhoneNumber()}';
+                            var format = '<a href="tel:1' + phone + '">(' + phone.substr(0, 3) + ') ' + phone.substr(3, 3) + '-' + phone.substr(6,4) + '</a>';
+                            document.write(format);
+                        </script>
                     </p>
                     <p>
                         ${b.getAddress()}<br />
