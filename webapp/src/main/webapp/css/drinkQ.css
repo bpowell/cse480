@@ -56,6 +56,13 @@ a:focus, a:hover {
     color: #E1E1E1;
 }
 
+.col-md-push-8 {
+    position: fixed;
+}
+.col-md-pull-4 {
+    position: inherit;
+}
+
 /* Header */
 .headerContent {
     color: #2D2D2D;
