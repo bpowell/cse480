@@ -135,7 +135,7 @@ a:focus, a:hover {
 }
 
 .mainContent .btn-primary {
-    background-color: #B1B1B1;
+    background-color: #E1E1E1;
     color: #2D2D2D;
     border: 2px solid #8E8E8E;
 }
@@ -279,6 +279,14 @@ a:focus, a:hover {
     margin-left: 4px;
 }
 
+/** owner: add ingredient **/
+#ing-table {
+    margin-top: 25px;
+    margin-left: -11px;
+    border-left: 1px solid #DDD;
+    border-right: 1px solid #DDD;
+}
+
 /* Small devices (landscape phones, 34em and up) */
 @media (min-width: 768px) {
     .mainContent {
@@ -317,6 +325,11 @@ a:focus, a:hover {
     }
     .form-signin > .col-sm-3 {
         padding-right: 0;
+    }
+
+    /** owner: add ingredient **/
+    #ing-table {
+        margin-left: 0px;
     }
 }
 
