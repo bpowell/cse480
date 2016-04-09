@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="col-xs-0 col-md-1"></div>
                 <div class="col-xs-12 col-md-3">
-                		<img src="<c:url value="/img/time.png" />"  class="img-responsive" alt="time" /></a>
+                		<img src="<c:url value="/img/time.png" />"  class="welcome-icon img-responsive" alt="time" /></a>
                     <h3><strong>Drink Wait Estimations</strong></h3>
                     <p>
                         Before setting foot inside an establishment, now you can see just how long it is going to take to receive your drink.
@@ -92,7 +92,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-3">
-                		<img src="<c:url value="/img/notification.png" />"  class="img-responsive" alt="notification" /></a>
+                		<img src="<c:url value="/img/notification.png" />"  class="welcome-icon img-responsive" alt="notification" /></a>
                     <h3><strong>Drink Notifications</strong></h3>
                     <p>
                         How long have you been sitting there for?<br />

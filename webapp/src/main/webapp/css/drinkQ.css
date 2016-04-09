@@ -446,3 +446,8 @@ a:focus, a:hover {
 .credit {
 	background-color: #E1E1E1
 }
+
+.welcome-icon {
+	max-width: 30%;
+	margin:5px 35% 5px 35%;
+}
