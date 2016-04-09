@@ -1,16 +1,19 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
+            <div class="col-md-4 col-md-push-8 invisible">
+            </div>
+            <div class="col-md-8 col-md-pull-4">
             <div class="row">
-                <div class="col-xs-0 col-md-2"></div>
-                <div class="col-xs-12 col-md-8">
+                <div class="col-xs-0 col-md-1"></div>
+                <div class="col-xs-12 col-md-10">
                     <h1><strong>Drink List</strong></h1>
                 </div>
-                <div class="col-xs-0 col-md-2"></div>
+                <div class="col-xs-0 col-md-1"></div>
             </div>
             <div class="row">
-                <div class="col-xs-0 col-md-3"></div>
-                <div class="col-xs-12 col-md-6">
+                <div class="col-xs-0 col-md-1"></div>
+                <div class="col-xs-12 col-md-10">
                     <c:url value="/drinklist/${barId}" var="post_url" />
                     <form:form action="${post_url}" method="POST" class="search-box" role="search">
                         <div class="col-md-12 input-group">
@@ -24,23 +27,23 @@
                         </div>
                     </form:form>
                 </div>
-                <div class="col-xs-0 col-md-3"></div>
+                <div class="col-xs-0 col-md-1"></div>
             </div>
             <div class="row">
-                <div class="col-xs-0 col-md-2"></div>
-                <div class="col-xs-12 col-md-8">
+                <div class="col-xs-0 col-md-1"></div>
+                <div class="col-xs-12 col-md-10">
                     <h3><strong>Up Next</strong></h3>
                 </div>
-                <div class="col-xs-0 col-md-2"></div>
+                <div class="col-xs-0 col-md-1"></div>
             </div>
             <c:forEach items="${queue}" var="q">
                 <a href="#" data-toggle="modal" data-target="#id${q.getId()}">
                     <div class="row">
-                        <div class="col-xs-0 col-md-2"></div>
+                        <div class="col-xs-0 col-md-1"></div>
                         <div class="col-xs-3 col-md-1 drink-icon">
                             <img src="<c:url value='${q.getDrinkIconUrl()}'/>" class="img-fluid img-rounded" alt="${q.getDrinkName()} icon"/>
                         </div>
-                        <div class="col-xs-9 col-md-7 drink-text">
+                        <div class="col-xs-9 col-md-9 drink-text">
                             <h3><strong>${q.getDrinkName()}</strong></h3>
                             <p>
                                 <strong>Quantity:</strong>${q.getDrinkCount()}<br />
@@ -48,7 +51,7 @@
                                 <strong>Price: $</strong>${q.getPrice()}
                             </p>
                         </div>
-                        <div class="col-xs-0 col-md-2"></div>
+                        <div class="col-xs-0 col-md-1"></div>
                     </div>
                 </a>
                 <div class="modal fade drink-modal-md" id="id${q.getId()}" tabindex="-1" role="dialog" aria-labelledby="<c:url value="${q.getDrinkName()}" />Modal" aria-hidden="true">
@@ -92,13 +95,14 @@
                 </div>
             </c:forEach>
             <div class="row">
-                <div class="col-xs-0 col-md-2"></div>
-                <div class="col-xs-12 col-md-8">
+                <div class="col-xs-0 col-md-1"></div>
+                <div class="col-xs-12 col-md-10">
                     <h3><strong>Order These Drinks</strong></h3>
                 </div>
-                <div class="col-xs-0 col-md-2"></div>
+                <div class="col-xs-0 col-md-1"></div>
             </div>
             <div><div id="content"></div><nav><ul class="pagination" id="paginator"></ul></nav></div>
+        </div>
         </div>
         <jsp:directive.include file="/WEB-INF/jsp/javascript.jsp"/>
         <jsp:directive.include file="/WEB-INF/jsp/orderdrinkjs.jsp"/>

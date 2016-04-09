@@ -25,12 +25,12 @@ function display(page) {
         var template = '' +
             ' <a href="#" data-toggle="modal" data-target="#did' + d[i].id + '">  ' +
             '     <div class="row drink">' +
-            '         <div class="col-xs-0 col-md-2"></div>' +
+            '         <div class="col-xs-0 col-md-1"></div>' +
             '         <div class="col-xs-3 col-md-1 drink-icon">' +
             '             <img src="<c:url value="' + d[i].icon_url + '" />" class="img-fluid img-rounded" alt="' + d[i].name + ' icon"/>' +
             '         </div>' +
             '         <sec:authorize access="isAnonymous()">' +
-            '         <div class="col-xs-9 col-md-7 drink-text">' +
+            '         <div class="col-xs-9 col-md-9 drink-text">' +
             '             <h3><strong>' + d[i].name + '</strong></h3>' +
             '             <p>' +
             '                 <strong>Make Time:</strong> ' + d[i].makeTime + ' Seconds<br />' +
@@ -51,7 +51,7 @@ function display(page) {
             '             <a onclick="orderDrink(' + d[i].id + ');" type="button" class="btn btn-primary btn-block"><strong>Quick Order</strong></a>' +
             '         </div>' +
             '         </sec:authorize>' +
-            '         <div class="col-xs-0 col-md-2"></div>' +
+            '         <div class="col-xs-0 col-md-1"></div>' +
             '     </div>' +
             ' </a>' +
             '     <div class="modal fade" id="did' + d[i].id + '" tabindex="-1" role="dialog" aria-labelledby="<c:url value="' + d[i].name + '" /> Modal" aria-hidden="true">' +
