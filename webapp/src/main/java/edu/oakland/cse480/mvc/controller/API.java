@@ -9,6 +9,7 @@ import edu.oakland.cse480.service.BarDrinkOrderService;
 import edu.oakland.cse480.service.IngredientService;
 import edu.oakland.cse480.service.AvailableDrinksService;
 import edu.oakland.cse480.service.BusinessAndBarService;
+import edu.oakland.cse480.service.SMSSender;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +47,9 @@ public class API {
 
     @Autowired
     private BusinessAndBarService businessAndBarService;
+
+    @Autowired
+    private SMSSender smsSender;
 
     @RequestMapping(value = "/drinklist/{barId}", method = RequestMethod.GET)
     public @ResponseBody List<Drink> getDrinkList(@PathVariable int barId) {
@@ -131,6 +135,7 @@ public class API {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
 
+        smsSender.SendSMS("NOT A REAL NUMBER", "drink1");
         return new ResponseEntity(HttpStatus.OK);
     }
 
