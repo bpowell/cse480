@@ -4,24 +4,15 @@
             <div class="col-md-4 col-md-push-8">
                 <c:if test="${not empty username}">
                     <div class="row">
-                        <div class="col-xs-0"></div>
-                        <div class="col-xs-12">
+                        <div class="col-xs-0 col-md-1"></div>
+                        <div class="col-xs-12 col-md-10">
                             <h3><strong>User Menu</strong></h3>
                             <p><a href="<c:url value="/changepassword" />" class="btn btn-primary btn-lrg">Change Password</a></p>
                         </div>
-                        <div class="col-xs-0"></div>
+                        <div class="col-xs-0 col-md-1"></div>
                     </div>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
-                        <div class="row">
-                            <div class="col-xs-0"></div>
-                            <div class="col-xs-12">
-                                <h3><strong>Admin Menu</strong></h3>
-                                <p><a class="btn btn-primary" href="<c:url value='/admin/addbusiness'/>"><strong>Add A Business</strong></a></p>
-                                <p><a class="btn btn-primary" href="<c:url value='/admin/addbar'/>"><strong>Add A Bar</strong></a></p>
-                                <p><a class="btn btn-primary" href="<c:url value='/admin/changeroles'/>"><strong>Change User's Role</strong></a></p>
-                            </div>
-                            <div class="col-xs-0"></div>
-                        </div>
+                        <jsp:directive.include file="/WEB-INF/jsp/admin/adminmenu.jsp"/>
                     </sec:authorize>
                     <sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_OWNER')">
                         <div class="row">
