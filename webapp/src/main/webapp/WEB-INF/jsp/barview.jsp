@@ -52,7 +52,12 @@
                                 <div class="col-xs-9 col-md-6 bar-text">
                                     <h3><strong>${bar.getName()}</strong></h3>
                                     <p>
-                                        <strong>Phone:</strong> ${bar.getPhoneNumber()}<br />
+                                        <strong>Phone: </strong>
+                                        <script>
+                                            var phone = '${bar.getPhoneNumber()}';
+                                            var format = '<a href="tel:1' + phone + '">(' + phone.substr(0, 3) + ') ' + phone.substr(3, 3) + '-' + phone.substr(6,4) + '</a>';
+                                            document.write(format);
+                                        </script><br />
                                         <strong>Location:</strong> ${bar.getCity()}, ${bar.getState()}<br />
                                         <!-- foritem dayofweek thevalue -->
                                         <strong>Today's Hours:</strong> ${bar.getWednesdayHours()}
