@@ -137,7 +137,7 @@ public class API {
         }
 
         Map<String, Object> numberAndDrinkName = barDrinkOrderService.getPhoneNumberAndDrinkNameFromDrinkOrderId(drinkOrderId);
-        smsSender.SendSMS(numberAndDrinkName.get("phonenumber"), numberAndDrinkName.get("name"));
+        smsSender.SendSMS(numberAndDrinkName.get("phonenumber").toString(), numberAndDrinkName.get("name").toString());
         return new ResponseEntity(HttpStatus.OK);
     }
 
