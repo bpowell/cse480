@@ -23,12 +23,12 @@ public class SMSSender {
     TwilioInfo twilioInfo;
 
     public void SendSMS(String phoneNumber, String drinkName) {
-        if(Objects.equals(phoneNumber, null) {
+        if(Objects.equals(phoneNumber, null)) {
             log.error("Invalid phonenumber");
             return;
         }
 
-        if(Objects.equals(drinkName, null) {
+        if(Objects.equals(drinkName, null)) {
             log.error("Invalid drink name");
             return;
         }
