@@ -1,8 +1,8 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
-            <div class="col-md-4 col-md-push-8">
-                <c:if test="${not empty username}">
+            <c:if test="${not empty username}">
+                <div class="col-md-4 col-md-push-8">
                     <div class="row">
                         <div class="col-xs-0"></div>
                         <div class="col-xs-12">
@@ -12,7 +12,10 @@
                         </div>
                         <div class="col-xs-0"></div>
                     </div>
-                </c:if>
+            </c:if>
+            <c:if test="${empty username}">
+                <div class="col-md-4 col-md-push-8 invisible">
+            </c:if>
             </div>
             <div class="col-md-8 col-md-pull-4">
                 <div class="row">
