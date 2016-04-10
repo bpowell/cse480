@@ -1,29 +1,32 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
+            <div class="col-md-4 col-md-push-8">
+                <jsp:directive.include file="/WEB-INF/jsp/owner/ownermenu.jsp"/>
+            </div>
+            <div class="col-md-8 col-md-pull-4">
             <c:if test="${not empty error}">
                 <div class="row bg-danger">
-                    <div class="col-xs-0 col-md-3"></div>
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-xs-0 col-md-1"></div>
+                    <div class="col-xs-12 col-md-10">
                         <h3>${error}</h3>
                     </div>
-                    <div class="col-xs-0 col-md-3"></div>
+                    <div class="col-xs-0 col-md-1"></div>
                 </div>
             </c:if>
             <c:if test="${not empty success}">
                 <div class="row bg-success">
-                    <div class="col-xs-0 col-md-3"></div>
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-xs-0 col-md-1"></div>
+                    <div class="col-xs-12 col-md-10">
                         <h3>${success}</h3>
                     </div>
-                    <div class="col-xs-0 col-md-3"></div>
+                    <div class="col-xs-0 col-md-1"></div>
                 </div>
             </c:if>
             <div class="row">
-                <div class="col-xs-0 col-md-3"></div>
-                <div class="col-xs-12 col-md-6">
-                    <h1><strong><a href="<c:url value='/owner/'/>">Owner</a> &frasl;<br />
-                        Add Ingredient</strong></h1>
+                <div class="col-xs-0 col-md-1"></div>
+                <div class="col-xs-12 col-md-10">
+                    <h1><strong>Add Ingredient</strong></h1>
                         <c:url value="/owner/addingredient" var="post_url" />
                         <form:form method="POST" action="${post_url}" class="form-signin" commandName="addIngredient">
                             <div class="form-group">
@@ -48,23 +51,29 @@
                             </div>
                             <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit"><strong>Submit</strong></button>
                         </form:form>
-
-                        <div class="row">
-                            <div class="col-md-2">Name</div>
-                            <div class="col-md-2">Description</div>
-                            <div class="col-md-2">Category</div>
-                            <div class="col-md-2">Icon Url</div>
-                        </div>
-                        <c:forEach items="${ingredients}" var="i">
-                            <div class="row">
-                                <div class="col-md-2">${i.getName()}</div>
-                                <div class="col-md-2">${i.getDescription()}</div>
-                                <div class="col-md-2">${i.getCategoryName()}</div>
-                                <div class="col-md-2">${i.getIconUrl()}</div>
-                            </div>
-                        </c:forEach>
+                    </div>
+                    <div class="col-xs-0 col-md-1"></div>
                 </div>
-                <div class="col-xs-0 col-md-3"></div>
+                <div class="row">
+                        <table id="ing-table" class="table table-condensed">
+                            <tr>
+                                <th class="col-xs-3">Name</th>
+                                <th class="col-xs-3">Desc.</th>
+                                <th class="col-xs-3">Cat.</th>
+                                <th class="col-xs-3">Icon Url</th>
+                            </tr>
+                            <c:forEach items="${ingredients}" var="i">
+                            <tr>
+                                <td class="col-xs-3">${i.getName()}</td>
+                                <td class="col-xs-3">${i.getDescription()}</td>
+                                <td class="col-xs-3">${i.getCategoryName()}</td>
+                                <td class="col-xs-3">${i.getIconUrl()}</td>
+                            </tr>
+                            </c:forEach>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
