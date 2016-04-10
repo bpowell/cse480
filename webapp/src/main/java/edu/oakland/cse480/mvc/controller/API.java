@@ -9,6 +9,7 @@ import edu.oakland.cse480.service.BarDrinkOrderService;
 import edu.oakland.cse480.service.IngredientService;
 import edu.oakland.cse480.service.AvailableDrinksService;
 import edu.oakland.cse480.service.BusinessAndBarService;
+import edu.oakland.cse480.service.SMSSender;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ import org.springframework.http.HttpStatus;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +48,9 @@ public class API {
 
     @Autowired
     private BusinessAndBarService businessAndBarService;
+
+    @Autowired
+    private SMSSender smsSender;
 
     @RequestMapping(value = "/drinklist/{barId}", method = RequestMethod.GET)
     public @ResponseBody List<Drink> getDrinkList(@PathVariable int barId) {
@@ -131,6 +136,8 @@ public class API {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
 
+        Map<String, Object> numberAndDrinkName = barDrinkOrderService.getPhoneNumberAndDrinkNameFromDrinkOrderId(drinkOrderId);
+        smsSender.SendSMS(numberAndDrinkName.get("phonenumber").toString(), numberAndDrinkName.get("name").toString());
         return new ResponseEntity(HttpStatus.OK);
     }
 
