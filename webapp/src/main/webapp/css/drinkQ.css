@@ -335,12 +335,12 @@ a:focus, a:hover {
 /* Medium devices (tablets, 48em and up) */
 @media (min-width: 992px) {
     .col-md-push-8 {
+        width: 25%;
+        left: 66.6666667%;
         position: fixed;
-        width: 20%;
     }
     .col-md-pull-4 {
         position: inherit;
-        width: 70%;
     }
 
     .welcomeImage {
