@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.*;
@@ -89,6 +91,15 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
         }
 
         return true;
+    }
+
+    public Map<String, Object> getPhoneNumberAndDrinkNameFromDrinkOrderId(int did) {
+        try {
+            return this.jdbcPostgres.queryForMap("select phonenumber, drink.name from drinkorder, users, drink where drink.id = drinkorder.drink_id and drinkorder.id = ? and users.id = drinkorder.user_id", did);
+        } catch(Exception e) {
+            log.error("", e);
+            return new HashMap<String, Object>();
+        }
     }
 
     private class BarDrinkOrderMapper implements RowMapper<BarDrinkOrder> {
