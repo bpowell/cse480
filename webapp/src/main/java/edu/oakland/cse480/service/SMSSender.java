@@ -23,12 +23,22 @@ public class SMSSender {
     TwilioInfo twilioInfo;
 
     public void SendSMS(String phoneNumber, String drinkName) {
+        if(Objects.equals(phoneNumber, null) {
+            log.error("Invalid phonenumber");
+            return;
+        }
+
+        if(Objects.equals(drinkName, null) {
+            log.error("Invalid drink name");
+            return;
+        }
+
         try {
             TwilioRestClient client = new TwilioRestClient(TwilioInfo.ACCOUNT_SID, TwilioInfo.AUTH_TOKEN);
 
             // Build a filter for the MessageList
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("Body", "Jenny please?! I love you <3"));
+            params.add(new BasicNameValuePair("Body", "Your drink of " + drinkName + " is complete! Come pick up your drink."));
             params.add(new BasicNameValuePair("To", phoneNumber));
             params.add(new BasicNameValuePair("From", TwilioInfo.NUMBER));
 

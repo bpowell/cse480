@@ -24,6 +24,7 @@ import org.springframework.http.HttpStatus;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -135,7 +136,8 @@ public class API {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
 
-        smsSender.SendSMS("NOT A REAL NUMBER", "drink1");
+        Map<String, Object> numberAndDrinkName = barDrinkOrderService.getPhoneNumberAndDrinkNameFromDrinkOrderId(drinkOrderId);
+        smsSender.SendSMS(numberAndDrinkName.get("phonenumber"), numberAndDrinkName.get("name"));
         return new ResponseEntity(HttpStatus.OK);
     }
 
