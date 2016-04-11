@@ -58,10 +58,11 @@ a:focus, a:hover {
 
 .col-md-push-9 {
     background: #E1E1E1; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#B1B1B1, #E1E1E1); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#B1B1B1, #E1E1E1); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#B1B1B1, #E1E1E1); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#B1B1B1, #E1E1E1); /* Standard syntax */
+    background: -webkit-linear-gradient(#B1B1B1, #E1E1E1, #E1E1E1); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#B1B1B1, #E1E1E1, #E1E1E1); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#B1B1B1, #E1E1E1, #E1E1E1); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#B1B1B1, #E1E1E1, #E1E1E1); /* Standard syntax */
+    min-height: 300px;
 }
 .col-md-pull-3 {
     background: #E1E1E1; /* For browsers that do not support gradients */
@@ -69,6 +70,29 @@ a:focus, a:hover {
     background: -o-linear-gradient(#B1B1B1, #E1E1E1); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#B1B1B1, #E1E1E1); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#B1B1B1, #E1E1E1); /* Standard syntax */
+    min-height: 450px;
+}
+
+.modal-header {
+    background: #E1E1E1; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#E1E1E1, #B1B1B1); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#E1E1E1, #B1B1B1); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#E1E1E1, #B1B1B1); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#E1E1E1, #B1B1B1); /* Standard syntax */
+    border-bottom: 1px solid #FAFAFA; /* PORKCHOP SANDWICHES */
+    border-radius: 5px 5px 0 0;
+}
+.modal-body {
+    background: #B1B1B1; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#FFF, #B1B1B1); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#FFF, #B1B1B1); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#FFF, #B1B1B1); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#FFF, #B1B1B1); /* Standard syntax */
+}
+.modal-footer {
+    background: #B1B1B1;
+    border-top: 1px solid #FAFAFA; /* PORKCHOP SANDWICHES */
+    border-radius: 0 0 5px 5px;
 }
 
 /* Header */
@@ -145,7 +169,7 @@ a:focus, a:hover {
 }
 
 .mainContent .btn-primary {
-    background-color: #E1E1E1;
+    background-color: #F0F0F0;
     color: #2D2D2D;
     border: 2px solid #8E8E8E;
 }
