@@ -56,6 +56,21 @@ a:focus, a:hover {
     color: #E1E1E1;
 }
 
+.col-md-push-8 {
+    background: #E1E1E1; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#B1B1B1, #E1E1E1); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#B1B1B1, #E1E1E1); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#B1B1B1, #E1E1E1); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#B1B1B1, #E1E1E1); /* Standard syntax */
+}
+.col-md-pull-4 {
+    background: #E1E1E1; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#B1B1B1, #E1E1E1); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#B1B1B1, #E1E1E1); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#B1B1B1, #E1E1E1); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#B1B1B1, #E1E1E1); /* Standard syntax */
+}
+
 /* Header */
 .headerContent {
     color: #2D2D2D;
@@ -112,14 +127,9 @@ a:focus, a:hover {
 
 /* Body */
 .mainContent {
-    background: #E1E1E1; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#B1B1B1, #E1E1E1); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#B1B1B1, #E1E1E1); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#B1B1B1, #E1E1E1); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#B1B1B1, #E1E1E1); /* Standard syntax */
     color: #2D2D2D;
-    margin-top: 65px;
-    padding: 15px;
+    margin-top: 54px;
+    padding: 10px 0;
     min-height: 400px;
 }
 
@@ -303,6 +313,8 @@ a:focus, a:hover {
 @media (min-width: 768px) {
     .mainContent {
         min-height: 600px;
+        padding: 15px;
+        margin-top: 54px;
     }
     .navbar {
         border-radius: 0;
@@ -347,6 +359,15 @@ a:focus, a:hover {
 
 /* Medium devices (tablets, 48em and up) */
 @media (min-width: 992px) {
+    .col-md-push-8 {
+        width: 25%;
+        left: 66.6666667%;
+        position: fixed;
+    }
+    .col-md-pull-4 {
+        position: inherit;
+    }
+
     .welcomeImage {
         min-height:800px;
     }

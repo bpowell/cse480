@@ -3,6 +3,7 @@
         <div class="container mainContent">
             <div class="col-md-4 col-md-push-8">
                 <div class="row">
+                    <div class="col-xs-12">
                 <c:forEach items="${bar}" var="b">
                     <h3><strong>${b.getName()}</strong></h3>
                     <p>
@@ -23,6 +24,7 @@
                         <strong>Drinks Served:</strong> ${drinksserved}<br />
                         <strong>Drinks Available:</strong> ${availabledrinks}<br />
                     </p>
+                    </div>
                 </div>
             </div>
             <div class="col-md-8 col-md-pull-4">

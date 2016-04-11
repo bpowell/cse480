@@ -1,8 +1,7 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
-            <div class="col-md-4 col-md-push-8 invisible">
-            </div>
+            <div class="col-md-4 col-md-push-8 invisible"></div>
             <div class="col-md-8 col-md-pull-4">
             <div class="row">
                 <div class="col-xs-0 col-md-1"></div>
