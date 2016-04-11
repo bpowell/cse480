@@ -40,7 +40,7 @@ public class BarStatsService extends AbstractJdbcDriver {
 
     public String totalQueueWaitTimeForBar(int barId) {
         try {
-            return this.jdbcPostgres.queryForObject("select to_char(sum(drink_count*make_time) * interval '1 second', 'HH24:MI:SS') as timeleft from drink, drinkorder where drink.id = drinkorder.drink_id and drinkorder.bar_id = ?", String.class, barId);
+            return this.jdbcPostgres.queryForObject("select to_char(sum(drink_count*make_time) * interval '1 second', 'HH24:MI:SS') as timeleft from drink, drinkorder where drink.id = drinkorder.drink_id and drinkorder.bar_id = ? and time_complete is null", String.class, barId);
         } catch(Exception e) {
             log.error("", e);
         }
