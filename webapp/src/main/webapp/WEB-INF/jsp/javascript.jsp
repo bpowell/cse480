@@ -25,12 +25,12 @@ function display(page) {
         var template = '' +
             ' <a href="#" data-toggle="modal" data-target="#did' + d[i].id + '">  ' +
             '     <div class="row drink">' +
-            '         <div class="col-xs-0 col-md-2"></div>' +
+            '         <div class="col-xs-0 col-md-1"></div>' +
             '         <div class="col-xs-3 col-md-1 drink-icon">' +
             '             <img src="<c:url value="' + d[i].icon_url + '" />" class="img-fluid img-rounded" alt="' + d[i].name + ' icon"/>' +
             '         </div>' +
             '         <sec:authorize access="isAnonymous()">' +
-            '         <div class="col-xs-9 col-md-7 drink-text">' +
+            '         <div class="col-xs-9 col-md-6 drink-text">' +
             '             <h3><strong>' + d[i].name + '</strong></h3>' +
             '             <p>' +
             '                 <strong>Make Time:</strong> ' + d[i].makeTime + ' Seconds<br />' +
@@ -40,7 +40,7 @@ function display(page) {
             '         </div>' +
             '         </sec:authorize>' +
             '         <sec:authorize access="isAuthenticated()">' +
-            '         <div class="col-xs-9 col-md-5 drink-text">' +
+            '         <div class="col-xs-9 col-md-8 drink-text">' +
             '             <h3><strong>' + d[i].name + '</strong></h3>' +
             '             <p>' +
             '                 <strong>Make Time:</strong> ' + d[i].makeTime + ' Seconds<br />' +
