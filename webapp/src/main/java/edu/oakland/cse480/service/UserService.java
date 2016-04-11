@@ -73,6 +73,15 @@ public class UserService extends AbstractJdbcDriver {
         }
     }
 
+    public int getUserRoleIdByEmail(String email) {
+        try {
+            return this.jdbcPostgres.queryForObject("select role_id from users where email = ?", new Object[] {email}, Integer.class);
+        } catch(Exception e) {
+            log.error("", e);
+            return -1;
+        }
+    }
+
     public String getUsernameByEmail(String email) {
         try {
             return this.jdbcPostgres.queryForObject("select name from users where email = ?", new Object[] {email}, String.class);

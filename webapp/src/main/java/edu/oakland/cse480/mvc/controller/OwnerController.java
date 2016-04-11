@@ -212,10 +212,17 @@ public class OwnerController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userdetails = (UserDetails) auth.getPrincipal();
         int ownerId = userService.getUserIdByEmail(userdetails.getUsername());
-        int barId = businessAndBarService.getBarsByOwnerId(ownerId).get(0).getId();
+        int role_id = userService.getUserRoleIdByEmail(userdetails.getUsername());
+        if(role_id==1) {
+            model.addAttribute("error", "Please sign in as the Bar Owner");
+            return "owner/adddrink";
+        }
+        if(role_id==2) {
+            int barId = businessAndBarService.getBarsByOwnerId(ownerId).get(0).getId();
+            model.addAttribute("barId", barId);
+        }
 
         model.addAttribute("ingredients", ingredientService.getAllIngredients());
-        model.addAttribute("barId", barId);
         return "owner/adddrink";
     }
 
@@ -224,11 +231,17 @@ public class OwnerController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userdetails = (UserDetails) auth.getPrincipal();
         int ownerId = userService.getUserIdByEmail(userdetails.getUsername());
-        int barId = businessAndBarService.getBarsByOwnerId(ownerId).get(0).getId();
-
+        int role_id = userService.getUserRoleIdByEmail(userdetails.getUsername());
+        int barId = 0;
         ModelAndView model = new ModelAndView();
         model.setViewName("owner/adddrink");
-        model.addObject("barId", barId);
+        if(role_id==1) {
+            model.addObject("error", "Please sign in as the Bar Owner");
+        }
+        if(role_id==2) {
+            barId = businessAndBarService.getBarsByOwnerId(ownerId).get(0).getId();
+            model.addObject("barId", barId);
+        }
         model.addObject("ingredients", ingredientService.getAllIngredients());
 
         if(result.hasErrors()) {
