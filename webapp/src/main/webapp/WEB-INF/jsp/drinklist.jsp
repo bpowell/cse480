@@ -2,14 +2,14 @@
     <body>
         <div class="container mainContent">
             <div class="col-md-3 col-md-push-9">
-            <div class="row">
-                <div class="col-xs-0 col-md-1"></div>
-                <div class="col-xs-12 col-md-10">
-                    <h3><strong>Up Next</strong></h3>
+                <div class="row">
+                    <div class="col-xs-0 col-md-1"></div>
+                    <div class="col-xs-12 col-md-10">
+                        <h3><strong>Up Next</strong></h3>
+                    </div>
+                    <div class="col-xs-0 col-md-1"></div>
                 </div>
-                <div class="col-xs-0 col-md-1"></div>
-            </div>
-            <c:forEach items="${queue}" var="q">
+                <c:forEach items="${queue}" var="q">
                 <a href="#" data-toggle="modal" data-target="#qid${q.getId()}">
                     <div class="row">
                         <div class="col-xs-0 col-md-1"></div>
@@ -27,7 +27,6 @@
                         <div class="col-xs-0 col-md-1"></div>
                     </div>
                 </a>
-            </div>
             <div class="queue-modal">
                 <div class="modal fade drink-modal-md" id="qid${q.getId()}" tabindex="-1" role="dialog" aria-labelledby="<c:url value="${q.getDrinkName()}" />Modal" aria-hidden="true">
                     <div class="modal-dialog modal-md">
@@ -70,6 +69,7 @@
                 </div>
             </div>
             </c:forEach>
+            </div>
             <div class="col-md-9 col-md-pull-3">
             <div class="row">
                 <div class="col-xs-0 col-md-1"></div>
