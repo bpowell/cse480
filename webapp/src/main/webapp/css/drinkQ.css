@@ -63,6 +63,7 @@ a:focus, a:hover {
     background: -moz-linear-gradient(#B1B1B1, #E1E1E1, #E1E1E1); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#B1B1B1, #E1E1E1, #E1E1E1); /* Standard syntax */
     min-height: 300px;
+    padding-bottom: 25px;
 }
 .col-md-pull-3 {
     background: #E1E1E1; /* For browsers that do not support gradients */
@@ -328,7 +329,6 @@ a:focus, a:hover {
 /** owner: add ingredient **/
 #ing-table {
     margin-top: 25px;
-    margin-left: -11px;
     border-left: 1px solid #DDD;
     border-right: 1px solid #DDD;
 }
