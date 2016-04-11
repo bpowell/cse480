@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+    <bean id="twilioInfo" class="edu.oakland.cse480.mvc.models.TwilioInfo">
+        <constructor-arg index="0" value="${twilio.account_sid}" />
+        <constructor-arg index="1" value="${twilio.auth_token}" />
+        <constructor-arg index="2" value="${twilio.phone_number}" />
+    </bean>
+
+</beans>

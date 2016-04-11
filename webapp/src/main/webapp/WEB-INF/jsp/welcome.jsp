@@ -53,6 +53,7 @@
             <div class="row">
                 <div class="col-xs-0 col-md-1"></div>
                 <div class="col-xs-12 col-md-3">
+                		<img src="<c:url value="/img/time.png" />"  class="welcome-icon img-responsive" alt="time" /></a>
                     <h3><strong>Drink Wait Estimations</strong></h3>
                     <p>
                         Before setting foot inside an establishment, now you can see just how long it is going to take to receive your drink.
@@ -75,7 +76,7 @@
                             <div class="col-xs-0 col-sm-1"></div>
                             <div class="col-xs-12 col-sm-10">
                                 <blockquote class="testim-quote">
-                                    <p>Drink Q has changed the entire bar experience for me.  It eliminates the wait and adds to the fun!</p>
+                                    <p>Drink Q has changed the entire bar experience for me and my friends.  It eliminates the wait and hassle of ordering drinks at a crowded bar and adds to the fun and overall experience!</p>
                                     <footer>Steven Wiggins</footer>
                                 </blockquote>
                             </div>
@@ -91,6 +92,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-3">
+                		<img src="<c:url value="/img/notification.png" />"  class="welcome-icon img-responsive" alt="notification" /></a>
                     <h3><strong>Drink Notifications</strong></h3>
                     <p>
                         How long have you been sitting there for?<br />
@@ -121,6 +123,9 @@
                 </div>
                 <div class="col-xs-0 col-md-2"></div>
             </div>
+        </div>
+				<div class="credit">
+					<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
         </div>
     </body>
 </html>

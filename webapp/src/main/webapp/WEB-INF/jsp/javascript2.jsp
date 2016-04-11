@@ -27,11 +27,11 @@ function addContent(divid, item, extra) {
     var template = '' +
         ' <a href="#" data-toggle="modal" data-target="#id' + item.id + '">  ' +
         '     <div class="row">' +
-        '         <div class="col-xs-0 col-md-2"></div>' +
+        '         <div class="col-xs-0 col-md-1"></div>' +
         '         <div class="col-xs-3 col-md-1 drink-icon">' +
         '             <img src="<c:url value="' + item.icon_url + '"/>" class="img-fluid img-rounded" alt="' + item.name + ' icon"/>' +
         '         </div>' +
-        '         <div class="col-xs-9 col-md-7 drink-text">' +
+        '         <div class="col-xs-9 col-md-9 drink-text">' +
         '             <h3><strong>' + item.name + '</strong></h3>' +
         '             <p>' +
         '                 <strong>Make Time:</strong> ' + item.makeTime + ' Seconds<br />' +
@@ -39,7 +39,7 @@ function addContent(divid, item, extra) {
         '                 <strong>Description:</strong> ' + item.info + '' +
         '             </p>' +
         '         </div>' +
-        '         <div class="col-xs-0 col-md-2"></div>' +
+        '         <div class="col-xs-0 col-md-1"></div>' +
         '     </div>' +
         ' </a>' +
         '     <div class="modal fade drink-modal-lg" id="id' + item.id + '" tabindex="-1" role="dialog" aria-labelledby="<c:url value="' + item.name + '" />Modal" aria-hidden="true">' +

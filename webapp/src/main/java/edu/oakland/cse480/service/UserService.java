@@ -108,7 +108,7 @@ public class UserService extends AbstractJdbcDriver {
         String hashedPassword = passwordEncoder.encode(u.getPassword());
 
         try {
-            this.jdbcPostgres.update("insert into users (email, name, password_hash, role_id, enabled) values (?, ?, ?, (select id from roles where role = ?), true)", u.getEmail(), u.getName(), hashedPassword, role);
+            this.jdbcPostgres.update("insert into users (email, name, password_hash, role_id, phonenumber, enabled) values (?, ?, ?, (select id from roles where role = ?), ?, true)", u.getEmail(), u.getName(), hashedPassword, role, u.getPhoneNumber());
         } catch(Exception e) {
             log.error("", e);
         }
