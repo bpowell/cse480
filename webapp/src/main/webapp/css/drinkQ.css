@@ -172,6 +172,9 @@ a:focus, a:hover {
     min-height: 400px;
     font-size: 125%;
 }
+.welcomeContentDark > div > div > h1 {
+    margin-bottom: 35px;
+}
 .welcomeRegister {
     background-color: #E1E1E1;
     color: #2D2D2D;
@@ -196,18 +199,27 @@ a:focus, a:hover {
 }
 
 .testim-quote {
-	padding-left: 30px;
-	padding-right: 15px;
+    padding-left: 30px;
+    padding-right: 15px;
 }
 
 .stevesBeautifulFace {
-	max-width: 80%;
-	margin:15px 10% 30px 10%;
+    max-width: 80%;
+    margin:15px 10% 30px 10%;
     border: 10px solid #E1E1E1;
 }
 .steve-rating {
     margin-bottom: 30px;
 }
+.freepik-credit {
+    background-color: #E1E1E1;
+    color: #666;
+}
+.welcome-icon {
+    max-width: 30%;
+    margin: 0 auto;
+}
+
 /** Barview.jsp **/
 .bar-info {
     margin-top: 25px;
@@ -344,29 +356,29 @@ a:focus, a:hover {
     }
     .welcomeContentLight {
         padding: 15px;
-        font-size: 150%;
+/*        font-size: 150%;*/
         min-height: 800px;
     }
     .welcomeContentLight > div > div > h1 {
-        font-size: 175%;
+/*        font-size: 175%;*/
         margin-top: 150px;
         margin-bottom: 50px;
     }
     .welcomeContentLight > div > div > h3 {
-        font-size: 150%;
+/*        font-size: 150%;*/
     }
     .welcomeContentDark {
         padding: 15px;
-        font-size: 150%;
+/*        font-size: 150%;*/
         min-height: 800px;
     }
     .welcomeContentDark > div > div > h1 {
-        font-size: 175%;
+/*        font-size: 175%;*/
         margin-top: 100px;
         margin-bottom: 50px;
     }
     .welcomeContentDark > div > div > h3 {
-        font-size: 150%;
+  /*      font-size: 150%;*/
     }
     .welcomeRegister {
         padding: 15px;
@@ -376,9 +388,13 @@ a:focus, a:hover {
         margin-top: 100px;
     }
     .stevesBeautifulFace {
-    	max-width: 50%;
-    	margin-left: 25%;
-    	margin-right: 25%;
+        max-width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+    .welcome-icon {
+        max-width: 30%;
+        margin: 40px 35% 65px 35%;
     }
 
 /* Large devices (desktops, 62em and up) */
@@ -456,11 +472,3 @@ a:focus, a:hover {
     margin: 0;
 }
 
-.credit {
-	background-color: #E1E1E1
-}
-
-.welcome-icon {
-	max-width: 30%;
-	margin:5px 35% 5px 35%;
-}
