@@ -1,33 +1,7 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
-            <div class="col-md-4 col-md-push-8 invisible"></div>
-            <div class="col-md-8 col-md-pull-4">
-            <div class="row">
-                <div class="col-xs-0 col-md-1"></div>
-                <div class="col-xs-12 col-md-10">
-                    <h1><strong>Drink List</strong></h1>
-                </div>
-                <div class="col-xs-0 col-md-1"></div>
-            </div>
-            <div class="row">
-                <div class="col-xs-0 col-md-1"></div>
-                <div class="col-xs-12 col-md-10">
-                    <c:url value="/drinklist/${barId}" var="post_url" />
-                    <form:form action="${post_url}" method="POST" class="search-box" role="search">
-                        <div class="col-md-12 input-group">
-                            <input id="drinkName" name="drinkName" type="text" class="search-hints form-control" placeholder="Search for..." />
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" value="submit" type="submit">Go!</button>
-                                <c:if test="${clearSearch}">
-                                    <a class="btn btn-default" value="submit" href="${post_url}" type="Button">Clear!</a>
-                                </c:if>
-                            </span>
-                        </div>
-                    </form:form>
-                </div>
-                <div class="col-xs-0 col-md-1"></div>
-            </div>
+            <div class="col-md-3 col-md-push-9">
             <div class="row">
                 <div class="col-xs-0 col-md-1"></div>
                 <div class="col-xs-12 col-md-10">
@@ -93,6 +67,33 @@
                     </div>
                 </div>
             </c:forEach>
+            </div>
+            <div class="col-md-9 col-md-pull-3">
+            <div class="row">
+                <div class="col-xs-0 col-md-1"></div>
+                <div class="col-xs-12 col-md-10">
+                    <h1><strong>Drink List</strong></h1>
+                </div>
+                <div class="col-xs-0 col-md-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-0 col-md-1"></div>
+                <div class="col-xs-12 col-md-10">
+                    <c:url value="/drinklist/${barId}" var="post_url" />
+                    <form:form action="${post_url}" method="POST" class="search-box" role="search">
+                        <div class="col-md-12 input-group">
+                            <input id="drinkName" name="drinkName" type="text" class="search-hints form-control" placeholder="Search for..." />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" value="submit" type="submit">Go!</button>
+                                <c:if test="${clearSearch}">
+                                    <a class="btn btn-default" value="submit" href="${post_url}" type="Button">Clear!</a>
+                                </c:if>
+                            </span>
+                        </div>
+                    </form:form>
+                </div>
+                <div class="col-xs-0 col-md-1"></div>
+            </div>
             <div class="row">
                 <div class="col-xs-0 col-md-1"></div>
                 <div class="col-xs-12 col-md-10">

@@ -1,10 +1,10 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
-            <div class="col-md-4 col-md-push-8">
+            <div class="col-md-3 col-md-push-9">
                 <jsp:directive.include file="/WEB-INF/jsp/owner/ownermenu.jsp"/>
             </div>
-            <div class="col-md-8 col-md-pull-4">
+            <div class="col-md-9 col-md-pull-3">
             <c:if test="${not empty error}">
                 <div class="row bg-danger">
                     <div class="col-xs-0"></div>

@@ -1,7 +1,7 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
-            <div class="col-md-4 col-md-push-8">
+            <div class="col-md-3 col-md-push-9">
                 <div class="row">
                     <div class="col-xs-12">
                 <c:forEach items="${bar}" var="b">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 col-md-pull-4">
+            <div class="col-md-9 col-md-pull-3">
             <c:if test="${empty display}">
                 <div class="row">
                     <div class="col-xs-0 col-md-1"></div>

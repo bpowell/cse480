@@ -1,7 +1,7 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
-            <div class="col-md-4 col-md-push-8">
+            <div class="col-md-3 col-md-push-9">
                 <c:if test="${not empty username}">
                     <div class="row">
                         <div class="col-xs-0 col-md-1"></div>
@@ -18,7 +18,7 @@
                         <jsp:directive.include file="/WEB-INF/jsp/owner/ownermenu.jsp"/>
                     </sec:authorize>
                 </div>
-                <div class="col-md-8 col-md-pull-4">
+                <div class="col-md-9 col-md-pull-3">
                     <div class="row">
                      <div class="col-xs-0 col-md-1"></div>
                         <div class="col-xs-12 col-md-10">
