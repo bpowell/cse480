@@ -105,17 +105,17 @@ insert into drink (name, info, make_time, icon_url) values('Labatt Blue', 'Full 
     insert into drink_ingredients (drink_id, ingredient_id) values((select id from drink where name = 'Labatt Blue'), (select id from ingredient where name = 'Labatt Blue'));
 
 -- drinks for BWW
-insert into availabledrinks (drink_id, bar_id) values((select id from drink where name = 'Coke'), (select id from bar where name = 'BWW'));
-insert into availabledrinks (drink_id, bar_id) values((select id from drink where name = 'Captain Coke'), (select id from bar where name = 'BWW'));
-insert into availabledrinks (drink_id, bar_id) values((select id from drink where name = 'PBR'), (select id from bar where name = 'BWW'));
-insert into availabledrinks (drink_id, bar_id) values((select id from drink where name = 'long island'), (select id from bar where name = 'BWW'));
-insert into availabledrinks (drink_id, bar_id) values((select id from drink where name = 'Michelob Ultra'), (select id from bar where name = 'BWW'));
-insert into availabledrinks (drink_id, bar_id) values((select id from drink where name = 'Coors Light'), (select id from bar where name = 'BWW'));
-insert into availabledrinks (drink_id, bar_id) values((select id from drink where name = 'Moscow Mule'), (select id from bar where name = 'BWW'));
-insert into availabledrinks (drink_id, bar_id) values((select id from drink where name = 'Kamikaze'), (select id from bar where name = 'BWW'));
-insert into availabledrinks (drink_id, bar_id) values((select id from drink where name = 'Fat Tire'), (select id from bar where name = 'BWW'));
-insert into availabledrinks (drink_id, bar_id) values((select id from drink where name = 'Cupcake Prosecco'), (select id from bar where name = 'BWW'));
-insert into availabledrinks (drink_id, bar_id) values((select id from drink where name = 'Guinness Draught'), (select id from bar where name = 'BWW'));
-insert into availabledrinks (drink_id, bar_id) values((select id from drink where name = 'Labatt Blue'), (select id from bar where name = 'BWW'));
-insert into availabledrinks (drink_id, bar_id) values((select id from drink where name = 'Labatt Blue Light'), (select id from bar where name = 'BWW'));
-insert into availabledrinks (drink_id, bar_id) values((select id from drink where name = 'Rum and Cola'), (select id from bar where name = 'BWW'));
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Coke'), (select id from bar where name = 'BWW'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Captain Coke'), (select id from bar where name = 'BWW'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'PBR'), (select id from bar where name = 'BWW'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'long island'), (select id from bar where name = 'BWW'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Michelob Ultra'), (select id from bar where name = 'BWW'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Coors Light'), (select id from bar where name = 'BWW'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Moscow Mule'), (select id from bar where name = 'BWW'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Kamikaze'), (select id from bar where name = 'BWW'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Fat Tire'), (select id from bar where name = 'BWW'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Cupcake Prosecco'), (select id from bar where name = 'BWW'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Guinness Draught'), (select id from bar where name = 'BWW'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Labatt Blue'), (select id from bar where name = 'BWW'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Labatt Blue Light'), (select id from bar where name = 'BWW'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Rum and Cola'), (select id from bar where name = 'BWW'), 3.50);
