@@ -62,8 +62,7 @@ a:focus, a:hover {
     background: -o-linear-gradient(#B1B1B1, #E1E1E1, #E1E1E1); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(#B1B1B1, #E1E1E1, #E1E1E1); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#B1B1B1, #E1E1E1, #E1E1E1); /* Standard syntax */
-    min-height: 300px;
-    padding-bottom: 25px;
+    padding-bottom: 5px;
 }
 .col-md-pull-3 {
     background: #E1E1E1; /* For browsers that do not support gradients */
@@ -72,6 +71,7 @@ a:focus, a:hover {
     background: -moz-linear-gradient(#B1B1B1, #E1E1E1); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#B1B1B1, #E1E1E1); /* Standard syntax */
     min-height: 450px;
+    padding-bottom: 40px;
 }
 
 .modal-header {
@@ -387,6 +387,8 @@ a:focus, a:hover {
         width: 22.33%;
         left: 75%;
         position: fixed;
+        padding-bottom: 25px;
+        min-height: 300px;
     }
     .col-md-pull-3 {
         position: inherit;

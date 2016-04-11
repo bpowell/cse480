@@ -1,7 +1,7 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
-            <div class="col-md-3 col-md-push-9">
+            <div class="col-md-3 col-md-push-9 invisible">
             </div>
             <div class="col-md-9 col-md-pull-3">
             <c:if test="${not empty error}">

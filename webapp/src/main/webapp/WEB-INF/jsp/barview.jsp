@@ -50,7 +50,7 @@
                             <div class="row">
                                 <div class="col-xs-0 col-md-1"></div>
                                 <div class="col-xs-3 col-md-2 business-icon">
-                                    <img src="<c:url value="${b.getIconUrl()}"/>" class="img-fluid img-rounded" alt="${bar.getName()} icon" />
+                                    <img src="<c:url value="${b.getIconUrl()}"/>" class="img-fluid img-rounded img-responsive" alt="${bar.getName()} icon" />
                                 </div>
                                 <div class="col-xs-9 col-md-6 bar-text">
                                     <h3><strong>${bar.getName()}</strong></h3>
@@ -90,7 +90,7 @@
                                         <div class="row">
                                             <div class="col-xs-1"></div>
                                             <div class="col-xs-3 col-sm-2">
-                                                <img src="<c:url value="${b.getIconUrl()}"/>" class="img-fluid img-rounded" alt="${bar.getName()} icon" />
+                                                <img src="<c:url value="${b.getIconUrl()}"/>" class="img-fluid img-rounded img-responsive" alt="${bar.getName()} icon" />
                                             </div>
                                             <div class="col-xs-7">
                                                 <p>
