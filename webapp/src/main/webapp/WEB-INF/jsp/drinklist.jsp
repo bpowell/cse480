@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-xs-0 col-md-1"></div>
                     <div class="col-xs-12 col-md-10">
-                        <h3><strong>Up Next</strong></h3>
+                        <h3><strong>Recently Ordered</strong></h3>
                     </div>
                     <div class="col-xs-0 col-md-1"></div>
                 </div>
