@@ -2,24 +2,24 @@
     <body>
         <div class="container-fluid welcomeImage">
             <div class="row">
-                <div class="col-xs-0 col-md-3"></div>
-                <div class="col-xs-12 col-md-6 text-center">
+                <div class="col-xs-0 col-md-2"></div>
+                <div class="col-xs-12 col-md-8 text-center">
                     <h1><strong>For the Thirsty and Impatient</strong></h1>
                 </div>
-                <div class="col-xs-0 col-md-3"></div>
+                <div class="col-xs-0 col-md-2"></div>
             </div>
         </div>
         <div class="container-fluid welcomeContentLight">
             <div class="row">
-                <div class="col-xs-0 col-md-4"></div>
-                <div class="col-xs-12 col-md-4">
+                <div class="col-xs-0 col-md-2"></div>
+                <div class="col-xs-12 col-md-8">
                     <h1 class="text-center"><strong>Why use drinkQ?</strong></h1>
                 </div>
-                <div class="col-xs-0 col-md-4"></div>
+                <div class="col-xs-0 col-md-2"></div>
             </div>
             <div class="row">
-                <div class="col-xs-0 col-md-2"></div>
-                <div class="col-xs-12 col-md-4">
+                <div class="col-xs-0 col-md-1"></div>
+                <div class="col-xs-12 col-md-5">
                     <h3><strong>As a Bar Patron</strong></h3>
                     <p>
                         Waiting sucks. You don't have to be fighting for a bartender's attention to know that.
@@ -29,7 +29,7 @@
                         Join already existing members and secure your place in the queue: drinkQ!
                     </p>
                 </div>
-                <div class="col-xs-12 col-md-4">
+                <div class="col-xs-12 col-md-5">
                     <h3><strong>As a Business</strong></h3>
                     <p>
                         You like business. That's why you're <em>in business</em>, right?<br />
@@ -39,20 +39,21 @@
                         Increase the amount of drinks served per hour by enabling your bartenders to focus more time serving customers.
                     </p>
                 </div>
-                <div class="col-xs-0 col-md-2"></div>
+                <div class="col-xs-0 col-md-1"></div>
             </div>
         </div>
         <div class="container-fluid welcomeContentDark">
             <div class="row">
-                <div class="col-xs-0 col-md-3"></div>
-                <div class="col-xs-12 col-md-6">
+                <div class="col-xs-0 col-md-2"></div>
+                <div class="col-xs-12 col-md-8">
                     <h1 class="text-center"><strong>See when you will get served!</strong></h1>
                 </div>
-                <div class="col-xs-0 col-md-3"></div>
+                <div class="col-xs-0 col-md-2"></div>
             </div>
             <div class="row">
-                <div class="col-xs-0 col-md-1"></div>
-                <div class="col-xs-12 col-md-3">
+                <div class="col-xs-0"></div>
+                <div class="col-xs-12 col-md-4">
+                    <img src="<c:url value="/img/time.png" />"  class="welcome-icon img-responsive" alt="time" />
                     <h3><strong>Drink Wait Estimations</strong></h3>
                     <p>
                         Before setting foot inside an establishment, now you can see just how long it is going to take to receive your drink.
@@ -75,7 +76,7 @@
                             <div class="col-xs-0 col-sm-1"></div>
                             <div class="col-xs-12 col-sm-10">
                                 <blockquote class="testim-quote">
-                                    <p>Drink Q has changed the entire bar experience for me.  It eliminates the wait and adds to the fun!</p>
+                                    <p>Drink Q has changed the entire bar experience for me and my friends.  It eliminates the wait and hassle of ordering drinks at a crowded bar and adds to the fun and overall experience!</p>
                                     <footer>Steven Wiggins</footer>
                                 </blockquote>
                             </div>
@@ -84,13 +85,14 @@
                         <div class="row">
                             <div class="col-xs-2 col-sm-3"></div>
                             <div class="col-xs-8 col-sm-6">
-                                <img src="<c:url value="/img/4stars.png" />"  class="steve-rating img-responsive" alt="SteveWiggins" /></a>
+                                <img src="<c:url value="/img/4stars.png" />"  class="steve-rating img-responsive" alt="SteveWiggins" />
                             </div>
                             <div class="col-xs-2 col-sm-3"></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-md-3">
+                <div class="col-xs-12 col-md-4">
+                    <img src="<c:url value="/img/notification.png" />"  class="welcome-icon img-responsive" alt="notification" />
                     <h3><strong>Drink Notifications</strong></h3>
                     <p>
                         How long have you been sitting there for?<br />
@@ -103,7 +105,7 @@
                         Now you can receive notifications of when your drink is being served!
                     </p>
                 </div>
-                <div class="col-xs-0 col-md-1"></div>
+                <div class="col-xs-0"></div>
             </div>
         </div>
         <div class="container-fluid welcomeRegister"> 
@@ -122,5 +124,10 @@
                 <div class="col-xs-0 col-md-2"></div>
             </div>
         </div>
+        <div class="freepik-credit text-center">
+            <p>
+                Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+            </p>
+        </div>
     </body>
-</html>
+</html> 

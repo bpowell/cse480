@@ -6,6 +6,7 @@ public class User {
     private int id;
     private String role;
     private int roleId;
+    private String phoneNumber;
     private boolean enabled;
 
     @NotBlank
@@ -82,5 +83,13 @@ public class User {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+	this.phoneNumber = phoneNumber;
+    }
+
+    public String getPhoneNumber() {
+	 return this.phoneNumber;
     }
 }
