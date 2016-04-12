@@ -63,6 +63,7 @@ a:focus, a:hover {
     background: -moz-linear-gradient(#B1B1B1, #E1E1E1, #E1E1E1); /* For Firefox 3.6 to 15 */
     background: linear-gradient(#B1B1B1, #E1E1E1, #E1E1E1); /* Standard syntax */
     padding-bottom: 5px;
+    margin-bottom: 10px;
 }
 .col-md-pull-3 {
     background: #E1E1E1; /* For browsers that do not support gradients */
@@ -253,6 +254,11 @@ a:focus, a:hover {
 .welcome-icon {
     max-width: 30%;
     margin: 0 auto;
+}
+
+/** Profile.jsp **/
+.profile-menu > div > div > p > a {
+    width: 100%;
 }
 
 /** Barview.jsp **/

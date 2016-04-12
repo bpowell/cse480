@@ -1,7 +1,7 @@
 <jsp:directive.include file="/WEB-INF/jsp/header.jsp"/>
     <body>
         <div class="container mainContent">
-            <div class="col-md-3 col-md-push-9">
+            <div class="col-md-3 col-md-push-9 profile-menu">
                 <c:if test="${not empty username}">
                     <div class="row">
                         <div class="col-xs-0 col-md-1"></div>
