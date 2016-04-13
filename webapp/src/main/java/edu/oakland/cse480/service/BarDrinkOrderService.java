@@ -36,7 +36,7 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
 
     public List<BarDrinkOrder> getThreeDrinkOrdersByBarId(int bar_id) {
         try {
-            return this.jdbcPostgres.query("select availabledrinks.price, drink.make_time, drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from availabledrinks, drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.enabled = 't' and availabledrinks.drink_id = drinkorder.drink_id and drinkorder.bar_id = ? order by drinkorder.time_placed limit 3", new Object[] {bar_id}, new BarDrinkOrderMapper());
+            return this.jdbcPostgres.query("select availabledrinks.price, drink.make_time, drinkorder.id, drinkorder.drink_id, drinkorder.drink_count, drink.name, drink.icon_url, drinkorder.user_id, users.name as username, drinkorder.time_placed, drinkorder.time_complete, drinkorder.bar_id, drinkorder.comments from availabledrinks, drinkorder left join drink on drink.id = drinkorder.drink_id left join users on users.id = drinkorder.user_id where users.enabled = 't' and availabledrinks.drink_id = drinkorder.drink_id and drinkorder.bar_id = ? and drinkorder.time_complete is null order by drinkorder.time_placed limit 3", new Object[] {bar_id}, new BarDrinkOrderMapper());
         } catch(Exception e) {
             log.info("", e);
             return new ArrayList<BarDrinkOrder>();
