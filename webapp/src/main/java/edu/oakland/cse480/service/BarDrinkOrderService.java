@@ -102,6 +102,15 @@ public class BarDrinkOrderService extends AbstractJdbcDriver {
         }
     }
 
+    public Map<String, Object> getTopDrinkAndTimesOrdered(int userId) {
+        try {
+            return this.jdbcPostgres.queryForMap("select drink.name as name, sum(drinkorder.drink_count) over (partition by drinkorder.drink_id) as count from drinkorder, drink where drink.id = drinkorder.drink_id and drinkorder.user_id = ? order by count desc limit 1", userId);
+        } catch(Exception e) {
+            log.error("", e);
+            return new HashMap<String, Object>();
+        }
+    }
+
     private class BarDrinkOrderMapper implements RowMapper<BarDrinkOrder> {
         public BarDrinkOrder mapRow(ResultSet rs, int rowNum) throws SQLException {
             BarDrinkOrder b = new BarDrinkOrder();
