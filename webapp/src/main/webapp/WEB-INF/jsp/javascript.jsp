@@ -9,11 +9,11 @@ function display(page) {
     pages(d.length);
 
     var nodrinks = '' +
-        '       <div id="empty-drinks">' +
+        '       <div class="emptyness">' +
         '           <div class="col-xs-0 col-md-1"></div>' +
         '           <div class="col-xs-12 col-md-10">' +
         '               <p>' +
-        '                   <strong>Sorry!</strong>' +
+        '                   <strong>Sorry!</strong><br />' +
         '                   This bar hasn\'t added any drinks to their list.' +
         '               </p>' +
         '           </div>' +

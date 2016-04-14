@@ -38,7 +38,7 @@
                 </div>
                 </c:if>
                 <c:if test="${empty queue}">
-                <div id="empty-queue" class="row">
+                <div class="row emptyness">
                     <div class="col-xs-0 col-md-1"></div>
                     <div class="col-xs-12 col-md-10">
                         <p>

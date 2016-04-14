@@ -194,6 +194,10 @@ a:focus, a:hover {
     padding-top: 15px;
     padding-bottom: 15px;
 }
+.emptyness {
+    padding-top: 25px;
+    height: 175px;
+}
 
 /** Welcome.jsp **/
 .welcomeImage {
@@ -302,12 +306,6 @@ a:focus, a:hover {
     border-top: none;
 }
 
-/** Display.jsp **/
-#empty-queue {
-    padding-top: 25px;
-    height: 175px;
-}
-
 /** Drinklist.jsp **/
 .drink {
 }
@@ -332,10 +330,6 @@ a:focus, a:hover {
     margin-top: 5px;
 }
 .drink-text p {
-}
-#empty-drinks {
-    padding-top: 25px;
-    height: 175px;
 }
 
 .pagination {
