@@ -47,6 +47,18 @@
                     </div>
                     <div class="col-xs-0 col-md-1"></div>
                 </div>
+                <c:if test="${empty businesses}">
+                <div class="emptyness">
+                    <div class="col-xs-0 col-md-1"></div>
+                    <div class="col-xs-12 col-md-10">
+                        <p>
+                            <strong>Well that's unfortunate!</strong><br />
+                            There are currently no bars to order from.
+                        </p>
+                    </div>
+                    <div class="col-xs-0 col-md-1"></div>
+                </div>
+                </c:if>
                 <div class="page-info">
                     <c:forEach items="${businesses}" var="b">
                     <c:forEach items="${b.getBars()}" var="bar">
