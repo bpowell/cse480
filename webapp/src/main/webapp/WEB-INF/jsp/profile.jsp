@@ -17,6 +17,9 @@
                     <sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_OWNER')">
                         <jsp:directive.include file="/WEB-INF/jsp/owner/ownermenu.jsp"/>
                     </sec:authorize>
+                    <sec:authorize access="hasRole('ROLE_EMPLOYEE') or hasRole('ROLE_OWNER')">
+                        <jsp:directive.include file="/WEB-INF/jsp/employeemenu.jsp"/>
+                    </sec:authorize>
                 </div>
                 <div class="col-md-9 col-md-pull-3">
                     <div class="row">
