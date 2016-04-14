@@ -107,6 +107,8 @@ public class MainController{
             model.addObject("username", us.getUsernameByEmail(email));
             model.addObject("drinks", barDrinkOrderService.getFiveDrinksByEmail(email));
             model.addObject("business", businessAndBarService.getFiveBarsByEmail(email));
+
+            model.addObject("barId", us.getBarIdForUserIfBartenderOrOwner(email));
         }
 
         model.setViewName("profile");
