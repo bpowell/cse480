@@ -62,8 +62,8 @@
                                     <strong>Phone: </strong>
                                     <script>
                                         var phone = '${bar.getPhoneNumber()}';
-                                        var format = '<a href="tel:1' + phone + '">(' + phone.substr(0, 3) + ') ' + phone.substr(3, 3) + '-' + phone.substr(6,4) + '</a>';
-                                        document.write(format);
+                                        formattedphone = "(" + phone.substr(0, 3) + ") " + phone.substr(3, 3) + "-" + phone.substr(6, 4);
+                                        document.write(formattedphone);
                                     </script><br />
                                     <strong>Location:</strong> ${bar.getCity()}, ${bar.getState()}<br />
                                     <!-- foritem dayofweek thevalue -->
@@ -76,6 +76,7 @@
                             </div>
                             <div class="col-xs-0 col-md-1"></div>
                         </div>
+                    </a>
                     </a>
                     <div class="modal fade drink-modal-md" id="id${bar.getId()}" tabindex="-1" role="dialog" aria-labelledby="<c:url value="${bar.getName()}" />Modal" aria-hidden="true">
                         <div class="modal-dialog modal-md">
