@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-xs-0 col-md-1"></div>
                 </div>
-                <div class="bar-info">
+                <div class="page-info">
                     <c:forEach items="${businesses}" var="b">
                     <c:forEach items="${b.getBars()}" var="bar">
                     <a href="#" data-toggle="modal" data-target="#id${bar.getId()}">
@@ -56,7 +56,7 @@
                             <div class="col-xs-3 col-md-2 business-icon">
                                 <img src="<c:url value="${b.getIconUrl()}"/>" class="img-fluid img-rounded img-responsive" alt="${bar.getName()} icon" />
                             </div>
-                            <div class="col-xs-9 col-md-6 bar-text">
+                            <div class="col-xs-9 col-md-5 bar-text">
                                 <h3><strong>${bar.getName()}</strong></h3>
                                 <p>
                                     <strong>Phone: </strong>
@@ -70,7 +70,7 @@
                                     <strong>Today's Hours:</strong> ${bar.getWednesdayHours()}
                                 </p>
                             </div>
-                            <div class="col-xs-12 col-md-2 bar-quick-links">
+                            <div class="col-xs-12 col-md-3 bar-quick-links">
                                 <a href="<c:url value="/display/${bar.getId()}" />" type="button" class="btn btn-primary btn-block"><strong>Queue</strong></a>
                                 <a href="<c:url value="/drinklist/${bar.getId()}" />" type="button" class="btn btn-primary btn-block"><strong>Drink List</strong></a>
                             </div>
