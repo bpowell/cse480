@@ -179,6 +179,25 @@ a:focus, a:hover {
     background-color: #820000;
     color: #E1E1E1;
 }
+.page-info {
+    margin-top: 25px;
+    padding: 0;
+    padding-bottom: 20px;
+}
+.page-info > .row {
+    background-color: #CFCFCF;
+    border-bottom: #A6A6A6 solid 1px;
+    border-right: #A6A6A6 solid 1px;
+    border-top: #F5F5F5 solid 1px;
+    border-left: #F5F5F5 solid 1px;
+    margin-bottom: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.emptyness {
+    padding-top: 25px;
+    height: 175px;
+}
 
 /** Welcome.jsp **/
 .welcomeImage {
@@ -262,11 +281,6 @@ a:focus, a:hover {
 }
 
 /** Barview.jsp **/
-.bar-info {
-    margin-top: 25px;
-    padding: 0;
-    padding-bottom: 20px;
-}
 .bar-icon {
 }
 .bar-icon img {
@@ -274,21 +288,26 @@ a:focus, a:hover {
 }
 .bar-text h3 {
     margin: 0;
-    margin-top: 5px;
 }
 .bar-text p {
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 .bar-quick-links {
-    padding-top: 15px;
+    padding-top: 10px;
 }
 
-/** Drinkview.jsp **/
+#profile-table {
+    border: none;
+}
+#profile-table > tbody > tr > th {
+    border-top: none;
+}
+#profile-table > tbody > tr > td {
+    border-top: none;
+}
+
+/** Drinklist.jsp **/
 .drink {
-    padding-bottom: 20px;
-    border-bottom: 5px dotted #999;
-    margin-top: 10px;
-    margin-bottom: 15px;
 }
 .drink-icon {
     padding: 0;
@@ -296,11 +315,12 @@ a:focus, a:hover {
 .drink-text {
 }
 .drink-quickorder {
-    margin-top: 15px;
+    margin-top: 25px;
 }
 .drink-quickorder > a {
-    padding-top: 20px;
-    padding-bottom: 20px;
+}
+.drink-clearorder {
+    margin-top: 25px;
 }
 .drink-icon img {
     width: 100%;
@@ -448,6 +468,11 @@ a:focus, a:hover {
     .welcome-icon {
         max-width: 30%;
         margin: 40px 35% 65px 35%;
+    }
+
+    .page-info > .row {
+        margin-left: 8.33333333%;
+        margin-right: 8.33333333%;
     }
 
 /* Large devices (desktops, 62em and up) */

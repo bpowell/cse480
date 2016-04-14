@@ -192,6 +192,7 @@ public class MainController{
             String email = userDetail.getUsername();
             model.addObject("username", us.getUsernameByEmail(email));
             model.addObject("totaldrinks", barDrinkOrderService.getTotalDrinksOrderedByEmail(email));
+            model.addObject("topdrink", barDrinkOrderService.getTopDrinkAndTimesOrdered(email));
         }
 
         model.addObject("businesses", businessAndBarService.getAllBusinessAndBars());
@@ -214,6 +215,7 @@ public class MainController{
             String email = userDetail.getUsername();
             model.addObject("username", us.getUsernameByEmail(email));
             model.addObject("totaldrinks", barDrinkOrderService.getTotalDrinksOrderedByEmail(email));
+            model.addObject("topdrink", barDrinkOrderService.getTopDrinkAndTimesOrdered(email));
         }
 
         model.addObject("businesses", businessAndBarService.getBusinessAndBarsByName(barName));

@@ -7,6 +7,29 @@ var page_size = 15;
 function display(page) {
     $('#content').html("");
     pages(d.length);
+
+    var nodrinks = '' +
+        '       <div class="emptyness">' +
+        '           <div class="col-xs-0 col-md-1"></div>' +
+        '           <div class="col-xs-12 col-md-10">' +
+        '               <p>' +
+        '                   <strong>Sorry!</strong><br />' +
+        '                   This bar hasn\'t added any drinks to their list.' +
+        '               </p>' +
+        '           </div>' +
+        '           <div class="col-xs-0 col-md-1"></div>' +
+        '       </div>' +
+        '       <div>' +
+        '           <div class="col-xs-0 col-md-1"></div>' +
+        '           <div class="col-xs-12 col-md-10">' +
+        '               <a href="<c:url value="/barview" />" class="btn btn-primary btn-lrg btn-block"><strong>Return to Bar List?</strong></a>' +
+        '           </div>' +
+        '           <div class="col-xs-0 col-md-1"></div>' +
+        '       </div>';
+    if (d.length == 0) {
+        $('#content').append(nodrinks);
+    }
+
     document.getElementById('page'+page).className = "active";
 
     start = page*page_size;
@@ -40,14 +63,14 @@ function display(page) {
             '         </div>' +
             '         </sec:authorize>' +
             '         <sec:authorize access="isAuthenticated()">' +
-            '         <div class="col-xs-9 col-md-7 drink-text">' +
+            '         <div class="col-xs-9 col-md-6 drink-text">' +
             '             <h3><strong>' + d[i].name + '</strong></h3>' +
             '             <p>' +
             '                 <strong>Make Time:</strong> ' + d[i].makeTime + ' Seconds<br />' +
             '                 <strong>Description:</strong> ' + d[i].info + '' +
             '             </p>' +
             '         </div>' +
-            '         <div class="col-xs-12 col-md-2 drink-quickorder">' +
+            '         <div class="col-xs-12 col-md-3 drink-quickorder">' +
             '             <a onclick="orderDrink(' + d[i].id + ');" type="button" class="btn btn-primary btn-block"><strong>Quick Order</strong></a>' +
             '         </div>' +
             '         </sec:authorize>' +
