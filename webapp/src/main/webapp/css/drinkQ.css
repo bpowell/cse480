@@ -283,6 +283,16 @@ a:focus, a:hover {
     padding-top: 15px;
 }
 
+#profile-table {
+    border: none;
+}
+#profile-table > tbody > tr > th {
+    border-top: none;
+}
+#profile-table > tbody > tr > td {
+    border-top: none;
+}
+
 /** Drinkview.jsp **/
 .drink {
     padding-bottom: 20px;
