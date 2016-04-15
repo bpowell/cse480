@@ -31,6 +31,7 @@ cp target/cse480.war $TOMCAT_HOME/webapps
 
 ## Postgresql Setup
 These instructions are assuming you are using Linux
+
 1. Install postgresql with your package manager
 2. `sudo su - postgres` to switch as the postgres user
 3. `psql` to run the postgres client
