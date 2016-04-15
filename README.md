@@ -31,6 +31,7 @@ cp target/cse480.war $TOMCAT_HOME/webapps
 
 ## Postgresql Setup
 These instructions are assuming you are using Linux
+
 1. Install postgresql with your package manager
 2. `sudo su - postgres` to switch as the postgres user
 3. `psql` to run the postgres client
@@ -38,3 +39,14 @@ These instructions are assuming you are using Linux
 5. `create database cse480 owner cse480;` to create the database
 6. `<ctrl+d>` to exit out of psql and then `exit` as the postgres user
 7. To create the schema developed run the following command `mvn clean package -Ddb=create`
+
+## Twilio Setup
+In your properties file, the following need to be added:
+
+```
+twilio.account_sid=
+twilio.auth_token=
+twilio.phone_number=
+```
+
+The values for these properties are a secret and SHOULD NOT be in the repo.
