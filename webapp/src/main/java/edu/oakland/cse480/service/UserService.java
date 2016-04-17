@@ -192,6 +192,15 @@ public class UserService extends AbstractJdbcDriver {
         return true;
     }
 
+    public int getBarIdForUserIfBartenderOrOwner(String email) {
+        try {
+            return this.jdbcPostgres.queryForObject("select bar.id from bar, users u where u.email = ? and (bar.id = (select bar.id from bar where bar.owner_id = u.id) or bar.id = (select bartenders.bar_id from bartenders where bartenders.user_id = u.id))", new Object[] {email}, Integer.class);
+        } catch(Exception e) {
+            log.error("", e);
+            return 0;
+        }
+    }
+
     public boolean isUserABartenderOrOwner(int barId, int userId) {
         try {
             return this.jdbcPostgres.queryForObject("select exists(select 1 from bar where owner_id = ? and id = ?) or exists(select 1 from bartenders where user_id = ? and bar_id = ?)", new Object[] {userId, barId, userId, barId}, Boolean.class);
