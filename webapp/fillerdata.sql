@@ -1,7 +1,9 @@
 -- passwords are 'a'
 insert into users (name, password_hash, email, role_id, enabled) values('owner1', '$2a$10$lO0lamyOi6o9GD2DpzOxUOvo8l7.tTHNKSG1KHXbUD/GEbPxePBhC', 'owner1@owner1', 2, true);
 insert into users (name, password_hash, email, role_id, enabled) values('owner2', '$2a$10$lO0lamyOi6o9GD2DpzOxUOvo8l7.tTHNKSG1KHXbUD/GEbPxePBhC', 'owner2@owner2', 2, true);
-insert into users (name, password_hash, email, role_id, enabled) values('owner3', '$2a$10$lO0lamyOi6o9GD2DpzOxUOvo8l7.tTHNKSG1KHXbUD/GEbPxePBhC', 'owner3@owner3', 5, true);
+insert into users (name, password_hash, email, role_id, enabled) values('owner3', '$2a$10$lO0lamyOi6o9GD2DpzOxUOvo8l7.tTHNKSG1KHXbUD/GEbPxePBhC', 'owner3@owner3', 2, true);
+insert into users (name, password_hash, email, role_id, enabled) values('owner4', '$2a$10$lO0lamyOi6o9GD2DpzOxUOvo8l7.tTHNKSG1KHXbUD/GEbPxePBhC', 'owner4@owner4', 2, true);
+insert into users (name, password_hash, email, role_id, enabled) values('owner5', '$2a$10$lO0lamyOi6o9GD2DpzOxUOvo8l7.tTHNKSG1KHXbUD/GEbPxePBhC', 'owner5@owner5', 2, true);
 insert into users (name, password_hash, email, role_id, enabled) values('bartender1', '$2a$10$lO0lamyOi6o9GD2DpzOxUOvo8l7.tTHNKSG1KHXbUD/GEbPxePBhC', 'bartender1@bartender1', 4, true);
 insert into users (name, password_hash, email, role_id, enabled) values('bartender2', '$2a$10$lO0lamyOi6o9GD2DpzOxUOvo8l7.tTHNKSG1KHXbUD/GEbPxePBhC', 'bartender2@bartender2', 5, true);
 insert into users (name, password_hash, email, role_id, enabled) values('bartender3', '$2a$10$lO0lamyOi6o9GD2DpzOxUOvo8l7.tTHNKSG1KHXbUD/GEbPxePBhC', 'bartender3@bartender3', 5, true);
@@ -10,13 +12,25 @@ insert into users (name, password_hash, email, role_id, enabled) values('user2',
 insert into users (name, password_hash, email, role_id, enabled) values('user3', '$2a$10$lO0lamyOi6o9GD2DpzOxUOvo8l7.tTHNKSG1KHXbUD/GEbPxePBhC', 'user3@user3', 5, true);
 
 insert into business (name, info, icon_url) values('BWW', 'Chicken Wings!', '/img/bars/bww.png');
-insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values('BWW', (select id from business where name = 'BWW'), (select id from users where name = 'owner1'), '6055 Dryden Road', 'Dryden', '48428', 'MI', '123456789');
-insert into barhours (bar_id ,monday ,tuesday ,wednesday ,thursday ,friday ,saturday ,sunday) values((select id from bar where name = 'BWW'), '10-2300','10-2300','10-2300','10-2300','10-2300','10-2300','10-2300');
+insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values('BWW', (select id from business where name = 'BWW'), (select id from users where name = 'owner1'), '6055 Dryden Road', 'Dryden', '48428', 'MI', '1234567890');
+insert into barhours (bar_id ,monday ,tuesday ,wednesday ,thursday ,friday ,saturday ,sunday) values((select id from bar where name = 'BWW'), '10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm');
 insert into bartenders (user_id, bar_id) values((select id from users where name = 'bartender1'), (select id from bar where name = 'BWW'));
 
-insert into business (name, info, icon_url) values('Penny Black', 'Good beer and bugers', '/img/bars/pennyblack.png');
-insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values('Penny Black', (select id from business where name = 'Penny Black'), (select id from users where name = 'owner2'), '6055 Dryden Road', 'Dryden', '48428', 'MI', '123456789');
-insert into barhours (bar_id ,monday ,tuesday ,wednesday ,thursday ,friday ,saturday ,sunday) values((select id from bar where name = 'Penny Black'), '10-2300','10-2300','10-2300','10-2300','10-2300','10-2300','10-2300');
+insert into business (name, info, icon_url) values('Penny Black', 'Good beer and burgers', '/img/bars/pennyblack.png');
+insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values('Penny Black', (select id from business where name = 'Penny Black'), (select id from users where name = 'owner2'), '6055 Dryden Road', 'Dryden', '48428', 'MI', '1234567890');
+insert into barhours (bar_id ,monday ,tuesday ,wednesday ,thursday ,friday ,saturday ,sunday) values((select id from bar where name = 'Penny Black'), '10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm');
+
+insert into business (name, info, icon_url) values('Muldoon''s', 'Your favorite Irish Pub', '/img/bars/muldoons.png');
+insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values('Muldoon''s', (select id from business where name = 'Muldoon''s'), (select id from users where name = 'owner3'), '12345 Auburn Road', 'Auburn Hills', '48326', 'MI', '2488675309');
+insert into barhours (bar_id ,monday ,tuesday ,wednesday ,thursday ,friday ,saturday ,sunday) values((select id from bar where name = 'Muldoon''s'), '10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm');
+
+insert into business (name, info, icon_url) values('Veritas', 'Come enjoy a nice bottle of fermented grapes.', '/img/bars/veritas.png');
+insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values('Veritas', (select id from business where name = 'Veritas'), (select id from users where name = 'owner4'), '485 Flint Street', 'Flint', '48501', 'MI', '8101649768');
+insert into barhours (bar_id ,monday ,tuesday ,wednesday ,thursday ,friday ,saturday ,sunday) values((select id from bar where name = 'Veritas'), '10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm');
+
+insert into business (name, info, icon_url) values('Clubhouse BFD', 'Beer. Food. Drinks.', '/img/bars/clubhousebfd.png');
+insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values('Clubhouse BFD', (select id from business where name = 'Clubhouse BFD'), (select id from users where name = 'owner5'), '2265 Crooks Road', 'Rochester Hills', '48309', 'MI', '2485556093');
+insert into barhours (bar_id ,monday ,tuesday ,wednesday ,thursday ,friday ,saturday ,sunday) values((select id from bar where name = 'Clubhouse BFD'), '10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm');
 
 insert into ingredient (name, description, icon_url, category_id) values('PBR', 'Cheap Beer', '/img/drink_icon/beer.png', 1);
 insert into ingredient (name, description, icon_url, category_id) values('Coke', 'Coke a cola', '/img/drink_icon/mixer.png', 4);
