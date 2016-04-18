@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-group">
                             <label for="iconUrl">Business Image URL</label>
-                            <input type="text" name="iconUrl" id="iconUrl" class="form-control" placeholder="https://mycompany.com/logo.png" required>
+                            <input type="text" name="iconUrl" id="iconUrl" class="form-control" value="/img/bars/default.png" placeholder="https://mycompany.com/logo.png" required>
                         </div>
                         <button value="submit" class="btn btn-lg btn-primary btn-block" type="submit"><strong>Create Business</strong></button>
                     </form:form>
