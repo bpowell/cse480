@@ -33,7 +33,7 @@ create table business (
     id serial primary key,
     name varchar(100) NOT NULL,
     info text NOT NULL,
-    icon_url text NOT NULL
+    icon_url text NOT NULL DEFAULT '/img/bars/default.png'
 )
 ;
 
