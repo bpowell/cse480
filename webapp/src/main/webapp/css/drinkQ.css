@@ -188,7 +188,7 @@ a:focus, a:hover {
     padding: 0;
     padding-bottom: 20px;
 }
-.page-info > .row {
+.page-info > .row, .page-info > a > .row {
     background-color: #CFCFCF;
     border-bottom: #A6A6A6 solid 1px;
     border-right: #A6A6A6 solid 1px;
