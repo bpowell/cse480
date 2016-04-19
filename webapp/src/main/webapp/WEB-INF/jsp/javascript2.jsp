@@ -24,6 +24,16 @@ function displayDrinksAtAllBars(page) {
 }
 
 function addContent(divid, item, extra) {
+    var ingredient_list = '';
+    if (item.ingredients.length <= 1) {
+        ingredient_list += item.ingredients[0].name;
+    } else {
+        ingredient_list += item.ingredients[0].name;
+        for (j = 1; j < item.ingredients.length; j++) {
+            ingredient_list += ', ' + item.ingredients[j].name;
+        }
+    }
+
     var template = '' +
         ' <a href="#" data-toggle="modal" data-target="#id' + item.id + '">  ' +
         '     <div class="row">' +
@@ -56,11 +66,14 @@ function addContent(divid, item, extra) {
         '                     </div>' +
         '                 </div>' +
         '                 <div class="modal-body">  ' +
-        '                     <p>' +
-        '                         <strong>Stuff goes here!</strong>' +
-        '                         Right? We want stuff here?<br />' +
-        '                         Yes... yes we do.' +
-        '                     </p>' +
+        '                     <div class="row">' +
+        '                         <div class="col-xs-12 col-sm-7">' +
+        '                             <p>' +
+        '                                 <strong>Make Time:</strong> ' + item.makeTime + ' Seconds<br />' +
+        '                                 <strong>Ingredients:</strong> ' + ingredient_list + '<br />' +
+        '                             </p> ' +
+        '                         </div>' +
+        '                     </div>' +
         '                     <div id="extra' + item.id +'">' +
         '                         <input name="price" id="price' + item.id +'" placeholder="2.00" /><br />' +
         '                         <a onclick="addDrink(' + item.id + ');" type="button" class="btn btn-primary">Add ' + item.name + '</a>' +
