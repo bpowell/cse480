@@ -11,10 +11,10 @@ insert into users (name, password_hash, email, role_id, enabled) values('user1',
 insert into users (name, password_hash, email, role_id, enabled) values('user2', '$2a$10$lO0lamyOi6o9GD2DpzOxUOvo8l7.tTHNKSG1KHXbUD/GEbPxePBhC', 'user2@user2', 5, true);
 insert into users (name, password_hash, email, role_id, enabled) values('user3', '$2a$10$lO0lamyOi6o9GD2DpzOxUOvo8l7.tTHNKSG1KHXbUD/GEbPxePBhC', 'user3@user3', 5, true);
 
-insert into business (name, info, icon_url) values('BWW', 'Chicken Wings!', '/img/bars/bww.png');
-insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values('BWW', (select id from business where name = 'BWW'), (select id from users where name = 'owner1'), '6055 Dryden Road', 'Dryden', '48428', 'MI', '1234567890');
-insert into barhours (bar_id ,monday ,tuesday ,wednesday ,thursday ,friday ,saturday ,sunday) values((select id from bar where name = 'BWW'), '10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm');
-insert into bartenders (user_id, bar_id) values((select id from users where name = 'bartender1'), (select id from bar where name = 'BWW'));
+insert into business (name, info, icon_url) values('Buffalo Wild Wings', 'Chicken Wings!', '/img/bars/bww.png');
+insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values('Buffalo Wild Wings', (select id from business where name = 'Buffalo Wild Wings'), (select id from users where name = 'owner1'), '6055 Dryden Road', 'Dryden', '48428', 'MI', '1234567890');
+insert into barhours (bar_id ,monday ,tuesday ,wednesday ,thursday ,friday ,saturday ,sunday) values((select id from bar where name = 'Buffalo Wild Wings'), '10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm','10am-11pm');
+insert into bartenders (user_id, bar_id) values((select id from users where name = 'bartender1'), (select id from bar where name = 'Buffalo Wild Wings'));
 
 insert into business (name, info, icon_url) values('Penny Black', 'Good beer and burgers', '/img/bars/pennyblack.png');
 insert into bar (name, business_id, owner_id, address, city, zipcode, state, phonenumber) values('Penny Black', (select id from business where name = 'Penny Black'), (select id from users where name = 'owner2'), '6055 Dryden Road', 'Dryden', '48428', 'MI', '1234567890');
@@ -118,18 +118,18 @@ insert into drink (name, info, make_time, icon_url) values('Labatt Blue Light', 
 insert into drink (name, info, make_time, icon_url) values('Labatt Blue', 'Full bodied Pilsener, full of Canadian goodness.', 30, '/img/drink_icon/beer.png');
     insert into drink_ingredients (drink_id, ingredient_id) values((select id from drink where name = 'Labatt Blue'), (select id from ingredient where name = 'Labatt Blue'));
 
--- drinks for BWW
-insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Coke'), (select id from bar where name = 'BWW'), 3.50);
-insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Captain Coke'), (select id from bar where name = 'BWW'), 3.50);
-insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'PBR'), (select id from bar where name = 'BWW'), 3.50);
-insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'long island'), (select id from bar where name = 'BWW'), 3.50);
-insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Michelob Ultra'), (select id from bar where name = 'BWW'), 3.50);
-insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Coors Light'), (select id from bar where name = 'BWW'), 3.50);
-insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Moscow Mule'), (select id from bar where name = 'BWW'), 3.50);
-insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Kamikaze'), (select id from bar where name = 'BWW'), 3.50);
-insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Fat Tire'), (select id from bar where name = 'BWW'), 3.50);
-insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Cupcake Prosecco'), (select id from bar where name = 'BWW'), 3.50);
-insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Guinness Draught'), (select id from bar where name = 'BWW'), 3.50);
-insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Labatt Blue'), (select id from bar where name = 'BWW'), 3.50);
-insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Labatt Blue Light'), (select id from bar where name = 'BWW'), 3.50);
-insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Rum and Cola'), (select id from bar where name = 'BWW'), 3.50);
+-- drinks for Buffalo Wild Wings
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Coke'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Captain Coke'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'PBR'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'long island'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Michelob Ultra'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Coors Light'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Moscow Mule'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Kamikaze'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Fat Tire'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Cupcake Prosecco'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Guinness Draught'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Labatt Blue'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Labatt Blue Light'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Rum and Cola'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
