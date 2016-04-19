@@ -22,23 +22,21 @@
                 </div>
                 </c:if>
                 <c:forEach items="${queue}" var="q">
-                <a href="">
-                    <div class="row">
-                        <div class="col-xs-0 col-md-1"></div>
-                        <div class="col-xs-3 col-md-1 drink-icon">
-                            <img src="<c:url value='${q.getDrinkIconUrl()}'/>" class="img-fluid img-rounded" alt="${q.getDrinkName()} icon"/>
-                        </div>
-                        <div class="col-xs-9 col-md-9 drink-text">
-                            <h3><strong>${q.getDrinkName()}</strong></h3>
-                            <p>
-                                <strong>Quantity:</strong>${q.getDrinkCount()}<br />
-                                <strong>User:</strong>${q.getUserName()}<br />
-                                <strong>Price: $</strong>${q.getPrice()}
-                            </p>
-                        </div>
-                        <div class="col-xs-0 col-md-1"></div>
+                <div class="row">
+                    <div class="col-xs-0 col-md-1"></div>
+                    <div class="col-xs-3 col-md-1 drink-icon">
+                        <img src="<c:url value='${q.getDrinkIconUrl()}'/>" class="img-fluid img-rounded" alt="${q.getDrinkName()} icon"/>
                     </div>
-                </a>
+                    <div class="col-xs-9 col-md-9 drink-text">
+                        <h3><strong>${q.getDrinkName()}</strong></h3>
+                        <p>
+                            <strong>Quantity:</strong>${q.getDrinkCount()}<br />
+                            <strong>User:</strong>${q.getUserName()}<br />
+                            <strong>Price: $</strong>${q.getPrice()}
+                        </p>
+                    </div>
+                    <div class="col-xs-0 col-md-1"></div>
+                </div>
                 </c:forEach>
             </div>
             <div class="col-md-9 col-md-pull-3">
