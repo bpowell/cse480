@@ -475,7 +475,7 @@ a:focus, a:hover {
         margin: 40px 35% 65px 35%;
     }
 
-    .page-info > .row {
+    .page-info > .row, .page-info > a > .row {
         margin-left: 8.33333333%;
         margin-right: 8.33333333%;
     }
