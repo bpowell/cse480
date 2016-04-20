@@ -30,6 +30,7 @@ insert into barhours (bar_id ,monday ,tuesday ,wednesday ,thursday ,friday ,satu
 
 insert into ingredient (name, description, icon_url, category_id) values('PBR', 'Cheap Beer', '/img/drink_icon/beer.png', 1);
 insert into ingredient (name, description, icon_url, category_id) values('Coke', 'Coke a cola', '/img/drink_icon/mixer.png', 4);
+insert into ingredient (name, description, icon_url, category_id) values('Diet Coke', 'Diet Coke a cola', '/img/drink_icon/mixer.png', 4);
 insert into ingredient (name, description, icon_url, category_id) values('Pepsi', 'Pepsi cola', '/img/drink_icon/mixer.png', 4);
 insert into ingredient (name, description, icon_url, category_id) values('Miller Lite', 'Cheap Bear', '/img/drink_icon/beer.png', 1);
 insert into ingredient (name, description, icon_url, category_id) values('Captain Morgan', 'Rum', '/img/drink_icon/liquor.png', 3);
@@ -59,10 +60,18 @@ insert into ingredient (name, description, icon_url, category_id) values('Bluebe
 insert into ingredient (name, description, icon_url, category_id) values('Organic Wit', 'Organic Wit beer brewed by Rochester Mills Beer Company', '/img/drink_icon/beer.png', 1);
 insert into ingredient (name, description, icon_url, category_id) values('Labatt Blue Light', 'Light Pilsener brewed by Labatt Brewing Company', '/img/drink_icon/beer.png', 1);
 insert into ingredient (name, description, icon_url, category_id) values('Labatt Blue', 'Pilsener brewed by Labatt Brewing Company', '/img/drink_icon/beer.png', 1);
+insert into ingredient (name, description, icon_url, category_id) values('Iced Tea', 'Iced Tea', '/img/drink_icon/mixer.png', 4);
+insert into ingredient (name, description, icon_url, category_id) values('Two Hearted Ale', 'Bell''s Two Hearted Ale', '/img/drink_icon/beer.png', 1);
+insert into ingredient (name, description, icon_url, category_id) values('Kalamazoo Stout', 'Bell''s Kalamazoo Stout', '/img/drink_icon/beer.png', 1);
+insert into ingredient (name, description, icon_url, category_id) values('Winter White Ale', 'Bell''s Winter White Ale', '/img/drink_icon/beer.png', 1);
+insert into ingredient (name, description, icon_url, category_id) values('Snow Day', 'New Belgium Brewing Snow Day', '/img/drink_icon/beer.png', 1);
+insert into ingredient (name, description, icon_url, category_id) values('Kujo Imperial Coffee Stout', 'Flying Dog Brewery Kujo Imperial Coffee Stout', '/img/drink_icon/beer.png', 1);
 
 -- list of drinks
 insert into drink (name, info, make_time, icon_url) values('Coke', 'Coke a cola', 1, '/img/drink_icon/mixer.png');
     insert into drink_ingredients (drink_id, ingredient_id) values((select id from drink where name = 'Coke'), (select id from ingredient where name = 'Coke'));
+insert into drink (name, info, make_time, icon_url) values('Diet Coke', 'Diet Coke a cola', 1, '/img/drink_icon/mixer.png');
+    insert into drink_ingredients (drink_id, ingredient_id) values((select id from drink where name = 'Diet Coke'), (select id from ingredient where name = 'Diet Coke'));
 insert into drink (name, info, make_time, icon_url) values('Kamikaze', 'This is a citrus drink, great for all you lime lovers out there. It is our favorite', 1, '/img/drink_icon/liquor.png');
     insert into drink_ingredients (drink_id, ingredient_id) values((select id from drink where name = 'Kamikaze'), (select id from ingredient where name = 'Sky Vodka'));
     insert into drink_ingredients (drink_id, ingredient_id) values((select id from drink where name = 'Kamikaze'), (select id from ingredient where name = 'Triple Sec'));
@@ -113,9 +122,22 @@ insert into drink (name, info, make_time, icon_url) values('Labatt Blue Light', 
     insert into drink_ingredients (drink_id, ingredient_id) values((select id from drink where name = 'Labatt Blue Light'), (select id from ingredient where name = 'Labatt Blue Light'));
 insert into drink (name, info, make_time, icon_url) values('Labatt Blue', 'Full bodied Pilsener, full of Canadian goodness.', 30, '/img/drink_icon/beer.png');
     insert into drink_ingredients (drink_id, ingredient_id) values((select id from drink where name = 'Labatt Blue'), (select id from ingredient where name = 'Labatt Blue'));
+insert into drink (name, info, make_time, icon_url) values('Iced Tead', 'Iced Tea', 1, '/img/drink_icon/mixer.png');
+    insert into drink_ingredients (drink_id, ingredient_id) values((select id from drink where name = 'Iced Tea'), (select id from ingredient where name = 'Iced Tea'));
+insert into drink (name, info, make_time, icon_url) values('Two Hearted Ale', 'Bell''s Two Hearted Ale', 30, '/img/drink_icon/mixer.png');
+    insert into drink_ingredients (drink_id, ingredient_id) values((select id from drink where name = 'Two Hearted Ale'), (select id from ingredient where name = 'Two Hearted Ale'));
+insert into drink (name, info, make_time, icon_url) values('Kalamazoo Stout', 'Bell''s Kalamazoo Stout', 30, '/img/drink_icon/mixer.png');
+    insert into drink_ingredients (drink_id, ingredient_id) values((select id from drink where name = 'Kalamazoo Stout'), (select id from ingredient where name = ' Kalamazoo Stout'));
+insert into drink (name, info, make_time, icon_url) values('Winter White Ale', 'Bell''s Winter White Ale', 30, '/img/drink_icon/mixer.png');
+    insert into drink_ingredients (drink_id, ingredient_id) values((select id from drink where name = 'Winter White Ale'), (select id from ingredient where name = 'Winter White Ale'));
+insert into drink (name, info, make_time, icon_url) values('Snow Day', 'New Belgium Brewing Snow Day', 30, '/img/drink_icon/mixer.png');
+    insert into drink_ingredients (drink_id, ingredient_id) values((select id from drink where name = 'Snow Day'), (select id from ingredient where name = 'Snow Day'));
+insert into drink (name, info, make_time, icon_url) values('Kujo Imperial Coffee Stout', 'Flying Dog Brewery Kujo Imperial Coffee Stout', 30, '/img/drink_icon/mixer.png');
+    insert into drink_ingredients (drink_id, ingredient_id) values((select id from drink where name = 'Kujo Imperial Coffee Stout'), (select id from ingredient where name = 'Kujo Imperial Coffee Stout'));
 
 -- drinks for Buffalo Wild Wings
 insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Coke'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Diet Coke'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
 insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Captain Coke'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
 insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'PBR'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
 insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'long island'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
@@ -129,3 +151,22 @@ insert into availabledrinks (drink_id, bar_id, price) values((select id from dri
 insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Labatt Blue'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
 insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Labatt Blue Light'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
 insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Rum and Cola'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Iced Tea'), (select id from bar where name = 'Buffalo Wild Wings'), 3.50);
+
+-- drinks for Penny Black
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Captain Coke'), (select id from bar where name = 'Penny Black'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'PBR'), (select id from bar where name = 'Penny Black'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'long island'), (select id from bar where name = 'Penny Black'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Michelob Ultra'), (select id from bar where name = 'Penny Black'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Coors Light'), (select id from bar where name = 'Penny Black'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Moscow Mule'), (select id from bar where name = 'Penny Black'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Kamikaze'), (select id from bar where name = 'Penny Black'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Fat Tire'), (select id from bar where name = 'Penny Black'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Cupcake Prosecco'), (select id from bar where name = 'Penny Black'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Guinness Draught'), (select id from bar where name = 'Penny Black'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Labatt Blue'), (select id from bar where name = 'Penny Black'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Labatt Blue Light'), (select id from bar where name = 'Penny Black'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Kalamazoo Stout'), (select id from bar where name = 'Penny Black'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Winter White Ale'), (select id from bar where name = 'Penny Black'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Snow Day'), (select id from bar where name = 'Penny Black'), 3.50);
+insert into availabledrinks (drink_id, bar_id, price) values((select id from drink where name = 'Kujo Imperial Coffee Stout'), (select id from bar where name = 'Penny Black'), 3.50);
